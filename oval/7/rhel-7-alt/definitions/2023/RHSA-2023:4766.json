@@ -1,23 +1,39 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:202332360",
-  "Version": "636",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20234766",
+  "Version": "635",
   "Metadata": {
-    "Title": "Information leak through Cups-Get-Document operation (important)",
+    "Title": "RHSA-2023:4766: cups security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 7"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2023:4766",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2023:4766"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2023-32360",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2023-32360"
       }
     ],
-    "Description": "DOCUMENTATION: A vulnerability was found in OpenPrinting CUPS. Unauthorized users are permitted to fetch documents over local or remote networks, leading to confidentiality breach. \n            STATEMENT: This vulnerability is classified as important according to Red Hat's Severity Rating Classification, as unauthorized users are permitted to fetch documents over local or remote networks, leading to confidentiality breach.\n\nhttps://access.redhat.com/security/updates/classification",
+    "Description": "The Common UNIX Printing System (CUPS) provides a portable printing layer for Linux, UNIX, and similar operating systems.\n\nSecurity Fix(es):\n\n* cups: Information leak through Cups-Get-Document operation (CVE-2023-32360)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Important",
-      "Issued": {},
+      "Rights": "Copyright 2023 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2023-08-28"
+      },
       "Updated": {
-        "Date": "2023-08-17"
+        "Date": "2023-08-28"
       },
       "Cves": [
         {
@@ -27,6 +43,12 @@
           "Impact": "important",
           "Href": "https://access.redhat.com/security/cve/CVE-2023-32360",
           "Public": "20221206"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2230495",
+          "ID": "2230495"
         }
       ],
       "AffectedCpeList": [
@@ -42,9 +64,7 @@
         "cpe:/o:redhat:enterprise_linux:7::workstation"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -53,7 +73,7 @@
     "Criterions": [
       {
         "Comment": "Red Hat Enterprise Linux must be installed",
-        "TestRef": "oval:com.redhat.cve:tst:20042779006"
+        "TestRef": "oval:com.redhat.rhba:tst:20150364028"
       }
     ],
     "Criterias": [
@@ -62,7 +82,7 @@
         "Criterions": [
           {
             "Comment": "Red Hat Enterprise Linux 7 is installed",
-            "TestRef": "oval:com.redhat.cve:tst:20042779005"
+            "TestRef": "oval:com.redhat.rhba:tst:20150364027"
           }
         ],
         "Criterias": [
@@ -73,25 +93,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "cups-devel is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:201718248001"
-                  },
-                  {
-                    "Comment": "cups-devel is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:201718248002"
-                  }
-                ]
-              },
-              {
-                "Operator": "AND",
-                "Criterions": [
-                  {
-                    "Comment": "cups is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:201718248009"
+                    "Comment": "cups is earlier than 1:1.6.3-52.el7_9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20234766001"
                   },
                   {
                     "Comment": "cups is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:201718248010"
+                    "TestRef": "oval:com.redhat.rhba:tst:20150386002"
                   }
                 ]
               },
@@ -99,12 +106,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "cups-client is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:201718248007"
+                    "Comment": "cups-client is earlier than 1:1.6.3-52.el7_9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20234766003"
                   },
                   {
                     "Comment": "cups-client is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:201718248008"
+                    "TestRef": "oval:com.redhat.rhba:tst:20150386004"
                   }
                 ]
               },
@@ -112,12 +119,25 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "cups-filesystem is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:201718248003"
+                    "Comment": "cups-devel is earlier than 1:1.6.3-52.el7_9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20234766005"
+                  },
+                  {
+                    "Comment": "cups-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20150386006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "cups-filesystem is earlier than 1:1.6.3-52.el7_9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20234766007"
                   },
                   {
                     "Comment": "cups-filesystem is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:201718248004"
+                    "TestRef": "oval:com.redhat.rhba:tst:20150386008"
                   }
                 ]
               },
@@ -125,12 +145,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "cups-ipptool is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:201718248005"
+                    "Comment": "cups-ipptool is earlier than 1:1.6.3-52.el7_9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20234766009"
                   },
                   {
                     "Comment": "cups-ipptool is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:201718248006"
+                    "TestRef": "oval:com.redhat.rhba:tst:20150386010"
                   }
                 ]
               },
@@ -138,12 +158,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "cups-libs is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:201718248013"
+                    "Comment": "cups-libs is earlier than 1:1.6.3-52.el7_9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20234766011"
                   },
                   {
                     "Comment": "cups-libs is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:201718248014"
+                    "TestRef": "oval:com.redhat.rhba:tst:20150386012"
                   }
                 ]
               },
@@ -151,12 +171,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "cups-lpd is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:201718248011"
+                    "Comment": "cups-lpd is earlier than 1:1.6.3-52.el7_9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20234766013"
                   },
                   {
                     "Comment": "cups-lpd is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:201718248012"
+                    "TestRef": "oval:com.redhat.rhba:tst:20150386014"
                   }
                 ]
               }
