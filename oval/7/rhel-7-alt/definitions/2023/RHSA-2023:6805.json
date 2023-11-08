@@ -1,23 +1,39 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:202346847",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20236805",
   "Version": "636",
   "Metadata": {
-    "Title": "Denial of Service in HTTP Digest Authentication (critical)",
+    "Title": "RHSA-2023:6805: squid security update (Critical)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 7"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2023:6805",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2023:6805"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2023-46847",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2023-46847"
       }
     ],
-    "Description": "DOCUMENTATION: Squid is vulnerable to a Denial of Service,  where a remote attacker can perform buffer overflow attack by writing up to 2 MB of arbitrary data to heap memory when Squid is configured to accept HTTP Digest Authentication.",
+    "Description": "Squid is a high-performance proxy caching server for web clients, supporting FTP, Gopher, and HTTP data objects.\n\nSecurity Fix(es):\n\n* squid: Denial of Service in HTTP Digest Authentication (CVE-2023-46847)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Critical",
-      "Issued": {},
+      "Rights": "Copyright 2023 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2023-11-08"
+      },
       "Updated": {
-        "Date": "2023-11-07"
+        "Date": "2023-11-08"
       },
       "Cves": [
         {
@@ -27,6 +43,12 @@
           "Impact": "critical",
           "Href": "https://access.redhat.com/security/cve/CVE-2023-46847",
           "Public": "20231019"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2245916",
+          "ID": "2245916"
         }
       ],
       "AffectedCpeList": [
@@ -42,9 +64,7 @@
         "cpe:/o:redhat:enterprise_linux:7::workstation"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -53,7 +73,7 @@
     "Criterions": [
       {
         "Comment": "Red Hat Enterprise Linux must be installed",
-        "TestRef": "oval:com.redhat.cve:tst:20042779006"
+        "TestRef": "oval:com.redhat.rhba:tst:20150364028"
       }
     ],
     "Criterias": [
@@ -62,7 +82,7 @@
         "Criterions": [
           {
             "Comment": "Red Hat Enterprise Linux 7 is installed",
-            "TestRef": "oval:com.redhat.cve:tst:20042779005"
+            "TestRef": "oval:com.redhat.rhba:tst:20150364027"
           }
         ],
         "Criterias": [
@@ -73,25 +93,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "squid-sysvinit is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:20146270003"
-                  },
-                  {
-                    "Comment": "squid-sysvinit is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:20146270004"
-                  }
-                ]
-              },
-              {
-                "Operator": "AND",
-                "Criterions": [
-                  {
-                    "Comment": "squid is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:20146270001"
+                    "Comment": "squid is earlier than 7:3.5.20-17.el7_9.9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20236805001"
                   },
                   {
                     "Comment": "squid is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:20146270002"
+                    "TestRef": "oval:com.redhat.rhsa:tst:20141147002"
                   }
                 ]
               },
@@ -99,12 +106,25 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "squid-migration-script is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:20146270005"
+                    "Comment": "squid-migration-script is earlier than 7:3.5.20-17.el7_9.9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20236805003"
                   },
                   {
                     "Comment": "squid-migration-script is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:20146270006"
+                    "TestRef": "oval:com.redhat.rhsa:tst:20162600004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "squid-sysvinit is earlier than 7:3.5.20-17.el7_9.9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20236805005"
+                  },
+                  {
+                    "Comment": "squid-sysvinit is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20141147004"
                   }
                 ]
               }
