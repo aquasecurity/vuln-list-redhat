@@ -30,6 +30,16 @@
       },
       {
         "Source": "CVE",
+        "RefID": "CVE-2023-24537",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2023-24537"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2023-24538",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2023-24538"
+      },
+      {
+        "Source": "CVE",
         "RefID": "CVE-2023-30861",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2023-30861"
       }
@@ -63,6 +73,22 @@
           "Public": "20230404"
         },
         {
+          "CveID": "CVE-2023-24537",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-835",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2023-24537",
+          "Public": "20230404"
+        },
+        {
+          "CveID": "CVE-2023-24538",
+          "Cvss3": "9.8/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-94",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2023-24538",
+          "Public": "20230404"
+        },
+        {
           "CveID": "CVE-2023-30861",
           "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
           "Cwe": "CWE-488",
@@ -73,12 +99,20 @@
       ],
       "Bugzilla": [
         {
+          "Href": "https://bugzilla.redhat.com/2184481",
+          "ID": "2184481"
+        },
+        {
           "Href": "https://bugzilla.redhat.com/2184482",
           "ID": "2184482"
         },
         {
           "Href": "https://bugzilla.redhat.com/2184483",
           "ID": "2184483"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2184484",
+          "ID": "2184484"
         },
         {
           "Href": "https://bugzilla.redhat.com/2196643",
@@ -105,16 +139,6 @@
     "Criterias": [
       {
         "Operator": "AND",
-        "Criterions": [
-          {
-            "Comment": "cri-o is earlier than 0:1.26.3-8.rhaos4.13.git9232b13.el8",
-            "TestRef": "oval:com.redhat.rhsa:tst:20233536001"
-          },
-          {
-            "Comment": "cri-o is signed with Red Hat redhatrelease2 key",
-            "TestRef": "oval:com.redhat.rhsa:tst:20233303002"
-          }
-        ],
         "Criterias": [
           {
             "Operator": "OR",
@@ -126,6 +150,89 @@
               {
                 "Comment": "Red Hat CoreOS 4 is installed",
                 "TestRef": "oval:com.redhat.rhsa:tst:20231325026"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "cri-o is earlier than 0:1.26.3-8.rhaos4.13.git9232b13.el8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20233536001"
+                  },
+                  {
+                    "Comment": "cri-o is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20233303002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openshift-hyperkube is earlier than 0:4.13.0-202305312300.p0.g7a891f0.assembly.stream.el8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20233536003"
+                  },
+                  {
+                    "Comment": "openshift-hyperkube is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20231325024"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openshift-ansible is earlier than 0:4.13.0-202305301841.p0.g148be47.assembly.stream.el8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20233536005"
+                  },
+                  {
+                    "Comment": "openshift-ansible is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20233536006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openshift-ansible-test is earlier than 0:4.13.0-202305301841.p0.g148be47.assembly.stream.el8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20233536007"
+                  },
+                  {
+                    "Comment": "openshift-ansible-test is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20233536008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openshift-clients is earlier than 0:4.13.0-202305312300.p0.g05d83ef.assembly.stream.el8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20233536009"
+                  },
+                  {
+                    "Comment": "openshift-clients is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20231325018"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openshift-clients-redistributable is earlier than 0:4.13.0-202305312300.p0.g05d83ef.assembly.stream.el8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20233536011"
+                  },
+                  {
+                    "Comment": "openshift-clients-redistributable is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20231325020"
+                  }
+                ]
               }
             ]
           }
