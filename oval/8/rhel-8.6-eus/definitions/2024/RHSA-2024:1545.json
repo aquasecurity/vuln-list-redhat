@@ -1,0 +1,182 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20241545",
+  "Version": "634",
+  "Metadata": {
+    "Title": "RHSA-2024:1545: dnsmasq security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8.6 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:1545",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:1545"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2022-0934",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2022-0934"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2023-28450",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2023-28450"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2023-50387",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2023-50387"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2023-50868",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2023-50868"
+      }
+    ],
+    "Description": "The dnsmasq packages contain dnsmasq, a lightweight DNS (Domain Name Server) forwarder and DHCP (Dynamic Host Configuration Protocol) server.\n\nSecurity Fixes:\n\n* dnsmasq: Heap use after free in dhcp6_no_relay (CVE-2022-0934)\n\n* dnsmasq: default maximum EDNS.0 UDP packet size was set to 4096 but should be 1232 (CVE-2023-28450)\n\n* dnsmasq: bind9: KeyTrap - Extreme CPU consumption in DNSSEC validator (CVE-2023-50387)\n\n* dnsmasq: bind9: Preparing an NSEC3 closest encloser proof can exhaust CPU resources (CVE-2023-50868)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-03-27"
+      },
+      "Updated": {
+        "Date": "2024-03-27"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2022-0934",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-416",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2022-0934",
+          "Public": "20220328"
+        },
+        {
+          "CveID": "CVE-2023-28450",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-770",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2023-28450",
+          "Public": "20230315"
+        },
+        {
+          "CveID": "CVE-2023-50387",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-400",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2023-50387",
+          "Public": "20240213"
+        },
+        {
+          "CveID": "CVE-2023-50868",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-400",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2023-50868",
+          "Public": "20240213"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2057075",
+          "ID": "2057075"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2178948",
+          "ID": "2178948"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2263914",
+          "ID": "2263914"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2263917",
+          "ID": "2263917"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:8.6",
+        "cpe:/a:redhat:rhel_eus:8.6::appstream",
+        "cpe:/a:redhat:rhel_eus:8.6::crb",
+        "cpe:/a:redhat:rhel_eus:8.6::highavailability",
+        "cpe:/a:redhat:rhel_eus:8.6::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:8.6::sap",
+        "cpe:/a:redhat:rhel_eus:8.6::sap_hana",
+        "cpe:/a:redhat:rhel_eus:8.6::supplementary",
+        "cpe:/o:redhat:rhel_eus:8.6",
+        "cpe:/o:redhat:rhel_eus:8.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "dnsmasq is earlier than 0:2.79-21.el8_6.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20241545001"
+                  },
+                  {
+                    "Comment": "dnsmasq is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20201715002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "dnsmasq-utils is earlier than 0:2.79-21.el8_6.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20241545003"
+                  },
+                  {
+                    "Comment": "dnsmasq-utils is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20201715004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
