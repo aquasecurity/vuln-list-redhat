@@ -1,0 +1,144 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20241780",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2024:1780: unbound security and bug fix update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.2 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:1780",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:1780"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-1488",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-1488"
+      }
+    ],
+    "Description": "The unbound packages provide a validating, recursive, and caching DNS or DNSSEC\nresolver.\n\nSecurity Fix(es):\n\n* A vulnerability was found in Unbound due to incorrect default permissions,\nallowing any process outside the unbound group to modify the unbound runtime\nconfiguration. The default combination of the \"control-use-cert: no\" option with\neither explicit or implicit use of an IP address in the \"control-interface\"\noption could allow improper access. If a process can connect over localhost to\nport 8953, it can alter the configuration of unbound.service. This flaw allows\nan unprivileged local process to manipulate a running instance, potentially\naltering forwarders, allowing them to track all queries forwarded by the local\nresolver, and, in some cases, disrupting resolving altogether.\n\nTo mitigate the vulnerability, a new file\n\"/etc/unbound/conf.d/remote-control.conf\" has been added and included in the\nmain unbound configuration file, \"unbound.conf\". The file contains two\ndirectives that should limit access to unbound.conf:\n\n    control-interface: \"/run/unbound/control\"\n    control-use-cert: \"yes\"\n\nFor details about these directives, run \"man unbound.conf\".\n\nUpdating to the version of unbound provided by this advisory should, in most\ncases, address the vulnerability. To verify that your configuration is not\nvulnerable, use the \"unbound-control status | grep control\" command. If the\noutput contains \"control(ssl)\" or \"control(namedpipe)\", your configuration is\nnot vulnerable. If the command output returns only \"control\", the configuration\nis vulnerable because it does not enforce access only to the unbound group\nmembers. To fix your configuration, add the line \"include:\n/etc/unbound/conf.d/remote-control.conf\" to the end of the file\n\"/etc/unbound/unbound.conf\". If you use a custom\n\"/etc/unbound/conf.d/remote-control.conf\" file, add the new directives to this\nfile. (CVE-2024-1488)\n\nFor more details about the security issue(s), including the impact, a CVSS\nscore, acknowledgments, and other related information, refer to the CVE page(s)\nlisted in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-04-11"
+      },
+      "Updated": {
+        "Date": "2024-04-11"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-1488",
+          "Cvss3": "8.0/CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:H",
+          "Cwe": "CWE-276-\u003eCWE-15",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-1488",
+          "Public": "20240213"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2264183",
+          "ID": "2264183"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_aus:9.2",
+        "cpe:/a:redhat:rhel_aus:9.2::appstream",
+        "cpe:/o:redhat:rhel_aus:9.2",
+        "cpe:/o:redhat:rhel_aus:9.2::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20225749024"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20225749023"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3-unbound is earlier than 0:1.16.2-3.el9_2.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20241780001"
+                  },
+                  {
+                    "Comment": "python3-unbound is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20228062002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "unbound is earlier than 0:1.16.2-3.el9_2.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20241780003"
+                  },
+                  {
+                    "Comment": "unbound is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20228062004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "unbound-devel is earlier than 0:1.16.2-3.el9_2.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20241780005"
+                  },
+                  {
+                    "Comment": "unbound-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20228062006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "unbound-libs is earlier than 0:1.16.2-3.el9_2.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20241780007"
+                  },
+                  {
+                    "Comment": "unbound-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20228062008"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
