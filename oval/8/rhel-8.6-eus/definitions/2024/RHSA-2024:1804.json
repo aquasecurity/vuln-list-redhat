@@ -1,0 +1,191 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20241804",
+  "Version": "639",
+  "Metadata": {
+    "Title": "RHSA-2024:1804: unbound security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8.6 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:1804",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:1804"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2023-50387",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2023-50387"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2023-50868",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2023-50868"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-1488",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-1488"
+      }
+    ],
+    "Description": "The unbound packages provide a validating, recursive, and caching DNS or DNSSEC resolver. \n\nSecurity Fix(es):\n\n* bind9: KeyTrap - Extreme CPU consumption in DNSSEC validator (CVE-2023-50387)\n\n* bind9: Preparing an NSEC3 closest encloser proof can exhaust CPU resources (CVE-2023-50868)\n\nSecurity Fix(es):\n\n* A vulnerability was found in Unbound due to incorrect default permissions,\nallowing any process outside the unbound group to modify the unbound runtime\nconfiguration. The default combination of the \"control-use-cert: no\" option with\neither explicit or implicit use of an IP address in the \"control-interface\"\noption could allow improper access. If a process can connect over localhost to\nport 8953, it can alter the configuration of unbound.service. This flaw allows\nan unprivileged local process to manipulate a running instance, potentially\naltering forwarders, allowing them to track all queries forwarded by the local\nresolver, and, in some cases, disrupting resolving altogether.\n\nTo mitigate the vulnerability, a new file\n\"/etc/unbound/conf.d/remote-control.conf\" has been added and included in the\nmain unbound configuration file, \"unbound.conf\". The file contains two\ndirectives that should limit access to unbound.conf:\n\n    control-interface: \"/run/unbound/control\"\n    control-use-cert: \"yes\"\n\nFor details about these directives, run \"man unbound.conf\".\n\nUpdating to the version of unbound provided by this advisory should, in most\ncases, address the vulnerability. To verify that your configuration is not\nvulnerable, use the \"unbound-control status | grep control\" command. If the\noutput contains \"control(ssl)\" or \"control(namedpipe)\", your configuration is\nnot vulnerable. If the command output returns only \"control\", the configuration\nis vulnerable because it does not enforce access only to the unbound group\nmembers. To fix your configuration, add the line \"include:\n/etc/unbound/conf.d/remote-control.conf\" to the end of the file\n\"/etc/unbound/unbound.conf\". If you use a custom\n\"/etc/unbound/conf.d/remote-control.conf\" file, add the new directives to this\nfile. (CVE-2024-1488)\n\nFor more details about the security issue(s), including the impact, a CVSS\nscore, acknowledgments, and other related information, refer to the CVE page(s)\nlisted in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-04-15"
+      },
+      "Updated": {
+        "Date": "2024-04-15"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2023-50387",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-400",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2023-50387",
+          "Public": "20240213"
+        },
+        {
+          "CveID": "CVE-2023-50868",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-400",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2023-50868",
+          "Public": "20240213"
+        },
+        {
+          "CveID": "CVE-2024-1488",
+          "Cvss3": "8.0/CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:H",
+          "Cwe": "CWE-276-\u003eCWE-15",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-1488",
+          "Public": "20240213"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2263914",
+          "ID": "2263914"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2263917",
+          "ID": "2263917"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2264183",
+          "ID": "2264183"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:8.6",
+        "cpe:/a:redhat:rhel_eus:8.6::appstream",
+        "cpe:/a:redhat:rhel_eus:8.6::crb",
+        "cpe:/a:redhat:rhel_eus:8.6::highavailability",
+        "cpe:/a:redhat:rhel_eus:8.6::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:8.6::sap",
+        "cpe:/a:redhat:rhel_eus:8.6::sap_hana",
+        "cpe:/a:redhat:rhel_eus:8.6::supplementary",
+        "cpe:/o:redhat:rhel_eus:8.6",
+        "cpe:/o:redhat:rhel_eus:8.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3-unbound is earlier than 0:1.7.3-17.el8_6.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20241804001"
+                  },
+                  {
+                    "Comment": "python3-unbound is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20201716002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "unbound is earlier than 0:1.7.3-17.el8_6.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20241804003"
+                  },
+                  {
+                    "Comment": "unbound is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20201716004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "unbound-devel is earlier than 0:1.7.3-17.el8_6.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20241804005"
+                  },
+                  {
+                    "Comment": "unbound-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20201716006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "unbound-libs is earlier than 0:1.7.3-17.el8_6.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20241804007"
+                  },
+                  {
+                    "Comment": "unbound-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20201716008"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
