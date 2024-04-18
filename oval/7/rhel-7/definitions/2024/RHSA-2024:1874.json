@@ -1,0 +1,99 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20241874",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2024:1874: rhc-worker-script security and enhancement update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 7"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:1874",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:1874"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-24786",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-24786"
+      }
+    ],
+    "Description": "The rhc-worker-script packages provide Remote Host Configuration (rhc) worker for executing an interpreted programming language script on hosts managed by Red Hat Insights.\n\nSecurity Fix(es):\n\n* golang-protobuf: encoding/protojson, internal/encoding/json: infinite loop in protojson.Unmarshal when unmarshaling certain forms of invalid JSON [rhc-worker-script] (CVE-2024-24786)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n\nEnhancement(s):\n\n* Allow users to specify environment variables through the rhc-worker-script configuration file to be passed down to the scripts being executed (HMS-3843)",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-04-18"
+      },
+      "Updated": {
+        "Date": "2024-04-18"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-24786",
+          "Cvss3": "5.9/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-835",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-24786",
+          "Public": "20240305"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2268046",
+          "ID": "2268046"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_extras:7",
+        "cpe:/a:redhat:rhel_extras_oracle_java:7",
+        "cpe:/a:redhat:rhel_extras_rt:7",
+        "cpe:/a:redhat:rhel_extras_sap:7",
+        "cpe:/a:redhat:rhel_extras_sap_hana:7",
+        "cpe:/o:redhat:enterprise_linux:7",
+        "cpe:/o:redhat:enterprise_linux:7::client",
+        "cpe:/o:redhat:enterprise_linux:7::computenode",
+        "cpe:/o:redhat:enterprise_linux:7::server",
+        "cpe:/o:redhat:enterprise_linux:7::workstation"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20150364028"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 7 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20150364027"
+          },
+          {
+            "Comment": "rhc-worker-script is earlier than 0:0.7-1.el7_9",
+            "TestRef": "oval:com.redhat.rhsa:tst:20241874001"
+          },
+          {
+            "Comment": "rhc-worker-script is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20235835002"
+          }
+        ]
+      }
+    ]
+  }
+}
