@@ -1,0 +1,223 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20242036",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2024:2036: tigervnc security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.0 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:2036",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:2036"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-31080",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-31080"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-31081",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-31081"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-31083",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-31083"
+      }
+    ],
+    "Description": "Virtual Network Computing (VNC) is a remote display system which allows users to view a computing desktop environment not only on the machine where it is running, but from anywhere on the Internet and from a wide variety of machine architectures. TigerVNC is a suite of VNC servers and clients.\n\nSecurity Fix(es):\n\n* xorg-x11-server: Heap buffer overread/data leakage in ProcXIGetSelectedEvents (CVE-2024-31080)\n\n* xorg-x11-server: Heap buffer overread/data leakage in ProcXIPassiveGrabDevice (CVE-2024-31081)\n\n* xorg-x11-server: User-after-free in ProcRenderAddGlyphs (CVE-2024-31083)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-04-24"
+      },
+      "Updated": {
+        "Date": "2024-04-24"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-31080",
+          "Cvss3": "7.3/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:H",
+          "Cwe": "CWE-126",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-31080",
+          "Public": "20240403"
+        },
+        {
+          "CveID": "CVE-2024-31081",
+          "Cvss3": "7.3/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:H",
+          "Cwe": "CWE-126",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-31081",
+          "Public": "20240403"
+        },
+        {
+          "CveID": "CVE-2024-31083",
+          "Cvss3": "7.8/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-416",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-31083",
+          "Public": "20240403"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2271997",
+          "ID": "2271997"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2271998",
+          "ID": "2271998"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2272000",
+          "ID": "2272000"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.0",
+        "cpe:/a:redhat:rhel_e4s:9.0::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.0::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.0::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.0::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.0::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.0::sap",
+        "cpe:/a:redhat:rhel_e4s:9.0::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.0",
+        "cpe:/o:redhat:rhel_e4s:9.0::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20225749024"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20225749023"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tigervnc is earlier than 0:1.11.0-22.el9_0.11",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242036001"
+                  },
+                  {
+                    "Comment": "tigervnc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20230623002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tigervnc-icons is earlier than 0:1.11.0-22.el9_0.11",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242036003"
+                  },
+                  {
+                    "Comment": "tigervnc-icons is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20230623004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tigervnc-license is earlier than 0:1.11.0-22.el9_0.11",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242036005"
+                  },
+                  {
+                    "Comment": "tigervnc-license is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20230623006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tigervnc-selinux is earlier than 0:1.11.0-22.el9_0.11",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242036007"
+                  },
+                  {
+                    "Comment": "tigervnc-selinux is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20230623008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tigervnc-server is earlier than 0:1.11.0-22.el9_0.11",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242036009"
+                  },
+                  {
+                    "Comment": "tigervnc-server is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20230623010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tigervnc-server-minimal is earlier than 0:1.11.0-22.el9_0.11",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242036011"
+                  },
+                  {
+                    "Comment": "tigervnc-server-minimal is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20230623012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tigervnc-server-module is earlier than 0:1.11.0-22.el9_0.11",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242036013"
+                  },
+                  {
+                    "Comment": "tigervnc-server-module is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20230623014"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20242063",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2024:2063: yajl security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8.6 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:2063",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:2063"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2022-24795",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2022-24795"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2023-33460",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2023-33460"
+      }
+    ],
+    "Description": "Yet Another JSON Library (YAJL) is a small event-driven (SAX-style) JSON parser written in ANSI C, and a small validating JSON generator.\n\nSecurity Fix(es):\n\n* yajl: heap-based buffer overflow when handling large inputs due to an integer overflow (CVE-2022-24795)\n\n* yajl: Memory leak in yajl_tree_parse function (CVE-2023-33460)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-04-25"
+      },
+      "Updated": {
+        "Date": "2024-04-25"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2022-24795",
+          "Cvss3": "5.9/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-190-\u003eCWE-119",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2022-24795",
+          "Public": "20220405"
+        },
+        {
+          "CveID": "CVE-2023-33460",
+          "Cvss3": "6.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-401",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2023-33460",
+          "Public": "20230606"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2072912",
+          "ID": "2072912"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2221249",
+          "ID": "2221249"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_tus:8.6",
+        "cpe:/a:redhat:rhel_tus:8.6::appstream",
+        "cpe:/a:redhat:rhel_tus:8.6::highavailability",
+        "cpe:/a:redhat:rhel_tus:8.6::nfv",
+        "cpe:/a:redhat:rhel_tus:8.6::realtime",
+        "cpe:/o:redhat:rhel_tus:8.6",
+        "cpe:/o:redhat:rhel_tus:8.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "yajl is earlier than 0:2.1.0-13.el8_6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242063001"
+                  },
+                  {
+                    "Comment": "yajl is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242063002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "yajl-devel is earlier than 0:2.1.0-13.el8_6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242063003"
+                  },
+                  {
+                    "Comment": "yajl-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242063004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
