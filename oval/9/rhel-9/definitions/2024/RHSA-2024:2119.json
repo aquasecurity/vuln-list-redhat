@@ -1,0 +1,139 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20242119",
+  "Version": "642",
+  "Metadata": {
+    "Title": "RHSA-2024:2119: Image builder components bug fix, enhancement and security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:2119",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:2119"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-2307",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-2307"
+      }
+    ],
+    "Description": "Image Builder is a service for building customized OS artifacts, such as VM images and OSTree commits, that uses osbuild under the hood.\n\nSecurity Fix(es):\n\n* osbuild-composer: race condition may disable GPG verification for package repositories (CVE-2024-2307)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n\nAdditional Changes:\n\nFor detailed information on changes in this release, see the Red Hat Enterprise Linux 9.4 Release Notes linked from the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-04-30"
+      },
+      "Updated": {
+        "Date": "2024-04-30"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-2307",
+          "Cvss3": "6.1/CVSS:3.1/AV:L/AC:L/PR:H/UI:R/S:U/C:H/I:H/A:L",
+          "Cwe": "CWE-362-\u003eCWE-347",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-2307",
+          "Public": "20240319"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2268513",
+          "ID": "2268513"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20225749024"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20225749023"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "osbuild-composer is earlier than 0:101-1.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242119001"
+                  },
+                  {
+                    "Comment": "osbuild-composer is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20232204004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "osbuild-composer-core is earlier than 0:101-1.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242119003"
+                  },
+                  {
+                    "Comment": "osbuild-composer-core is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20232204006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "osbuild-composer-worker is earlier than 0:101-1.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242119005"
+                  },
+                  {
+                    "Comment": "osbuild-composer-worker is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20232204010"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
