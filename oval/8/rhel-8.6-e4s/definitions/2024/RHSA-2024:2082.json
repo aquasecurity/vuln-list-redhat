@@ -1,0 +1,107 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20242082",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2024:2082: libreswan security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8.6 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:2082",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:2082"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-2357",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-2357"
+      }
+    ],
+    "Description": "Libreswan is an implementation of IPsec and IKE for Linux. IPsec is the Internet Protocol Security and uses strong cryptography to provide both authentication and encryption services. These services allow you to build secure tunnels through untrusted networks such as virtual private network (VPN).\n\nSecurity Fix(es):\n\n* libreswan: Missing PreSharedKey for connection can cause crash (CVE-2024-2357)\n\nFor more details about the security issue(s), including the impact, a CVSS\nscore, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-04-30"
+      },
+      "Updated": {
+        "Date": "2024-04-30"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-2357",
+          "Cvss3": "5.0/CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-400",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-2357",
+          "Public": "20240311"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2268952",
+          "ID": "2268952"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:8.6",
+        "cpe:/a:redhat:rhel_e4s:8.6::appstream",
+        "cpe:/a:redhat:rhel_e4s:8.6::highavailability",
+        "cpe:/a:redhat:rhel_e4s:8.6::sap",
+        "cpe:/a:redhat:rhel_e4s:8.6::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:8.6",
+        "cpe:/o:redhat:rhel_e4s:8.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "libreswan is earlier than 0:4.5-1.el8_6.2",
+            "TestRef": "oval:com.redhat.rhsa:tst:20242082001"
+          },
+          {
+            "Comment": "libreswan is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20193391002"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

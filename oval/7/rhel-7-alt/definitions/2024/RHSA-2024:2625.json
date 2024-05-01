@@ -1,0 +1,99 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20242625",
+  "Version": "638",
+  "Metadata": {
+    "Title": "RHSA-2024:2625: rhc-worker-script security and enhancement update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 7"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:2625",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:2625"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2023-45288",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2023-45288"
+      }
+    ],
+    "Description": "The rhc-worker-script packages provide Remote Host Configuration (rhc) worker for executing an interpreted programming language script on hosts managed by Red Hat Insights.\n\nSecurity Fix(es):\n\n* golang: net/http, x/net/http2: unlimited number of CONTINUATION frames causes DoS (CVE-2023-45288)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n\nEnhancement(s):\n\n* Include deps information in rhc-worker-script binary (JIRA:HMS-3983)\n\n* Set more granular log level for the scripts (JIRA:HMS-3837)",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-04-30"
+      },
+      "Updated": {
+        "Date": "2024-04-30"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2023-45288",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-400",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2023-45288",
+          "Public": "20240403"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2268273",
+          "ID": "2268273"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_extras:7",
+        "cpe:/a:redhat:rhel_extras_oracle_java:7",
+        "cpe:/a:redhat:rhel_extras_rt:7",
+        "cpe:/a:redhat:rhel_extras_sap:7",
+        "cpe:/a:redhat:rhel_extras_sap_hana:7",
+        "cpe:/o:redhat:enterprise_linux:7",
+        "cpe:/o:redhat:enterprise_linux:7::client",
+        "cpe:/o:redhat:enterprise_linux:7::computenode",
+        "cpe:/o:redhat:enterprise_linux:7::server",
+        "cpe:/o:redhat:enterprise_linux:7::workstation"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20150364028"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 7 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20150364027"
+          },
+          {
+            "Comment": "rhc-worker-script is earlier than 0:0.8-1.el7_9",
+            "TestRef": "oval:com.redhat.rhsa:tst:20242625001"
+          },
+          {
+            "Comment": "rhc-worker-script is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20235835002"
+          }
+        ]
+      }
+    ]
+  }
+}
