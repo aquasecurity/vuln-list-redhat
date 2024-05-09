@@ -1,0 +1,419 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20242721",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2024:2721: bind and dhcp security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8.8 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:2721",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:2721"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2023-4408",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2023-4408"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2023-50387",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2023-50387"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2023-50868",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2023-50868"
+      }
+    ],
+    "Description": "The Berkeley Internet Name Domain (BIND) is an implementation of the Domain Name System (DNS) protocols. BIND includes a DNS server (named); a resolver library (routines for applications to use when interfacing with DNS); and tools for verifying that the DNS server is operating correctly.\n\nThe Dynamic Host Configuration Protocol (DHCP) is a protocol that allows individual devices on an IP network to get their own network configuration information, including an IP address, a subnet mask, and a broadcast address. The dhcp packages provide a relay agent and ISC DHCP service required to enable and administer DHCP on a network.\n\nSecurity Fix(es):\n\n* bind: KeyTrap - Extreme CPU consumption in DNSSEC validator (CVE-2023-50387)\n\n* bind: Preparing an NSEC3 closest encloser proof can exhaust CPU resources (CVE-2023-50868)\n\n* bind: Parsing large DNS messages may cause excessive CPU load (CVE-2023-4408)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-05-07"
+      },
+      "Updated": {
+        "Date": "2024-05-07"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2023-4408",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-400",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2023-4408",
+          "Public": "20240213"
+        },
+        {
+          "CveID": "CVE-2023-50387",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-400",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2023-50387",
+          "Public": "20240213"
+        },
+        {
+          "CveID": "CVE-2023-50868",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-400",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2023-50868",
+          "Public": "20240213"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2263896",
+          "ID": "2263896"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2263914",
+          "ID": "2263914"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2263917",
+          "ID": "2263917"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_aus:8.8",
+        "cpe:/a:redhat:rhel_aus:8.8::appstream",
+        "cpe:/o:redhat:rhel_aus:8.8",
+        "cpe:/o:redhat:rhel_aus:8.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind is earlier than 32:9.11.36-8.el8_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242721001"
+                  },
+                  {
+                    "Comment": "bind is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20191145002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind-chroot is earlier than 32:9.11.36-8.el8_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242721003"
+                  },
+                  {
+                    "Comment": "bind-chroot is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20191145004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind-devel is earlier than 32:9.11.36-8.el8_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242721005"
+                  },
+                  {
+                    "Comment": "bind-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20191145006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind-export-devel is earlier than 32:9.11.36-8.el8_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242721007"
+                  },
+                  {
+                    "Comment": "bind-export-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20191145008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind-export-libs is earlier than 32:9.11.36-8.el8_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242721009"
+                  },
+                  {
+                    "Comment": "bind-export-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20191145010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind-libs is earlier than 32:9.11.36-8.el8_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242721011"
+                  },
+                  {
+                    "Comment": "bind-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20191145012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind-libs-lite is earlier than 32:9.11.36-8.el8_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242721013"
+                  },
+                  {
+                    "Comment": "bind-libs-lite is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20191145014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind-license is earlier than 32:9.11.36-8.el8_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242721015"
+                  },
+                  {
+                    "Comment": "bind-license is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20191145016"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind-lite-devel is earlier than 32:9.11.36-8.el8_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242721017"
+                  },
+                  {
+                    "Comment": "bind-lite-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20191145018"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind-pkcs11 is earlier than 32:9.11.36-8.el8_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242721019"
+                  },
+                  {
+                    "Comment": "bind-pkcs11 is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20191145020"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind-pkcs11-devel is earlier than 32:9.11.36-8.el8_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242721021"
+                  },
+                  {
+                    "Comment": "bind-pkcs11-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20191145022"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind-pkcs11-libs is earlier than 32:9.11.36-8.el8_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242721023"
+                  },
+                  {
+                    "Comment": "bind-pkcs11-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20191145024"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind-pkcs11-utils is earlier than 32:9.11.36-8.el8_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242721025"
+                  },
+                  {
+                    "Comment": "bind-pkcs11-utils is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20191145026"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind-sdb is earlier than 32:9.11.36-8.el8_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242721027"
+                  },
+                  {
+                    "Comment": "bind-sdb is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20191145028"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind-sdb-chroot is earlier than 32:9.11.36-8.el8_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242721029"
+                  },
+                  {
+                    "Comment": "bind-sdb-chroot is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20191145030"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind-utils is earlier than 32:9.11.36-8.el8_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242721031"
+                  },
+                  {
+                    "Comment": "bind-utils is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20191145032"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3-bind is earlier than 32:9.11.36-8.el8_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242721033"
+                  },
+                  {
+                    "Comment": "python3-bind is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20191145034"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "dhcp-client is earlier than 12:4.3.6-49.el8_8.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242721035"
+                  },
+                  {
+                    "Comment": "dhcp-client is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193525002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "dhcp-common is earlier than 12:4.3.6-49.el8_8.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242721037"
+                  },
+                  {
+                    "Comment": "dhcp-common is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193525004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "dhcp-libs is earlier than 12:4.3.6-49.el8_8.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242721039"
+                  },
+                  {
+                    "Comment": "dhcp-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193525006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "dhcp-relay is earlier than 12:4.3.6-49.el8_8.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242721041"
+                  },
+                  {
+                    "Comment": "dhcp-relay is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193525008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "dhcp-server is earlier than 12:4.3.6-49.el8_8.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242721043"
+                  },
+                  {
+                    "Comment": "dhcp-server is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193525010"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
