@@ -1,0 +1,235 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20242935",
+  "Version": "635",
+  "Metadata": {
+    "Title": "RHSA-2024:2935: go-toolset:rhel8 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8.6 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:2935",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:2935"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2023-45288",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2023-45288"
+      }
+    ],
+    "Description": "Go Toolset provides the Go programming language tools and libraries. Go is alternatively known as golang. \n\nSecurity Fix(es):\n\n* golang: net/http, x/net/http2: unlimited number of CONTINUATION frames causes DoS (CVE-2023-45288)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-05-21"
+      },
+      "Updated": {
+        "Date": "2024-05-21"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2023-45288",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-400",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2023-45288",
+          "Public": "20240403"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2268273",
+          "ID": "2268273"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:8.6",
+        "cpe:/a:redhat:rhel_e4s:8.6::appstream",
+        "cpe:/a:redhat:rhel_e4s:8.6::highavailability",
+        "cpe:/a:redhat:rhel_e4s:8.6::sap",
+        "cpe:/a:redhat:rhel_e4s:8.6::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:8.6",
+        "cpe:/o:redhat:rhel_e4s:8.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "Module go-toolset:rhel8 is enabled",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20191519017"
+                  }
+                ],
+                "Criterias": [
+                  {
+                    "Operator": "OR",
+                    "Criterias": [
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "delve is earlier than 0:1.7.2-1.module+el8.6.0+12972+ebab5911",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20221819001"
+                          },
+                          {
+                            "Comment": "delve is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20203665002"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "go-toolset is earlier than 0:1.17.13-1.module+el8.6.0+21758+c87a29d6",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20242935003"
+                          },
+                          {
+                            "Comment": "go-toolset is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20191519002"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "golang is earlier than 0:1.17.13-3.module+el8.6.0+21758+c87a29d6",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20242935005"
+                          },
+                          {
+                            "Comment": "golang is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20191519004"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "golang-bin is earlier than 0:1.17.13-3.module+el8.6.0+21758+c87a29d6",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20242935007"
+                          },
+                          {
+                            "Comment": "golang-bin is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20191519006"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "golang-docs is earlier than 0:1.17.13-3.module+el8.6.0+21758+c87a29d6",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20242935009"
+                          },
+                          {
+                            "Comment": "golang-docs is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20191519008"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "golang-misc is earlier than 0:1.17.13-3.module+el8.6.0+21758+c87a29d6",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20242935011"
+                          },
+                          {
+                            "Comment": "golang-misc is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20191519010"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "golang-race is earlier than 0:1.17.13-3.module+el8.6.0+21758+c87a29d6",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20242935013"
+                          },
+                          {
+                            "Comment": "golang-race is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20191519012"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "golang-src is earlier than 0:1.17.13-3.module+el8.6.0+21758+c87a29d6",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20242935015"
+                          },
+                          {
+                            "Comment": "golang-src is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20191519014"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "golang-tests is earlier than 0:1.17.13-3.module+el8.6.0+21758+c87a29d6",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20242935017"
+                          },
+                          {
+                            "Comment": "golang-tests is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20191519016"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
