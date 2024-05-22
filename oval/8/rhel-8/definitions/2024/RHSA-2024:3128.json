@@ -1,0 +1,3009 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20243128",
+  "Version": "635",
+  "Metadata": {
+    "Title": "RHSA-2024:3128: perl:5.32 security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:3128",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:3128"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2023-47038",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2023-47038"
+      }
+    ],
+    "Description": "Perl is a high-level programming language that is commonly used for system administration utilities and web programming.\n\nSecurity Fix(es):\n\n* perl: Write past buffer end via illegal user-defined Unicode property (CVE-2023-47038)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n\nAdditional Changes:\n\nFor detailed information on changes in this release, see the Red Hat Enterprise Linux 8.10 Release Notes linked from the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-05-22"
+      },
+      "Updated": {
+        "Date": "2024-05-22"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2023-47038",
+          "Cvss3": "7.0/CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-122",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2023-47038",
+          "Public": "20231125"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2249523",
+          "ID": "2249523"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:8",
+        "cpe:/a:redhat:enterprise_linux:8::appstream",
+        "cpe:/a:redhat:enterprise_linux:8::crb",
+        "cpe:/a:redhat:enterprise_linux:8::highavailability",
+        "cpe:/a:redhat:enterprise_linux:8::nfv",
+        "cpe:/a:redhat:enterprise_linux:8::realtime",
+        "cpe:/a:redhat:enterprise_linux:8::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:8::sap",
+        "cpe:/a:redhat:enterprise_linux:8::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:8::supplementary",
+        "cpe:/o:redhat:enterprise_linux:8",
+        "cpe:/o:redhat:enterprise_linux:8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "Module perl:5.32 is enabled",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243128445"
+                  }
+                ],
+                "Criterias": [
+                  {
+                    "Operator": "OR",
+                    "Criterias": [
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl is earlier than 4:5.32.1-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128001"
+                          },
+                          {
+                            "Comment": "perl is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20210557002"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Algorithm-Diff is earlier than 0:1.1903-10.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128003"
+                          },
+                          {
+                            "Comment": "perl-Algorithm-Diff is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128004"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Archive-Tar is earlier than 0:2.38-3.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128005"
+                          },
+                          {
+                            "Comment": "perl-Archive-Tar is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128006"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Archive-Zip is earlier than 0:1.68-3.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128007"
+                          },
+                          {
+                            "Comment": "perl-Archive-Zip is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128008"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Attribute-Handlers is earlier than 0:1.01-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128009"
+                          },
+                          {
+                            "Comment": "perl-Attribute-Handlers is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20210557004"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-AutoLoader is earlier than 0:5.74-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128011"
+                          },
+                          {
+                            "Comment": "perl-AutoLoader is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128012"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-AutoSplit is earlier than 0:5.74-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128013"
+                          },
+                          {
+                            "Comment": "perl-AutoSplit is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128014"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-B is earlier than 0:1.80-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128015"
+                          },
+                          {
+                            "Comment": "perl-B is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128016"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Benchmark is earlier than 0:1.23-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128017"
+                          },
+                          {
+                            "Comment": "perl-Benchmark is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128018"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-CPAN is earlier than 0:2.28-5.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128019"
+                          },
+                          {
+                            "Comment": "perl-CPAN is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243094002"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-CPAN-DistnameInfo is earlier than 0:0.12-13.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128021"
+                          },
+                          {
+                            "Comment": "perl-CPAN-DistnameInfo is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128022"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-CPAN-Meta is earlier than 0:2.150010-397.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128023"
+                          },
+                          {
+                            "Comment": "perl-CPAN-Meta is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128024"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-CPAN-Meta-Requirements is earlier than 0:2.140-397.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128025"
+                          },
+                          {
+                            "Comment": "perl-CPAN-Meta-Requirements is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128026"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-CPAN-Meta-YAML is earlier than 0:0.018-1001.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128027"
+                          },
+                          {
+                            "Comment": "perl-CPAN-Meta-YAML is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128028"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Carp is earlier than 0:1.50-439.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128029"
+                          },
+                          {
+                            "Comment": "perl-Carp is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128030"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Class-Struct is earlier than 0:0.66-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128031"
+                          },
+                          {
+                            "Comment": "perl-Class-Struct is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128032"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Compress-Bzip2 is earlier than 0:2.28-2.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128033"
+                          },
+                          {
+                            "Comment": "perl-Compress-Bzip2 is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128034"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Compress-Raw-Bzip2 is earlier than 0:2.096-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128035"
+                          },
+                          {
+                            "Comment": "perl-Compress-Raw-Bzip2 is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128036"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Compress-Raw-Lzma is earlier than 0:2.096-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128037"
+                          },
+                          {
+                            "Comment": "perl-Compress-Raw-Lzma is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128038"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Compress-Raw-Zlib is earlier than 0:2.096-2.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128039"
+                          },
+                          {
+                            "Comment": "perl-Compress-Raw-Zlib is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128040"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Config-Extensions is earlier than 0:0.03-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128041"
+                          },
+                          {
+                            "Comment": "perl-Config-Extensions is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128042"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Config-Perl-V is earlier than 0:0.32-441.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128043"
+                          },
+                          {
+                            "Comment": "perl-Config-Perl-V is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128044"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-DBM_Filter is earlier than 0:0.06-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128045"
+                          },
+                          {
+                            "Comment": "perl-DBM_Filter is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128046"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-DB_File is earlier than 0:1.855-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128047"
+                          },
+                          {
+                            "Comment": "perl-DB_File is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128048"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Data-Dumper is earlier than 0:2.174-440.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128049"
+                          },
+                          {
+                            "Comment": "perl-Data-Dumper is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128050"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Data-OptList is earlier than 0:0.110-7.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128051"
+                          },
+                          {
+                            "Comment": "perl-Data-OptList is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128052"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Data-Section is earlier than 0:0.200007-8.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128053"
+                          },
+                          {
+                            "Comment": "perl-Data-Section is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128054"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Devel-PPPort is earlier than 0:3.62-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128055"
+                          },
+                          {
+                            "Comment": "perl-Devel-PPPort is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128056"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Devel-Peek is earlier than 0:1.28-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128057"
+                          },
+                          {
+                            "Comment": "perl-Devel-Peek is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20210557006"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Devel-SelfStubber is earlier than 0:1.06-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128059"
+                          },
+                          {
+                            "Comment": "perl-Devel-SelfStubber is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20210557008"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Devel-Size is earlier than 0:0.83-3.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128061"
+                          },
+                          {
+                            "Comment": "perl-Devel-Size is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128062"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Digest is earlier than 0:1.20-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128063"
+                          },
+                          {
+                            "Comment": "perl-Digest is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128064"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Digest-MD5 is earlier than 0:2.58-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128065"
+                          },
+                          {
+                            "Comment": "perl-Digest-MD5 is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128066"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Digest-SHA is earlier than 1:6.02-2.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128067"
+                          },
+                          {
+                            "Comment": "perl-Digest-SHA is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128068"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-DirHandle is earlier than 0:1.05-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128069"
+                          },
+                          {
+                            "Comment": "perl-DirHandle is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128070"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Dumpvalue is earlier than 0:2.27-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128071"
+                          },
+                          {
+                            "Comment": "perl-Dumpvalue is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128072"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-DynaLoader is earlier than 0:1.47-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128073"
+                          },
+                          {
+                            "Comment": "perl-DynaLoader is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128074"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Encode is earlier than 4:3.08-461.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128075"
+                          },
+                          {
+                            "Comment": "perl-Encode is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128076"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Encode-Locale is earlier than 0:1.05-10.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128077"
+                          },
+                          {
+                            "Comment": "perl-Encode-Locale is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128078"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Encode-devel is earlier than 4:3.08-461.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128079"
+                          },
+                          {
+                            "Comment": "perl-Encode-devel is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128080"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-English is earlier than 0:1.11-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128081"
+                          },
+                          {
+                            "Comment": "perl-English is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128082"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Env is earlier than 0:1.04-396.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128083"
+                          },
+                          {
+                            "Comment": "perl-Env is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128084"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Errno is earlier than 0:1.30-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128085"
+                          },
+                          {
+                            "Comment": "perl-Errno is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20210557010"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Exporter is earlier than 0:5.74-458.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128087"
+                          },
+                          {
+                            "Comment": "perl-Exporter is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128088"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-ExtUtils-CBuilder is earlier than 1:0.280236-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128089"
+                          },
+                          {
+                            "Comment": "perl-ExtUtils-CBuilder is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128090"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-ExtUtils-Command is earlier than 2:7.46-3.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128091"
+                          },
+                          {
+                            "Comment": "perl-ExtUtils-Command is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128092"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-ExtUtils-Constant is earlier than 0:0.25-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128093"
+                          },
+                          {
+                            "Comment": "perl-ExtUtils-Constant is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128094"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-ExtUtils-Embed is earlier than 0:1.35-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128095"
+                          },
+                          {
+                            "Comment": "perl-ExtUtils-Embed is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20210557012"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-ExtUtils-Install is earlier than 0:2.20-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128097"
+                          },
+                          {
+                            "Comment": "perl-ExtUtils-Install is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128098"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-ExtUtils-MM-Utils is earlier than 2:7.46-3.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128099"
+                          },
+                          {
+                            "Comment": "perl-ExtUtils-MM-Utils is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128100"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-ExtUtils-MakeMaker is earlier than 2:7.46-3.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128101"
+                          },
+                          {
+                            "Comment": "perl-ExtUtils-MakeMaker is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128102"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-ExtUtils-Manifest is earlier than 1:1.73-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128103"
+                          },
+                          {
+                            "Comment": "perl-ExtUtils-Manifest is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128104"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-ExtUtils-Miniperl is earlier than 0:1.09-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128105"
+                          },
+                          {
+                            "Comment": "perl-ExtUtils-Miniperl is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20210557014"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-ExtUtils-ParseXS is earlier than 1:3.40-439.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128107"
+                          },
+                          {
+                            "Comment": "perl-ExtUtils-ParseXS is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128108"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Fcntl is earlier than 0:1.13-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128109"
+                          },
+                          {
+                            "Comment": "perl-Fcntl is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128110"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Fedora-VSP is earlier than 0:0.001-10.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128111"
+                          },
+                          {
+                            "Comment": "perl-Fedora-VSP is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128112"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-File-Basename is earlier than 0:2.85-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128113"
+                          },
+                          {
+                            "Comment": "perl-File-Basename is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128114"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-File-Compare is earlier than 0:1.100.600-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128115"
+                          },
+                          {
+                            "Comment": "perl-File-Compare is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128116"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-File-Copy is earlier than 0:2.34-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128117"
+                          },
+                          {
+                            "Comment": "perl-File-Copy is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128118"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-File-DosGlob is earlier than 0:1.12-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128119"
+                          },
+                          {
+                            "Comment": "perl-File-DosGlob is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128120"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-File-Fetch is earlier than 0:1.00-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128121"
+                          },
+                          {
+                            "Comment": "perl-File-Fetch is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128122"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-File-Find is earlier than 0:1.37-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128123"
+                          },
+                          {
+                            "Comment": "perl-File-Find is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128124"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-File-HomeDir is earlier than 0:1.004-6.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128125"
+                          },
+                          {
+                            "Comment": "perl-File-HomeDir is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128126"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-File-Path is earlier than 0:2.16-439.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128127"
+                          },
+                          {
+                            "Comment": "perl-File-Path is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128128"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-File-Temp is earlier than 1:0.231.100-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128129"
+                          },
+                          {
+                            "Comment": "perl-File-Temp is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128130"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-File-Which is earlier than 0:1.23-4.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128131"
+                          },
+                          {
+                            "Comment": "perl-File-Which is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128132"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-File-stat is earlier than 0:1.09-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128133"
+                          },
+                          {
+                            "Comment": "perl-File-stat is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128134"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-FileCache is earlier than 0:1.10-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128135"
+                          },
+                          {
+                            "Comment": "perl-FileCache is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128136"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-FileHandle is earlier than 0:2.03-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128137"
+                          },
+                          {
+                            "Comment": "perl-FileHandle is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128138"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Filter is earlier than 2:1.60-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128139"
+                          },
+                          {
+                            "Comment": "perl-Filter is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128140"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Filter-Simple is earlier than 0:0.96-457.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128141"
+                          },
+                          {
+                            "Comment": "perl-Filter-Simple is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128142"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-FindBin is earlier than 0:1.51-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128143"
+                          },
+                          {
+                            "Comment": "perl-FindBin is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128144"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-GDBM_File is earlier than 0:1.18-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128145"
+                          },
+                          {
+                            "Comment": "perl-GDBM_File is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128146"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Getopt-Long is earlier than 1:2.52-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128147"
+                          },
+                          {
+                            "Comment": "perl-Getopt-Long is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128148"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Getopt-Std is earlier than 0:1.12-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128149"
+                          },
+                          {
+                            "Comment": "perl-Getopt-Std is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128150"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-HTTP-Tiny is earlier than 0:0.078-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128151"
+                          },
+                          {
+                            "Comment": "perl-HTTP-Tiny is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20237174002"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Hash-Util is earlier than 0:0.23-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128153"
+                          },
+                          {
+                            "Comment": "perl-Hash-Util is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128154"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Hash-Util-FieldHash is earlier than 0:1.20-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128155"
+                          },
+                          {
+                            "Comment": "perl-Hash-Util-FieldHash is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128156"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-I18N-Collate is earlier than 0:1.02-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128157"
+                          },
+                          {
+                            "Comment": "perl-I18N-Collate is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128158"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-I18N-LangTags is earlier than 0:0.44-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128159"
+                          },
+                          {
+                            "Comment": "perl-I18N-LangTags is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128160"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-I18N-Langinfo is earlier than 0:0.19-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128161"
+                          },
+                          {
+                            "Comment": "perl-I18N-Langinfo is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128162"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-IO is earlier than 0:1.43-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128163"
+                          },
+                          {
+                            "Comment": "perl-IO is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20210557016"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-IO-Compress is earlier than 0:2.096-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128165"
+                          },
+                          {
+                            "Comment": "perl-IO-Compress is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128166"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-IO-Compress-Lzma is earlier than 0:2.096-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128167"
+                          },
+                          {
+                            "Comment": "perl-IO-Compress-Lzma is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128168"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-IO-Socket-IP is earlier than 0:0.41-2.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128169"
+                          },
+                          {
+                            "Comment": "perl-IO-Socket-IP is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128170"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-IO-Zlib is earlier than 1:1.10-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128171"
+                          },
+                          {
+                            "Comment": "perl-IO-Zlib is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20210557018"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-IPC-Cmd is earlier than 2:1.04-2.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128173"
+                          },
+                          {
+                            "Comment": "perl-IPC-Cmd is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128174"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-IPC-Open3 is earlier than 0:1.21-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128175"
+                          },
+                          {
+                            "Comment": "perl-IPC-Open3 is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128176"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-IPC-SysV is earlier than 0:2.09-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128177"
+                          },
+                          {
+                            "Comment": "perl-IPC-SysV is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128178"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-IPC-System-Simple is earlier than 0:1.30-3.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128179"
+                          },
+                          {
+                            "Comment": "perl-IPC-System-Simple is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128180"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Importer is earlier than 0:0.025-6.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128181"
+                          },
+                          {
+                            "Comment": "perl-Importer is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128182"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-JSON-PP is earlier than 1:4.04-2.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128183"
+                          },
+                          {
+                            "Comment": "perl-JSON-PP is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128184"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Locale-Maketext is earlier than 0:1.29-440.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128185"
+                          },
+                          {
+                            "Comment": "perl-Locale-Maketext is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128186"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Locale-Maketext-Simple is earlier than 1:0.21-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128187"
+                          },
+                          {
+                            "Comment": "perl-Locale-Maketext-Simple is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20210557020"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-MIME-Base64 is earlier than 0:3.15-1001.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128189"
+                          },
+                          {
+                            "Comment": "perl-MIME-Base64 is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128190"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-MRO-Compat is earlier than 0:0.13-5.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128191"
+                          },
+                          {
+                            "Comment": "perl-MRO-Compat is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128192"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Math-BigInt is earlier than 1:1.9998.18-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128193"
+                          },
+                          {
+                            "Comment": "perl-Math-BigInt is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128194"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Math-BigInt-FastCalc is earlier than 0:0.500.900-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128195"
+                          },
+                          {
+                            "Comment": "perl-Math-BigInt-FastCalc is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128196"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Math-BigRat is earlier than 0:0.2614-2.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128197"
+                          },
+                          {
+                            "Comment": "perl-Math-BigRat is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128198"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Math-Complex is earlier than 0:1.59-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128199"
+                          },
+                          {
+                            "Comment": "perl-Math-Complex is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20210557022"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Memoize is earlier than 0:1.03-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128201"
+                          },
+                          {
+                            "Comment": "perl-Memoize is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20210557024"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Module-Build is earlier than 2:0.42.31-5.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128203"
+                          },
+                          {
+                            "Comment": "perl-Module-Build is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128204"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Module-CoreList is earlier than 1:5.20211020-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128205"
+                          },
+                          {
+                            "Comment": "perl-Module-CoreList is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128206"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Module-CoreList-tools is earlier than 1:5.20211020-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128207"
+                          },
+                          {
+                            "Comment": "perl-Module-CoreList-tools is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128208"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Module-Load is earlier than 1:0.36-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128209"
+                          },
+                          {
+                            "Comment": "perl-Module-Load is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128210"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Module-Load-Conditional is earlier than 0:0.74-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128211"
+                          },
+                          {
+                            "Comment": "perl-Module-Load-Conditional is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128212"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Module-Loaded is earlier than 1:0.08-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128213"
+                          },
+                          {
+                            "Comment": "perl-Module-Loaded is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20210557026"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Module-Metadata is earlier than 0:1.000037-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128215"
+                          },
+                          {
+                            "Comment": "perl-Module-Metadata is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128216"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-NDBM_File is earlier than 0:1.15-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128217"
+                          },
+                          {
+                            "Comment": "perl-NDBM_File is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128218"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-NEXT is earlier than 0:0.67-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128219"
+                          },
+                          {
+                            "Comment": "perl-NEXT is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128220"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Net is earlier than 0:1.02-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128221"
+                          },
+                          {
+                            "Comment": "perl-Net is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128222"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Net-Ping is earlier than 0:2.72-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128223"
+                          },
+                          {
+                            "Comment": "perl-Net-Ping is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20210557028"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-ODBM_File is earlier than 0:1.16-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128225"
+                          },
+                          {
+                            "Comment": "perl-ODBM_File is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128226"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Object-HashBase is earlier than 0:0.009-4.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128227"
+                          },
+                          {
+                            "Comment": "perl-Object-HashBase is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128228"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Object-HashBase-tools is earlier than 0:0.009-4.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128229"
+                          },
+                          {
+                            "Comment": "perl-Object-HashBase-tools is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128230"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Opcode is earlier than 0:1.48-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128231"
+                          },
+                          {
+                            "Comment": "perl-Opcode is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128232"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-POSIX is earlier than 0:1.94-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128233"
+                          },
+                          {
+                            "Comment": "perl-POSIX is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128234"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Package-Generator is earlier than 0:1.106-12.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128235"
+                          },
+                          {
+                            "Comment": "perl-Package-Generator is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128236"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Params-Check is earlier than 1:0.38-396.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128237"
+                          },
+                          {
+                            "Comment": "perl-Params-Check is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128238"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Params-Util is earlier than 0:1.102-2.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128239"
+                          },
+                          {
+                            "Comment": "perl-Params-Util is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128240"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-PathTools is earlier than 0:3.78-439.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128241"
+                          },
+                          {
+                            "Comment": "perl-PathTools is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128242"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Perl-OSType is earlier than 0:1.010-397.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128243"
+                          },
+                          {
+                            "Comment": "perl-Perl-OSType is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128244"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-PerlIO-via-QuotedPrint is earlier than 0:0.09-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128245"
+                          },
+                          {
+                            "Comment": "perl-PerlIO-via-QuotedPrint is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128246"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Pod-Checker is earlier than 4:1.74-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128247"
+                          },
+                          {
+                            "Comment": "perl-Pod-Checker is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128248"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Pod-Escapes is earlier than 1:1.07-396.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128249"
+                          },
+                          {
+                            "Comment": "perl-Pod-Escapes is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128250"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Pod-Functions is earlier than 0:1.13-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128251"
+                          },
+                          {
+                            "Comment": "perl-Pod-Functions is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128252"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Pod-Html is earlier than 0:1.25-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128253"
+                          },
+                          {
+                            "Comment": "perl-Pod-Html is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20210557030"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Pod-Parser is earlier than 0:1.63-1001.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128255"
+                          },
+                          {
+                            "Comment": "perl-Pod-Parser is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128256"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Pod-Perldoc is earlier than 0:3.28.01-443.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128257"
+                          },
+                          {
+                            "Comment": "perl-Pod-Perldoc is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128258"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Pod-Simple is earlier than 1:3.42-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128259"
+                          },
+                          {
+                            "Comment": "perl-Pod-Simple is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128260"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Pod-Usage is earlier than 4:2.01-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128261"
+                          },
+                          {
+                            "Comment": "perl-Pod-Usage is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128262"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Safe is earlier than 0:2.41-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128263"
+                          },
+                          {
+                            "Comment": "perl-Safe is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128264"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Scalar-List-Utils is earlier than 4:1.55-457.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128265"
+                          },
+                          {
+                            "Comment": "perl-Scalar-List-Utils is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128266"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Search-Dict is earlier than 0:1.07-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128267"
+                          },
+                          {
+                            "Comment": "perl-Search-Dict is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128268"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-SelectSaver is earlier than 0:1.02-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128269"
+                          },
+                          {
+                            "Comment": "perl-SelectSaver is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128270"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-SelfLoader is earlier than 0:1.26-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128271"
+                          },
+                          {
+                            "Comment": "perl-SelfLoader is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20210557032"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Socket is earlier than 4:2.031-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128273"
+                          },
+                          {
+                            "Comment": "perl-Socket is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128274"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Software-License is earlier than 0:0.103014-5.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128275"
+                          },
+                          {
+                            "Comment": "perl-Software-License is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128276"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Storable is earlier than 1:3.21-457.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128277"
+                          },
+                          {
+                            "Comment": "perl-Storable is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128278"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Sub-Exporter is earlier than 0:0.987-17.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128279"
+                          },
+                          {
+                            "Comment": "perl-Sub-Exporter is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128280"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Sub-Install is earlier than 0:0.928-15.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128281"
+                          },
+                          {
+                            "Comment": "perl-Sub-Install is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128282"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Symbol is earlier than 0:1.08-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128283"
+                          },
+                          {
+                            "Comment": "perl-Symbol is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128284"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Sys-Hostname is earlier than 0:1.23-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128285"
+                          },
+                          {
+                            "Comment": "perl-Sys-Hostname is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128286"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Sys-Syslog is earlier than 0:0.36-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128287"
+                          },
+                          {
+                            "Comment": "perl-Sys-Syslog is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128288"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Term-ANSIColor is earlier than 0:5.01-458.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128289"
+                          },
+                          {
+                            "Comment": "perl-Term-ANSIColor is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128290"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Term-Cap is earlier than 0:1.17-396.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128291"
+                          },
+                          {
+                            "Comment": "perl-Term-Cap is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128292"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Term-Complete is earlier than 0:1.403-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128293"
+                          },
+                          {
+                            "Comment": "perl-Term-Complete is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128294"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Term-ReadLine is earlier than 0:1.17-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128295"
+                          },
+                          {
+                            "Comment": "perl-Term-ReadLine is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128296"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Term-Table is earlier than 0:0.015-2.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128297"
+                          },
+                          {
+                            "Comment": "perl-Term-Table is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128298"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Test is earlier than 0:1.31-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128299"
+                          },
+                          {
+                            "Comment": "perl-Test is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20210557034"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Test-Harness is earlier than 1:3.42-2.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128301"
+                          },
+                          {
+                            "Comment": "perl-Test-Harness is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128302"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Test-Simple is earlier than 3:1.302181-2.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128303"
+                          },
+                          {
+                            "Comment": "perl-Test-Simple is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128304"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Text-Abbrev is earlier than 0:1.02-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128305"
+                          },
+                          {
+                            "Comment": "perl-Text-Abbrev is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128306"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Text-Balanced is earlier than 0:2.04-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128307"
+                          },
+                          {
+                            "Comment": "perl-Text-Balanced is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128308"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Text-Diff is earlier than 0:1.45-7.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128309"
+                          },
+                          {
+                            "Comment": "perl-Text-Diff is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128310"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Text-Glob is earlier than 0:0.11-5.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128311"
+                          },
+                          {
+                            "Comment": "perl-Text-Glob is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128312"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Text-ParseWords is earlier than 0:3.30-396.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128313"
+                          },
+                          {
+                            "Comment": "perl-Text-ParseWords is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128314"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Text-Tabs+Wrap is earlier than 0:2013.0523-396.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128315"
+                          },
+                          {
+                            "Comment": "perl-Text-Tabs+Wrap is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128316"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Text-Template is earlier than 0:1.58-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128317"
+                          },
+                          {
+                            "Comment": "perl-Text-Template is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128318"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Thread is earlier than 0:3.05-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128319"
+                          },
+                          {
+                            "Comment": "perl-Thread is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128320"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Thread-Queue is earlier than 0:3.14-457.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128321"
+                          },
+                          {
+                            "Comment": "perl-Thread-Queue is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128322"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Thread-Semaphore is earlier than 0:2.13-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128323"
+                          },
+                          {
+                            "Comment": "perl-Thread-Semaphore is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128324"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Tie is earlier than 0:4.6-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128325"
+                          },
+                          {
+                            "Comment": "perl-Tie is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128326"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Tie-File is earlier than 0:1.06-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128327"
+                          },
+                          {
+                            "Comment": "perl-Tie-File is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128328"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Tie-Memoize is earlier than 0:1.1-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128329"
+                          },
+                          {
+                            "Comment": "perl-Tie-Memoize is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128330"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Tie-RefHash is earlier than 0:1.39-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128331"
+                          },
+                          {
+                            "Comment": "perl-Tie-RefHash is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128332"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Time is earlier than 0:1.03-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128333"
+                          },
+                          {
+                            "Comment": "perl-Time is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128334"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Time-HiRes is earlier than 4:1.9764-459.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128335"
+                          },
+                          {
+                            "Comment": "perl-Time-HiRes is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128336"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Time-Local is earlier than 2:1.300-4.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128337"
+                          },
+                          {
+                            "Comment": "perl-Time-Local is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128338"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Time-Piece is earlier than 0:1.3401-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128339"
+                          },
+                          {
+                            "Comment": "perl-Time-Piece is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20210557036"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-URI is earlier than 0:1.76-5.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128341"
+                          },
+                          {
+                            "Comment": "perl-URI is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128342"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Unicode-Collate is earlier than 0:1.29-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128343"
+                          },
+                          {
+                            "Comment": "perl-Unicode-Collate is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128344"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Unicode-Normalize is earlier than 0:1.27-458.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128345"
+                          },
+                          {
+                            "Comment": "perl-Unicode-Normalize is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128346"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Unicode-UCD is earlier than 0:0.75-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128347"
+                          },
+                          {
+                            "Comment": "perl-Unicode-UCD is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128348"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-User-pwent is earlier than 0:1.03-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128349"
+                          },
+                          {
+                            "Comment": "perl-User-pwent is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128350"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-autodie is earlier than 0:2.34-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128351"
+                          },
+                          {
+                            "Comment": "perl-autodie is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128352"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-autouse is earlier than 0:1.11-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128353"
+                          },
+                          {
+                            "Comment": "perl-autouse is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128354"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-base is earlier than 0:2.27-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128355"
+                          },
+                          {
+                            "Comment": "perl-base is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128356"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-bignum is earlier than 0:0.51-439.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128357"
+                          },
+                          {
+                            "Comment": "perl-bignum is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128358"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-blib is earlier than 0:1.07-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128359"
+                          },
+                          {
+                            "Comment": "perl-blib is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128360"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-constant is earlier than 0:1.33-1001.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128361"
+                          },
+                          {
+                            "Comment": "perl-constant is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128362"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-debugger is earlier than 0:1.56-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128363"
+                          },
+                          {
+                            "Comment": "perl-debugger is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128364"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-deprecate is earlier than 0:0.04-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128365"
+                          },
+                          {
+                            "Comment": "perl-deprecate is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128366"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-devel is earlier than 4:5.32.1-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128367"
+                          },
+                          {
+                            "Comment": "perl-devel is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20210557038"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-diagnostics is earlier than 0:1.37-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128369"
+                          },
+                          {
+                            "Comment": "perl-diagnostics is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128370"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-doc is earlier than 0:5.32.1-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128371"
+                          },
+                          {
+                            "Comment": "perl-doc is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128372"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-encoding is earlier than 4:3.00-461.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128373"
+                          },
+                          {
+                            "Comment": "perl-encoding is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128374"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-encoding-warnings is earlier than 0:0.13-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128375"
+                          },
+                          {
+                            "Comment": "perl-encoding-warnings is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128376"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-experimental is earlier than 0:0.025-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128377"
+                          },
+                          {
+                            "Comment": "perl-experimental is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128378"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-fields is earlier than 0:2.27-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128379"
+                          },
+                          {
+                            "Comment": "perl-fields is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128380"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-filetest is earlier than 0:1.03-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128381"
+                          },
+                          {
+                            "Comment": "perl-filetest is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128382"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-generators is earlier than 0:1.13-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128383"
+                          },
+                          {
+                            "Comment": "perl-generators is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128384"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-homedir is earlier than 0:2.000024-7.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128385"
+                          },
+                          {
+                            "Comment": "perl-homedir is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128386"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-if is earlier than 0:0.60.800-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128387"
+                          },
+                          {
+                            "Comment": "perl-if is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128388"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-inc-latest is earlier than 2:0.500-10.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128389"
+                          },
+                          {
+                            "Comment": "perl-inc-latest is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128390"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-interpreter is earlier than 4:5.32.1-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128391"
+                          },
+                          {
+                            "Comment": "perl-interpreter is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20210557040"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-less is earlier than 0:0.03-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128393"
+                          },
+                          {
+                            "Comment": "perl-less is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128394"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-lib is earlier than 0:0.65-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128395"
+                          },
+                          {
+                            "Comment": "perl-lib is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128396"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-libnet is earlier than 0:3.13-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128397"
+                          },
+                          {
+                            "Comment": "perl-libnet is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128398"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-libnetcfg is earlier than 4:5.32.1-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128399"
+                          },
+                          {
+                            "Comment": "perl-libnetcfg is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20210557042"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-libs is earlier than 4:5.32.1-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128401"
+                          },
+                          {
+                            "Comment": "perl-libs is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20210557044"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-local-lib is earlier than 0:2.000024-7.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128403"
+                          },
+                          {
+                            "Comment": "perl-local-lib is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128404"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-locale is earlier than 0:1.09-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128405"
+                          },
+                          {
+                            "Comment": "perl-locale is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128406"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-macros is earlier than 4:5.32.1-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128407"
+                          },
+                          {
+                            "Comment": "perl-macros is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20210557046"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-meta-notation is earlier than 0:5.32.1-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128409"
+                          },
+                          {
+                            "Comment": "perl-meta-notation is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128410"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-mro is earlier than 0:1.23-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128411"
+                          },
+                          {
+                            "Comment": "perl-mro is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128412"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-open is earlier than 0:1.12-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128413"
+                          },
+                          {
+                            "Comment": "perl-open is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20210557048"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-overload is earlier than 0:1.31-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128415"
+                          },
+                          {
+                            "Comment": "perl-overload is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128416"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-overloading is earlier than 0:0.02-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128417"
+                          },
+                          {
+                            "Comment": "perl-overloading is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128418"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-parent is earlier than 1:0.238-457.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128419"
+                          },
+                          {
+                            "Comment": "perl-parent is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128420"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-perlfaq is earlier than 0:5.20210520-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128421"
+                          },
+                          {
+                            "Comment": "perl-perlfaq is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128422"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-ph is earlier than 0:5.32.1-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128423"
+                          },
+                          {
+                            "Comment": "perl-ph is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128424"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-podlators is earlier than 1:4.14-457.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128425"
+                          },
+                          {
+                            "Comment": "perl-podlators is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128426"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-sigtrap is earlier than 0:1.09-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128427"
+                          },
+                          {
+                            "Comment": "perl-sigtrap is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128428"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-sort is earlier than 0:2.04-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128429"
+                          },
+                          {
+                            "Comment": "perl-sort is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128430"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-subs is earlier than 0:1.03-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128431"
+                          },
+                          {
+                            "Comment": "perl-subs is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128432"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-threads is earlier than 1:2.25-457.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128433"
+                          },
+                          {
+                            "Comment": "perl-threads is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128434"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-threads-shared is earlier than 0:1.61-457.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128435"
+                          },
+                          {
+                            "Comment": "perl-threads-shared is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128436"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-utils is earlier than 0:5.32.1-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128437"
+                          },
+                          {
+                            "Comment": "perl-utils is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20210557052"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-vars is earlier than 0:1.05-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128439"
+                          },
+                          {
+                            "Comment": "perl-vars is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128440"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-version is earlier than 7:0.99.29-1.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128441"
+                          },
+                          {
+                            "Comment": "perl-version is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128442"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-vmsish is earlier than 0:1.04-473.module+el8.10.0+21354+3ad137bb",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128443"
+                          },
+                          {
+                            "Comment": "perl-vmsish is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20243128444"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
