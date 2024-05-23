@@ -1,0 +1,116 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20242736",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2024:2736: openstack-tripleo-heat-templates and tripleo-ansible update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat OpenStack Platform 17.1 for RHEL 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:2736",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:2736"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2023-6725",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2023-6725"
+      }
+    ],
+    "Description": "openstack-tripleo-heat-templates is a collection of OpenStack Orchestration templates and tools (codename heat), which can be used to help deploy OpenStack.\n\nSecurity Fix(es):\n\n* tripleo-ansible: bind keys are world readable (CVE-2023-6725)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n\nBug Fix(es):\n\n* Banner text is not being displayed for overcloud hosts (BZ#2237000)\n\n* RHOSP16.2 to 17.1 upgrade: During Leapp uprade steps the network interface names are not preserved (BZ#2249024)\n\n* [FFU][DCN] ceph-ansible package is removed at the end of ceph adopt\" stage during ceph upgrade (BZ#2249690)\n\n* [FFU] The Host System upgrade of HCI nodes fails on setting noout flags (BZ#2254036)\n\n* Config state files created during update run for tripleo ha services has unexpected file suffixes (BZ#2256780)\n\n* [OSP17.1] After upgrade to OSP16.2.6 Octavia Mgmt network amphoras having random MTU change: smaller MTU (1500) compared to orginal value 8950 (jumbo frames) (BZ#2257274)\n\n* multi-rhel-container-image-prepare.py for 16.2 to 17.1 upgrades returning wrong ceph image (BZ#2259286)\n\n* Upgrade [OSP16.2 -\u003e OSP17.1] VMS stoped due to use Libvirt on RHEL-8 computes instead of LibvirtLegacy (BZ#2263916)\n\n* iptables on the undercloud not starting due to neutron rules (BZ#2272006)\n\n* [RHOSP 17.1] \"ipmi/main\" plugin read error in collectd container (BZ#2274010)\n\nEnhancement(s):\n\n* DCN - FFU 16.2 to 17.1.1 computes only (BZ#1900663)",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-05-22"
+      },
+      "Updated": {
+        "Date": "2024-05-22"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2023-6725",
+          "Cvss3": "6.6/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:L",
+          "Cwe": "CWE-1220",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2023-6725",
+          "Public": "20240315"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2249273",
+          "ID": "2249273"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:openstack:17.1",
+        "cpe:/a:redhat:openstack:17.1::el9"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:202234038004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.cve:tst:202234038003"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tripleo-ansible is earlier than 0:3.3.1-17.1.20231101230831.el9ost",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242736001"
+                  },
+                  {
+                    "Comment": "tripleo-ansible is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242736002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openstack-tripleo-heat-templates is earlier than 0:14.3.1-17.1.20231103010840.el9ost",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242736003"
+                  },
+                  {
+                    "Comment": "openstack-tripleo-heat-templates is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20241931004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20242737",
+  "Version": "634",
+  "Metadata": {
+    "Title": "RHSA-2024:2737: Red Hat OpenStack Platform 17.1 (python-openstackclient) security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat OpenStack Platform 17.1 for RHEL 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:2737",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:2737"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2023-6110",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2023-6110"
+      }
+    ],
+    "Description": "python-openstackclient is a unified command-line client for the OpenStack\nAPIs. It is a thin wrapper to the stock python-*client modules that\nimplement the actual REST API client actions.\n\nSecurity Fix(es):\n\n* deleting a non existing access rule deletes another existing access rule\nin it's scope (CVE-2023-6110)\n\nFor more details about the security issue(s), including the impact, a CVSS\nscore, acknowledgments, and other related information, refer to the CVE\npage listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-05-22"
+      },
+      "Updated": {
+        "Date": "2024-05-22"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2023-6110",
+          "Cvss3": "5.5/CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:L/A:L",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2023-6110",
+          "Public": "20240124"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2212960",
+          "ID": "2212960"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:openstack:17.1",
+        "cpe:/a:redhat:openstack:17.1::el9"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:202234038004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.cve:tst:202234038003"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python-openstackclient-lang is earlier than 0:5.5.2-17.1.20230829210830.el9ost",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242737001"
+                  },
+                  {
+                    "Comment": "python-openstackclient-lang is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242737002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3-openstackclient is earlier than 0:5.5.2-17.1.20230829210830.el9ost",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242737003"
+                  },
+                  {
+                    "Comment": "python3-openstackclient is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242737004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

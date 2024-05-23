@@ -1,0 +1,125 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20242730",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2024:2730: Red Hat OpenStack Platform 17.1 (collectd-sensubility) security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat OpenStack Platform 17.1 for RHEL 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:2730",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:2730"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2023-39326",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2023-39326"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2023-45287",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2023-45287"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-1394",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-1394"
+      }
+    ],
+    "Description": "This project aims to provide the possibility to switch from Sensu-based\navailability monitoring solution to a monitoring solution based on collectd\nwith AMQP-1.0 messaging bus.\n\nSecurity Fix(es):\n\n* golang-fips/openssl: Memory leaks in code encrypting and decrypting RSA payloads (CVE-2024-1394)\n\n* net/http/internal: Denial of Service (DoS) via Resource Consumption via\nHTTP requests (CVE-2023-39326)\n\n* crypto/tls: Timing Side Channel attack in RSA based TLS key exchanges.\n(CVE-2023-45287)\n\nFor more details about the security issue(s), including the impact, a CVSS\nscore, acknowledgments, and other related information, refer to the CVE\npage listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-05-22"
+      },
+      "Updated": {
+        "Date": "2024-05-22"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2023-39326",
+          "Cvss3": "5.3/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+          "Cwe": "CWE-400",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2023-39326",
+          "Public": "20231206"
+        },
+        {
+          "CveID": "CVE-2023-45287",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "Cwe": "CWE-208",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2023-45287",
+          "Public": "20231205"
+        },
+        {
+          "CveID": "CVE-2024-1394",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-401",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-1394",
+          "Public": "20240320"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2253193",
+          "ID": "2253193"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2253330",
+          "ID": "2253330"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2262921",
+          "ID": "2262921"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:openstack:17.1",
+        "cpe:/a:redhat:openstack:17.1::el9"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:202234038004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.cve:tst:202234038003"
+          },
+          {
+            "Comment": "collectd-sensubility is earlier than 0:0.2.1-3.el9ost",
+            "TestRef": "oval:com.redhat.rhsa:tst:20242730001"
+          },
+          {
+            "Comment": "collectd-sensubility is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20242730002"
+          }
+        ]
+      }
+    ]
+  }
+}
