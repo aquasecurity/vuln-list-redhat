@@ -1,0 +1,1413 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20243325",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2024:3325: pcp security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.0 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:3325",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:3325"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-3019",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-3019"
+      }
+    ],
+    "Description": "Performance Co-Pilot (PCP) is a suite of tools, services, and libraries for acquisition, archiving, and analysis of system-level performance measurements. Its light-weight distributed architecture makes it particularly well-suited to centralized analysis of complex systems.\n\nSecurity Fix(es):\n\n* pcp: exposure of the redis server backend allows remote command execution via pmproxy (CVE-2024-3019)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-05-23"
+      },
+      "Updated": {
+        "Date": "2024-05-23"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-3019",
+          "Cvss3": "8.8/CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-668",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-3019",
+          "Public": "20240327"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2271898",
+          "ID": "2271898"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.0",
+        "cpe:/a:redhat:rhel_eus:9.0::appstream",
+        "cpe:/a:redhat:rhel_eus:9.0::crb",
+        "cpe:/a:redhat:rhel_eus:9.0::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.0::nfv",
+        "cpe:/a:redhat:rhel_eus:9.0::realtime",
+        "cpe:/a:redhat:rhel_eus:9.0::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.0::sap",
+        "cpe:/a:redhat:rhel_eus:9.0::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.0::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.0",
+        "cpe:/o:redhat:rhel_eus:9.0::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325001"
+                  },
+                  {
+                    "Comment": "pcp is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-conf is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325003"
+                  },
+                  {
+                    "Comment": "pcp-conf is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-devel is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325005"
+                  },
+                  {
+                    "Comment": "pcp-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-doc is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325007"
+                  },
+                  {
+                    "Comment": "pcp-doc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-export-pcp2elasticsearch is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325009"
+                  },
+                  {
+                    "Comment": "pcp-export-pcp2elasticsearch is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-export-pcp2graphite is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325011"
+                  },
+                  {
+                    "Comment": "pcp-export-pcp2graphite is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-export-pcp2influxdb is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325013"
+                  },
+                  {
+                    "Comment": "pcp-export-pcp2influxdb is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-export-pcp2json is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325015"
+                  },
+                  {
+                    "Comment": "pcp-export-pcp2json is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325016"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-export-pcp2spark is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325017"
+                  },
+                  {
+                    "Comment": "pcp-export-pcp2spark is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325018"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-export-pcp2xml is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325019"
+                  },
+                  {
+                    "Comment": "pcp-export-pcp2xml is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325020"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-export-pcp2zabbix is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325021"
+                  },
+                  {
+                    "Comment": "pcp-export-pcp2zabbix is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325022"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-export-zabbix-agent is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325023"
+                  },
+                  {
+                    "Comment": "pcp-export-zabbix-agent is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325024"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-gui is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325025"
+                  },
+                  {
+                    "Comment": "pcp-gui is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325026"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-import-collectl2pcp is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325027"
+                  },
+                  {
+                    "Comment": "pcp-import-collectl2pcp is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325028"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-import-ganglia2pcp is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325029"
+                  },
+                  {
+                    "Comment": "pcp-import-ganglia2pcp is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325030"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-import-iostat2pcp is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325031"
+                  },
+                  {
+                    "Comment": "pcp-import-iostat2pcp is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325032"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-import-mrtg2pcp is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325033"
+                  },
+                  {
+                    "Comment": "pcp-import-mrtg2pcp is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325034"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-import-sar2pcp is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325035"
+                  },
+                  {
+                    "Comment": "pcp-import-sar2pcp is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325036"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-libs is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325037"
+                  },
+                  {
+                    "Comment": "pcp-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325038"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-libs-devel is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325039"
+                  },
+                  {
+                    "Comment": "pcp-libs-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325040"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-activemq is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325041"
+                  },
+                  {
+                    "Comment": "pcp-pmda-activemq is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325042"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-apache is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325043"
+                  },
+                  {
+                    "Comment": "pcp-pmda-apache is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325044"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-bash is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325045"
+                  },
+                  {
+                    "Comment": "pcp-pmda-bash is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325046"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-bcc is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325047"
+                  },
+                  {
+                    "Comment": "pcp-pmda-bcc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325048"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-bind2 is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325049"
+                  },
+                  {
+                    "Comment": "pcp-pmda-bind2 is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325050"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-bonding is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325051"
+                  },
+                  {
+                    "Comment": "pcp-pmda-bonding is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325052"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-bpf is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325053"
+                  },
+                  {
+                    "Comment": "pcp-pmda-bpf is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325054"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-bpftrace is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325055"
+                  },
+                  {
+                    "Comment": "pcp-pmda-bpftrace is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325056"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-cifs is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325057"
+                  },
+                  {
+                    "Comment": "pcp-pmda-cifs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325058"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-cisco is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325059"
+                  },
+                  {
+                    "Comment": "pcp-pmda-cisco is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325060"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-dbping is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325061"
+                  },
+                  {
+                    "Comment": "pcp-pmda-dbping is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325062"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-denki is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325063"
+                  },
+                  {
+                    "Comment": "pcp-pmda-denki is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325064"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-dm is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325065"
+                  },
+                  {
+                    "Comment": "pcp-pmda-dm is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325066"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-docker is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325067"
+                  },
+                  {
+                    "Comment": "pcp-pmda-docker is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325068"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-ds389 is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325069"
+                  },
+                  {
+                    "Comment": "pcp-pmda-ds389 is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325070"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-ds389log is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325071"
+                  },
+                  {
+                    "Comment": "pcp-pmda-ds389log is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325072"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-elasticsearch is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325073"
+                  },
+                  {
+                    "Comment": "pcp-pmda-elasticsearch is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325074"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-gfs2 is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325075"
+                  },
+                  {
+                    "Comment": "pcp-pmda-gfs2 is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325076"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-gluster is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325077"
+                  },
+                  {
+                    "Comment": "pcp-pmda-gluster is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325078"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-gpfs is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325079"
+                  },
+                  {
+                    "Comment": "pcp-pmda-gpfs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325080"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-gpsd is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325081"
+                  },
+                  {
+                    "Comment": "pcp-pmda-gpsd is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325082"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-hacluster is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325083"
+                  },
+                  {
+                    "Comment": "pcp-pmda-hacluster is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325084"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-haproxy is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325085"
+                  },
+                  {
+                    "Comment": "pcp-pmda-haproxy is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325086"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-infiniband is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325087"
+                  },
+                  {
+                    "Comment": "pcp-pmda-infiniband is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325088"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-json is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325089"
+                  },
+                  {
+                    "Comment": "pcp-pmda-json is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325090"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-libvirt is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325091"
+                  },
+                  {
+                    "Comment": "pcp-pmda-libvirt is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325092"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-lio is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325093"
+                  },
+                  {
+                    "Comment": "pcp-pmda-lio is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325094"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-lmsensors is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325095"
+                  },
+                  {
+                    "Comment": "pcp-pmda-lmsensors is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325096"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-logger is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325097"
+                  },
+                  {
+                    "Comment": "pcp-pmda-logger is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325098"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-lustre is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325099"
+                  },
+                  {
+                    "Comment": "pcp-pmda-lustre is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325100"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-lustrecomm is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325101"
+                  },
+                  {
+                    "Comment": "pcp-pmda-lustrecomm is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325102"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-mailq is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325103"
+                  },
+                  {
+                    "Comment": "pcp-pmda-mailq is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325104"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-memcache is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325105"
+                  },
+                  {
+                    "Comment": "pcp-pmda-memcache is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325106"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-mic is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325107"
+                  },
+                  {
+                    "Comment": "pcp-pmda-mic is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325108"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-mongodb is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325109"
+                  },
+                  {
+                    "Comment": "pcp-pmda-mongodb is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325110"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-mounts is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325111"
+                  },
+                  {
+                    "Comment": "pcp-pmda-mounts is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325112"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-mssql is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325113"
+                  },
+                  {
+                    "Comment": "pcp-pmda-mssql is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325114"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-mysql is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325115"
+                  },
+                  {
+                    "Comment": "pcp-pmda-mysql is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325116"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-named is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325117"
+                  },
+                  {
+                    "Comment": "pcp-pmda-named is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325118"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-netcheck is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325119"
+                  },
+                  {
+                    "Comment": "pcp-pmda-netcheck is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325120"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-netfilter is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325121"
+                  },
+                  {
+                    "Comment": "pcp-pmda-netfilter is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325122"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-news is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325123"
+                  },
+                  {
+                    "Comment": "pcp-pmda-news is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325124"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-nfsclient is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325125"
+                  },
+                  {
+                    "Comment": "pcp-pmda-nfsclient is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325126"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-nginx is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325127"
+                  },
+                  {
+                    "Comment": "pcp-pmda-nginx is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325128"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-nvidia-gpu is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325129"
+                  },
+                  {
+                    "Comment": "pcp-pmda-nvidia-gpu is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325130"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-openmetrics is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325131"
+                  },
+                  {
+                    "Comment": "pcp-pmda-openmetrics is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325132"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-openvswitch is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325133"
+                  },
+                  {
+                    "Comment": "pcp-pmda-openvswitch is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325134"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-oracle is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325135"
+                  },
+                  {
+                    "Comment": "pcp-pmda-oracle is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325136"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-pdns is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325137"
+                  },
+                  {
+                    "Comment": "pcp-pmda-pdns is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325138"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-perfevent is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325139"
+                  },
+                  {
+                    "Comment": "pcp-pmda-perfevent is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325140"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-podman is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325141"
+                  },
+                  {
+                    "Comment": "pcp-pmda-podman is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325142"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-postfix is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325143"
+                  },
+                  {
+                    "Comment": "pcp-pmda-postfix is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325144"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-postgresql is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325145"
+                  },
+                  {
+                    "Comment": "pcp-pmda-postgresql is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325146"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-rabbitmq is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325147"
+                  },
+                  {
+                    "Comment": "pcp-pmda-rabbitmq is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325148"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-redis is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325149"
+                  },
+                  {
+                    "Comment": "pcp-pmda-redis is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325150"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-roomtemp is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325151"
+                  },
+                  {
+                    "Comment": "pcp-pmda-roomtemp is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325152"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-rsyslog is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325153"
+                  },
+                  {
+                    "Comment": "pcp-pmda-rsyslog is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325154"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-samba is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325155"
+                  },
+                  {
+                    "Comment": "pcp-pmda-samba is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325156"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-sendmail is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325157"
+                  },
+                  {
+                    "Comment": "pcp-pmda-sendmail is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325158"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-shping is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325159"
+                  },
+                  {
+                    "Comment": "pcp-pmda-shping is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325160"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-slurm is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325161"
+                  },
+                  {
+                    "Comment": "pcp-pmda-slurm is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325162"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-smart is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325163"
+                  },
+                  {
+                    "Comment": "pcp-pmda-smart is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325164"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-snmp is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325165"
+                  },
+                  {
+                    "Comment": "pcp-pmda-snmp is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325166"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-sockets is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325167"
+                  },
+                  {
+                    "Comment": "pcp-pmda-sockets is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325168"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-statsd is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325169"
+                  },
+                  {
+                    "Comment": "pcp-pmda-statsd is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325170"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-summary is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325171"
+                  },
+                  {
+                    "Comment": "pcp-pmda-summary is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325172"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-systemd is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325173"
+                  },
+                  {
+                    "Comment": "pcp-pmda-systemd is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325174"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-trace is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325175"
+                  },
+                  {
+                    "Comment": "pcp-pmda-trace is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325176"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-unbound is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325177"
+                  },
+                  {
+                    "Comment": "pcp-pmda-unbound is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325178"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-weblog is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325179"
+                  },
+                  {
+                    "Comment": "pcp-pmda-weblog is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325180"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-zimbra is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325181"
+                  },
+                  {
+                    "Comment": "pcp-pmda-zimbra is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325182"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-pmda-zswap is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325183"
+                  },
+                  {
+                    "Comment": "pcp-pmda-zswap is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325184"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-selinux is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325185"
+                  },
+                  {
+                    "Comment": "pcp-selinux is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325186"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-system-tools is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325187"
+                  },
+                  {
+                    "Comment": "pcp-system-tools is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325188"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-testsuite is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325189"
+                  },
+                  {
+                    "Comment": "pcp-testsuite is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325190"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcp-zeroconf is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325191"
+                  },
+                  {
+                    "Comment": "pcp-zeroconf is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325192"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "perl-PCP-LogImport is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325193"
+                  },
+                  {
+                    "Comment": "perl-PCP-LogImport is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325194"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "perl-PCP-LogSummary is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325195"
+                  },
+                  {
+                    "Comment": "perl-PCP-LogSummary is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325196"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "perl-PCP-MMV is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325197"
+                  },
+                  {
+                    "Comment": "perl-PCP-MMV is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325198"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "perl-PCP-PMDA is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325199"
+                  },
+                  {
+                    "Comment": "perl-PCP-PMDA is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325200"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3-pcp is earlier than 0:5.3.5-9.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325201"
+                  },
+                  {
+                    "Comment": "python3-pcp is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243325202"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
