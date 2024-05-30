@@ -1,21 +1,37 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:202427983",
-  "Version": "636",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20243472",
+  "Version": "635",
   "Metadata": {
-    "Title": "nodejs: CONTINUATION frames DoS (important)",
+    "Title": "RHSA-2024:3472: rh-nodejs14 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Software Collections for Red Hat Enterprise Linux 7"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:3472",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:3472"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2024-27983",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2024-27983"
       }
     ],
-    "Description": "DOCUMENTATION: A vulnerability was found in how Node.js implements the HTTP/2 protocol. There are insufficient limitations placed on the amount of CONTINUATION frames that can be sent within a single stream. This issue could allow an unauthenticated, remote attacker to send packets to vulnerable servers, which could use up compute or memory resources, causing a denial of service. \n            STATEMENT: Red Hat rates the security impact of this vulnerability as Important due to the worst-case scenario resulting in a denial of service, in alignment with the upstream Node.js project. It is simple to exploit, could significantly impact availability, and there is no reasonable mitigation. Once an attack has ended, the system should return to normal operations on its own.\n            MITIGATION: Red Hat has investigated whether a possible mitigation exists for this issue, and has not been able to identify a practical example. Please update the affected package as soon as possible.",
+    "Description": "Node.js is a software development platform for building fast and scalable network applications in the JavaScript programming language. \n\nSecurity Fix(es):\n\n* rh-nodejs14-nodejs: CONTINUATION frames DoS (CVE-2024-27983)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Important",
-      "Issued": {},
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-05-29"
+      },
       "Updated": {
         "Date": "2024-05-29"
       },
@@ -29,6 +45,12 @@
           "Public": "20240403"
         }
       ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2272764",
+          "ID": "2272764"
+        }
+      ],
       "AffectedCpeList": [
         "cpe:/a:redhat:rhel_software_collections:1",
         "cpe:/a:redhat:rhel_software_collections:1::el7",
@@ -38,9 +60,7 @@
         "cpe:/a:redhat:rhel_software_collections:3::el7"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -69,8 +89,8 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "rh-nodejs14-nodejs is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202225883007"
+                    "Comment": "rh-nodejs14-nodejs is earlier than 0:14.21.3-7.el7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243472001"
                   },
                   {
                     "Comment": "rh-nodejs14-nodejs is signed with Red Hat redhatrelease2 key",
@@ -82,34 +102,8 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "rh-nodejs14-npm is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202225883005"
-                  },
-                  {
-                    "Comment": "rh-nodejs14-npm is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:202225883006"
-                  }
-                ]
-              },
-              {
-                "Operator": "AND",
-                "Criterions": [
-                  {
-                    "Comment": "rh-nodejs14-nodejs-docs is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202225883011"
-                  },
-                  {
-                    "Comment": "rh-nodejs14-nodejs-docs is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:202225883012"
-                  }
-                ]
-              },
-              {
-                "Operator": "AND",
-                "Criterions": [
-                  {
-                    "Comment": "rh-nodejs14-nodejs-devel is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202225883009"
+                    "Comment": "rh-nodejs14-nodejs-devel is earlier than 0:14.21.3-7.el7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243472003"
                   },
                   {
                     "Comment": "rh-nodejs14-nodejs-devel is signed with Red Hat redhatrelease2 key",
@@ -121,12 +115,38 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "rh-nodejs14-nodejs-full-i18n is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202225883001"
+                    "Comment": "rh-nodejs14-nodejs-docs is earlier than 0:14.21.3-7.el7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243472005"
+                  },
+                  {
+                    "Comment": "rh-nodejs14-nodejs-docs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:202225883012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "rh-nodejs14-nodejs-full-i18n is earlier than 0:14.21.3-7.el7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243472007"
                   },
                   {
                     "Comment": "rh-nodejs14-nodejs-full-i18n is signed with Red Hat redhatrelease2 key",
                     "TestRef": "oval:com.redhat.cve:tst:202225883002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "rh-nodejs14-npm is earlier than 0:6.14.18-14.21.3.7.el7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243472009"
+                  },
+                  {
+                    "Comment": "rh-nodejs14-npm is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:202225883006"
                   }
                 ]
               }
