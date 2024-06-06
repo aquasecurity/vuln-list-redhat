@@ -1,0 +1,99 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20243669",
+  "Version": "635",
+  "Metadata": {
+    "Title": "RHSA-2024:3669: less security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 7"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:3669",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:3669"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-32487",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-32487"
+      }
+    ],
+    "Description": "The \"less\" utility is a text file browser that resembles \"more\", but allows\nusers to move backwards in the file as well as forwards. Since \"less\" does not\nread the entire input file at startup, it also starts more quickly than ordinary\ntext editors.\n\nSecurity Fix(es):\n\n* less: OS command injection (CVE-2024-32487)\n\nFor more details about the security issue(s), including the impact, a CVSS\nscore, acknowledgments, and other related information, refer to the CVE page(s)\nlisted in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-06-06"
+      },
+      "Updated": {
+        "Date": "2024-06-06"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-32487",
+          "Cvss3": "8.6/CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+          "Cwe": "CWE-78",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-32487",
+          "Public": "20240413"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2274980",
+          "ID": "2274980"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_extras:7",
+        "cpe:/a:redhat:rhel_extras_oracle_java:7",
+        "cpe:/a:redhat:rhel_extras_rt:7",
+        "cpe:/a:redhat:rhel_extras_sap:7",
+        "cpe:/a:redhat:rhel_extras_sap_hana:7",
+        "cpe:/o:redhat:enterprise_linux:7",
+        "cpe:/o:redhat:enterprise_linux:7::client",
+        "cpe:/o:redhat:enterprise_linux:7::computenode",
+        "cpe:/o:redhat:enterprise_linux:7::server",
+        "cpe:/o:redhat:enterprise_linux:7::workstation"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20150364028"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 7 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20150364027"
+          },
+          {
+            "Comment": "less is earlier than 0:458-10.el7_9",
+            "TestRef": "oval:com.redhat.rhsa:tst:20243669001"
+          },
+          {
+            "Comment": "less is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20243669002"
+          }
+        ]
+      }
+    ]
+  }
+}

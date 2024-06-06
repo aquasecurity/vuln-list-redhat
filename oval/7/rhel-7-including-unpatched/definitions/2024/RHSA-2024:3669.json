@@ -1,23 +1,39 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:202432487",
-  "Version": "636",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20243669",
+  "Version": "635",
   "Metadata": {
-    "Title": "less: OS command injection (important)",
+    "Title": "RHSA-2024:3669: less security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 7"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:3669",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:3669"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2024-32487",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2024-32487"
       }
     ],
-    "Description": "DOCUMENTATION: An OS command injection flaw was found in Less. Since quoting is mishandled in filename.c, opening files with attacker-controlled file names can lead to OS command execution. Exploitation requires the LESSOPEN environment variable, which is set by default in many common cases. \n            STATEMENT: The described vulnerability in less poses an Important security risk due to its potential for arbitrary OS command execution. Exploitation of this vulnerability allows an attacker to inject malicious commands through specially crafted filenames containing newline characters. This could lead to unauthorized access, data exfiltration, or even full system compromise, depending on the privileges of the user executing the less command. Furthermore, the mishandling of the LESSOPEN environment variable exacerbates the issue, as it can be set by default in many installations, providing an additional vector for exploitation.\n            MITIGATION: Mitigation for this issue is either not available or the currently available options don't meet the Red Hat Product Security criteria comprising ease of use and deployment, applicability to widespread installation base or stability.",
+    "Description": "The \"less\" utility is a text file browser that resembles \"more\", but allows\nusers to move backwards in the file as well as forwards. Since \"less\" does not\nread the entire input file at startup, it also starts more quickly than ordinary\ntext editors.\n\nSecurity Fix(es):\n\n* less: OS command injection (CVE-2024-32487)\n\nFor more details about the security issue(s), including the impact, a CVSS\nscore, acknowledgments, and other related information, refer to the CVE page(s)\nlisted in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Important",
-      "Issued": {},
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-06-06"
+      },
       "Updated": {
-        "Date": "2024-06-05"
+        "Date": "2024-06-06"
       },
       "Cves": [
         {
@@ -27,6 +43,12 @@
           "Impact": "important",
           "Href": "https://access.redhat.com/security/cve/CVE-2024-32487",
           "Public": "20240413"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2274980",
+          "ID": "2274980"
         }
       ],
       "AffectedCpeList": [
@@ -42,9 +64,7 @@
         "cpe:/o:redhat:enterprise_linux:7::workstation"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -65,8 +85,8 @@
             "TestRef": "oval:com.redhat.cve:tst:20042779005"
           },
           {
-            "Comment": "less is installed",
-            "TestRef": "oval:com.redhat.cve:tst:20149488001"
+            "Comment": "less is earlier than 0:458-10.el7_9",
+            "TestRef": "oval:com.redhat.rhsa:tst:20243669001"
           },
           {
             "Comment": "less is signed with Red Hat redhatrelease2 key",

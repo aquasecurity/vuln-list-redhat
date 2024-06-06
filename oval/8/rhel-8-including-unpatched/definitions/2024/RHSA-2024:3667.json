@@ -1,0 +1,172 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20243667",
+  "Version": "638",
+  "Metadata": {
+    "Title": "RHSA-2024:3667: cockpit security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:3667",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:3667"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-2947",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-2947"
+      }
+    ],
+    "Description": "Cockpit enables users to administer GNU/Linux servers using a web browser. It offers network configuration, log inspection, diagnostic reports, SELinux troubleshooting, interactive command-line sessions, and more.\n\nSecurity Fix(es):\n\n* cockpit: command injection when deleting a sosreport with a crafted name (CVE-2024-2947)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-06-06"
+      },
+      "Updated": {
+        "Date": "2024-06-06"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-2947",
+          "Cvss3": "7.3/CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-77",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-2947",
+          "Public": "20240327"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2271614",
+          "ID": "2271614"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:8",
+        "cpe:/a:redhat:enterprise_linux:8::appstream",
+        "cpe:/a:redhat:enterprise_linux:8::crb",
+        "cpe:/a:redhat:enterprise_linux:8::highavailability",
+        "cpe:/a:redhat:enterprise_linux:8::nfv",
+        "cpe:/a:redhat:enterprise_linux:8::realtime",
+        "cpe:/a:redhat:enterprise_linux:8::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:8::sap",
+        "cpe:/a:redhat:enterprise_linux:8::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:8::supplementary",
+        "cpe:/o:redhat:enterprise_linux:8",
+        "cpe:/o:redhat:enterprise_linux:8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:20052541004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.cve:tst:20052541003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "cockpit is earlier than 0:310.4-1.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243667001"
+                  },
+                  {
+                    "Comment": "cockpit is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:201814041020"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "cockpit-bridge is earlier than 0:310.4-1.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243667003"
+                  },
+                  {
+                    "Comment": "cockpit-bridge is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:201814041018"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "cockpit-doc is earlier than 0:310.4-1.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243667005"
+                  },
+                  {
+                    "Comment": "cockpit-doc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:201814041006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "cockpit-system is earlier than 0:310.4-1.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243667007"
+                  },
+                  {
+                    "Comment": "cockpit-system is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:201814041010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "cockpit-ws is earlier than 0:310.4-1.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243667009"
+                  },
+                  {
+                    "Comment": "cockpit-ws is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:201814041016"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
