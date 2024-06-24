@@ -1,0 +1,188 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20244053",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2024:4053: Red Hat OpenStack Platform 16.2 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat OpenStack Platform 16.2"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:4053",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:4053"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-29156",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-29156"
+      }
+    ],
+    "Description": "Affected components:\n\n* python-yaql: a library that contains a large set of commonly used functions\n\n* openstack-tripleo-heat-templates: Heat templates for TripleO\n\n* openstack-tripleo-common: Python library for code used by TripleO projects\n\nSecurity Fix(es):\n\n* OpenStack Murano Component Information Leakage (CVE-2024-29156)\n\nFor more details about the security issue(s), including the impact, a CVSS\nscore, acknowledgments, and other related information, refer to the CVE\npage listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-06-24"
+      },
+      "Updated": {
+        "Date": "2024-06-24"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-29156",
+          "Cvss3": "8.4/CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-200",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-29156",
+          "Public": "20240314"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2269112",
+          "ID": "2269112"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:openstack:16.2",
+        "cpe:/a:redhat:openstack:16.2::el8"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhsa:tst:20213487005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhsa:tst:20213487003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhsa:tst:20213487004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openstack-tripleo-heat-templates is earlier than 0:11.6.1-2.20230808225220.el8ost",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244053001"
+                  },
+                  {
+                    "Comment": "openstack-tripleo-heat-templates is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20220995002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3-yaql is earlier than 0:1.1.3-9.el8ost",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244053003"
+                  },
+                  {
+                    "Comment": "python3-yaql is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244053004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openstack-tripleo-common is earlier than 0:11.7.1-2.20230809225405.e189622.el8ost",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244053005"
+                  },
+                  {
+                    "Comment": "openstack-tripleo-common is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244053006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openstack-tripleo-common-container-base is earlier than 0:11.7.1-2.20230809225405.e189622.el8ost",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244053007"
+                  },
+                  {
+                    "Comment": "openstack-tripleo-common-container-base is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244053008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openstack-tripleo-common-containers is earlier than 0:11.7.1-2.20230809225405.e189622.el8ost",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244053009"
+                  },
+                  {
+                    "Comment": "openstack-tripleo-common-containers is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244053010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openstack-tripleo-common-devtools is earlier than 0:11.7.1-2.20230809225405.e189622.el8ost",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244053011"
+                  },
+                  {
+                    "Comment": "openstack-tripleo-common-devtools is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244053012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3-tripleo-common is earlier than 0:11.7.1-2.20230809225405.e189622.el8ost",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244053013"
+                  },
+                  {
+                    "Comment": "python3-tripleo-common is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20226969004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
