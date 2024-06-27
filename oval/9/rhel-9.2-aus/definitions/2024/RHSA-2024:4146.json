@@ -1,0 +1,200 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20244146",
+  "Version": "635",
+  "Metadata": {
+    "Title": "RHSA-2024:4146: golang security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.2 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:4146",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:4146"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2023-45288",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2023-45288"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-1394",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-1394"
+      }
+    ],
+    "Description": "The golang packages provide the Go programming language compiler.\n\nSecurity Fix(es):\n\n* golang: net/http, x/net/http2: unlimited number of CONTINUATION frames causes DoS (CVE-2023-45288)\n\n* golang-fips/openssl: Memory leaks in code encrypting and decrypting RSA payloads (CVE-2024-1394)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-06-27"
+      },
+      "Updated": {
+        "Date": "2024-06-27"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2023-45288",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-400",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2023-45288",
+          "Public": "20240403"
+        },
+        {
+          "CveID": "CVE-2024-1394",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-401",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-1394",
+          "Public": "20240320"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2262921",
+          "ID": "2262921"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2268273",
+          "ID": "2268273"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_aus:9.2",
+        "cpe:/a:redhat:rhel_aus:9.2::appstream",
+        "cpe:/o:redhat:rhel_aus:9.2",
+        "cpe:/o:redhat:rhel_aus:9.2::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "golang is earlier than 0:1.19.13-7.el9_2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244146001"
+                  },
+                  {
+                    "Comment": "golang is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20232181002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "golang-bin is earlier than 0:1.19.13-7.el9_2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244146003"
+                  },
+                  {
+                    "Comment": "golang-bin is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20232181004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "golang-docs is earlier than 0:1.19.13-7.el9_2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244146005"
+                  },
+                  {
+                    "Comment": "golang-docs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20232181006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "golang-misc is earlier than 0:1.19.13-7.el9_2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244146007"
+                  },
+                  {
+                    "Comment": "golang-misc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20232181008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "golang-race is earlier than 0:1.19.13-7.el9_2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244146009"
+                  },
+                  {
+                    "Comment": "golang-race is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20232181010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "golang-src is earlier than 0:1.19.13-7.el9_2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244146011"
+                  },
+                  {
+                    "Comment": "golang-src is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20232181012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "golang-tests is earlier than 0:1.19.13-7.el9_2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244146013"
+                  },
+                  {
+                    "Comment": "golang-tests is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20232181014"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
