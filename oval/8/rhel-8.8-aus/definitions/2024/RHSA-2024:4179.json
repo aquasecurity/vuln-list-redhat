@@ -1,0 +1,297 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20244179",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2024:4179: pki-core security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8.8 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:4179",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:4179"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2023-4727",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2023-4727"
+      }
+    ],
+    "Description": "The Public Key Infrastructure (PKI) Core contains fundamental packages required by Red Hat Certificate System.\n\nSecurity Fix(es):\n\n* dogtag ca: token authentication bypass vulnerability (CVE-2023-4727)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-07-01"
+      },
+      "Updated": {
+        "Date": "2024-07-01"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2023-4727",
+          "Cvss3": "7.5/CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-305",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2023-4727",
+          "Public": "20240611"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2232218",
+          "ID": "2232218"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_aus:8.8",
+        "cpe:/a:redhat:rhel_aus:8.8::appstream",
+        "cpe:/o:redhat:rhel_aus:8.8",
+        "cpe:/o:redhat:rhel_aus:8.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "Module pki-core:10.6 is enabled",
+                    "TestRef": "oval:com.redhat.rhba:tst:20193416094"
+                  }
+                ],
+                "Criterias": [
+                  {
+                    "Operator": "OR",
+                    "Criterias": [
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "idm-pki-acme is earlier than 0:10.14.3-2.module+el8.8.0+21626+a79c8682",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20244179001"
+                          },
+                          {
+                            "Comment": "idm-pki-acme is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20227470002"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "idm-pki-base is earlier than 0:10.14.3-2.module+el8.8.0+21626+a79c8682",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20244179003"
+                          },
+                          {
+                            "Comment": "idm-pki-base is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20227470004"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "idm-pki-base-java is earlier than 0:10.14.3-2.module+el8.8.0+21626+a79c8682",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20244179005"
+                          },
+                          {
+                            "Comment": "idm-pki-base-java is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20227470006"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "idm-pki-ca is earlier than 0:10.14.3-2.module+el8.8.0+21626+a79c8682",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20244179007"
+                          },
+                          {
+                            "Comment": "idm-pki-ca is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20227470008"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "idm-pki-kra is earlier than 0:10.14.3-2.module+el8.8.0+21626+a79c8682",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20244179009"
+                          },
+                          {
+                            "Comment": "idm-pki-kra is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20227470010"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "idm-pki-server is earlier than 0:10.14.3-2.module+el8.8.0+21626+a79c8682",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20244179011"
+                          },
+                          {
+                            "Comment": "idm-pki-server is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20227470012"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "idm-pki-symkey is earlier than 0:10.14.3-2.module+el8.8.0+21626+a79c8682",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20244179013"
+                          },
+                          {
+                            "Comment": "idm-pki-symkey is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20227470014"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "idm-pki-tools is earlier than 0:10.14.3-2.module+el8.8.0+21626+a79c8682",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20244179015"
+                          },
+                          {
+                            "Comment": "idm-pki-tools is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20227470016"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "jss is earlier than 0:4.9.4-1.module+el8.7.0+15532+95bac9ee",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20244179017"
+                          },
+                          {
+                            "Comment": "jss is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhba:tst:20193416069"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "jss-javadoc is earlier than 0:4.9.4-1.module+el8.7.0+15532+95bac9ee",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20244179019"
+                          },
+                          {
+                            "Comment": "jss-javadoc is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhba:tst:20193416071"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "ldapjdk is earlier than 0:4.23.0-1.module+el8.5.0+11983+6ba118b4",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20221851005"
+                          },
+                          {
+                            "Comment": "ldapjdk is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhba:tst:20193416073"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "ldapjdk-javadoc is earlier than 0:4.23.0-1.module+el8.5.0+11983+6ba118b4",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20221851007"
+                          },
+                          {
+                            "Comment": "ldapjdk-javadoc is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhba:tst:20193416075"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "python3-idm-pki is earlier than 0:10.14.3-2.module+el8.8.0+21626+a79c8682",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20244179025"
+                          },
+                          {
+                            "Comment": "python3-idm-pki is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20227470020"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "tomcatjss is earlier than 0:7.7.1-1.module+el8.6.0+13291+248751b1",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20221851027"
+                          },
+                          {
+                            "Comment": "tomcatjss is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhba:tst:20193416093"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
