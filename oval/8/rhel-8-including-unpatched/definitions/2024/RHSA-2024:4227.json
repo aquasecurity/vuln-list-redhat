@@ -1,21 +1,37 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:202428219",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20244227",
   "Version": "636",
   "Metadata": {
-    "Title": "python-pillow: buffer overflow in _imagingcms.c (moderate)",
+    "Title": "RHSA-2024:4227: python-pillow security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:4227",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:4227"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2024-28219",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2024-28219"
       }
     ],
-    "Description": "DOCUMENTATION: A flaw was found in Pillow. The cms_transform_new function in src/_imagingcms.c does not validate the length of its parameters before copying them into fixed-size buffers, leading to a buffer overflow, resulting in a denial of service. \n            STATEMENT: This flaw can be triggered when the ImageCms.buildTransform function is called with the InMode or OutMode arguments with a string larger than 8 bytes. An application is not vulnerable if these parameters are not controlled by the user or are validated before the function is called. Additionally, the Pillow ImageCms module functions should not be exposed to untrusted usage without input validation. For this reason, this flaw has been rated with a moderate impact.\n            MITIGATION: Make sure the ImageCms.buildTransform function is not called with the InMode or OutMode arguments with a string bigger than 8 bytes.",
+    "Description": "The python-pillow packages contain a Python image processing library that provides extensive file format support, an efficient internal representation, and powerful image-processing capabilities.\n\nSecurity Fix(es):\n\n* python-pillow: buffer overflow in _imagingcms.c (CVE-2024-28219)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Moderate",
-      "Issued": {},
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-07-02"
+      },
       "Updated": {
         "Date": "2024-07-02"
       },
@@ -27,6 +43,12 @@
           "Impact": "moderate",
           "Href": "https://access.redhat.com/security/cve/CVE-2024-28219",
           "Public": "20240401"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2272563",
+          "ID": "2272563"
         }
       ],
       "AffectedCpeList": [
@@ -44,9 +66,7 @@
         "cpe:/o:redhat:enterprise_linux:8::baseos"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -61,13 +81,20 @@
     "Criterias": [
       {
         "Operator": "AND",
-        "Criterions": [
-          {
-            "Comment": "Red Hat Enterprise Linux 8 is installed",
-            "TestRef": "oval:com.redhat.cve:tst:20052541003"
-          }
-        ],
         "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.cve:tst:20052541003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
           {
             "Operator": "OR",
             "Criterias": [
@@ -75,47 +102,8 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "python3-pillow-tk is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202010177005"
-                  },
-                  {
-                    "Comment": "python3-pillow-tk is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:202010177006"
-                  }
-                ]
-              },
-              {
-                "Operator": "AND",
-                "Criterions": [
-                  {
-                    "Comment": "python3-pillow-devel is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202010177001"
-                  },
-                  {
-                    "Comment": "python3-pillow-devel is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:202010177002"
-                  }
-                ]
-              },
-              {
-                "Operator": "AND",
-                "Criterions": [
-                  {
-                    "Comment": "python3-pillow-doc is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202010177009"
-                  },
-                  {
-                    "Comment": "python3-pillow-doc is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:202010177010"
-                  }
-                ]
-              },
-              {
-                "Operator": "AND",
-                "Criterions": [
-                  {
-                    "Comment": "python3-pillow is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202010177011"
+                    "Comment": "python3-pillow is earlier than 0:5.1.1-21.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244227001"
                   },
                   {
                     "Comment": "python3-pillow is signed with Red Hat redhatrelease2 key",
@@ -127,12 +115,38 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "python-pillow is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202010177003"
+                    "Comment": "python3-pillow-devel is earlier than 0:5.1.1-21.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244227003"
                   },
                   {
-                    "Comment": "python-pillow is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:202010177004"
+                    "Comment": "python3-pillow-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:202010177002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3-pillow-doc is earlier than 0:5.1.1-21.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244227005"
+                  },
+                  {
+                    "Comment": "python3-pillow-doc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:202010177010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3-pillow-tk is earlier than 0:5.1.1-21.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244227007"
+                  },
+                  {
+                    "Comment": "python3-pillow-tk is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:202010177006"
                   }
                 ]
               }
