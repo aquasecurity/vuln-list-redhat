@@ -1,0 +1,202 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20244541",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2024:4541: ghostscript security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.2 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:4541",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:4541"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-33871",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-33871"
+      }
+    ],
+    "Description": "The Ghostscript suite contains utilities for rendering PostScript and PDF documents. Ghostscript translates PostScript code to common bitmap formats so that the code can be displayed or printed.\n\nSecurity Fix(es):\n\n* ghostscript: OPVP device arbitrary code execution via custom Driver library (CVE-2024-33871)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-07-15"
+      },
+      "Updated": {
+        "Date": "2024-07-15"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-33871",
+          "Cvss3": "8.8/CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-20",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-33871",
+          "Public": "20240502"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2283508",
+          "ID": "2283508"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.2",
+        "cpe:/a:redhat:rhel_e4s:9.2::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.2::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.2::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.2::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.2::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.2::sap",
+        "cpe:/a:redhat:rhel_e4s:9.2::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.2",
+        "cpe:/o:redhat:rhel_e4s:9.2::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "ghostscript is earlier than 0:9.54.0-12.el9_2.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244541001"
+                  },
+                  {
+                    "Comment": "ghostscript is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20235459002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "ghostscript-doc is earlier than 0:9.54.0-12.el9_2.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244541003"
+                  },
+                  {
+                    "Comment": "ghostscript-doc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20235459004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "ghostscript-tools-dvipdf is earlier than 0:9.54.0-12.el9_2.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244541005"
+                  },
+                  {
+                    "Comment": "ghostscript-tools-dvipdf is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20235459006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "ghostscript-tools-fonts is earlier than 0:9.54.0-12.el9_2.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244541007"
+                  },
+                  {
+                    "Comment": "ghostscript-tools-fonts is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20235459008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "ghostscript-tools-printing is earlier than 0:9.54.0-12.el9_2.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244541009"
+                  },
+                  {
+                    "Comment": "ghostscript-tools-printing is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20235459010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "ghostscript-x11 is earlier than 0:9.54.0-12.el9_2.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244541011"
+                  },
+                  {
+                    "Comment": "ghostscript-x11 is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20235459012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libgs is earlier than 0:9.54.0-12.el9_2.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244541013"
+                  },
+                  {
+                    "Comment": "libgs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20235459014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libgs-devel is earlier than 0:9.54.0-12.el9_2.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244541015"
+                  },
+                  {
+                    "Comment": "libgs-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20235459016"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
