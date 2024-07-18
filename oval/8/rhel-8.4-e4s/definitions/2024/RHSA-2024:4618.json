@@ -1,0 +1,108 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20244618",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2024:4618: libndp security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8.4 Update Services for SAP Solutions"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:4618",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:4618"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-5564",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-5564"
+      }
+    ],
+    "Description": "Libndp is a library (used by NetworkManager) that provides a wrapper for the IPv6 Neighbor Discovery Protocol. It also provides a tool named ndptool for sending and receiving NDP messages.\n\nSecurity Fix(es):\n\n* libndp: buffer overflow in route information length field (CVE-2024-5564)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-07-18"
+      },
+      "Updated": {
+        "Date": "2024-07-18"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-5564",
+          "Cvss3": "8.1/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-120",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-5564",
+          "Public": "20240531"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2284122",
+          "ID": "2284122"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:8.4",
+        "cpe:/a:redhat:rhel_e4s:8.4::appstream",
+        "cpe:/a:redhat:rhel_e4s:8.4::highavailability",
+        "cpe:/a:redhat:rhel_e4s:8.4::nfv",
+        "cpe:/a:redhat:rhel_e4s:8.4::sap",
+        "cpe:/a:redhat:rhel_e4s:8.4::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:8.4",
+        "cpe:/o:redhat:rhel_e4s:8.4::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "libndp is earlier than 0:1.7-6.el8_4",
+            "TestRef": "oval:com.redhat.rhsa:tst:20244618001"
+          },
+          {
+            "Comment": "libndp is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20244618002"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
