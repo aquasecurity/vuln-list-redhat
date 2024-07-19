@@ -1,21 +1,37 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:20245564",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20244636",
   "Version": "636",
   "Metadata": {
-    "Title": "libndp: buffer overflow in route information length field (important)",
+    "Title": "RHSA-2024:4636: libndp security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:4636",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:4636"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2024-5564",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2024-5564"
       }
     ],
-    "Description": "DOCUMENTATION: A vulnerability was found in libndp. This flaw allows a local malicious user to cause a buffer overflow in NetworkManager, triggered by sending a malformed IPv6 router advertisement packet. This issue occurred as libndp was not correctly validating the route length information. \n            STATEMENT: Red Hat rates this as an Important severity, as a local attacker may gain enough information to jeopardize the environment's confidentiality, integrity and availability.\n            MITIGATION: Currently there is no mitigation available for this vulnerability.  Please make sure to update as the fixes become available.",
+    "Description": "Libndp is a library (used by NetworkManager) that provides a wrapper for the IPv6 Neighbor Discovery Protocol. It also provides a tool named ndptool for sending and receiving NDP messages.\n\nSecurity Fix(es):\n\n* libndp: buffer overflow in route information length field (CVE-2024-5564)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Important",
-      "Issued": {},
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-07-18"
+      },
       "Updated": {
         "Date": "2024-07-18"
       },
@@ -27,6 +43,12 @@
           "Impact": "important",
           "Href": "https://access.redhat.com/security/cve/CVE-2024-5564",
           "Public": "20240531"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2284122",
+          "ID": "2284122"
         }
       ],
       "AffectedCpeList": [
@@ -44,9 +66,7 @@
         "cpe:/o:redhat:enterprise_linux:9::baseos"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -67,12 +87,12 @@
             "TestRef": "oval:com.redhat.cve:tst:20052541003"
           },
           {
-            "Comment": "libndp is installed",
-            "TestRef": "oval:com.redhat.cve:tst:20245564001"
+            "Comment": "libndp is earlier than 0:1.8-6.el9_4",
+            "TestRef": "oval:com.redhat.rhsa:tst:20244636001"
           },
           {
             "Comment": "libndp is signed with Red Hat redhatrelease2 key",
-            "TestRef": "oval:com.redhat.cve:tst:20245564002"
+            "TestRef": "oval:com.redhat.rhsa:tst:20244636002"
           }
         ]
       }
