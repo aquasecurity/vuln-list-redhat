@@ -1,0 +1,186 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20244749",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2024:4749: edk2 security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:4749",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:4749"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2022-36765",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2022-36765"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2023-45236",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2023-45236"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2023-45237",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2023-45237"
+      }
+    ],
+    "Description": "EDK (Embedded Development Kit) is a project to enable UEFI support for Virtual Machines. This package contains a sample 64-bit UEFI firmware for QEMU and KVM. \n\nSecurity Fix(es):\n\n* EDK2: integer overflow in CreateHob() could lead to HOB OOB R/W (CVE-2022-36765)\n\n* edk2: Predictable TCP Initial Sequence Numbers (CVE-2023-45236)\n\n* edk2: Use of a Weak PseudoRandom Number Generator (CVE-2023-45237)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-07-23"
+      },
+      "Updated": {
+        "Date": "2024-07-23"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2022-36765",
+          "Cvss3": "7.0/CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:L/I:L/A:H",
+          "Cwe": "CWE-680",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2022-36765",
+          "Public": "20240109"
+        },
+        {
+          "CveID": "CVE-2023-45236",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "Cwe": "CWE-200",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2023-45236",
+          "Public": "20240116"
+        },
+        {
+          "CveID": "CVE-2023-45237",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "Cwe": "CWE-338",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2023-45237",
+          "Public": "20240116"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2257584",
+          "ID": "2257584"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2258703",
+          "ID": "2258703"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2258706",
+          "ID": "2258706"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:20052541004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.cve:tst:20052541003"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "edk2-aarch64 is earlier than 0:20231122-6.el9_4.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244749001"
+                  },
+                  {
+                    "Comment": "edk2-aarch64 is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:20233446002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "edk2-ovmf is earlier than 0:20231122-6.el9_4.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244749003"
+                  },
+                  {
+                    "Comment": "edk2-ovmf is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:20233446006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "edk2-tools is earlier than 0:20231122-6.el9_4.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244749005"
+                  },
+                  {
+                    "Comment": "edk2-tools is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:20233446012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "edk2-tools-doc is earlier than 0:20231122-6.el9_4.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244749007"
+                  },
+                  {
+                    "Comment": "edk2-tools-doc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:20233446014"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
