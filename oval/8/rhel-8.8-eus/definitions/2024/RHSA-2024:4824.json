@@ -1,0 +1,244 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20244824",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2024:4824: nodejs:18 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8.8 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:4824",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:4824"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-27983",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-27983"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-28182",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-28182"
+      }
+    ],
+    "Description": "Node.js is a software development platform for building fast and scalable network applications in the JavaScript programming language. \n\nSecurity Fix(es):\n\n* nghttp2: CONTINUATION frames DoS (CVE-2024-28182,VU#421644.5)\n\n* nodejs: CONTINUATION frames DoS (CVE-2024-27983)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-07-24"
+      },
+      "Updated": {
+        "Date": "2024-07-24"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-27983",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-400",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-27983",
+          "Public": "20240403"
+        },
+        {
+          "CveID": "CVE-2024-28182",
+          "Cvss3": "5.3/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+          "Cwe": "CWE-390",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-28182",
+          "Public": "20240403"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2268639",
+          "ID": "2268639"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2272764",
+          "ID": "2272764"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:8.8",
+        "cpe:/a:redhat:rhel_eus:8.8::appstream",
+        "cpe:/a:redhat:rhel_eus:8.8::crb",
+        "cpe:/a:redhat:rhel_eus:8.8::highavailability",
+        "cpe:/a:redhat:rhel_eus:8.8::nfv",
+        "cpe:/a:redhat:rhel_eus:8.8::realtime",
+        "cpe:/a:redhat:rhel_eus:8.8::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:8.8::sap",
+        "cpe:/a:redhat:rhel_eus:8.8::sap_hana",
+        "cpe:/a:redhat:rhel_eus:8.8::supplementary",
+        "cpe:/o:redhat:rhel_eus:8.8",
+        "cpe:/o:redhat:rhel_eus:8.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "Module nodejs:18 is enabled",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20227821017"
+                  }
+                ],
+                "Criterias": [
+                  {
+                    "Operator": "OR",
+                    "Criterias": [
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "nodejs is earlier than 1:18.19.1-3.module+el8.8.0+22005+6f8bb252",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20244824001"
+                          },
+                          {
+                            "Comment": "nodejs is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhea:tst:20200330002"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "nodejs-devel is earlier than 1:18.19.1-3.module+el8.8.0+22005+6f8bb252",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20244824003"
+                          },
+                          {
+                            "Comment": "nodejs-devel is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhea:tst:20200330004"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "nodejs-docs is earlier than 1:18.19.1-3.module+el8.8.0+22005+6f8bb252",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20244824005"
+                          },
+                          {
+                            "Comment": "nodejs-docs is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhea:tst:20200330006"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "nodejs-full-i18n is earlier than 1:18.19.1-3.module+el8.8.0+22005+6f8bb252",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20244824007"
+                          },
+                          {
+                            "Comment": "nodejs-full-i18n is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhea:tst:20225139008"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "nodejs-nodemon is earlier than 0:3.0.1-1.module+el8.8.0+19757+8ca87034",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20235362009"
+                          },
+                          {
+                            "Comment": "nodejs-nodemon is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhea:tst:20200330008"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "nodejs-packaging is earlier than 0:2021.06-4.module+el8.7.0+15582+19c314fa",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20227821011"
+                          },
+                          {
+                            "Comment": "nodejs-packaging is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhea:tst:20200330010"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "nodejs-packaging-bundler is earlier than 0:2021.06-4.module+el8.7.0+15582+19c314fa",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20227821013"
+                          },
+                          {
+                            "Comment": "nodejs-packaging-bundler is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20227821014"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "npm is earlier than 1:10.2.4-1.18.19.1.3.module+el8.8.0+22005+6f8bb252",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20244824015"
+                          },
+                          {
+                            "Comment": "npm is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhea:tst:20200330012"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
