@@ -1,0 +1,713 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20244746",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2024:4746: fence-agents  update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8.8 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:4746",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:4746"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-37891",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-37891"
+      }
+    ],
+    "Description": "The fence-agents packages provide a collection of scripts for handling remote power management for cluster devices. They allow failed or unreachable nodes to be forcibly restarted and removed from the cluster. \n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-07-23"
+      },
+      "Updated": {
+        "Date": "2024-07-23"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-37891",
+          "Cvss3": "4.4/CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:N/A:N",
+          "Cwe": "CWE-669",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-37891",
+          "Public": "20240617"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2292788",
+          "ID": "2292788"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_tus:8.8",
+        "cpe:/a:redhat:rhel_tus:8.8::appstream",
+        "cpe:/a:redhat:rhel_tus:8.8::highavailability",
+        "cpe:/a:redhat:rhel_tus:8.8::nfv",
+        "cpe:/a:redhat:rhel_tus:8.8::realtime",
+        "cpe:/o:redhat:rhel_tus:8.8",
+        "cpe:/o:redhat:rhel_tus:8.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-aliyun is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746001"
+                  },
+                  {
+                    "Comment": "fence-agents-aliyun is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-all is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746003"
+                  },
+                  {
+                    "Comment": "fence-agents-all is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-amt-ws is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746005"
+                  },
+                  {
+                    "Comment": "fence-agents-amt-ws is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-apc is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746007"
+                  },
+                  {
+                    "Comment": "fence-agents-apc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-apc-snmp is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746009"
+                  },
+                  {
+                    "Comment": "fence-agents-apc-snmp is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-aws is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746011"
+                  },
+                  {
+                    "Comment": "fence-agents-aws is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-azure-arm is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746013"
+                  },
+                  {
+                    "Comment": "fence-agents-azure-arm is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-bladecenter is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746015"
+                  },
+                  {
+                    "Comment": "fence-agents-bladecenter is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528016"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-brocade is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746017"
+                  },
+                  {
+                    "Comment": "fence-agents-brocade is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528018"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-cisco-mds is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746019"
+                  },
+                  {
+                    "Comment": "fence-agents-cisco-mds is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528020"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-cisco-ucs is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746021"
+                  },
+                  {
+                    "Comment": "fence-agents-cisco-ucs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528022"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-common is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746023"
+                  },
+                  {
+                    "Comment": "fence-agents-common is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528024"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-compute is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746025"
+                  },
+                  {
+                    "Comment": "fence-agents-compute is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528026"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-drac5 is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746027"
+                  },
+                  {
+                    "Comment": "fence-agents-drac5 is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528028"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-eaton-snmp is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746029"
+                  },
+                  {
+                    "Comment": "fence-agents-eaton-snmp is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528030"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-emerson is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746031"
+                  },
+                  {
+                    "Comment": "fence-agents-emerson is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528032"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-eps is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746033"
+                  },
+                  {
+                    "Comment": "fence-agents-eps is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528034"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-gce is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746035"
+                  },
+                  {
+                    "Comment": "fence-agents-gce is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528036"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-heuristics-ping is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746037"
+                  },
+                  {
+                    "Comment": "fence-agents-heuristics-ping is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528038"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-hpblade is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746039"
+                  },
+                  {
+                    "Comment": "fence-agents-hpblade is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528040"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-ibm-powervs is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746041"
+                  },
+                  {
+                    "Comment": "fence-agents-ibm-powervs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528042"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-ibm-vpc is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746043"
+                  },
+                  {
+                    "Comment": "fence-agents-ibm-vpc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528044"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-ibmblade is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746045"
+                  },
+                  {
+                    "Comment": "fence-agents-ibmblade is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528046"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-ifmib is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746047"
+                  },
+                  {
+                    "Comment": "fence-agents-ifmib is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528048"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-ilo-moonshot is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746049"
+                  },
+                  {
+                    "Comment": "fence-agents-ilo-moonshot is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528050"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-ilo-mp is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746051"
+                  },
+                  {
+                    "Comment": "fence-agents-ilo-mp is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528052"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-ilo-ssh is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746053"
+                  },
+                  {
+                    "Comment": "fence-agents-ilo-ssh is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528054"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-ilo2 is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746055"
+                  },
+                  {
+                    "Comment": "fence-agents-ilo2 is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528056"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-intelmodular is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746057"
+                  },
+                  {
+                    "Comment": "fence-agents-intelmodular is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528058"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-ipdu is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746059"
+                  },
+                  {
+                    "Comment": "fence-agents-ipdu is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528060"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-ipmilan is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746061"
+                  },
+                  {
+                    "Comment": "fence-agents-ipmilan is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528062"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-kdump is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746063"
+                  },
+                  {
+                    "Comment": "fence-agents-kdump is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528064"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-kubevirt is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746065"
+                  },
+                  {
+                    "Comment": "fence-agents-kubevirt is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528066"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-lpar is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746067"
+                  },
+                  {
+                    "Comment": "fence-agents-lpar is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528068"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-mpath is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746069"
+                  },
+                  {
+                    "Comment": "fence-agents-mpath is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528070"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-openstack is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746071"
+                  },
+                  {
+                    "Comment": "fence-agents-openstack is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528072"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-redfish is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746073"
+                  },
+                  {
+                    "Comment": "fence-agents-redfish is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528074"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-rhevm is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746075"
+                  },
+                  {
+                    "Comment": "fence-agents-rhevm is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528076"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-rsa is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746077"
+                  },
+                  {
+                    "Comment": "fence-agents-rsa is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528078"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-rsb is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746079"
+                  },
+                  {
+                    "Comment": "fence-agents-rsb is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528080"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-sbd is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746081"
+                  },
+                  {
+                    "Comment": "fence-agents-sbd is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528082"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-scsi is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746083"
+                  },
+                  {
+                    "Comment": "fence-agents-scsi is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528084"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-virsh is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746085"
+                  },
+                  {
+                    "Comment": "fence-agents-virsh is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528086"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-vmware-rest is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746087"
+                  },
+                  {
+                    "Comment": "fence-agents-vmware-rest is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528088"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-vmware-soap is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746089"
+                  },
+                  {
+                    "Comment": "fence-agents-vmware-soap is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528090"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-wti is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746091"
+                  },
+                  {
+                    "Comment": "fence-agents-wti is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528092"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "fence-agents-zvm is earlier than 0:4.2.1-112.el8_8.7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244746093"
+                  },
+                  {
+                    "Comment": "fence-agents-zvm is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237528094"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
