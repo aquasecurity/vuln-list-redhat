@@ -1,0 +1,99 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20244934",
+  "Version": "635",
+  "Metadata": {
+    "Title": "RHSA-2024:4934: git-lfs security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.2 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:4934",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:4934"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2023-45288",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2023-45288"
+      }
+    ],
+    "Description": "Git Large File Storage (LFS) replaces large files such as audio samples, videos, datasets, and graphics with text pointers inside Git, while storing the file contents on a remote server.\n\nSecurity Fix(es):\n\n* golang: net/http, x/net/http2: unlimited number of CONTINUATION frames causes DoS (CVE-2023-45288,VU#421644.3)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-07-31"
+      },
+      "Updated": {
+        "Date": "2024-07-31"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2023-45288",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-400",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2023-45288",
+          "Public": "20240403"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2268273",
+          "ID": "2268273"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.2",
+        "cpe:/a:redhat:rhel_e4s:9.2::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.2::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.2::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.2::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.2::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.2::sap",
+        "cpe:/a:redhat:rhel_e4s:9.2::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.2",
+        "cpe:/o:redhat:rhel_e4s:9.2::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
+          },
+          {
+            "Comment": "git-lfs is earlier than 0:3.2.0-1.el9_2",
+            "TestRef": "oval:com.redhat.rhsa:tst:20244934001"
+          },
+          {
+            "Comment": "git-lfs is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20232357002"
+          }
+        ]
+      }
+    ]
+  }
+}
