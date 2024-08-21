@@ -1,0 +1,159 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20245654",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2024:5654: curl security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:5654",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:5654"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-2398",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-2398"
+      }
+    ],
+    "Description": "The curl packages provide the libcurl library and the curl utility for downloading files from servers using various protocols, including HTTP, FTP, and LDAP.\n\nSecurity Fix(es):\n\n* curl: HTTP/2 push headers memory-leak (CVE-2024-2398)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-08-20"
+      },
+      "Updated": {
+        "Date": "2024-08-20"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-2398",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "Cwe": "CWE-772",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-2398",
+          "Public": "20240327"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2270498",
+          "ID": "2270498"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:8",
+        "cpe:/a:redhat:enterprise_linux:8::appstream",
+        "cpe:/a:redhat:enterprise_linux:8::crb",
+        "cpe:/a:redhat:enterprise_linux:8::highavailability",
+        "cpe:/a:redhat:enterprise_linux:8::nfv",
+        "cpe:/a:redhat:enterprise_linux:8::realtime",
+        "cpe:/a:redhat:enterprise_linux:8::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:8::sap",
+        "cpe:/a:redhat:enterprise_linux:8::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:8::supplementary",
+        "cpe:/o:redhat:enterprise_linux:8",
+        "cpe:/o:redhat:enterprise_linux:8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "curl is earlier than 0:7.61.1-34.el8_10.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20245654001"
+                  },
+                  {
+                    "Comment": "curl is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193701002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libcurl is earlier than 0:7.61.1-34.el8_10.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20245654003"
+                  },
+                  {
+                    "Comment": "libcurl is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193701004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libcurl-devel is earlier than 0:7.61.1-34.el8_10.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20245654005"
+                  },
+                  {
+                    "Comment": "libcurl-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193701006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libcurl-minimal is earlier than 0:7.61.1-34.el8_10.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20245654007"
+                  },
+                  {
+                    "Comment": "libcurl-minimal is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193701008"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

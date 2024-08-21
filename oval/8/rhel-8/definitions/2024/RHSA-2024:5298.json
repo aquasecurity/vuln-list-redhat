@@ -1,0 +1,112 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20245298",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2024:5298: gnome-shell security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:5298",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:5298"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-36472",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-36472"
+      }
+    ],
+    "Description": "GNOME Shell acts as a compositing manager for the desktop, and displays both application windows and other objects. It provides core interface functions like switching windows, launching applications, and notifications. It takes advantage of the capabilities of modern graphics hardware and introduces innovative user interface concepts. \n\nSecurity Fix(es):\n\n* gnome-shell: code execution in portal helper (CVE-2024-36472)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-08-13"
+      },
+      "Updated": {
+        "Date": "2024-08-13"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-36472",
+          "Cvss3": "7.5/CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-83",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-36472",
+          "Public": "20240528"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2283750",
+          "ID": "2283750"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:8",
+        "cpe:/a:redhat:enterprise_linux:8::appstream",
+        "cpe:/a:redhat:enterprise_linux:8::crb",
+        "cpe:/a:redhat:enterprise_linux:8::highavailability",
+        "cpe:/a:redhat:enterprise_linux:8::nfv",
+        "cpe:/a:redhat:enterprise_linux:8::realtime",
+        "cpe:/a:redhat:enterprise_linux:8::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:8::sap",
+        "cpe:/a:redhat:enterprise_linux:8::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:8::supplementary",
+        "cpe:/o:redhat:enterprise_linux:8",
+        "cpe:/o:redhat:enterprise_linux:8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "gnome-shell is earlier than 0:3.32.2-56.el8_10",
+            "TestRef": "oval:com.redhat.rhsa:tst:20245298001"
+          },
+          {
+            "Comment": "gnome-shell is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20193553146"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
