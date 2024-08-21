@@ -1,0 +1,211 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20245694",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2024:5694: tomcat security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:5694",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:5694"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-34750",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-34750"
+      }
+    ],
+    "Description": "Apache Tomcat is a servlet container for the Java Servlet and JavaServer Pages (JSP) technologies.\n\nSecurity Fix(es):\n\n* tomcat: Improper Handling of Exceptional Conditions (CVE-2024-34750)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-08-21"
+      },
+      "Updated": {
+        "Date": "2024-08-21"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-34750",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "(CWE-400|CWE-755)",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-34750",
+          "Public": "20240703"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2295651",
+          "ID": "2295651"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:8",
+        "cpe:/a:redhat:enterprise_linux:8::appstream",
+        "cpe:/a:redhat:enterprise_linux:8::crb",
+        "cpe:/a:redhat:enterprise_linux:8::highavailability",
+        "cpe:/a:redhat:enterprise_linux:8::nfv",
+        "cpe:/a:redhat:enterprise_linux:8::realtime",
+        "cpe:/a:redhat:enterprise_linux:8::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:8::sap",
+        "cpe:/a:redhat:enterprise_linux:8::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:8::supplementary",
+        "cpe:/o:redhat:enterprise_linux:8",
+        "cpe:/o:redhat:enterprise_linux:8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tomcat is earlier than 1:9.0.87-1.el8_10.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20245694001"
+                  },
+                  {
+                    "Comment": "tomcat is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20235928002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tomcat-admin-webapps is earlier than 1:9.0.87-1.el8_10.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20245694003"
+                  },
+                  {
+                    "Comment": "tomcat-admin-webapps is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20235928004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tomcat-docs-webapp is earlier than 1:9.0.87-1.el8_10.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20245694005"
+                  },
+                  {
+                    "Comment": "tomcat-docs-webapp is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20235928006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tomcat-el-3.0-api is earlier than 1:9.0.87-1.el8_10.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20245694007"
+                  },
+                  {
+                    "Comment": "tomcat-el-3.0-api is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20235928008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tomcat-jsp-2.3-api is earlier than 1:9.0.87-1.el8_10.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20245694009"
+                  },
+                  {
+                    "Comment": "tomcat-jsp-2.3-api is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20235928010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tomcat-lib is earlier than 1:9.0.87-1.el8_10.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20245694011"
+                  },
+                  {
+                    "Comment": "tomcat-lib is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20235928012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tomcat-servlet-4.0-api is earlier than 1:9.0.87-1.el8_10.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20245694013"
+                  },
+                  {
+                    "Comment": "tomcat-servlet-4.0-api is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20235928014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tomcat-webapps is earlier than 1:9.0.87-1.el8_10.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20245694015"
+                  },
+                  {
+                    "Comment": "tomcat-webapps is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20235928016"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
