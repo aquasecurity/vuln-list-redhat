@@ -1,0 +1,190 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20246146",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2024:6146: python3.12 security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:6146",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:6146"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-6923",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-6923"
+      }
+    ],
+    "Description": "Python 3.12 is an accessible, high-level, dynamically typed, interpreted programming language, designed with an emphasis on code readability. It includes an extensive standard library, and has a vast ecosystem of third-party libraries.  The python3.12 package provides the \"python3.12\" executable: the reference interpreter for the Python language, version 3. The majority of its standard library is provided in the python3.12-libs package, which should be installed automatically along with python3.12. The remaining parts of the Python standard library are broken out into the python3.12-tkinter and python3.12-test packages, which may need to be installed separately.  Documentation for Python is provided in the python3.12-docs package.  Packages containing additional libraries for Python are generally named with the \"python3.12-\" prefix.\n\nSecurity Fix(es):\n\n* cpython: python: email module doesn't properly quotes newlines in email headers, allowing header injection (CVE-2024-6923)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-09-03"
+      },
+      "Updated": {
+        "Date": "2024-09-03"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-6923",
+          "Cvss3": "6.8/CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:N",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-6923",
+          "Public": "20240801"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2302255",
+          "ID": "2302255"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.4",
+        "cpe:/a:redhat:rhel_eus:9.4::appstream",
+        "cpe:/a:redhat:rhel_eus:9.4::crb",
+        "cpe:/a:redhat:rhel_eus:9.4::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.4::nfv",
+        "cpe:/a:redhat:rhel_eus:9.4::realtime",
+        "cpe:/a:redhat:rhel_eus:9.4::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.4::sap",
+        "cpe:/a:redhat:rhel_eus:9.4::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.4::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.4",
+        "cpe:/o:redhat:rhel_eus:9.4::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3.12 is earlier than 0:3.12.1-4.el9_4.3",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20246146001"
+                  },
+                  {
+                    "Comment": "python3.12 is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20246146002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3.12-debug is earlier than 0:3.12.1-4.el9_4.3",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20246146003"
+                  },
+                  {
+                    "Comment": "python3.12-debug is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20246146004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3.12-devel is earlier than 0:3.12.1-4.el9_4.3",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20246146005"
+                  },
+                  {
+                    "Comment": "python3.12-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20246146006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3.12-idle is earlier than 0:3.12.1-4.el9_4.3",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20246146007"
+                  },
+                  {
+                    "Comment": "python3.12-idle is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20246146008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3.12-libs is earlier than 0:3.12.1-4.el9_4.3",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20246146009"
+                  },
+                  {
+                    "Comment": "python3.12-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20246146010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3.12-test is earlier than 0:3.12.1-4.el9_4.3",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20246146011"
+                  },
+                  {
+                    "Comment": "python3.12-test is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20246146012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3.12-tkinter is earlier than 0:3.12.1-4.el9_4.3",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20246146013"
+                  },
+                  {
+                    "Comment": "python3.12-tkinter is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20246146014"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
