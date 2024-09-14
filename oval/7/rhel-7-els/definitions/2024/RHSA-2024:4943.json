@@ -1,0 +1,240 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20244943",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2024:4943: httpd security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 7 Extended Lifecycle Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:4943",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:4943"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-38474",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-38474"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-38475",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-38475"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-38477",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-38477"
+      }
+    ],
+    "Description": "For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-07-31"
+      },
+      "Updated": {
+        "Date": "2024-07-31"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-38474",
+          "Cvss3": "8.1/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-116",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-38474",
+          "Public": "20240701"
+        },
+        {
+          "CveID": "CVE-2024-38475",
+          "Cvss3": "9.1/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+          "Cwe": "CWE-116",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-38475",
+          "Public": "20240701"
+        },
+        {
+          "CveID": "CVE-2024-38477",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-476",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-38477",
+          "Public": "20240701"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2295013",
+          "ID": "2295013"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2295014",
+          "ID": "2295014"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2295016",
+          "ID": "2295016"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_extras:7",
+        "cpe:/a:redhat:rhel_extras_oracle_java:7",
+        "cpe:/a:redhat:rhel_extras_rt:7",
+        "cpe:/a:redhat:rhel_extras_rt_els:7",
+        "cpe:/a:redhat:rhel_extras_sap:7",
+        "cpe:/a:redhat:rhel_extras_sap_els:7",
+        "cpe:/a:redhat:rhel_extras_sap_hana:7",
+        "cpe:/a:redhat:rhel_extras_sap_hana_els:7",
+        "cpe:/o:redhat:enterprise_linux:7",
+        "cpe:/o:redhat:enterprise_linux:7::client",
+        "cpe:/o:redhat:enterprise_linux:7::computenode",
+        "cpe:/o:redhat:enterprise_linux:7::server",
+        "cpe:/o:redhat:enterprise_linux:7::workstation",
+        "cpe:/o:redhat:rhel_els:7"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20152142010"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 7 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20152142009"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "httpd is earlier than 0:2.4.6-99.el7_9.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244943001"
+                  },
+                  {
+                    "Comment": "httpd is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20152194002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "httpd-devel is earlier than 0:2.4.6-99.el7_9.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244943003"
+                  },
+                  {
+                    "Comment": "httpd-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20152194004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "httpd-manual is earlier than 0:2.4.6-99.el7_9.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244943005"
+                  },
+                  {
+                    "Comment": "httpd-manual is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20152194006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "httpd-tools is earlier than 0:2.4.6-99.el7_9.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244943007"
+                  },
+                  {
+                    "Comment": "httpd-tools is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20152194008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "mod_ldap is earlier than 0:2.4.6-99.el7_9.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244943009"
+                  },
+                  {
+                    "Comment": "mod_ldap is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20152194010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "mod_proxy_html is earlier than 1:2.4.6-99.el7_9.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244943011"
+                  },
+                  {
+                    "Comment": "mod_proxy_html is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20152194012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "mod_session is earlier than 0:2.4.6-99.el7_9.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244943013"
+                  },
+                  {
+                    "Comment": "mod_session is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20152194014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "mod_ssl is earlier than 1:2.4.6-99.el7_9.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20244943015"
+                  },
+                  {
+                    "Comment": "mod_ssl is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20152194016"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
