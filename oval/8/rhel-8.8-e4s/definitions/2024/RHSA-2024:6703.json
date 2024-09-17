@@ -1,0 +1,162 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20246703",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2024:6703: pcs security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8.8 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:6703",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:6703"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-41123",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-41123"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-41946",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-41946"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-43398",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-43398"
+      }
+    ],
+    "Description": "The pcs packages provide a command-line configuration system for the Pacemaker and Corosync utilities.\n\nSecurity Fix(es):\n\n* rexml: rubygem-rexml: DoS when parsing an XML having many specific characters such as whitespace character, \u003e] and ]\u003e (CVE-2024-41123)\n\n* rexml: DoS vulnerability in REXML (CVE-2024-41946)\n\n* rexml: DoS vulnerability in REXML (CVE-2024-43398)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-09-16"
+      },
+      "Updated": {
+        "Date": "2024-09-16"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-41123",
+          "Cvss3": "5.3/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+          "Cwe": "CWE-400",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-41123",
+          "Public": "20240801"
+        },
+        {
+          "CveID": "CVE-2024-41946",
+          "Cvss3": "3.3/CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:L",
+          "Cwe": "CWE-400",
+          "Impact": "low",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-41946",
+          "Public": "20240801"
+        },
+        {
+          "CveID": "CVE-2024-43398",
+          "Cvss3": "5.9/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-776",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-43398",
+          "Public": "20240822:1515"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2302268",
+          "ID": "2302268"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2302272",
+          "ID": "2302272"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2307297",
+          "ID": "2307297"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:8.8",
+        "cpe:/a:redhat:rhel_e4s:8.8::appstream",
+        "cpe:/a:redhat:rhel_e4s:8.8::highavailability",
+        "cpe:/a:redhat:rhel_e4s:8.8::sap",
+        "cpe:/a:redhat:rhel_e4s:8.8::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:8.8",
+        "cpe:/o:redhat:rhel_e4s:8.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcs is earlier than 0:0.10.15-4.el8_8.3",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20246703001"
+                  },
+                  {
+                    "Comment": "pcs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20202462002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcs-snmp is earlier than 0:0.10.15-4.el8_8.3",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20246703003"
+                  },
+                  {
+                    "Comment": "pcs-snmp is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20202462004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
