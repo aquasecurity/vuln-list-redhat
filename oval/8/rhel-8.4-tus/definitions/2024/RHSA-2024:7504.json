@@ -1,0 +1,162 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20247504",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2024:7504: cups-filters security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8.4 Telecommunications Update Service"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:7504",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:7504"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-47076",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-47076"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-47175",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-47175"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-47176",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-47176"
+      }
+    ],
+    "Description": "The cups-filters package contains back ends, filters, and other software that was once part of the core Common UNIX Printing System (CUPS) distribution but is now maintained independently. \n\nSecurity Fix(es):\n\n* cups-browsed: cups-browsed binds on UDP INADDR_ANY:631 trusting any packet from any source ()\n\n* cups-filters: libcupsfilters: `cfGetPrinterAttributes` API does not perform sanitization on returned IPP attributes (CVE-2024-47076)\n\n* cups: libppd: remote command injection via attacker controlled data in PPD file ()\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-10-02"
+      },
+      "Updated": {
+        "Date": "2024-10-02"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-47076",
+          "Cvss3": "8.2/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:N",
+          "Cwe": "CWE-20",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-47076",
+          "Public": "20240926:2000"
+        },
+        {
+          "CveID": "CVE-2024-47175",
+          "Cvss3": "7.7/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:L",
+          "Cwe": "CWE-77",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-47175",
+          "Public": "20240926:2000"
+        },
+        {
+          "CveID": "CVE-2024-47176",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "Cwe": "CWE-940",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-47176",
+          "Public": "20240926:2000"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2314252",
+          "ID": "2314252"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2314253",
+          "ID": "2314253"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2314256",
+          "ID": "2314256"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_tus:8.4",
+        "cpe:/a:redhat:rhel_tus:8.4::appstream",
+        "cpe:/a:redhat:rhel_tus:8.4::highavailability",
+        "cpe:/a:redhat:rhel_tus:8.4::nfv",
+        "cpe:/a:redhat:rhel_tus:8.4::realtime",
+        "cpe:/o:redhat:rhel_tus:8.4",
+        "cpe:/o:redhat:rhel_tus:8.4::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "cups-filters is earlier than 0:1.20.0-24.el8_4.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20247504001"
+                  },
+                  {
+                    "Comment": "cups-filters is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20233427002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "cups-filters-libs is earlier than 0:1.20.0-24.el8_4.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20247504003"
+                  },
+                  {
+                    "Comment": "cups-filters-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20233427006"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
