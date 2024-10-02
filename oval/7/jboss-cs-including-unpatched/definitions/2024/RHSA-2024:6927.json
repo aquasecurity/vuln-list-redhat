@@ -1,7 +1,7 @@
 {
   "Class": "patch",
   "ID": "oval:com.redhat.rhsa:def:20246927",
-  "Version": "635",
+  "Version": "636",
   "Metadata": {
     "Title": "RHSA-2024:6927: Red Hat JBoss Core Services Apache HTTP Server 2.4.57 SP6 security update (Moderate)",
     "AffectedList": [
@@ -22,9 +22,14 @@
         "Source": "CVE",
         "RefID": "CVE-2023-38709",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2023-38709"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-46544",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-46544"
       }
     ],
-    "Description": "Red Hat JBoss Core Services is a set of supplementary software for Red Hat JBoss middleware products. This software, such as Apache HTTP Server, is common to multiple JBoss middleware products and packaged under Red Hat JBoss Core Services, to allow for faster distribution of updates and for a more consistent update experience.\n\nThis release of Red Hat JBoss Core Services Apache HTTP Server 2.4.57 Service Pack 6 serves as a replacement for Red Hat JBoss Core Services Apache HTTP Server 2.4.57 Service Pack 5, and includes bug fixes and enhancements, which are documented in the Release Notes linked to in the References section.\n\nSecurity Fix(es):\n\n* jbcs-httpd24-httpd: HTTP response splitting (CVE-2023-38709)\n\nA Red Hat Security Bulletin which addresses further details about this flaw is available in the References section.\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Description": "Red Hat JBoss Core Services is a set of supplementary software for Red Hat JBoss middleware products. This software, such as Apache HTTP Server, is common to multiple JBoss middleware products and packaged under Red Hat JBoss Core Services, to allow for faster distribution of updates and for a more consistent update experience.\n\nThis release of Red Hat JBoss Core Services Apache HTTP Server 2.4.57 Service Pack 6 serves as a replacement for Red Hat JBoss Core Services Apache HTTP Server 2.4.57 Service Pack 5, and includes bug fixes and enhancements, which are documented in the Release Notes linked to in the References section.\n\nSecurity Fix(es):\n\n* jbcs-httpd24-httpd: HTTP response splitting (CVE-2023-38709)\n* jbcs-httpd24-mod_jk: information Disclosure / DoS (CVE-2024-46544)\n\nA Red Hat Security Bulletin which addresses further details about this flaw is available in the References section.\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Moderate",
@@ -33,7 +38,7 @@
         "Date": "2024-09-24"
       },
       "Updated": {
-        "Date": "2024-09-24"
+        "Date": "2024-10-01"
       },
       "Cves": [
         {
@@ -43,12 +48,24 @@
           "Impact": "moderate",
           "Href": "https://access.redhat.com/security/cve/CVE-2023-38709",
           "Public": "20240404"
+        },
+        {
+          "CveID": "CVE-2024-46544",
+          "Cvss3": "5.9/CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+          "Cwe": "CWE-276",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-46544",
+          "Public": "20240923:1115"
         }
       ],
       "Bugzilla": [
         {
           "Href": "https://bugzilla.redhat.com/2273491",
           "ID": "2273491"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2314194",
+          "ID": "2314194"
         }
       ],
       "AffectedCpeList": [
@@ -195,6 +212,71 @@
                   {
                     "Comment": "jbcs-httpd24-mod_ssl is signed with Red Hat redhatrelease2 key",
                     "TestRef": "oval:com.redhat.rhsa:tst:20161851020"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "jbcs-httpd24-mod_http2 is earlier than 0:1.15.19-43.el7jbcs",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20246927019"
+                  },
+                  {
+                    "Comment": "jbcs-httpd24-mod_http2 is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:202436387002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "jbcs-httpd24-mod_jk-ap24 is earlier than 0:1.2.50-3.redhat_1.el7jbcs",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20246927021"
+                  },
+                  {
+                    "Comment": "jbcs-httpd24-mod_jk-ap24 is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20170194052"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "jbcs-httpd24-mod_md is earlier than 1:2.4.24-13.el7jbcs",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20246927023"
+                  },
+                  {
+                    "Comment": "jbcs-httpd24-mod_md is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193933064"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "jbcs-httpd24-mod_proxy_cluster is earlier than 0:1.3.20-10.el7jbcs",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20246927025"
+                  },
+                  {
+                    "Comment": "jbcs-httpd24-mod_proxy_cluster is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20241316036"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "jbcs-httpd24-mod_security is earlier than 0:2.9.3-42.el7jbcs",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20246927027"
+                  },
+                  {
+                    "Comment": "jbcs-httpd24-mod_security is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20170194022"
                   }
                 ]
               }
