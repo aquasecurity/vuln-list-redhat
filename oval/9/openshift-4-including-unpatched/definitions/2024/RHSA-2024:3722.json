@@ -1,0 +1,237 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20243722",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2024:3722: OpenShift Container Platform 4.17.0 packages and security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat OpenShift Container Platform 4.17"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:3722",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:3722"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-24789",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-24789"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-6104",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-6104"
+      }
+    ],
+    "Description": "Red Hat OpenShift Container Platform is Red Hat's cloud computing Kubernetes application platform solution designed for on-premise or private cloud deployments.\n\nThis advisory contains the RPM packages for Red Hat OpenShift Container Platform 4.17.0. See the following advisory for the container images for this release:\n\nhttps://access.redhat.com/errata/RHSA-2024:3718\n\nSecurity Fix(es):\n\n* go-retryablehttp: url might write sensitive information to log file\n(CVE-2024-6104)\n* golang: archive/zip: Incorrect handling of certain ZIP files\n(CVE-2024-24789)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n\nAll OpenShift Container Platform 4.17 users are advised to upgrade to these updated packages and images when they are available in the appropriate release channel. To check for available updates, use the OpenShift CLI (oc) or web console. Instructions for upgrading a cluster are available at https://docs.openshift.com/container-platform/4.17/updating/updating_a_cluster/updating-cluster-cli.html",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-10-01"
+      },
+      "Updated": {
+        "Date": "2024-10-01"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-24789",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+          "Cwe": "CWE-20",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-24789",
+          "Public": "20240604"
+        },
+        {
+          "CveID": "CVE-2024-6104",
+          "Cvss3": "6.0/CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:C/C:H/I:N/A:N",
+          "Cwe": "CWE-532",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-6104",
+          "Public": "20240624"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2292668",
+          "ID": "2292668"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2294000",
+          "ID": "2294000"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:openshift:4.17",
+        "cpe:/a:redhat:openshift:4.17::el9"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:201714623004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.cve:tst:201714623003"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "podman is earlier than 4:5.2.0-2.rhaos4.17.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243722001"
+                  },
+                  {
+                    "Comment": "podman is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:201918466002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "podman-docker is earlier than 4:5.2.0-2.rhaos4.17.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243722003"
+                  },
+                  {
+                    "Comment": "podman-docker is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:20249355042"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "podman-plugins is earlier than 4:5.2.0-2.rhaos4.17.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243722005"
+                  },
+                  {
+                    "Comment": "podman-plugins is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:20249355018"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "podman-remote is earlier than 4:5.2.0-2.rhaos4.17.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243722007"
+                  },
+                  {
+                    "Comment": "podman-remote is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:20249355026"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "podman-tests is earlier than 4:5.2.0-2.rhaos4.17.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243722009"
+                  },
+                  {
+                    "Comment": "podman-tests is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:20249355016"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "skopeo is earlier than 2:1.16.0-2.rhaos4.17.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243722011"
+                  },
+                  {
+                    "Comment": "skopeo is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:202129482006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "skopeo-tests is earlier than 2:1.16.0-2.rhaos4.17.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243722013"
+                  },
+                  {
+                    "Comment": "skopeo-tests is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:20249355032"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openshift-clients is earlier than 0:4.17.0-202409111134.p0.gbc58b3a.assembly.stream.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243722015"
+                  },
+                  {
+                    "Comment": "openshift-clients is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:201714623002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openshift-clients-redistributable is earlier than 0:4.17.0-202409111134.p0.gbc58b3a.assembly.stream.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243722017"
+                  },
+                  {
+                    "Comment": "openshift-clients-redistributable is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:20249355008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openshift-hyperkube is earlier than 0:4.17.0-202409121706.p0.gd3adea4.assembly.stream.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243722019"
+                  },
+                  {
+                    "Comment": "openshift-hyperkube is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:20249355024"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
