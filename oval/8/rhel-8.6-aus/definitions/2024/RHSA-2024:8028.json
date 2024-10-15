@@ -1,0 +1,104 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20248028",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2024:8028: thunderbird security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8.6 Advanced Mission Critical Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:8028",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:8028"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-9680",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-9680"
+      }
+    ],
+    "Description": "Mozilla Thunderbird is a standalone mail and newsgroup client.\n\nSecurity Fix(es):\n\n* firefox: Use-after-free in Animation timeline (128.3.1 ESR Chemspill) (CVE-2024-9680)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-10-14"
+      },
+      "Updated": {
+        "Date": "2024-10-14"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-9680",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-416",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-9680",
+          "Public": "20241009:1408"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2317442",
+          "ID": "2317442"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_aus:8.6",
+        "cpe:/a:redhat:rhel_aus:8.6::appstream",
+        "cpe:/o:redhat:rhel_aus:8.6",
+        "cpe:/o:redhat:rhel_aus:8.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "thunderbird is earlier than 0:128.3.1-1.el8_6",
+            "TestRef": "oval:com.redhat.rhsa:tst:20248028001"
+          },
+          {
+            "Comment": "thunderbird is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20191144002"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
