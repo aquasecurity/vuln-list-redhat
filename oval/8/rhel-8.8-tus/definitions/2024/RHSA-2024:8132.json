@@ -1,0 +1,128 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20248132",
+  "Version": "635",
+  "Metadata": {
+    "Title": "RHSA-2024:8132: libuv security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8.8 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:8132",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:8132"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-24806",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-24806"
+      }
+    ],
+    "Description": "libuv is a multi-platform support library with a focus on asynchronous I/O. \n\nSecurity Fix(es):\n\n* libuv: Improper Domain Lookup that potentially leads to SSRF attacks (CVE-2024-24806)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-10-15"
+      },
+      "Updated": {
+        "Date": "2024-10-15"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-24806",
+          "Cvss3": "7.3/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+          "Cwe": "CWE-918",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-24806",
+          "Public": "20240207"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2263292",
+          "ID": "2263292"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_tus:8.8",
+        "cpe:/a:redhat:rhel_tus:8.8::appstream",
+        "cpe:/a:redhat:rhel_tus:8.8::highavailability",
+        "cpe:/a:redhat:rhel_tus:8.8::nfv",
+        "cpe:/a:redhat:rhel_tus:8.8::realtime",
+        "cpe:/o:redhat:rhel_tus:8.8",
+        "cpe:/o:redhat:rhel_tus:8.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libuv is earlier than 1:1.41.1-1.el8_8.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20248132001"
+                  },
+                  {
+                    "Comment": "libuv is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20213075002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libuv-devel is earlier than 1:1.41.1-1.el8_8.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20248132003"
+                  },
+                  {
+                    "Comment": "libuv-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20213075004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
