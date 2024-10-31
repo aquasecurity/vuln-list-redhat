@@ -1,0 +1,189 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20248577",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2024:8577: krb5 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.0 Update Services for SAP Solutions"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:8577",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:8577"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-3596",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-3596"
+      }
+    ],
+    "Description": "Kerberos is a network authentication system, which can improve the security of your network by eliminating the insecure practice of sending passwords over the network in unencrypted form. It allows clients and servers to authenticate to each other with the help of a trusted third party, the Kerberos key distribution center (KDC).\n\nSecurity Fix(es):\n\n* freeradius: forgery attack (CVE-2024-3596)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-10-29"
+      },
+      "Updated": {
+        "Date": "2024-10-29"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-3596",
+          "Cvss3": "9.0/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H",
+          "Cwe": "CWE-294-\u003eCWE-836-\u003eCWE-924",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-3596",
+          "Public": "20240709"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2263240",
+          "ID": "2263240"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.0",
+        "cpe:/a:redhat:rhel_e4s:9.0::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.0::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.0::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.0::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.0::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.0::sap",
+        "cpe:/a:redhat:rhel_e4s:9.0::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.0",
+        "cpe:/o:redhat:rhel_e4s:9.0::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "krb5-devel is earlier than 0:1.19.1-16.el9_0.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20248577001"
+                  },
+                  {
+                    "Comment": "krb5-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20228669002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "krb5-libs is earlier than 0:1.19.1-16.el9_0.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20248577003"
+                  },
+                  {
+                    "Comment": "krb5-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20228669004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "krb5-pkinit is earlier than 0:1.19.1-16.el9_0.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20248577005"
+                  },
+                  {
+                    "Comment": "krb5-pkinit is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20228669006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "krb5-server is earlier than 0:1.19.1-16.el9_0.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20248577007"
+                  },
+                  {
+                    "Comment": "krb5-server is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20228669008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "krb5-server-ldap is earlier than 0:1.19.1-16.el9_0.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20248577009"
+                  },
+                  {
+                    "Comment": "krb5-server-ldap is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20228669010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "krb5-workstation is earlier than 0:1.19.1-16.el9_0.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20248577011"
+                  },
+                  {
+                    "Comment": "krb5-workstation is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20228669012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libkadm5 is earlier than 0:1.19.1-16.el9_0.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20248577013"
+                  },
+                  {
+                    "Comment": "libkadm5 is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20228669014"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
