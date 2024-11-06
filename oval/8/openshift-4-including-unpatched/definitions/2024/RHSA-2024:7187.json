@@ -1,0 +1,231 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20247187",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2024:7187: OpenShift Container Platform 4.14.38 security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat OpenShift Container Platform 4.14"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:7187",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:7187"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-3727",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-3727"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-42353",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-42353"
+      }
+    ],
+    "Description": "Red Hat OpenShift Container Platform is Red Hat's cloud computing Kubernetes application platform solution designed for on-premise or private cloud deployments.\n\nThis advisory contains the RPM packages for Red Hat OpenShift Container Platform 4.14.38. See the following advisory for the container images for this release:\n\nhttps://access.redhat.com/errata/RHSA-2024:7184\n\nSecurity Fix(es):\n\n* containers/image: digest type does not guarantee valid type\n(CVE-2024-3727)\n* webob: WebOb's location header normalization during redirect leads to\nopen redirect (CVE-2024-42353)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n\nAll OpenShift Container Platform 4.14 users are advised to upgrade to these updated packages and images when they are available in the appropriate release channel. To check for available updates, use the OpenShift CLI (oc) or web console. Instructions for upgrading a cluster are available at https://docs.openshift.com/container-platform/4.14/updating/updating_a_cluster/updating-cluster-cli.html",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-10-03"
+      },
+      "Updated": {
+        "Date": "2024-10-03"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-3727",
+          "Cvss3": "8.3/CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
+          "Cwe": "CWE-354",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-3727",
+          "Public": "20240509"
+        },
+        {
+          "CveID": "CVE-2024-42353",
+          "Cvss3": "6.1/CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "Cwe": "CWE-601",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-42353",
+          "Public": "20240814"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2274767",
+          "ID": "2274767"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2305004",
+          "ID": "2305004"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:openshift:4.14",
+        "cpe:/a:redhat:openshift:4.14::el8"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:201714623004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.cve:tst:201714623003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhsa:tst:20235009088"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "podman is earlier than 3:4.4.1-19.rhaos4.14.el8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20247187001"
+                  },
+                  {
+                    "Comment": "podman is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:201918466002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "podman-catatonit is earlier than 3:4.4.1-19.rhaos4.14.el8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20247187003"
+                  },
+                  {
+                    "Comment": "podman-catatonit is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:202329406004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "podman-docker is earlier than 3:4.4.1-19.rhaos4.14.el8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20247187005"
+                  },
+                  {
+                    "Comment": "podman-docker is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:202329406010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "podman-gvproxy is earlier than 3:4.4.1-19.rhaos4.14.el8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20247187007"
+                  },
+                  {
+                    "Comment": "podman-gvproxy is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:202329406012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "podman-plugins is earlier than 3:4.4.1-19.rhaos4.14.el8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20247187009"
+                  },
+                  {
+                    "Comment": "podman-plugins is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:202329406006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "podman-remote is earlier than 3:4.4.1-19.rhaos4.14.el8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20247187011"
+                  },
+                  {
+                    "Comment": "podman-remote is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:202329406022"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "podman-tests is earlier than 3:4.4.1-19.rhaos4.14.el8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20247187013"
+                  },
+                  {
+                    "Comment": "podman-tests is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:202329406008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "skopeo is earlier than 2:1.11.3-3.rhaos4.14.el8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20247187015"
+                  },
+                  {
+                    "Comment": "skopeo is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:202129482002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "skopeo-tests is earlier than 2:1.11.3-3.rhaos4.14.el8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20247187017"
+                  },
+                  {
+                    "Comment": "skopeo-tests is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:202329406020"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
