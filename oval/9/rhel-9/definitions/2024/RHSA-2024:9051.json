@@ -1,0 +1,199 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20249051",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2024:9051: podman security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:9051",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:9051"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-9407",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-9407"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-9675",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-9675"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-9676",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-9676"
+      }
+    ],
+    "Description": "The podman tool manages pods, container images, and containers. It is part of the libpod library, which is for applications that use container pods. Container pods is a concept in Kubernetes.\n\nSecurity Fix(es):\n\n* Buildah: Podman: Improper Input Validation in bind-propagation Option of Dockerfile RUN --mount Instruction (CVE-2024-9407)\n\n* buildah: Buildah allows arbitrary directory mount (CVE-2024-9675)\n\n* Podman: Buildah: CRI-O: symlink traversal vulnerability in the containers/storage library can cause Denial of Service (DoS) (CVE-2024-9676)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-11-11"
+      },
+      "Updated": {
+        "Date": "2024-11-11"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-9407",
+          "Cvss3": "4.7/CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:H/I:L/A:N",
+          "Cwe": "CWE-20",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-9407",
+          "Public": "20241001"
+        },
+        {
+          "CveID": "CVE-2024-9675",
+          "Cvss3": "4.4/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N",
+          "Cwe": "CWE-22",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-9675",
+          "Public": "20241009"
+        },
+        {
+          "CveID": "CVE-2024-9676",
+          "Cvss3": "6.5/CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-22",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-9676",
+          "Public": "20241015:1500"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2315887",
+          "ID": "2315887"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2317458",
+          "ID": "2317458"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2317467",
+          "ID": "2317467"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "podman is earlier than 4:4.9.4-16.el9_4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20249051001"
+                  },
+                  {
+                    "Comment": "podman is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20241136002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "podman-docker is earlier than 4:4.9.4-16.el9_4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20249051003"
+                  },
+                  {
+                    "Comment": "podman-docker is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20241136004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "podman-plugins is earlier than 4:4.9.4-16.el9_4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20249051005"
+                  },
+                  {
+                    "Comment": "podman-plugins is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20241136008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "podman-remote is earlier than 4:4.9.4-16.el9_4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20249051007"
+                  },
+                  {
+                    "Comment": "podman-remote is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20241136010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "podman-tests is earlier than 4:4.9.4-16.el9_4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20249051009"
+                  },
+                  {
+                    "Comment": "podman-tests is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20241136012"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
