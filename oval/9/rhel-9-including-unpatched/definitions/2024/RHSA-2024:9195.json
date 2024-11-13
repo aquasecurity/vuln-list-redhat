@@ -1,0 +1,152 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20249195",
+  "Version": "639",
+  "Metadata": {
+    "Title": "RHSA-2024:9195: cyrus-imapd security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:9195",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:9195"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-34055",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-34055"
+      }
+    ],
+    "Description": "The cyrus-imapd packages contain a high-performance mail server with IMAP, POP3, NNTP, and SIEVE support.\n\nSecurity Fix(es):\n\n* cyrus-imapd: unbounded memory allocation by sending many LITERALs in a single command (CVE-2024-34055)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n\nAdditional Changes:\n\nFor detailed information on changes in this release, see the Red Hat Enterprise Linux 9.5 Release Notes linked from the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-11-12"
+      },
+      "Updated": {
+        "Date": "2024-11-12"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-34055",
+          "Cvss3": "6.5/CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-119",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-34055",
+          "Public": "20240605"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2290510",
+          "ID": "2290510"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:20052541004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.cve:tst:20052541003"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "cyrus-imapd is earlier than 0:3.4.8-1.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20249195001"
+                  },
+                  {
+                    "Comment": "cyrus-imapd is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20249195002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "cyrus-imapd-libs is earlier than 0:3.4.8-1.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20249195003"
+                  },
+                  {
+                    "Comment": "cyrus-imapd-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20249195004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "cyrus-imapd-utils is earlier than 0:3.4.8-1.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20249195005"
+                  },
+                  {
+                    "Comment": "cyrus-imapd-utils is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20249195006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "perl-Cyrus is earlier than 0:3.4.8-1.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20249195007"
+                  },
+                  {
+                    "Comment": "perl-Cyrus is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20249195008"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

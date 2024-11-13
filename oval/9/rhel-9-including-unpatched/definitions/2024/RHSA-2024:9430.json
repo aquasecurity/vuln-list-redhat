@@ -1,0 +1,101 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20249430",
+  "Version": "640",
+  "Metadata": {
+    "Title": "RHSA-2024:9430: nano security update (Low)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:9430",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:9430"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-5742",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-5742"
+      }
+    ],
+    "Description": "GNU nano is a small and friendly text editor.\n\nSecurity Fix(es):\n\n* nano: running `chmod` and `chown` on the filename allows malicious user to replace the emergency file with a malicious symlink to a root-owned file (CVE-2024-5742)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n\nAdditional Changes:\n\nFor detailed information on changes in this release, see the Red Hat Enterprise Linux 9.5 Release Notes linked from the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Low",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-11-12"
+      },
+      "Updated": {
+        "Date": "2024-11-12"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-5742",
+          "Cvss3": "6.7/CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-59",
+          "Impact": "low",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-5742",
+          "Public": "20240428"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2278574",
+          "ID": "2278574"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:20052541004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.cve:tst:20052541003"
+          },
+          {
+            "Comment": "nano is earlier than 0:5.6.1-6.el9",
+            "TestRef": "oval:com.redhat.rhsa:tst:20249430001"
+          },
+          {
+            "Comment": "nano is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20249430002"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,160 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20249158",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2024:9158: lldpd security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:9158",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:9158"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2020-27827",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2020-27827"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2021-43612",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2021-43612"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2023-41910",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2023-41910"
+      }
+    ],
+    "Description": "LLDP is an industry standard protocol designed to supplant proprietary Link-Layer protocols such as EDP or CDP. The goal of LLDP is to provide an inter-vendor compatible mechanism to deliver Link-Layer notifications to adjacent network devices.\n\nSecurity Fix(es):\n\n* lldp/openvswitch: denial of service via externally triggered memory leak (CVE-2020-27827)\n\n* lldpd: out-of-bounds read when decoding SONMP packets (CVE-2021-43612)\n\n* lldpd: CDP PDU Packet cdp.c out-of-bounds read (CVE-2023-41910)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n\nAdditional Changes:\n\nFor detailed information on changes in this release, see the Red Hat Enterprise Linux 9.5 Release Notes linked from the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-11-12"
+      },
+      "Updated": {
+        "Date": "2024-11-12"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2020-27827",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-400",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2020-27827",
+          "Public": "20210113"
+        },
+        {
+          "CveID": "CVE-2021-43612",
+          "Cvss3": "7.3/CVSS:3.1/AV:A/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",
+          "Cwe": "CWE-125",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2021-43612",
+          "Public": "20211118"
+        },
+        {
+          "CveID": "CVE-2023-41910",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-125",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2023-41910",
+          "Public": "20230905"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/1921438",
+          "ID": "1921438"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2040388",
+          "ID": "2040388"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2237411",
+          "ID": "2237411"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:20052541004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.cve:tst:20052541003"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "lldpd is earlier than 0:1.0.18-4.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20249158001"
+                  },
+                  {
+                    "Comment": "lldpd is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20249158002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "lldpd-devel is earlier than 0:1.0.18-4.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20249158003"
+                  },
+                  {
+                    "Comment": "lldpd-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20249158004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
