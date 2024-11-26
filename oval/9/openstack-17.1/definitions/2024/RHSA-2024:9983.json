@@ -1,0 +1,91 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20249983",
+  "Version": "635",
+  "Metadata": {
+    "Title": "RHSA-2024:9983: RHOSP 17.1.4 (python-webob) security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat OpenStack Platform 17.1 for RHEL 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:9983",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:9983"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-42353",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-42353"
+      }
+    ],
+    "Description": "WebOb provides wrappers around the WSGI request environment, and an object\nto help create WSGI responses. The objects map much of the specified\nbehavior of HTTP, including header parsing and accessors for other standard\nparts of the environment.\n\nSecurity Fix(es):\n\n* WebOb's location header normalization during redirect leads to open\nredirect (CVE-2024-42353)\n\nFor more details about the security issue(s), including the impact, a CVSS\nscore, acknowledgments, and other related information, refer to the CVE\npage listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-11-21"
+      },
+      "Updated": {
+        "Date": "2024-11-21"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-42353",
+          "Cvss3": "6.1/CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "Cwe": "CWE-601",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-42353",
+          "Public": "20240814"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2305004",
+          "ID": "2305004"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:openstack:17.1",
+        "cpe:/a:redhat:openstack:17.1::el9"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhsa:tst:20235969010"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhsa:tst:20235969009"
+          },
+          {
+            "Comment": "python3-webob is earlier than 0:1.8.7-2.1.el9ost",
+            "TestRef": "oval:com.redhat.rhsa:tst:20249983001"
+          },
+          {
+            "Comment": "python3-webob is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20249983002"
+          }
+        ]
+      }
+    ]
+  }
+}

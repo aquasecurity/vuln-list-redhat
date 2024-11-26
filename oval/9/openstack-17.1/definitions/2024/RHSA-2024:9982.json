@@ -1,0 +1,129 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20249982",
+  "Version": "635",
+  "Metadata": {
+    "Title": "RHSA-2024:9982: RHOSP 17.1.4 (openstack-ironic) security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat OpenStack Platform 17.1 for RHEL 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:9982",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:9982"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-44082",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-44082"
+      }
+    ],
+    "Description": "Ironic\n\nSecurity Fix(es):\n\n* Specially crafted image may allow authenticated users to gain access to potentially sensitive data (CVE-2024-44082)\n\nFor more details about the security issue(s), including the impact, a CVSS\nscore, acknowledgments, and other related information, refer to the CVE\npage listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-11-21"
+      },
+      "Updated": {
+        "Date": "2024-11-21"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-44082",
+          "Cvss3": "6.8/CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:N",
+          "Cwe": "CWE-200",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-44082",
+          "Public": "20240904"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2309331",
+          "ID": "2309331"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:openstack:17.1",
+        "cpe:/a:redhat:openstack:17.1::el9"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhsa:tst:20235969010"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhsa:tst:20235969009"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openstack-ironic-api is earlier than 1:17.1.1-17.1.20240917210749.c31db88.el9ost",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20249982001"
+                  },
+                  {
+                    "Comment": "openstack-ironic-api is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20249982002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openstack-ironic-common is earlier than 1:17.1.1-17.1.20240917210749.c31db88.el9ost",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20249982003"
+                  },
+                  {
+                    "Comment": "openstack-ironic-common is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20249982004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openstack-ironic-conductor is earlier than 1:17.1.1-17.1.20240917210749.c31db88.el9ost",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20249982005"
+                  },
+                  {
+                    "Comment": "openstack-ironic-conductor is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20249982006"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

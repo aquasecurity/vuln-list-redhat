@@ -1,0 +1,91 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20249977",
+  "Version": "635",
+  "Metadata": {
+    "Title": "RHSA-2024:9977: RHOSP 17.1.4 (python-zipp) security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat OpenStack Platform 17.1 for RHEL 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:9977",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:9977"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-5569",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-5569"
+      }
+    ],
+    "Description": "A pathlib-compatible Zipfile object wrapper. A backport of the Path object.\n\nSecurity Fix(es):\n\n* Denial of Service (infinite loop) via crafted zip file in jaraco/zipp\n(CVE-2024-5569)\n\nFor more details about the security issue(s), including the impact, a CVSS\nscore, acknowledgments, and other related information, refer to the CVE\npage listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-11-21"
+      },
+      "Updated": {
+        "Date": "2024-11-21"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-5569",
+          "Cvss3": "6.2/CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-400",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-5569",
+          "Public": "20240709"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2296413",
+          "ID": "2296413"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:openstack:17.1",
+        "cpe:/a:redhat:openstack:17.1::el9"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhsa:tst:20235969010"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhsa:tst:20235969009"
+          },
+          {
+            "Comment": "python3-zipp is earlier than 0:3.4.0-3.el9ost",
+            "TestRef": "oval:com.redhat.rhsa:tst:20249977001"
+          },
+          {
+            "Comment": "python3-zipp is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20249977002"
+          }
+        ]
+      }
+    ]
+  }
+}
