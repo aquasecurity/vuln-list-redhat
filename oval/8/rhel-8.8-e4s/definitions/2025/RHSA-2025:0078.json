@@ -1,0 +1,107 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20250078",
+  "Version": "635",
+  "Metadata": {
+    "Title": "RHSA-2025:0078: python3.11-urllib3 security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8.8 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:0078",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:0078"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2023-45803",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2023-45803"
+      }
+    ],
+    "Description": "Python is an interpreted, interactive, object-oriented programming language, which includes modules, classes, exceptions, very high level dynamic data types and dynamic typing. Python supports interfaces to many system calls and libraries, as well as to various windowing systems.\n\nSecurity Fix(es):\n\n* urllib3: Request body not stripped after redirect from 303 status changes request method to GET (CVE-2023-45803)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-01-08"
+      },
+      "Updated": {
+        "Date": "2025-01-08"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2023-45803",
+          "Cvss3": "4.2/CVSS:3.1/AV:A/AC:H/PR:H/UI:N/S:U/C:H/I:N/A:N",
+          "Cwe": "CWE-200",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2023-45803",
+          "Public": "20231013"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2246840",
+          "ID": "2246840"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:8.8",
+        "cpe:/a:redhat:rhel_e4s:8.8::appstream",
+        "cpe:/a:redhat:rhel_e4s:8.8::highavailability",
+        "cpe:/a:redhat:rhel_e4s:8.8::sap",
+        "cpe:/a:redhat:rhel_e4s:8.8::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:8.8",
+        "cpe:/o:redhat:rhel_e4s:8.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "python3.11-urllib3 is earlier than 0:1.26.12-1.el8_8.2",
+            "TestRef": "oval:com.redhat.rhsa:tst:20250078001"
+          },
+          {
+            "Comment": "python3.11-urllib3 is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20248035002"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
