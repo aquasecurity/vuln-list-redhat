@@ -1,0 +1,136 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20250204",
+  "Version": "635",
+  "Metadata": {
+    "Title": "RHSA-2025:0204: Red Hat OpenStack Platform 16.2 (openstack-ironic) security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat OpenStack Platform 16.2"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:0204",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:0204"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-44082",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-44082"
+      }
+    ],
+    "Description": "Ironic is a project which aims to provision bare metal (as opposed to\nvirtual) machines by leveraging common technologies such as PXE boot and\nIPMI to cover a wide range of hardware, while supporting pluggable drivers\nto allow vendor-specific functionality to be added.Bare Metal provisioning\nfor OpenStack\n\nSecurity Fix(es):\n\n* Specially crafted image may allow authenticated users to gain access to\npotentially sensitive data (CVE-2024-44082)\n\nFor more details about the security issue(s), including the impact, a CVSS\nscore, acknowledgments, and other related information, refer to the CVE\npage listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-01-09"
+      },
+      "Updated": {
+        "Date": "2025-01-09"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-44082",
+          "Cvss3": "6.8/CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:N",
+          "Cwe": "CWE-200",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-44082",
+          "Public": "20240904"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2309331",
+          "ID": "2309331"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:openstack:16.2",
+        "cpe:/a:redhat:openstack:16.2::el8"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhsa:tst:20213487005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhsa:tst:20213487003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhsa:tst:20213487004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openstack-ironic-api is earlier than 1:13.0.8-2.20230713045150.d10fd5c.el8ost",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250204001"
+                  },
+                  {
+                    "Comment": "openstack-ironic-api is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250204002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openstack-ironic-common is earlier than 1:13.0.8-2.20230713045150.d10fd5c.el8ost",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250204003"
+                  },
+                  {
+                    "Comment": "openstack-ironic-common is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250204004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openstack-ironic-conductor is earlier than 1:13.0.8-2.20230713045150.d10fd5c.el8ost",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250204005"
+                  },
+                  {
+                    "Comment": "openstack-ironic-conductor is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250204006"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
