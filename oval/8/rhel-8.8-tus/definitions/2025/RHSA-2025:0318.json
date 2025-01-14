@@ -1,0 +1,128 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20250318",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2025:0318: raptor2 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8.8 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:0318",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:0318"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-57823",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-57823"
+      }
+    ],
+    "Description": "Raptor is the RDF Parser Toolkit for Redland that provides a set of standalone RDF parsers, generating triples from RDF/XML or N-Triples. \n\nSecurity Fix(es):\n\n* raptor: integer underflow when normalizing a URI with the turtle parser (CVE-2024-57823)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-01-14"
+      },
+      "Updated": {
+        "Date": "2025-01-14"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-57823",
+          "Cvss3": "7.3/CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:H",
+          "Cwe": "CWE-191",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-57823",
+          "Public": "20250110"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2336921",
+          "ID": "2336921"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_tus:8.8",
+        "cpe:/a:redhat:rhel_tus:8.8::appstream",
+        "cpe:/a:redhat:rhel_tus:8.8::highavailability",
+        "cpe:/a:redhat:rhel_tus:8.8::nfv",
+        "cpe:/a:redhat:rhel_tus:8.8::realtime",
+        "cpe:/o:redhat:rhel_tus:8.8",
+        "cpe:/o:redhat:rhel_tus:8.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "raptor2 is earlier than 0:2.0.15-17.el8_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250318001"
+                  },
+                  {
+                    "Comment": "raptor2 is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20211842002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "raptor2-devel is earlier than 0:2.0.15-17.el8_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250318003"
+                  },
+                  {
+                    "Comment": "raptor2-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20211842004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

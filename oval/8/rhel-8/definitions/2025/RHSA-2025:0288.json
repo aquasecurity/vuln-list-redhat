@@ -1,0 +1,315 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20250288",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2025:0288: Bug fix of NetworkManager (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:0288",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:0288"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-3661",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-3661"
+      }
+    ],
+    "Description": "Security and Bug Fix(es):\n\n* NetworkManager: DHCP routing options can manipulate interface-based VPN traffic (CVE-2024-3661)\n\n* Route to VPN server not stored in routing table that is specified by ipv4.route-table (JIRA:RHEL-73051)\n\n* VPN connections do not support ipv4.routing-rules settings (JIRA:RHEL-73052)",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-01-13"
+      },
+      "Updated": {
+        "Date": "2025-01-13"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-3661",
+          "Cvss3": "7.6/CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:L",
+          "Cwe": "(CWE-306|CWE-501)",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-3661",
+          "Public": "20240506:1831"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2320141",
+          "ID": "2320141"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:8",
+        "cpe:/a:redhat:enterprise_linux:8::appstream",
+        "cpe:/a:redhat:enterprise_linux:8::crb",
+        "cpe:/a:redhat:enterprise_linux:8::highavailability",
+        "cpe:/a:redhat:enterprise_linux:8::nfv",
+        "cpe:/a:redhat:enterprise_linux:8::realtime",
+        "cpe:/a:redhat:enterprise_linux:8::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:8::sap",
+        "cpe:/a:redhat:enterprise_linux:8::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:8::supplementary",
+        "cpe:/o:redhat:enterprise_linux:8",
+        "cpe:/o:redhat:enterprise_linux:8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "NetworkManager is earlier than 1:1.40.16-18.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250288001"
+                  },
+                  {
+                    "Comment": "NetworkManager is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20203011002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "NetworkManager-adsl is earlier than 1:1.40.16-18.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250288003"
+                  },
+                  {
+                    "Comment": "NetworkManager-adsl is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20203011004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "NetworkManager-bluetooth is earlier than 1:1.40.16-18.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250288005"
+                  },
+                  {
+                    "Comment": "NetworkManager-bluetooth is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20203011006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "NetworkManager-cloud-setup is earlier than 1:1.40.16-18.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250288007"
+                  },
+                  {
+                    "Comment": "NetworkManager-cloud-setup is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20203011008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "NetworkManager-config-connectivity-redhat is earlier than 1:1.40.16-18.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250288009"
+                  },
+                  {
+                    "Comment": "NetworkManager-config-connectivity-redhat is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20203011010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "NetworkManager-config-server is earlier than 1:1.40.16-18.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250288011"
+                  },
+                  {
+                    "Comment": "NetworkManager-config-server is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20203011012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "NetworkManager-dispatcher-routing-rules is earlier than 1:1.40.16-18.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250288013"
+                  },
+                  {
+                    "Comment": "NetworkManager-dispatcher-routing-rules is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20203011014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "NetworkManager-initscripts-updown is earlier than 1:1.40.16-18.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250288015"
+                  },
+                  {
+                    "Comment": "NetworkManager-initscripts-updown is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250288016"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "NetworkManager-libnm is earlier than 1:1.40.16-18.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250288017"
+                  },
+                  {
+                    "Comment": "NetworkManager-libnm is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20203011016"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "NetworkManager-libnm-devel is earlier than 1:1.40.16-18.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250288019"
+                  },
+                  {
+                    "Comment": "NetworkManager-libnm-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20203011018"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "NetworkManager-ovs is earlier than 1:1.40.16-18.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250288021"
+                  },
+                  {
+                    "Comment": "NetworkManager-ovs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20203011020"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "NetworkManager-ppp is earlier than 1:1.40.16-18.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250288023"
+                  },
+                  {
+                    "Comment": "NetworkManager-ppp is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20203011022"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "NetworkManager-team is earlier than 1:1.40.16-18.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250288025"
+                  },
+                  {
+                    "Comment": "NetworkManager-team is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20203011024"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "NetworkManager-tui is earlier than 1:1.40.16-18.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250288027"
+                  },
+                  {
+                    "Comment": "NetworkManager-tui is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20203011026"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "NetworkManager-wifi is earlier than 1:1.40.16-18.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250288029"
+                  },
+                  {
+                    "Comment": "NetworkManager-wifi is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20203011028"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "NetworkManager-wwan is earlier than 1:1.40.16-18.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250288031"
+                  },
+                  {
+                    "Comment": "NetworkManager-wwan is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20203011030"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
