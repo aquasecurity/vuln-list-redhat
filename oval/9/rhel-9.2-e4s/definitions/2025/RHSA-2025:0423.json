@@ -1,0 +1,397 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20250423",
+  "Version": "635",
+  "Metadata": {
+    "Title": "RHSA-2025:0423: java-17-openjdk security update for RHEL 9.0 and 9.2 (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.2 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:0423",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:0423"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-21502",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-21502"
+      }
+    ],
+    "Description": "The java-17-openjdk packages provide the OpenJDK 17 Java Runtime Environment and the OpenJDK 17 Java Software Development Kit.\n\nSecurity Fix(es):\n\n* JDK: Enhance array handling (CVE-2025-21502)\n\nImportant Changes:\n\n* The Red Hat build of OpenJDK 17 is now the default system-wide version of Java on Red Hat Enterprise Linux (RHEL) 9, because the full support phase for Red Hat build of OpenJDK 11 has ended (RHEL-63035, RHEL-63036).\n\nThe 11.0.25 release was the last release of Red Hat build of OpenJDK 11 from Red Hat in the full support phase of the lifecycle. The full support phase for Red Hat build of OpenJDK 11 ended on 31 October 2024.\n\nAs a consequence, Red Hat build of OpenJDK 17 will be the default system-wide Java version on RHEL 9 after 31 October 2024.\n\nPlease refer to the Release Notes for Red Hat Build of OpenJDK 11.0.25 [1] for more details, including the Extended Life Cycle Support (ELS) phase for Red Hat build of OpenJDK 11 and for migration instructions.\n\nSee [2] for instructions on configuring Red Hat build of OpenJDK 17 on RHEL and selecting the default Red Hat build of OpenJDK version to use system wide.\n\n[1]\nhttps://docs.redhat.com/en/documentation/red_hat_build_of_openjdk/11/html/release_notes_for_red_hat_build_of_openjdk_11.0.25/endfullsupport\n\n[2]\nhttps://docs.redhat.com/en/documentation/red_hat_build_of_openjdk/17/html-single/configuring_red_hat_build_of_openjdk_17_on_rhel/index\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-01-22"
+      },
+      "Updated": {
+        "Date": "2025-01-22"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-21502",
+          "Cvss3": "4.8/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N",
+          "Cwe": "CWE-195",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-21502",
+          "Public": "20250121:2000"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2338992",
+          "ID": "2338992"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.2",
+        "cpe:/a:redhat:rhel_e4s:9.2::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.2::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.2::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.2::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.2::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.2::sap",
+        "cpe:/a:redhat:rhel_e4s:9.2::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.2",
+        "cpe:/o:redhat:rhel_e4s:9.2::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "java-17-openjdk is earlier than 1:17.0.14.0.7-2.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250423001"
+                  },
+                  {
+                    "Comment": "java-17-openjdk is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20221729002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "java-17-openjdk-demo is earlier than 1:17.0.14.0.7-2.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250423003"
+                  },
+                  {
+                    "Comment": "java-17-openjdk-demo is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20221729004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "java-17-openjdk-demo-fastdebug is earlier than 1:17.0.14.0.7-2.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250423005"
+                  },
+                  {
+                    "Comment": "java-17-openjdk-demo-fastdebug is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20221729006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "java-17-openjdk-demo-slowdebug is earlier than 1:17.0.14.0.7-2.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250423007"
+                  },
+                  {
+                    "Comment": "java-17-openjdk-demo-slowdebug is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20221729008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "java-17-openjdk-devel is earlier than 1:17.0.14.0.7-2.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250423009"
+                  },
+                  {
+                    "Comment": "java-17-openjdk-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20221729010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "java-17-openjdk-devel-fastdebug is earlier than 1:17.0.14.0.7-2.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250423011"
+                  },
+                  {
+                    "Comment": "java-17-openjdk-devel-fastdebug is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20221729012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "java-17-openjdk-devel-slowdebug is earlier than 1:17.0.14.0.7-2.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250423013"
+                  },
+                  {
+                    "Comment": "java-17-openjdk-devel-slowdebug is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20221729014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "java-17-openjdk-fastdebug is earlier than 1:17.0.14.0.7-2.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250423015"
+                  },
+                  {
+                    "Comment": "java-17-openjdk-fastdebug is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20221729016"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "java-17-openjdk-headless is earlier than 1:17.0.14.0.7-2.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250423017"
+                  },
+                  {
+                    "Comment": "java-17-openjdk-headless is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20221729018"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "java-17-openjdk-headless-fastdebug is earlier than 1:17.0.14.0.7-2.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250423019"
+                  },
+                  {
+                    "Comment": "java-17-openjdk-headless-fastdebug is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20221729020"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "java-17-openjdk-headless-slowdebug is earlier than 1:17.0.14.0.7-2.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250423021"
+                  },
+                  {
+                    "Comment": "java-17-openjdk-headless-slowdebug is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20221729022"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "java-17-openjdk-javadoc is earlier than 1:17.0.14.0.7-2.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250423023"
+                  },
+                  {
+                    "Comment": "java-17-openjdk-javadoc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20221729024"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "java-17-openjdk-javadoc-zip is earlier than 1:17.0.14.0.7-2.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250423025"
+                  },
+                  {
+                    "Comment": "java-17-openjdk-javadoc-zip is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20221729026"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "java-17-openjdk-jmods is earlier than 1:17.0.14.0.7-2.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250423027"
+                  },
+                  {
+                    "Comment": "java-17-openjdk-jmods is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20221729028"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "java-17-openjdk-jmods-fastdebug is earlier than 1:17.0.14.0.7-2.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250423029"
+                  },
+                  {
+                    "Comment": "java-17-openjdk-jmods-fastdebug is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20221729030"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "java-17-openjdk-jmods-slowdebug is earlier than 1:17.0.14.0.7-2.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250423031"
+                  },
+                  {
+                    "Comment": "java-17-openjdk-jmods-slowdebug is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20221729032"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "java-17-openjdk-slowdebug is earlier than 1:17.0.14.0.7-2.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250423033"
+                  },
+                  {
+                    "Comment": "java-17-openjdk-slowdebug is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20221729034"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "java-17-openjdk-src is earlier than 1:17.0.14.0.7-2.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250423035"
+                  },
+                  {
+                    "Comment": "java-17-openjdk-src is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20221729036"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "java-17-openjdk-src-fastdebug is earlier than 1:17.0.14.0.7-2.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250423037"
+                  },
+                  {
+                    "Comment": "java-17-openjdk-src-fastdebug is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20221729038"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "java-17-openjdk-src-slowdebug is earlier than 1:17.0.14.0.7-2.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250423039"
+                  },
+                  {
+                    "Comment": "java-17-openjdk-src-slowdebug is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20221729040"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "java-17-openjdk-static-libs is earlier than 1:17.0.14.0.7-2.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250423041"
+                  },
+                  {
+                    "Comment": "java-17-openjdk-static-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20221729042"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "java-17-openjdk-static-libs-fastdebug is earlier than 1:17.0.14.0.7-2.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250423043"
+                  },
+                  {
+                    "Comment": "java-17-openjdk-static-libs-fastdebug is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20221729044"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "java-17-openjdk-static-libs-slowdebug is earlier than 1:17.0.14.0.7-2.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250423045"
+                  },
+                  {
+                    "Comment": "java-17-openjdk-static-libs-slowdebug is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20221729046"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
