@@ -1,0 +1,150 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20250401",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2025:0401: grafana security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:0401",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:0401"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-21613",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-21613"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-21614",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-21614"
+      }
+    ],
+    "Description": "Grafana is an open source, feature rich metrics dashboard and graph editor for Graphite, InfluxDB \u0026 OpenTSDB. \n\nSecurity Fix(es):\n\n* go-git: argument injection via the URL field (CVE-2025-21613)\n\n* go-git: go-git clients vulnerable to DoS via maliciously crafted Git server replies (CVE-2025-21614)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-01-20"
+      },
+      "Updated": {
+        "Date": "2025-01-20"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-21613",
+          "Cvss3": "8.1/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-88",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-21613",
+          "Public": "20250106:1613"
+        },
+        {
+          "CveID": "CVE-2025-21614",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "(CWE-400|CWE-770)",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-21614",
+          "Public": "20250106:1620"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2335888",
+          "ID": "2335888"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2335901",
+          "ID": "2335901"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:8",
+        "cpe:/a:redhat:enterprise_linux:8::appstream",
+        "cpe:/a:redhat:enterprise_linux:8::crb",
+        "cpe:/a:redhat:enterprise_linux:8::highavailability",
+        "cpe:/a:redhat:enterprise_linux:8::nfv",
+        "cpe:/a:redhat:enterprise_linux:8::realtime",
+        "cpe:/a:redhat:enterprise_linux:8::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:8::sap",
+        "cpe:/a:redhat:enterprise_linux:8::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:8::supplementary",
+        "cpe:/o:redhat:enterprise_linux:8",
+        "cpe:/o:redhat:enterprise_linux:8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:20052541004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.cve:tst:20052541003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "grafana is earlier than 0:9.2.10-21.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250401001"
+                  },
+                  {
+                    "Comment": "grafana is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:202028362024"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "grafana-selinux is earlier than 0:9.2.10-21.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250401003"
+                  },
+                  {
+                    "Comment": "grafana-selinux is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:202231123014"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
