@@ -1,0 +1,146 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20250733",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2025:0733: bzip2 security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:0733",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:0733"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2019-12900",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2019-12900"
+      }
+    ],
+    "Description": "The bzip2 packages contain a freely available, high-quality data compressor. It provides both standalone compression and decompression utilities, as well as a shared library for use with other programs. \n\nSecurity Fix(es):\n\n* bzip2: bzip2: Data integrity error when decompressing (with data integrity tests fail). (CVE-2019-12900)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-01-28"
+      },
+      "Updated": {
+        "Date": "2025-01-28"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2019-12900",
+          "Cvss3": "3.3/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
+          "Cwe": "CWE-1214",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2019-12900",
+          "Public": "20241115:1000"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2332075",
+          "ID": "2332075"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:8",
+        "cpe:/a:redhat:enterprise_linux:8::appstream",
+        "cpe:/a:redhat:enterprise_linux:8::crb",
+        "cpe:/a:redhat:enterprise_linux:8::highavailability",
+        "cpe:/a:redhat:enterprise_linux:8::nfv",
+        "cpe:/a:redhat:enterprise_linux:8::realtime",
+        "cpe:/a:redhat:enterprise_linux:8::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:8::sap",
+        "cpe:/a:redhat:enterprise_linux:8::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:8::supplementary",
+        "cpe:/o:redhat:enterprise_linux:8",
+        "cpe:/o:redhat:enterprise_linux:8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:20052541004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.cve:tst:20052541003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bzip2 is earlier than 0:1.0.6-28.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250733001"
+                  },
+                  {
+                    "Comment": "bzip2 is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20248922002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bzip2-devel is earlier than 0:1.0.6-28.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250733003"
+                  },
+                  {
+                    "Comment": "bzip2-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20248922004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bzip2-libs is earlier than 0:1.0.6-28.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250733005"
+                  },
+                  {
+                    "Comment": "bzip2-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20248922006"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
