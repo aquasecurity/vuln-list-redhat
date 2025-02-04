@@ -1,0 +1,361 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20250880",
+  "Version": "634",
+  "Metadata": {
+    "Title": "RHSA-2025:0880: tuned security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Fast Datapath for Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:0880",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:0880"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-52336",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-52336"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-52337",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-52337"
+      }
+    ],
+    "Description": "The tuned packages provide a service that tunes system settings according to a selected profile.\n\nSecurity Fix(es):\n\n* tuned: improper sanitization of `instance_name` parameter of the\n`instance_create()` method (CVE-2024-52337)\n\n* tuned: `script_pre` and `script_post` options allow to pass arbitrary scripts executed by root (CVE-2024-52336)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-02-03"
+      },
+      "Updated": {
+        "Date": "2025-02-03"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-52336",
+          "Cvss3": "7.8/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-269",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-52336",
+          "Public": "20241126:1200"
+        },
+        {
+          "CveID": "CVE-2024-52337",
+          "Cvss3": "5.5/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N",
+          "Cwe": "CWE-20",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-52337",
+          "Public": "20241126:1200"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2324540",
+          "ID": "2324540"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2324541",
+          "ID": "2324541"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/o:redhat:enterprise_linux:8",
+        "cpe:/o:redhat:enterprise_linux:8::fastdatapath"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:20158011014"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.cve:tst:20158011013"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20205310012"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tuned is earlier than 0:2.24.0-2.1.20240819gitc082797f.el8fdp",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880001"
+                  },
+                  {
+                    "Comment": "tuned is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tuned-gtk is earlier than 0:2.24.0-2.1.20240819gitc082797f.el8fdp",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880003"
+                  },
+                  {
+                    "Comment": "tuned-gtk is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tuned-ppd is earlier than 0:2.24.0-2.1.20240819gitc082797f.el8fdp",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880005"
+                  },
+                  {
+                    "Comment": "tuned-ppd is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tuned-profiles-atomic is earlier than 0:2.24.0-2.1.20240819gitc082797f.el8fdp",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880007"
+                  },
+                  {
+                    "Comment": "tuned-profiles-atomic is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tuned-profiles-compat is earlier than 0:2.24.0-2.1.20240819gitc082797f.el8fdp",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880009"
+                  },
+                  {
+                    "Comment": "tuned-profiles-compat is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tuned-profiles-cpu-partitioning is earlier than 0:2.24.0-2.1.20240819gitc082797f.el8fdp",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880011"
+                  },
+                  {
+                    "Comment": "tuned-profiles-cpu-partitioning is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tuned-profiles-mssql is earlier than 0:2.24.0-2.1.20240819gitc082797f.el8fdp",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880013"
+                  },
+                  {
+                    "Comment": "tuned-profiles-mssql is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tuned-profiles-nfv is earlier than 0:2.24.0-2.1.20240819gitc082797f.el8fdp",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880015"
+                  },
+                  {
+                    "Comment": "tuned-profiles-nfv is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880016"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tuned-profiles-nfv-guest is earlier than 0:2.24.0-2.1.20240819gitc082797f.el8fdp",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880017"
+                  },
+                  {
+                    "Comment": "tuned-profiles-nfv-guest is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880018"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tuned-profiles-nfv-host is earlier than 0:2.24.0-2.1.20240819gitc082797f.el8fdp",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880019"
+                  },
+                  {
+                    "Comment": "tuned-profiles-nfv-host is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880020"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tuned-profiles-openshift is earlier than 0:2.24.0-2.1.20240819gitc082797f.el8fdp",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880021"
+                  },
+                  {
+                    "Comment": "tuned-profiles-openshift is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880022"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tuned-profiles-oracle is earlier than 0:2.24.0-2.1.20240819gitc082797f.el8fdp",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880023"
+                  },
+                  {
+                    "Comment": "tuned-profiles-oracle is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880024"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tuned-profiles-postgresql is earlier than 0:2.24.0-2.1.20240819gitc082797f.el8fdp",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880025"
+                  },
+                  {
+                    "Comment": "tuned-profiles-postgresql is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880026"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tuned-profiles-realtime is earlier than 0:2.24.0-2.1.20240819gitc082797f.el8fdp",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880027"
+                  },
+                  {
+                    "Comment": "tuned-profiles-realtime is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880028"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tuned-profiles-sap is earlier than 0:2.24.0-2.1.20240819gitc082797f.el8fdp",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880029"
+                  },
+                  {
+                    "Comment": "tuned-profiles-sap is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880030"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tuned-profiles-sap-hana is earlier than 0:2.24.0-2.1.20240819gitc082797f.el8fdp",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880031"
+                  },
+                  {
+                    "Comment": "tuned-profiles-sap-hana is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880032"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tuned-profiles-spectrumscale is earlier than 0:2.24.0-2.1.20240819gitc082797f.el8fdp",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880033"
+                  },
+                  {
+                    "Comment": "tuned-profiles-spectrumscale is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880034"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tuned-utils is earlier than 0:2.24.0-2.1.20240819gitc082797f.el8fdp",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880035"
+                  },
+                  {
+                    "Comment": "tuned-utils is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880036"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tuned-utils-systemtap is earlier than 0:2.24.0-2.1.20240819gitc082797f.el8fdp",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880037"
+                  },
+                  {
+                    "Comment": "tuned-utils-systemtap is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250880038"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
