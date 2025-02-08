@@ -1,0 +1,142 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20251094",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2025:1094: ovn23.06 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Fast Datapath for Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:1094",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:1094"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-0650",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-0650"
+      }
+    ],
+    "Description": "OVN, the Open Virtual Network, is a system to support virtual network abstraction.  OVN complements the existing capabilities of OVS to add native support for virtual network abstractions, such as virtual L2 and L3 overlays and security groups.\n\nSecurity Fix(es):\n\n* ovn: egress ACLs may be bypassed via specially crafted UDP packet (CVE-2025-0650)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-02-05"
+      },
+      "Updated": {
+        "Date": "2025-02-05"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-0650",
+          "Cvss3": "8.1/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-284",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-0650",
+          "Public": "20240121"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2339537",
+          "ID": "2339537"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::fastdatapath"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20241226012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20241226011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "ovn23.06 is earlier than 0:23.06.4-26.el9fdp",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251094001"
+                  },
+                  {
+                    "Comment": "ovn23.06 is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20241391002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "ovn23.06-central is earlier than 0:23.06.4-26.el9fdp",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251094003"
+                  },
+                  {
+                    "Comment": "ovn23.06-central is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20241391004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "ovn23.06-host is earlier than 0:23.06.4-26.el9fdp",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251094005"
+                  },
+                  {
+                    "Comment": "ovn23.06-host is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20241391006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "ovn23.06-vtep is earlier than 0:23.06.4-26.el9fdp",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251094007"
+                  },
+                  {
+                    "Comment": "ovn23.06-vtep is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20241391008"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

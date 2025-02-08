@@ -1,0 +1,152 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202410761",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2024:10761: rhc-worker-playbook security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:10761",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:10761"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2022-40898",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2022-40898"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2023-1428",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2023-1428"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2023-32731",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2023-32731"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2023-33953",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2023-33953"
+      }
+    ],
+    "Description": "Python-based worker for Red Hat connect, used to launch Ansible playbooks via Ansible Runner.\n\nSecurity Fix(es):\n\n* python-wheel: remote attackers can cause denial of service via attacker controlled input to wheel cli (CVE-2022-40898)\n\n* gRPC: sensitive information disclosure (CVE-2023-32731)\n\n* gRPC: Reachable Assertion (CVE-2023-1428)\n\n* gRPC: hpack table accounting errors can lead to denial of service (CVE-2023-33953)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-12-03"
+      },
+      "Updated": {
+        "Date": "2024-12-03"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2022-40898",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-400",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2022-40898",
+          "Public": "20221221"
+        },
+        {
+          "CveID": "CVE-2023-1428",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-617",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2023-1428",
+          "Public": "20230609"
+        },
+        {
+          "CveID": "CVE-2023-32731",
+          "Cvss3": "7.4/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:H",
+          "Cwe": "CWE-440",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2023-32731",
+          "Public": "20230609"
+        },
+        {
+          "CveID": "CVE-2023-33953",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "(CWE-789|CWE-834)",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2023-33953",
+          "Public": "20230809"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2165864",
+          "ID": "2165864"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2214463",
+          "ID": "2214463"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2214473",
+          "ID": "2214473"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2230890",
+          "ID": "2230890"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
+          },
+          {
+            "Comment": "rhc-worker-playbook is earlier than 0:0.1.10-1.el9_5",
+            "TestRef": "oval:com.redhat.rhsa:tst:202410761001"
+          },
+          {
+            "Comment": "rhc-worker-playbook is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:202410761002"
+          }
+        ]
+      }
+    ]
+  }
+}

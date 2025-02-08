@@ -1,0 +1,521 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202410219",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2024:10219: perl-App-cpanminus:1.7044 security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:10219",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:10219"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-45321",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-45321"
+      }
+    ],
+    "Description": "The panminus is a script to get, unpack, build and install modules from CPAN.\n\nSecurity Fix(es):\n\n* perl-App-cpanminus: Insecure HTTP in App::cpanminus Allows Code Execution Vulnerability (CVE-2024-45321)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-11-25"
+      },
+      "Updated": {
+        "Date": "2024-11-25"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-45321",
+          "Cvss3": "8.1/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-45321",
+          "Public": "20240827:0415"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2308078",
+          "ID": "2308078"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:8",
+        "cpe:/a:redhat:enterprise_linux:8::appstream",
+        "cpe:/a:redhat:enterprise_linux:8::crb",
+        "cpe:/a:redhat:enterprise_linux:8::highavailability",
+        "cpe:/a:redhat:enterprise_linux:8::nfv",
+        "cpe:/a:redhat:enterprise_linux:8::realtime",
+        "cpe:/a:redhat:enterprise_linux:8::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:8::sap",
+        "cpe:/a:redhat:enterprise_linux:8::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:8::supplementary",
+        "cpe:/o:redhat:enterprise_linux:8",
+        "cpe:/o:redhat:enterprise_linux:8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "Module perl-App-cpanminus:1.7044 is enabled",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202410219015"
+                  }
+                ],
+                "Criterias": [
+                  {
+                    "Operator": "OR",
+                    "Criterias": [
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-App-cpanminus is earlier than 0:1.7044-6.module+el8.10.0+22411+e14e3526",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219001"
+                          },
+                          {
+                            "Comment": "perl-App-cpanminus is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219002"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-CPAN-DistnameInfo is earlier than 0:0.12-13.module+el8.10.0+22411+e14e3526",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219003"
+                          },
+                          {
+                            "Comment": "perl-CPAN-DistnameInfo is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219004"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-CPAN-Meta-Check is earlier than 0:0.014-6.module+el8.10.0+22411+e14e3526",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219005"
+                          },
+                          {
+                            "Comment": "perl-CPAN-Meta-Check is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219006"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-File-pushd is earlier than 0:1.014-6.module+el8.10.0+22411+e14e3526",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219007"
+                          },
+                          {
+                            "Comment": "perl-File-pushd is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219008"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Module-CPANfile is earlier than 0:1.1002-7.module+el8.10.0+22411+e14e3526",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219009"
+                          },
+                          {
+                            "Comment": "perl-Module-CPANfile is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219010"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Parse-PMFile is earlier than 0:0.41-7.module+el8.10.0+22411+e14e3526",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219011"
+                          },
+                          {
+                            "Comment": "perl-Parse-PMFile is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219012"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-String-ShellQuote is earlier than 0:1.04-24.module+el8.10.0+22411+e14e3526",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219013"
+                          },
+                          {
+                            "Comment": "perl-String-ShellQuote is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219014"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "Module perl-App-cpanminus:1.7044 is enabled",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202410219015"
+                  }
+                ],
+                "Criterias": [
+                  {
+                    "Operator": "OR",
+                    "Criterias": [
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-App-cpanminus is earlier than 0:1.7044-6.module+el8.10.0+22411+409a293e",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219016"
+                          },
+                          {
+                            "Comment": "perl-App-cpanminus is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219002"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-CPAN-DistnameInfo is earlier than 0:0.12-13.module+el8.10.0+22411+409a293e",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219017"
+                          },
+                          {
+                            "Comment": "perl-CPAN-DistnameInfo is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219004"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-CPAN-Meta-Check is earlier than 0:0.014-6.module+el8.10.0+22411+409a293e",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219018"
+                          },
+                          {
+                            "Comment": "perl-CPAN-Meta-Check is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219006"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-File-pushd is earlier than 0:1.014-6.module+el8.10.0+22411+409a293e",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219019"
+                          },
+                          {
+                            "Comment": "perl-File-pushd is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219008"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Module-CPANfile is earlier than 0:1.1002-7.module+el8.10.0+22411+409a293e",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219020"
+                          },
+                          {
+                            "Comment": "perl-Module-CPANfile is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219010"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Parse-PMFile is earlier than 0:0.41-7.module+el8.10.0+22411+409a293e",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219021"
+                          },
+                          {
+                            "Comment": "perl-Parse-PMFile is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219012"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-String-ShellQuote is earlier than 0:1.04-24.module+el8.10.0+22411+409a293e",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219022"
+                          },
+                          {
+                            "Comment": "perl-String-ShellQuote is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219014"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "Module perl-App-cpanminus:1.7044 is enabled",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202410219015"
+                  }
+                ],
+                "Criterias": [
+                  {
+                    "Operator": "OR",
+                    "Criterias": [
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-App-cpanminus is earlier than 0:1.7044-6.module+el8.10.0+22411+7e3d2305",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219024"
+                          },
+                          {
+                            "Comment": "perl-App-cpanminus is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219002"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-CPAN-DistnameInfo is earlier than 0:0.12-13.module+el8.10.0+22411+7e3d2305",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219025"
+                          },
+                          {
+                            "Comment": "perl-CPAN-DistnameInfo is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219004"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-CPAN-Meta-Check is earlier than 0:0.014-6.module+el8.10.0+22411+7e3d2305",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219026"
+                          },
+                          {
+                            "Comment": "perl-CPAN-Meta-Check is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219006"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-File-pushd is earlier than 0:1.014-6.module+el8.10.0+22411+7e3d2305",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219027"
+                          },
+                          {
+                            "Comment": "perl-File-pushd is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219008"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Module-CPANfile is earlier than 0:1.1002-7.module+el8.10.0+22411+7e3d2305",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219028"
+                          },
+                          {
+                            "Comment": "perl-Module-CPANfile is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219010"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Parse-PMFile is earlier than 0:0.41-7.module+el8.10.0+22411+7e3d2305",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219029"
+                          },
+                          {
+                            "Comment": "perl-Parse-PMFile is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219012"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-String-ShellQuote is earlier than 0:1.04-24.module+el8.10.0+22411+7e3d2305",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219030"
+                          },
+                          {
+                            "Comment": "perl-String-ShellQuote is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219014"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "Module perl-App-cpanminus:1.7044 is enabled",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202410219015"
+                  }
+                ],
+                "Criterias": [
+                  {
+                    "Operator": "OR",
+                    "Criterias": [
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-App-cpanminus is earlier than 0:1.7044-6.module+el8.10.0+22411+85254afd",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219032"
+                          },
+                          {
+                            "Comment": "perl-App-cpanminus is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219002"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-CPAN-Meta-Check is earlier than 0:0.014-6.module+el8.10.0+22411+85254afd",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219033"
+                          },
+                          {
+                            "Comment": "perl-CPAN-Meta-Check is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219006"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-File-pushd is earlier than 0:1.014-6.module+el8.10.0+22411+85254afd",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219034"
+                          },
+                          {
+                            "Comment": "perl-File-pushd is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219008"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Module-CPANfile is earlier than 0:1.1002-7.module+el8.10.0+22411+85254afd",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219035"
+                          },
+                          {
+                            "Comment": "perl-Module-CPANfile is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219010"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-Parse-PMFile is earlier than 0:0.41-7.module+el8.10.0+22411+85254afd",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219036"
+                          },
+                          {
+                            "Comment": "perl-Parse-PMFile is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219012"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-String-ShellQuote is earlier than 0:1.04-24.module+el8.10.0+22411+85254afd",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219037"
+                          },
+                          {
+                            "Comment": "perl-String-ShellQuote is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410219014"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

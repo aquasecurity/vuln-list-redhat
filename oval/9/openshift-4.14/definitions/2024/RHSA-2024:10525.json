@@ -1,0 +1,155 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202410525",
+  "Version": "638",
+  "Metadata": {
+    "Title": "RHSA-2024:10525: Red Hat build of MicroShift 4.14.42 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat OpenShift Container Platform 4.14"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:10525",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:10525"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-21626",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-21626"
+      }
+    ],
+    "Description": "Red Hat OpenShift Container Platform is Red Hat's cloud computing\nKubernetes application platform solution designed for on-premise or private\ncloud deployments.\n\nRed Hat build of MicroShift is Red Hat's light-weight Kubernetes\norchestration solution designed for edge device deployments and is built\nfrom the edge capabilities of Red Hat OpenShift. MicroShift is an\napplication that is deployed on top of Red Hat Enterprise Linux devices at\nthe edge, providing an efficient way to operate single-node clusters in\nthese low-resource environments.\n\nThis advisory contains the RPM packages for Red Hat build of MicroShift\n4.14.42. Read the following advisory for the container images for this\nrelease:\n\nhttps://access.redhat.com/errata/RHSA-2024:10523\n\nAll Red Hat build of MicroShift 4.14 users are advised to use these updated\npackages and images when they are available in the RPM repository.\n\nSecurity Fix(es):\n\n* runc: file descriptor leak (CVE-2024-21626)\n\nFor more details about the security issue(s), including the impact, a CVSS\nscore, acknowledgments, and other related information, refer to the CVE\npage(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-12-05"
+      },
+      "Updated": {
+        "Date": "2024-12-05"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-21626",
+          "Cvss3": "8.6/CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+          "Cwe": "CWE-200",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-21626",
+          "Public": "20240131:2001"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2258725",
+          "ID": "2258725"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:openshift:4.14",
+        "cpe:/a:redhat:openshift:4.14::el9"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhsa:tst:20235008010"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhsa:tst:20235008009"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "microshift is earlier than 0:4.14.42-202411280904.p0.gcf4d04f.assembly.4.14.42.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202410525001"
+                  },
+                  {
+                    "Comment": "microshift is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20235008002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "microshift-greenboot is earlier than 0:4.14.42-202411280904.p0.gcf4d04f.assembly.4.14.42.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202410525003"
+                  },
+                  {
+                    "Comment": "microshift-greenboot is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20236839004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "microshift-networking is earlier than 0:4.14.42-202411280904.p0.gcf4d04f.assembly.4.14.42.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202410525005"
+                  },
+                  {
+                    "Comment": "microshift-networking is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20235008004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "microshift-release-info is earlier than 0:4.14.42-202411280904.p0.gcf4d04f.assembly.4.14.42.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202410525007"
+                  },
+                  {
+                    "Comment": "microshift-release-info is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20235008006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "microshift-selinux is earlier than 0:4.14.42-202411280904.p0.gcf4d04f.assembly.4.14.42.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202410525009"
+                  },
+                  {
+                    "Comment": "microshift-selinux is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20235008008"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
