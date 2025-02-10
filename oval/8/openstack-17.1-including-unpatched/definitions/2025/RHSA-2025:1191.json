@@ -1,0 +1,108 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20251191",
+  "Version": "635",
+  "Metadata": {
+    "Title": "RHSA-2025:1191: Red Hat OpenStack Platform 17.1 (python-waitress) security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat OpenStack Platform 17.1 for RHEL 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:1191",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:1191"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-49768",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-49768"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-49769",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-49769"
+      }
+    ],
+    "Description": "Pure-python WSGI server\n\nSecurity Fix(es):\n\n* python-waitress: request processing race condition in HTTP pipelining\nwith invalid first request (CVE-2024-49768)\n\n* Waitress has a denial of service leading to high CPU usage/resource\nexhaustion (CVE-2024-49769)\n\nFor more details about the security issue(s), including the impact, a CVSS\nscore, acknowledgments, and other related information, refer to the CVE\npage listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-02-10"
+      },
+      "Updated": {
+        "Date": "2025-02-10"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-49768",
+          "Cvss3": "4.8/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N",
+          "Cwe": "(CWE-367|CWE-444)",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-49768",
+          "Public": "20241029:1432"
+        },
+        {
+          "CveID": "CVE-2024-49769",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-772",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-49769",
+          "Public": "20241029:1418"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2322460",
+          "ID": "2322460"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2322461",
+          "ID": "2322461"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:openstack:17.1",
+        "cpe:/a:redhat:openstack:17.1::el9"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:202234038004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.cve:tst:202234038003"
+          },
+          {
+            "Comment": "python3-waitress is earlier than 0:2.0.0-4.el9ost",
+            "TestRef": "oval:com.redhat.rhsa:tst:20251191001"
+          },
+          {
+            "Comment": "python3-waitress is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20251191002"
+          }
+        ]
+      }
+    ]
+  }
+}

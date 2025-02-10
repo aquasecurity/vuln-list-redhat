@@ -1,0 +1,91 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20251190",
+  "Version": "635",
+  "Metadata": {
+    "Title": "RHSA-2025:1190: Red Hat OpenStack Platform 17.1 (etcd) security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat OpenStack Platform 17.1 for RHEL 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:1190",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:1190"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-34156",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-34156"
+      }
+    ],
+    "Description": "A highly-available key value store for shared configuration\n\nSecurity Fix(es):\n\n* golang: Calling Decoder.Decode on a message which contains deeply nested\nstructures can cause a panic due to stack exhaustion (CVE-2024-34156)\n\nFor more details about the security issue(s), including the impact, a CVSS\nscore, acknowledgments, and other related information, refer to the CVE\npage listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-02-10"
+      },
+      "Updated": {
+        "Date": "2025-02-10"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-34156",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-674",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-34156",
+          "Public": "20240906:2115"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2310528",
+          "ID": "2310528"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:openstack:17.1",
+        "cpe:/a:redhat:openstack:17.1::el9"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:202234038004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.cve:tst:202234038003"
+          },
+          {
+            "Comment": "etcd is earlier than 0:3.4.26-9.1.el9ost",
+            "TestRef": "oval:com.redhat.rhsa:tst:20251190001"
+          },
+          {
+            "Comment": "etcd is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.cve:tst:202234038002"
+          }
+        ]
+      }
+    ]
+  }
+}
