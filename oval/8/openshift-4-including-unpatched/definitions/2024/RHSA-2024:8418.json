@@ -1,0 +1,136 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20248418",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2024:8418: OpenShift Container Platform 4.16.z security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat OpenShift Container Platform 4.16"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:8418",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:8418"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-24790",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-24790"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-5569",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-5569"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-9676",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-9676"
+      }
+    ],
+    "Description": "Red Hat OpenShift Container Platform is Red Hat's cloud computing Kubernetes application platform solution designed for on-premise or private cloud deployments.\n\nThis advisory contains the RPM packages for Red Hat OpenShift Container Platform 4.16.19. See the following advisory for the container images for this release:\n\nhttps://access.redhat.com/errata/RHSA-2024:8418\nSecurity Fix(es):\n\n* github.com/jaraco/zipp: Denial of Service (infinite loop) via crafted zip\nfile in jaraco/zipp (CVE-2024-5569)\n* Podman: Buildah: CRI-O: symlink traversal vulnerability in the\ncontainers/storage library can cause Denial of Service (DoS)\n(CVE-2024-9676)\n* golang: net/netip: Unexpected behavior from Is methods for IPv4-mapped\nIPv6 addresses (CVE-2024-24790)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n\nAll OpenShift Container Platform 4.16 users are advised to upgrade to these updated packages and images when they are available in the appropriate release channel. To check for available updates, use the OpenShift CLI (oc) or web console. Instructions for upgrading a cluster are available at https://docs.openshift.com/container-platform/4.16/updating/updating_a_cluster/updating-cluster-cli.html",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-10-30"
+      },
+      "Updated": {
+        "Date": "2024-11-06"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-24790",
+          "Cvss3": "6.7/CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+          "Cwe": "CWE-115",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-24790",
+          "Public": "20240604"
+        },
+        {
+          "CveID": "CVE-2024-5569",
+          "Cvss3": "6.2/CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-400",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-5569",
+          "Public": "20240709"
+        },
+        {
+          "CveID": "CVE-2024-9676",
+          "Cvss3": "6.5/CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-22",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-9676",
+          "Public": "20241015:1500"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2292787",
+          "ID": "2292787"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2296413",
+          "ID": "2296413"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2317467",
+          "ID": "2317467"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:openshift:4.16",
+        "cpe:/a:redhat:openshift:4.16::el8"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:201714623004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "cri-o is earlier than 0:1.29.9-6.rhaos4.16.gite7bd45a.el8",
+            "TestRef": "oval:com.redhat.rhsa:tst:20248418001"
+          },
+          {
+            "Comment": "cri-o is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.cve:tst:202127918008"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.cve:tst:201714623003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:202410826004"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
