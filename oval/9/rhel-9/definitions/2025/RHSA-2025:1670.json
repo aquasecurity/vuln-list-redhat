@@ -1,0 +1,208 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20251670",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2025:1670: bind9.18 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:1670",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:1670"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-11187",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-11187"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-12705",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-12705"
+      }
+    ],
+    "Description": "BIND (Berkeley Internet Name Domain) is an implementation of the DNS (Domain Name System) protocols. BIND includes a DNS server (named), which resolves host names to IP addresses; a resolver library (routines for applications to use when interfacing with DNS); and tools for verifying that the DNS server is operating properly.\n\nSecurity Fix(es):\n\n* bind: bind9: Many records in the additional section cause CPU exhaustion (CVE-2024-11187)\n\n* bind: bind9: DNS-over-HTTPS implementation suffers from multiple issues under heavy query load (CVE-2024-12705)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-02-19"
+      },
+      "Updated": {
+        "Date": "2025-02-19"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-11187",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-400",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-11187",
+          "Public": "20250129"
+        },
+        {
+          "CveID": "CVE-2024-12705",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-400",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-12705",
+          "Public": "20240129"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2342879",
+          "ID": "2342879"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2342880",
+          "ID": "2342880"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind9.18 is earlier than 32:9.18.29-1.el9_5.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251670001"
+                  },
+                  {
+                    "Comment": "bind9.18 is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251670002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind9.18-chroot is earlier than 32:9.18.29-1.el9_5.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251670003"
+                  },
+                  {
+                    "Comment": "bind9.18-chroot is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251670004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind9.18-devel is earlier than 32:9.18.29-1.el9_5.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251670005"
+                  },
+                  {
+                    "Comment": "bind9.18-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251670006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind9.18-dnssec-utils is earlier than 32:9.18.29-1.el9_5.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251670007"
+                  },
+                  {
+                    "Comment": "bind9.18-dnssec-utils is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251670008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind9.18-doc is earlier than 32:9.18.29-1.el9_5.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251670009"
+                  },
+                  {
+                    "Comment": "bind9.18-doc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251670010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind9.18-libs is earlier than 32:9.18.29-1.el9_5.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251670011"
+                  },
+                  {
+                    "Comment": "bind9.18-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251670012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind9.18-utils is earlier than 32:9.18.29-1.el9_5.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251670013"
+                  },
+                  {
+                    "Comment": "bind9.18-utils is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251670014"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
