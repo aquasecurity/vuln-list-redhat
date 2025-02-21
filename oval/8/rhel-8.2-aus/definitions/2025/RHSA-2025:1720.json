@@ -1,0 +1,125 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20251720",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2025:1720: libpq security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8.2 Advanced Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:1720",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:1720"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-1094",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-1094"
+      }
+    ],
+    "Description": "The libpq package provides the PostgreSQL client library, which allows client programs to connect to PostgreSQL servers. \n\nSecurity Fix(es):\n\n* postgresql: PostgreSQL quoting APIs miss neutralizing quoting syntax in text that fails encoding validation (CVE-2025-1094)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-02-20"
+      },
+      "Updated": {
+        "Date": "2025-02-20"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-1094",
+          "Cvss3": "8.1/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-149",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-1094",
+          "Public": "20250213:1300"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2345548",
+          "ID": "2345548"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_aus:8.2",
+        "cpe:/a:redhat:rhel_aus:8.2::appstream",
+        "cpe:/o:redhat:rhel_aus:8.2",
+        "cpe:/o:redhat:rhel_aus:8.2::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libpq is earlier than 0:12.7-1.el8_2.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251720001"
+                  },
+                  {
+                    "Comment": "libpq is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhea:tst:20200343002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libpq-devel is earlier than 0:12.7-1.el8_2.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251720003"
+                  },
+                  {
+                    "Comment": "libpq-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhea:tst:20200343004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
