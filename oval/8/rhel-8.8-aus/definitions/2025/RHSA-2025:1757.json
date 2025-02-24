@@ -1,0 +1,257 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20251757",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2025:1757: mysql:8.0 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8.8 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:1757",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:1757"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-21521",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-21521"
+      }
+    ],
+    "Description": "MySQL is a multi-user, multi-threaded SQL database server. It consists of the MySQL server daemon (mysqld) and many client programs and libraries.\n\nSecurity Fix(es):\n\n* mysql: Thread Pooling unspecified vulnerability (CPU Jan 2025) (CVE-2025-21521)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-02-24"
+      },
+      "Updated": {
+        "Date": "2025-02-24"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-21521",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-21521",
+          "Public": "20250121:2053"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2339270",
+          "ID": "2339270"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_aus:8.8",
+        "cpe:/a:redhat:rhel_aus:8.8::appstream",
+        "cpe:/o:redhat:rhel_aus:8.8",
+        "cpe:/o:redhat:rhel_aus:8.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "Module mysql:8.0 is enabled",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20192511021"
+                  }
+                ],
+                "Criterias": [
+                  {
+                    "Operator": "OR",
+                    "Criterias": [
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mecab is earlier than 0:0.996-2.module+el8.8.0+18436+8918dd75",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20233087001"
+                          },
+                          {
+                            "Comment": "mecab is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20192511002"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mecab-devel is earlier than 0:0.996-2.module+el8.8.0+18436+8918dd75",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20233087003"
+                          },
+                          {
+                            "Comment": "mecab-devel is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20233087004"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mecab-ipadic is earlier than 0:2.7.0.20070801-16.module+el8.0.0+3898+e09bb8de",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20192511003"
+                          },
+                          {
+                            "Comment": "mecab-ipadic is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20192511004"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mecab-ipadic-EUCJP is earlier than 0:2.7.0.20070801-16.module+el8.0.0+3898+e09bb8de",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20192511005"
+                          },
+                          {
+                            "Comment": "mecab-ipadic-EUCJP is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20192511006"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mysql is earlier than 0:8.0.40-1.module+el8.8.0+22863+a1071e1e",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20251757009"
+                          },
+                          {
+                            "Comment": "mysql is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20192511008"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mysql-common is earlier than 0:8.0.40-1.module+el8.8.0+22863+a1071e1e",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20251757011"
+                          },
+                          {
+                            "Comment": "mysql-common is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20192511010"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mysql-devel is earlier than 0:8.0.40-1.module+el8.8.0+22863+a1071e1e",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20251757013"
+                          },
+                          {
+                            "Comment": "mysql-devel is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20192511012"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mysql-errmsg is earlier than 0:8.0.40-1.module+el8.8.0+22863+a1071e1e",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20251757015"
+                          },
+                          {
+                            "Comment": "mysql-errmsg is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20192511014"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mysql-libs is earlier than 0:8.0.40-1.module+el8.8.0+22863+a1071e1e",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20251757017"
+                          },
+                          {
+                            "Comment": "mysql-libs is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20192511016"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mysql-server is earlier than 0:8.0.40-1.module+el8.8.0+22863+a1071e1e",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20251757019"
+                          },
+                          {
+                            "Comment": "mysql-server is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20192511018"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mysql-test is earlier than 0:8.0.40-1.module+el8.8.0+22863+a1071e1e",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20251757021"
+                          },
+                          {
+                            "Comment": "mysql-test is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20192511020"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
