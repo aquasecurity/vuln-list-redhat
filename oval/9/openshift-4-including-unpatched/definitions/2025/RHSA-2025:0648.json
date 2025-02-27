@@ -1,0 +1,91 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20250648",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2025:0648: OpenShift Container Platform 4.15.44 security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat OpenShift Container Platform 4.15"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:0648",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:0648"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-8676",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-8676"
+      }
+    ],
+    "Description": "Red Hat OpenShift Container Platform is Red Hat's cloud computing Kubernetes application platform solution designed for on-premise or private cloud deployments.\n\nThis advisory contains the RPM packages for Red Hat OpenShift Container Platform 4.15.44. See the following advisory for the container images for this release:\n\nhttps://access.redhat.com/errata/RHSA-2025:0646\n\nSecurity Fix(es):\n\n* cri-o: Checkpoint restore can be triggered from different namespaces\n(CVE-2024-8676)\n\nAll OpenShift Container Platform 4.15 users are advised to upgrade to these updated packages and images when they are available in the appropriate release channel. To check for available updates, use the OpenShift CLI (oc) or web console. Instructions for upgrading a cluster are available at https://docs.openshift.com/container-platform/4.15/updating/updating_a_cluster/updating-cluster-cli.html",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-01-29"
+      },
+      "Updated": {
+        "Date": "2025-01-29"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-8676",
+          "Cvss3": "7.4/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+          "Cwe": "CWE-285",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-8676",
+          "Public": "20241126:1821"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2313842",
+          "ID": "2313842"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:openshift:4.15",
+        "cpe:/a:redhat:openshift:4.15::el9"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:201714623004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.cve:tst:201714623003"
+          },
+          {
+            "Comment": "cri-o is earlier than 0:1.28.11-7.rhaos4.15.gitc4c0556.el9",
+            "TestRef": "oval:com.redhat.rhsa:tst:20250648001"
+          },
+          {
+            "Comment": "cri-o is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.cve:tst:202127918002"
+          }
+        ]
+      }
+    ]
+  }
+}
