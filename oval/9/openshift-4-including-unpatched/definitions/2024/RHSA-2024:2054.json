@@ -1,0 +1,146 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20242054",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2024:2054: OpenShift Container Platform 4.14.23 security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat OpenShift Container Platform 4.14"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:2054",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:2054"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-28180",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-28180"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-3177",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-3177"
+      }
+    ],
+    "Description": "Red Hat OpenShift Container Platform is Red Hat's cloud computing Kubernetes application platform solution designed for on-premise or private cloud deployments.\n\nThis advisory contains the RPM packages for Red Hat OpenShift Container Platform 4.14.23. See the following advisory for the container images for this release:\n\nhttps://access.redhat.com/errata/RHBA-2024:2051\n\nSecurity Fix(es):\n\n* jose-go: improper handling of highly compressed data (CVE-2024-28180)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n\nAll OpenShift Container Platform 4.14 users are advised to upgrade to these updated packages and images when they are available in the appropriate release channel. To check for available updates, use the OpenShift CLI (oc) or web console. Instructions for upgrading a cluster are available at https://docs.openshift.com/container-platform/4.14/updating/updating_a_cluster/updating-cluster-cli.html",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-05-02"
+      },
+      "Updated": {
+        "Date": "2024-05-02"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-28180",
+          "Cvss3": "4.3/CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L",
+          "Cwe": "CWE-409",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-28180",
+          "Public": "20240309"
+        },
+        {
+          "CveID": "CVE-2024-3177",
+          "Cvss3": "2.7/CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:N/A:N",
+          "Cwe": "CWE-213",
+          "Impact": "low",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-3177",
+          "Public": "20240416:1600"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2268854",
+          "ID": "2268854"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2274118",
+          "ID": "2274118"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:openshift:4.14",
+        "cpe:/a:redhat:openshift:4.14::el9"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:201714623004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.cve:tst:201714623003"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openshift-hyperkube is earlier than 0:4.14.0-202404231437.p0.g401bb48.assembly.stream.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242054001"
+                  },
+                  {
+                    "Comment": "openshift-hyperkube is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:202328642008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "skopeo is earlier than 2:1.11.3-0.1.rhaos4.14.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242054003"
+                  },
+                  {
+                    "Comment": "skopeo is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:202129482002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "skopeo-tests is earlier than 2:1.11.3-0.1.rhaos4.14.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242054005"
+                  },
+                  {
+                    "Comment": "skopeo-tests is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:202329406006"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
