@@ -1,0 +1,144 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20248037",
+  "Version": "638",
+  "Metadata": {
+    "Title": "RHSA-2024:8037: OpenIPMI security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:8037",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:8037"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-42934",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-42934"
+      }
+    ],
+    "Description": "The OpenIPMI packages provide command-line tools and utilities to access platform information using Intelligent Platform Management Interface (IPMI). System administrators can use OpenIPMI to manage systems and to perform system health monitoring.\n\nSecurity Fix(es):\n\n* openipmi: missing check on the authorization type on incoming LAN messages in IPMI simulator (CVE-2024-42934)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-10-14"
+      },
+      "Updated": {
+        "Date": "2024-10-14"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-42934",
+          "Cvss3": "5.0/CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L",
+          "Cwe": "CWE-862",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-42934",
+          "Public": "20240822"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2308375",
+          "ID": "2308375"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_aus:9.4",
+        "cpe:/a:redhat:rhel_aus:9.4::appstream",
+        "cpe:/o:redhat:rhel_aus:9.4",
+        "cpe:/o:redhat:rhel_aus:9.4::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhsa:tst:202410736039"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhsa:tst:202410736038"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "OpenIPMI is earlier than 0:2.0.32-5.el9_4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20248037001"
+                  },
+                  {
+                    "Comment": "OpenIPMI is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20248037002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "OpenIPMI-devel is earlier than 0:2.0.32-5.el9_4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20248037003"
+                  },
+                  {
+                    "Comment": "OpenIPMI-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20248037004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "OpenIPMI-lanserv is earlier than 0:2.0.32-5.el9_4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20248037005"
+                  },
+                  {
+                    "Comment": "OpenIPMI-lanserv is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20248037006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "OpenIPMI-libs is earlier than 0:2.0.32-5.el9_4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20248037007"
+                  },
+                  {
+                    "Comment": "OpenIPMI-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20248037008"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
