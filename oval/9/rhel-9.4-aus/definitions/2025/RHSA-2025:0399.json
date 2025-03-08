@@ -1,0 +1,131 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20250399",
+  "Version": "638",
+  "Metadata": {
+    "Title": "RHSA-2025:0399: redis security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.4 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:0399",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:0399"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-46981",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-46981"
+      }
+    ],
+    "Description": "Redis is an advanced key-value store. It is often referred to as a data-structure server since keys can contain strings, hashes, lists, sets, and sorted sets. For performance, Redis works with an in-memory data set. You can persist it either by dumping the data set to disk every once in a while, or by appending each command to a log.\n\nSecurity Fix(es):\n\n* redis: Redis' Lua library commands may lead to remote code execution (CVE-2024-46981)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-01-20"
+      },
+      "Updated": {
+        "Date": "2025-01-20"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-46981",
+          "Cvss3": "7.0/CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-416",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-46981",
+          "Public": "20250106:2111"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2336004",
+          "ID": "2336004"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_aus:9.4",
+        "cpe:/a:redhat:rhel_aus:9.4::appstream",
+        "cpe:/o:redhat:rhel_aus:9.4",
+        "cpe:/o:redhat:rhel_aus:9.4::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhea:tst:20236562023"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhea:tst:20236562022"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "redis is earlier than 0:6.2.7-1.el9_4.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250399001"
+                  },
+                  {
+                    "Comment": "redis is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250399002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "redis-devel is earlier than 0:6.2.7-1.el9_4.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250399003"
+                  },
+                  {
+                    "Comment": "redis-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250399004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "redis-doc is earlier than 0:6.2.7-1.el9_4.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250399005"
+                  },
+                  {
+                    "Comment": "redis-doc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20250399006"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
