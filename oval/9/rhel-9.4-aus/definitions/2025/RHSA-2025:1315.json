@@ -1,0 +1,131 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20251315",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2025:1315: doxygen security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.4 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:1315",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:1315"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2020-11023",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2020-11023"
+      }
+    ],
+    "Description": "Doxygen can generate an online class browser (in HTML) and/or a reference manual (in LaTeX) from a set of documented source files. The documentation is extracted directly from the sources. Doxygen can also be configured to extract the code structure from undocumented source files. \n\nSecurity Fix(es):\n\n* jquery: Untrusted code execution via \u003coption\u003e tag in HTML passed to DOM manipulation methods (CVE-2020-11023)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-02-11"
+      },
+      "Updated": {
+        "Date": "2025-02-11"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2020-11023",
+          "Cvss3": "6.1/CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "Cwe": "CWE-79",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2020-11023",
+          "Public": "20200429"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/1850004",
+          "ID": "1850004"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_aus:9.4",
+        "cpe:/a:redhat:rhel_aus:9.4::appstream",
+        "cpe:/o:redhat:rhel_aus:9.4",
+        "cpe:/o:redhat:rhel_aus:9.4::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20232181016"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20232181015"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "doxygen is earlier than 1:1.9.1-12.el9_4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251315001"
+                  },
+                  {
+                    "Comment": "doxygen is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251315002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "doxygen-doxywizard is earlier than 1:1.9.1-12.el9_4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251315003"
+                  },
+                  {
+                    "Comment": "doxygen-doxywizard is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251315004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "doxygen-latex is earlier than 1:1.9.1-12.el9_4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251315005"
+                  },
+                  {
+                    "Comment": "doxygen-latex is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251315006"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

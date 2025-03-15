@@ -1,0 +1,156 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20249181",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2024:9181: jose security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:9181",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:9181"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2023-50967",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2023-50967"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-28176",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-28176"
+      }
+    ],
+    "Description": "Jose is a C-language implementation of the Javascript Object Signing and Encryption standards. The jose package is a dependency of the clevis and tang packages, together providing Network Bound Disk Encryption (NBDE) in Red Hat Enterprise Linux.\n\nSecurity Fix(es):\n\n* jose: resource exhaustion (CVE-2024-28176)\n\n* jose: Denial of service due to uncontrolled CPU consumption (CVE-2023-50967)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n\nAdditional Changes:\n\nFor detailed information on changes in this release, see the Red Hat Enterprise Linux 9.5 Release Notes linked from the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-11-12"
+      },
+      "Updated": {
+        "Date": "2024-11-12"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2023-50967",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-400",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2023-50967",
+          "Public": "20240320"
+        },
+        {
+          "CveID": "CVE-2024-28176",
+          "Cvss3": "5.3/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+          "Cwe": "CWE-400",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-28176",
+          "Public": "20240309"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2268820",
+          "ID": "2268820"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2270538",
+          "ID": "2270538"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.6",
+        "cpe:/a:redhat:rhel_eus:9.6::appstream",
+        "cpe:/a:redhat:rhel_eus:9.6::crb",
+        "cpe:/a:redhat:rhel_eus:9.6::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.6::nfv",
+        "cpe:/a:redhat:rhel_eus:9.6::realtime",
+        "cpe:/a:redhat:rhel_eus:9.6::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.6::sap",
+        "cpe:/a:redhat:rhel_eus:9.6::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.6::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.6",
+        "cpe:/o:redhat:rhel_eus:9.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20232181016"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20232181015"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "jose is earlier than 0:14-1.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20249181001"
+                  },
+                  {
+                    "Comment": "jose is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20249181002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libjose is earlier than 0:14-1.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20249181003"
+                  },
+                  {
+                    "Comment": "libjose is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20249181004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libjose-devel is earlier than 0:14-1.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20249181005"
+                  },
+                  {
+                    "Comment": "libjose-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20249181006"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
