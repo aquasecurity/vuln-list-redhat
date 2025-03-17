@@ -1,0 +1,142 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhba:def:20180831",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHBA-2018:0831: new packages: qemu-kvm-ma (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 7"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHBA-2018:0831",
+        "RefURL": "https://access.redhat.com/errata/RHBA-2018:0831"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2017-5715",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2017-5715"
+      }
+    ],
+    "Description": "Kernel-based Virtual Machine (KVM) is a full virtualization solution for Linux on a variety of architectures. The qemu-kvm-ma packages provide the user-space component for running virtual machines that use KVM on the IBM z Systems, IBM Power LE, and 64-bit ARM architectures.\n\nThis update adds the qemu-kvm-ma packages to Red Hat Enterprise Linux 7.\n\nFor detailed information on changes in this release, see the Red Hat Enterprise Linux 7.5 Release Notes linked from the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2018 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2018-04-10"
+      },
+      "Updated": {
+        "Date": "2018-04-10"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2017-5715",
+          "Cvss3": "5.6/CVSS:3.0/AV:L/AC:H/PR:L/UI:N/S:C/C:H/I:N/A:N",
+          "Cwe": "CWE-226-\u003eCWE-385-\u003eCWE-200",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2017-5715",
+          "Public": "20180103:2200"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/1519780",
+          "ID": "1519780"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/o:redhat:rhel_tus:7.7",
+        "cpe:/o:redhat:rhel_tus:7.7::server"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20150364028"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 7 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20150364027"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qemu-img-ma is earlier than 10:2.10.0-21.el7",
+                    "TestRef": "oval:com.redhat.rhba:tst:20180831001"
+                  },
+                  {
+                    "Comment": "qemu-img-ma is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20180831002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qemu-kvm-common-ma is earlier than 10:2.10.0-21.el7",
+                    "TestRef": "oval:com.redhat.rhba:tst:20180831003"
+                  },
+                  {
+                    "Comment": "qemu-kvm-common-ma is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20180831004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qemu-kvm-ma is earlier than 10:2.10.0-21.el7",
+                    "TestRef": "oval:com.redhat.rhba:tst:20180831005"
+                  },
+                  {
+                    "Comment": "qemu-kvm-ma is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20180831006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qemu-kvm-tools-ma is earlier than 10:2.10.0-21.el7",
+                    "TestRef": "oval:com.redhat.rhba:tst:20180831007"
+                  },
+                  {
+                    "Comment": "qemu-kvm-tools-ma is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20180831008"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
