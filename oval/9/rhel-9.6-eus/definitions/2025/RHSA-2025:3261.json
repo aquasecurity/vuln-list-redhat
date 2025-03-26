@@ -1,0 +1,246 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20253261",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2025:3261: nginx:1.22 security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:3261",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:3261"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-7347",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-7347"
+      }
+    ],
+    "Description": "nginx is a web and proxy server supporting HTTP and other protocols, with a focus on high concurrency, performance, and low memory usage. \n\nSecurity Fix(es):\n\n* nginx: specially crafted MP4 file may cause denial of service (CVE-2024-7347)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-03-26"
+      },
+      "Updated": {
+        "Date": "2025-03-26"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-7347",
+          "Cvss3": "4.7/CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-126",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-7347",
+          "Public": "20240814"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2304966",
+          "ID": "2304966"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.6",
+        "cpe:/a:redhat:rhel_eus:9.6::appstream",
+        "cpe:/a:redhat:rhel_eus:9.6::crb",
+        "cpe:/a:redhat:rhel_eus:9.6::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.6::nfv",
+        "cpe:/a:redhat:rhel_eus:9.6::realtime",
+        "cpe:/a:redhat:rhel_eus:9.6::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.6::sap",
+        "cpe:/a:redhat:rhel_eus:9.6::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.6::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.6",
+        "cpe:/o:redhat:rhel_eus:9.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20224046006"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20224046005"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "Module nginx:1.22 is enabled",
+                    "TestRef": "oval:com.redhat.rhea:tst:20236562021"
+                  }
+                ],
+                "Criterias": [
+                  {
+                    "Operator": "OR",
+                    "Criterias": [
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "nginx is earlier than 1:1.22.1-8.module+el9.5.0+22953+b175c265.1",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20253261001"
+                          },
+                          {
+                            "Comment": "nginx is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhea:tst:20236562002"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "nginx-all-modules is earlier than 1:1.22.1-8.module+el9.5.0+22953+b175c265.1",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20253261003"
+                          },
+                          {
+                            "Comment": "nginx-all-modules is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhea:tst:20236562004"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "nginx-core is earlier than 1:1.22.1-8.module+el9.5.0+22953+b175c265.1",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20253261005"
+                          },
+                          {
+                            "Comment": "nginx-core is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhea:tst:20236562006"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "nginx-filesystem is earlier than 1:1.22.1-8.module+el9.5.0+22953+b175c265.1",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20253261007"
+                          },
+                          {
+                            "Comment": "nginx-filesystem is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhea:tst:20236562008"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "nginx-mod-devel is earlier than 1:1.22.1-8.module+el9.5.0+22953+b175c265.1",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20253261009"
+                          },
+                          {
+                            "Comment": "nginx-mod-devel is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhea:tst:20236562010"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "nginx-mod-http-image-filter is earlier than 1:1.22.1-8.module+el9.5.0+22953+b175c265.1",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20253261011"
+                          },
+                          {
+                            "Comment": "nginx-mod-http-image-filter is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhea:tst:20236562012"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "nginx-mod-http-perl is earlier than 1:1.22.1-8.module+el9.5.0+22953+b175c265.1",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20253261013"
+                          },
+                          {
+                            "Comment": "nginx-mod-http-perl is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhea:tst:20236562014"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "nginx-mod-http-xslt-filter is earlier than 1:1.22.1-8.module+el9.5.0+22953+b175c265.1",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20253261015"
+                          },
+                          {
+                            "Comment": "nginx-mod-http-xslt-filter is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhea:tst:20236562016"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "nginx-mod-mail is earlier than 1:1.22.1-8.module+el9.5.0+22953+b175c265.1",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20253261017"
+                          },
+                          {
+                            "Comment": "nginx-mod-mail is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhea:tst:20236562018"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "nginx-mod-stream is earlier than 1:1.22.1-8.module+el9.5.0+22953+b175c265.1",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20253261019"
+                          },
+                          {
+                            "Comment": "nginx-mod-stream is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhea:tst:20236562020"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
