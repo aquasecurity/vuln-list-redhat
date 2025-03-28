@@ -1,0 +1,274 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20245231",
+  "Version": "639",
+  "Metadata": {
+    "Title": "RHSA-2024:5231: bind and bind-dyndb-ldap security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:5231",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:5231"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-1737",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-1737"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-1975",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-1975"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-4076",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-4076"
+      }
+    ],
+    "Description": "The Berkeley Internet Name Domain (BIND) is an implementation of the Domain Name System (DNS) protocols. BIND includes a DNS server (named); a resolver library (routines for applications to use when interfacing with DNS); and tools for verifying that the DNS server is operating correctly.\n\nSecurity Fix(es):\n\n* bind: bind9: BIND's database will be slow if a very large number of RRs exist at the same nam (CVE-2024-1737)\n\n* bind9: bind: SIG(0) can be used to exhaust CPU resources (CVE-2024-1975)\n\n* bind: bind9: Assertion failure when serving both stale cache data and authoritative zone content (CVE-2024-4076)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-08-15"
+      },
+      "Updated": {
+        "Date": "2024-08-15"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-1737",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-400",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-1737",
+          "Public": "20240723"
+        },
+        {
+          "CveID": "CVE-2024-1975",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-400",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-1975",
+          "Public": "20240723"
+        },
+        {
+          "CveID": "CVE-2024-4076",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-4076",
+          "Public": "20240723"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2298893",
+          "ID": "2298893"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2298901",
+          "ID": "2298901"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2298904",
+          "ID": "2298904"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.4",
+        "cpe:/a:redhat:rhel_e4s:9.4::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.4::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.4::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.4::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.4::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.4::sap",
+        "cpe:/a:redhat:rhel_e4s:9.4::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.4",
+        "cpe:/o:redhat:rhel_e4s:9.4::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20224046006"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20224046005"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind-dyndb-ldap is earlier than 0:11.9-10.el9_4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20245231001"
+                  },
+                  {
+                    "Comment": "bind-dyndb-ldap is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242551022"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind is earlier than 32:9.16.23-18.el9_4.6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20245231003"
+                  },
+                  {
+                    "Comment": "bind is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242551002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind-chroot is earlier than 32:9.16.23-18.el9_4.6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20245231005"
+                  },
+                  {
+                    "Comment": "bind-chroot is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242551004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind-devel is earlier than 32:9.16.23-18.el9_4.6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20245231007"
+                  },
+                  {
+                    "Comment": "bind-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242551006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind-dnssec-doc is earlier than 32:9.16.23-18.el9_4.6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20245231009"
+                  },
+                  {
+                    "Comment": "bind-dnssec-doc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242551008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind-dnssec-utils is earlier than 32:9.16.23-18.el9_4.6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20245231011"
+                  },
+                  {
+                    "Comment": "bind-dnssec-utils is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242551010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind-doc is earlier than 32:9.16.23-18.el9_4.6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20245231013"
+                  },
+                  {
+                    "Comment": "bind-doc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242551012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind-libs is earlier than 32:9.16.23-18.el9_4.6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20245231015"
+                  },
+                  {
+                    "Comment": "bind-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242551014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind-license is earlier than 32:9.16.23-18.el9_4.6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20245231017"
+                  },
+                  {
+                    "Comment": "bind-license is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242551016"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind-utils is earlier than 32:9.16.23-18.el9_4.6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20245231019"
+                  },
+                  {
+                    "Comment": "bind-utils is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242551018"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3-bind is earlier than 32:9.16.23-18.el9_4.6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20245231021"
+                  },
+                  {
+                    "Comment": "python3-bind is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242551020"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

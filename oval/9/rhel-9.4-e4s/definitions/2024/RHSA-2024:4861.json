@@ -1,0 +1,116 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20244861",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2024:4861: squid security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:4861",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:4861"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-23638",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-23638"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-37894",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-37894"
+      }
+    ],
+    "Description": "Squid is a high-performance proxy caching server for web clients, supporting FTP, Gopher, and HTTP data objects.\n\nSecurity Fix(es):\n\n* squid: vulnerable to a Denial of Service attack against Cache Manager error responses (CVE-2024-23638)\n\n* squid: Out-of-bounds write error may lead to Denial of Service (CVE-2024-37894)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-07-25"
+      },
+      "Updated": {
+        "Date": "2024-07-25"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-23638",
+          "Cvss3": "6.5/CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-825",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-23638",
+          "Public": "20240124"
+        },
+        {
+          "CveID": "CVE-2024-37894",
+          "Cvss3": "6.3/CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:N/I:N/A:H",
+          "Cwe": "CWE-787",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-37894",
+          "Public": "20240625"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2260051",
+          "ID": "2260051"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2294353",
+          "ID": "2294353"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.4",
+        "cpe:/a:redhat:rhel_e4s:9.4::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.4::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.4::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.4::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.4::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.4::sap",
+        "cpe:/a:redhat:rhel_e4s:9.4::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.4",
+        "cpe:/o:redhat:rhel_e4s:9.4::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20224046006"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20224046005"
+          },
+          {
+            "Comment": "squid is earlier than 7:5.5-13.el9_4",
+            "TestRef": "oval:com.redhat.rhsa:tst:20244861001"
+          },
+          {
+            "Comment": "squid is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20244861002"
+          }
+        ]
+      }
+    ]
+  }
+}
