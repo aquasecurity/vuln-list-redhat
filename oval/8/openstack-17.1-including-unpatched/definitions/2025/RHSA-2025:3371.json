@@ -1,23 +1,39 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:202527516",
-  "Version": "636",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20253371",
+  "Version": "635",
   "Metadata": {
-    "Title": "jinja2: Jinja sandbox breakout through attr filter selecting format method (important)",
+    "Title": "RHSA-2025:3371: Red Hat OpenStack Platform 17.1 (openstack-ansible-core) security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat OpenStack Platform 17.1 for RHEL 9"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:3371",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:3371"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2025-27516",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2025-27516"
       }
     ],
-    "Description": "DOCUMENTATION: A flaw was found in Jinja. In affected versions, an oversight in how the Jinja sandboxed environment interacts with the `|attr` filter allows an attacker who controls the content of a template to execute arbitrary Python code. To exploit the vulnerability, an attacker needs to control the content of a template. Whether that is the case depends on the type of application using Jinja. This vulnerability impacts users of applications that execute untrusted templates. Jinja's sandbox does catch calls to `str.format` and ensures they don't escape the sandbox. However, it's possible to use the `|attr` filter to get a reference to a string's plain format method, bypassing the sandbox.",
+    "Description": "An ansible-core rebuild for OpenStack based on python 3.9.\n\nSecurity Fix(es):\n\n* Jinja sandbox breakout through attr filter selecting format method\n(CVE-2025-27516)\n\nFor more details about the security issue(s), including the impact, a CVSS\nscore, acknowledgments, and other related information, refer to the CVE\npage listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Important",
-      "Issued": {},
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-03-27"
+      },
       "Updated": {
-        "Date": "2025-03-26"
+        "Date": "2025-03-27"
       },
       "Cves": [
         {
@@ -29,14 +45,18 @@
           "Public": "20250305:2040"
         }
       ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2350190",
+          "ID": "2350190"
+        }
+      ],
       "AffectedCpeList": [
         "cpe:/a:redhat:openstack:17.1",
         "cpe:/a:redhat:openstack:17.1::el9"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -57,12 +77,12 @@
             "TestRef": "oval:com.redhat.cve:tst:202234038003"
           },
           {
-            "Comment": "openstack-ansible-core is installed",
-            "TestRef": "oval:com.redhat.cve:tst:202527516001"
+            "Comment": "openstack-ansible-core is earlier than 0:2.14.2-4.7.el9ost",
+            "TestRef": "oval:com.redhat.rhsa:tst:20253371001"
           },
           {
             "Comment": "openstack-ansible-core is signed with Red Hat redhatrelease2 key",
-            "TestRef": "oval:com.redhat.cve:tst:202527516002"
+            "TestRef": "oval:com.redhat.rhsa:tst:20242733002"
           }
         ]
       }
