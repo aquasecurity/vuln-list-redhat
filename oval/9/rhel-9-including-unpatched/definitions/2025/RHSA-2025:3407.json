@@ -1,23 +1,39 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:202527363",
-  "Version": "636",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20253407",
+  "Version": "637",
   "Metadata": {
-    "Title": "freetype: OOB write when attempting to parse font subglyph structures related to TrueType GX and variable font files (important)",
+    "Title": "RHSA-2025:3407: freetype security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:3407",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:3407"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2025-27363",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2025-27363"
       }
     ],
-    "Description": "DOCUMENTATION: A flaw was found in FreeType. In affected versions, an out-of-bounds write condition may be triggered when attempting to parse font subglyph structures related to TrueType GX and variable font files. The vulnerable code assigns a signed short value to an unsigned long and then adds a static value, causing it to wrap around and allocate a heap buffer that is too small. The code then writes up to 6 signed long integers out of bounds relative to this buffer. This issue could result in arbitrary code execution or other undefined behavior. \n            STATEMENT: This vulnerability stems from improper handling of data types within the FreeType library during the parsing of font subglyph structures. This could causes incorrect calculations that result in heap buffer allocation being too small. This could allow the library write data beyond the allocated buffer, affecting adjacent memory areas, leading into arbitrary code executions compromising the entire system and system stability such as misleading behaviors in applications which relies on FreeType, or causing possible crashes impacting the entire system.\n            MITIGATION: By restricting the sources from which font files can be loaded allowing only fonts from trusted sources, as well as validating the input for font files to avoid malformed font structures or any data which could trigger the vulnerability would reduce the risk and mitigate this vulnerability until the fix is provided.",
+    "Description": "FreeType is a free, high-quality, portable font engine that can open and manage font files. FreeType loads, hints, and renders individual glyphs efficiently.\n\nSecurity Fix(es):\n\n* freetype: OOB write when attempting to parse font subglyph structures related to TrueType GX and variable font files (CVE-2025-27363)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Important",
-      "Issued": {},
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-03-31"
+      },
       "Updated": {
-        "Date": "2025-03-28"
+        "Date": "2025-03-31"
       },
       "Cves": [
         {
@@ -27,6 +43,12 @@
           "Impact": "important",
           "Href": "https://access.redhat.com/security/cve/CVE-2025-27363",
           "Public": "20250311:1328"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2351357",
+          "ID": "2351357"
         }
       ],
       "AffectedCpeList": [
@@ -44,9 +66,7 @@
         "cpe:/o:redhat:enterprise_linux:9::baseos"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -75,12 +95,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "freetype is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202527363001"
+                    "Comment": "freetype is earlier than 0:2.10.4-10.el9_5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253407001"
                   },
                   {
                     "Comment": "freetype is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:202527363002"
+                    "TestRef": "oval:com.redhat.rhsa:tst:20228340002"
                   }
                 ]
               },
@@ -88,12 +108,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "freetype-devel is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202527363003"
+                    "Comment": "freetype-devel is earlier than 0:2.10.4-10.el9_5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253407003"
                   },
                   {
                     "Comment": "freetype-devel is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:202527363004"
+                    "TestRef": "oval:com.redhat.rhsa:tst:20228340004"
                   }
                 ]
               }
