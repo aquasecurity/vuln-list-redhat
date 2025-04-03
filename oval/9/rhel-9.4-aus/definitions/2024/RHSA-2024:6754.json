@@ -1,0 +1,150 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20246754",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2024:6754: expat security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:6754",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:6754"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-45490",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-45490"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-45491",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-45491"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-45492",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-45492"
+      }
+    ],
+    "Description": "Expat is a C library for parsing XML documents.\n\nSecurity Fix(es):\n\n* libexpat: Negative Length Parsing Vulnerability in libexpat (CVE-2024-45490)\n\n* libexpat: Integer Overflow or Wraparound (CVE-2024-45491)\n\n* libexpat: integer overflow (CVE-2024-45492)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-09-18"
+      },
+      "Updated": {
+        "Date": "2024-09-18"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-45490",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-190",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-45490",
+          "Public": "20240830:0315"
+        },
+        {
+          "CveID": "CVE-2024-45491",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-45491",
+          "Public": "20240830:0315"
+        },
+        {
+          "CveID": "CVE-2024-45492",
+          "Cvss3": "6.2/CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-45492",
+          "Public": "20240830:0315"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2308615",
+          "ID": "2308615"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2308616",
+          "ID": "2308616"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2308617",
+          "ID": "2308617"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_aus:9.4",
+        "cpe:/a:redhat:rhel_aus:9.4::appstream",
+        "cpe:/o:redhat:rhel_aus:9.4",
+        "cpe:/o:redhat:rhel_aus:9.4::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20224046006"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20224046005"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "expat is earlier than 0:2.5.0-2.el9_4.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20246754001"
+                  },
+                  {
+                    "Comment": "expat is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20224046002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "expat-devel is earlier than 0:2.5.0-2.el9_4.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20246754003"
+                  },
+                  {
+                    "Comment": "expat-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20224046004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
