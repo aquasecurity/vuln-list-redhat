@@ -1,0 +1,289 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20253608",
+  "Version": "639",
+  "Metadata": {
+    "Title": "RHSA-2025:3608: Red Hat JBoss Web Server 6.1.0 release and security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat JBoss Web Server 6.1 on RHEL 8"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:3608",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:3608"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-52316",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-52316"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-54677",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-54677"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-24813",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-24813"
+      }
+    ],
+    "Description": "Red Hat JBoss Web Server is a fully integrated and certified set of components for hosting Java web applications. It is comprised of the Apache Tomcat Servlet container, JBoss HTTP Connector (mod_cluster), the PicketLink Vault extension for Apache Tomcat, and the Tomcat Native library.\n\nThis release of Red Hat JBoss Web Server 6.1.0 serves as a replacement for Red Hat JBoss Web Server 6.0.5. This release includes bug fixes, enhancements and component upgrades, which are documented in the Release Notes that are linked to in the References section.\n\nSecurity Fix(es):\n\n* org.apache.tomcat/tomcat: Apache Tomcat: Authentication bypass when using Jakarta Authentication API [jws-6] (CVE-2024-52316)\n* org.apache.tomcat/tomcat: Apache Tomcat: DoS in examples web application [jws-6] (CVE-2024-54677)\n* tomcat: Potential RCE and/or information disclosure and/or information corruption with partial PUT [jws-6] (CVE-2025-24813)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-04-07"
+      },
+      "Updated": {
+        "Date": "2025-04-07"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-52316",
+          "Cvss3": "7.4/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+          "Cwe": "CWE-391",
+          "Impact": "low",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-52316",
+          "Public": "20241118:1132"
+        },
+        {
+          "CveID": "CVE-2024-54677",
+          "Cvss3": "3.7/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L",
+          "Cwe": "CWE-400",
+          "Impact": "low",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-54677",
+          "Public": "20241217:1235"
+        },
+        {
+          "CveID": "CVE-2025-24813",
+          "Cvss3": "8.6/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:L",
+          "Cwe": "(CWE-44|CWE-502)",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-24813",
+          "Public": "20250310:1644"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2326972",
+          "ID": "2326972"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2332815",
+          "ID": "2332815"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2351129",
+          "ID": "2351129"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:jboss_enterprise_web_server:6.0",
+        "cpe:/a:redhat:jboss_enterprise_web_server:6.0::el8",
+        "cpe:/a:redhat:jboss_enterprise_web_server:6.1",
+        "cpe:/a:redhat:jboss_enterprise_web_server:6.1::el8"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhsa:tst:20241324023"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhsa:tst:20241324021"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhsa:tst:20241324022"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "jws6-tomcat-jakartaee-migration is earlier than 0:1.0.6-2.redhat_00003.1.el8jws",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253608001"
+                  },
+                  {
+                    "Comment": "jws6-tomcat-jakartaee-migration is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253608002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "jws6-tomcat-native is earlier than 0:1.3.1-1.redhat_1.el8jws",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253608003"
+                  },
+                  {
+                    "Comment": "jws6-tomcat-native is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253608004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "jws6-tomcat is earlier than 0:10.1.36-6.redhat_00007.1.el8jws",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253608005"
+                  },
+                  {
+                    "Comment": "jws6-tomcat is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20241324002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "jws6-tomcat-admin-webapps is earlier than 0:10.1.36-6.redhat_00007.1.el8jws",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253608007"
+                  },
+                  {
+                    "Comment": "jws6-tomcat-admin-webapps is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20241324004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "jws6-tomcat-docs-webapp is earlier than 0:10.1.36-6.redhat_00007.1.el8jws",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253608009"
+                  },
+                  {
+                    "Comment": "jws6-tomcat-docs-webapp is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20241324006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "jws6-tomcat-el-5.0-api is earlier than 0:10.1.36-6.redhat_00007.1.el8jws",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253608011"
+                  },
+                  {
+                    "Comment": "jws6-tomcat-el-5.0-api is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20241324008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "jws6-tomcat-javadoc is earlier than 0:10.1.36-6.redhat_00007.1.el8jws",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253608013"
+                  },
+                  {
+                    "Comment": "jws6-tomcat-javadoc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20241324010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "jws6-tomcat-jsp-3.1-api is earlier than 0:10.1.36-6.redhat_00007.1.el8jws",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253608015"
+                  },
+                  {
+                    "Comment": "jws6-tomcat-jsp-3.1-api is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20241324012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "jws6-tomcat-lib is earlier than 0:10.1.36-6.redhat_00007.1.el8jws",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253608017"
+                  },
+                  {
+                    "Comment": "jws6-tomcat-lib is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20241324014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "jws6-tomcat-selinux is earlier than 0:10.1.36-6.redhat_00007.1.el8jws",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253608019"
+                  },
+                  {
+                    "Comment": "jws6-tomcat-selinux is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20241324016"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "jws6-tomcat-servlet-6.0-api is earlier than 0:10.1.36-6.redhat_00007.1.el8jws",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253608021"
+                  },
+                  {
+                    "Comment": "jws6-tomcat-servlet-6.0-api is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20241324018"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "jws6-tomcat-webapps is earlier than 0:10.1.36-6.redhat_00007.1.el8jws",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253608023"
+                  },
+                  {
+                    "Comment": "jws6-tomcat-webapps is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20241324020"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
