@@ -1,23 +1,39 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:202522869",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20253833",
   "Version": "636",
   "Metadata": {
-    "Title": "golang.org/x/crypto/ssh: Denial of Service in the Key Exchange of golang.org/x/crypto/ssh (important)",
+    "Title": "RHSA-2025:3833: gvisor-tap-vsock security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:3833",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:3833"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2025-22869",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2025-22869"
       }
     ],
-    "Description": "DOCUMENTATION: A flaw was found in the golang.org/x/crypto/ssh package. SSH clients and servers are vulnerable to increased resource consumption, possibly leading to memory exhaustion and a DoS. This can occur during key exchange when the other party is slow to respond during key exchange. \n            STATEMENT: While this flaw affects both SSH clients and servers implemented with golang.org/x/crypto/ssh, realistically the flaw will only lead to a DoS when transferring large files, greatly reducing the likelihood of exploitation.\n            MITIGATION: This flaw can be mitigated when using the client only connecting to trusted servers.",
+    "Description": "A replacement for libslirp and VPNKit, written in pure Go. It is based on the network stack of gVisor and is used to provide networking for podman-machine virtual machines. Compared to libslirp, gvisor-tap-vsock brings a configurable DNS server and dynamic port forwarding.\n\nSecurity Fix(es):\n\n* golang.org/x/crypto/ssh: Denial of Service in the Key Exchange of golang.org/x/crypto/ssh (CVE-2025-22869)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Important",
-      "Issued": {},
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-04-14"
+      },
       "Updated": {
-        "Date": "2025-04-09"
+        "Date": "2025-04-14"
       },
       "Cves": [
         {
@@ -27,6 +43,12 @@
           "Impact": "important",
           "Href": "https://access.redhat.com/security/cve/CVE-2025-22869",
           "Public": "20250226:0307"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2348367",
+          "ID": "2348367"
         }
       ],
       "AffectedCpeList": [
@@ -44,9 +66,7 @@
         "cpe:/o:redhat:enterprise_linux:9::baseos"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -67,8 +87,8 @@
             "TestRef": "oval:com.redhat.cve:tst:20052541003"
           },
           {
-            "Comment": "gvisor-tap-vsock is installed",
-            "TestRef": "oval:com.redhat.cve:tst:202424783023"
+            "Comment": "gvisor-tap-vsock is earlier than 6:0.8.5-1.el9_5",
+            "TestRef": "oval:com.redhat.rhsa:tst:20253833001"
           },
           {
             "Comment": "gvisor-tap-vsock is signed with Red Hat redhatrelease2 key",
