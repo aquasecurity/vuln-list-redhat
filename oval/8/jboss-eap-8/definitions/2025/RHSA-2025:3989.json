@@ -1,0 +1,621 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20253989",
+  "Version": "640",
+  "Metadata": {
+    "Title": "RHSA-2025:3989: Red Hat JBoss Enterprise Application Platform 8.0.7 security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat JBoss Enterprise Application Platform 8.0 for RHEL 8"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:3989",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:3989"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-12369",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-12369"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-23367",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-23367"
+      }
+    ],
+    "Description": "Red Hat JBoss Enterprise Application Platform 8 is a platform for Java applications based on the WildFly application runtime. This release of Red Hat JBoss Enterprise Application Platform 8.0.7 serves as a replacement for Red Hat JBoss Enterprise Application Platform 8.0.6, and includes bug fixes and enhancements. See the Red Hat JBoss Enterprise Application Platform 8.0.7 Release Notes for information about the most significant bug fixes and enhancements included in this release.\n\nSecurity Fix(es):\n\n* org.wildfly/wildfly-elytron-oidc-client-subsystem: OIDC Authorization Code Injection (CVE-2024-12369)\n\n* org.wildfly.core/wildfly-server: Wildfly improper RBAC permission (CVE-2025-23367)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-04-17"
+      },
+      "Updated": {
+        "Date": "2025-04-17"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-12369",
+          "Cvss3": "4.2/CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:N",
+          "Cwe": "CWE-345",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-12369",
+          "Public": "20241209"
+        },
+        {
+          "CveID": "CVE-2025-23367",
+          "Cvss3": "6.5/CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-284",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-23367",
+          "Public": "20250130"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2331178",
+          "ID": "2331178"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2337620",
+          "ID": "2337620"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:jboss_enterprise_application_platform:8.0",
+        "cpe:/a:redhat:jboss_enterprise_application_platform:8.0::el8"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhsa:tst:202410386017"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhsa:tst:202410386015"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhsa:tst:202410386016"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-ironjacamar is earlier than 0:3.0.13-1.Final_redhat_00001.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989001"
+                  },
+                  {
+                    "Comment": "eap8-ironjacamar is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243580016"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-ironjacamar-common-api is earlier than 0:3.0.13-1.Final_redhat_00001.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989003"
+                  },
+                  {
+                    "Comment": "eap8-ironjacamar-common-api is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243580018"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-ironjacamar-common-impl is earlier than 0:3.0.13-1.Final_redhat_00001.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989005"
+                  },
+                  {
+                    "Comment": "eap8-ironjacamar-common-impl is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243580020"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-ironjacamar-common-spi is earlier than 0:3.0.13-1.Final_redhat_00001.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989007"
+                  },
+                  {
+                    "Comment": "eap8-ironjacamar-common-spi is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243580022"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-ironjacamar-core-api is earlier than 0:3.0.13-1.Final_redhat_00001.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989009"
+                  },
+                  {
+                    "Comment": "eap8-ironjacamar-core-api is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243580024"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-ironjacamar-core-impl is earlier than 0:3.0.13-1.Final_redhat_00001.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989011"
+                  },
+                  {
+                    "Comment": "eap8-ironjacamar-core-impl is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243580026"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-ironjacamar-deployers-common is earlier than 0:3.0.13-1.Final_redhat_00001.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989013"
+                  },
+                  {
+                    "Comment": "eap8-ironjacamar-deployers-common is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243580028"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-ironjacamar-jdbc is earlier than 0:3.0.13-1.Final_redhat_00001.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989015"
+                  },
+                  {
+                    "Comment": "eap8-ironjacamar-jdbc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243580030"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-ironjacamar-validator is earlier than 0:3.0.13-1.Final_redhat_00001.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989017"
+                  },
+                  {
+                    "Comment": "eap8-ironjacamar-validator is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243580032"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-hibernate is earlier than 0:6.2.35-1.Final_redhat_00001.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989019"
+                  },
+                  {
+                    "Comment": "eap8-hibernate is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202411559070"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-hibernate-core is earlier than 0:6.2.35-1.Final_redhat_00001.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989021"
+                  },
+                  {
+                    "Comment": "eap8-hibernate-core is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202411559072"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-hibernate-envers is earlier than 0:6.2.35-1.Final_redhat_00001.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989023"
+                  },
+                  {
+                    "Comment": "eap8-hibernate-envers is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202411559074"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-wildfly-elytron is earlier than 0:2.2.9-1.Final_redhat_00001.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989025"
+                  },
+                  {
+                    "Comment": "eap8-wildfly-elytron is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202411559002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-wildfly-elytron-tool is earlier than 0:2.2.9-1.Final_redhat_00001.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989027"
+                  },
+                  {
+                    "Comment": "eap8-wildfly-elytron-tool is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202411559004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-eap-product-conf-parent is earlier than 0:800.7.0-2.GA_redhat_00002.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989029"
+                  },
+                  {
+                    "Comment": "eap8-eap-product-conf-parent is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202410386002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-eap-product-conf-wildfly-ee-feature-pack is earlier than 0:800.7.0-2.GA_redhat_00002.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989031"
+                  },
+                  {
+                    "Comment": "eap8-eap-product-conf-wildfly-ee-feature-pack is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202410386004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-jsf-impl is earlier than 0:4.0.11-1.redhat_00001.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989033"
+                  },
+                  {
+                    "Comment": "eap8-jsf-impl is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989034"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-reactivex-rxjava is earlier than 0:3.1.10-1.redhat_00001.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989035"
+                  },
+                  {
+                    "Comment": "eap8-reactivex-rxjava is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989036"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-bouncycastle is earlier than 0:1.80.0-1.redhat_00001.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989037"
+                  },
+                  {
+                    "Comment": "eap8-bouncycastle is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20245479002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-bouncycastle-jmail is earlier than 0:1.80.0-1.redhat_00001.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989039"
+                  },
+                  {
+                    "Comment": "eap8-bouncycastle-jmail is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20245479004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-bouncycastle-pg is earlier than 0:1.80.0-1.redhat_00001.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989041"
+                  },
+                  {
+                    "Comment": "eap8-bouncycastle-pg is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20245479006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-bouncycastle-pkix is earlier than 0:1.80.0-1.redhat_00001.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989043"
+                  },
+                  {
+                    "Comment": "eap8-bouncycastle-pkix is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20245479008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-bouncycastle-prov is earlier than 0:1.80.0-1.redhat_00001.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989045"
+                  },
+                  {
+                    "Comment": "eap8-bouncycastle-prov is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20245479010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-bouncycastle-util is earlier than 0:1.80.0-1.redhat_00001.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989047"
+                  },
+                  {
+                    "Comment": "eap8-bouncycastle-util is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20245479012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-apache-commons-io is earlier than 0:2.16.1-1.redhat_00001.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989049"
+                  },
+                  {
+                    "Comment": "eap8-apache-commons-io is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243580344"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-weld-core is earlier than 0:5.1.5-1.Final_redhat_00001.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989051"
+                  },
+                  {
+                    "Comment": "eap8-weld-core is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989052"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-weld-core-impl is earlier than 0:5.1.5-1.Final_redhat_00001.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989053"
+                  },
+                  {
+                    "Comment": "eap8-weld-core-impl is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989054"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-weld-core-jsf is earlier than 0:5.1.5-1.Final_redhat_00001.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989055"
+                  },
+                  {
+                    "Comment": "eap8-weld-core-jsf is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989056"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-weld-ejb is earlier than 0:5.1.5-1.Final_redhat_00001.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989057"
+                  },
+                  {
+                    "Comment": "eap8-weld-ejb is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989058"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-weld-jta is earlier than 0:5.1.5-1.Final_redhat_00001.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989059"
+                  },
+                  {
+                    "Comment": "eap8-weld-jta is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989060"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-weld-lite-extension-translator is earlier than 0:5.1.5-1.Final_redhat_00001.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989061"
+                  },
+                  {
+                    "Comment": "eap8-weld-lite-extension-translator is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989062"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-weld-web is earlier than 0:5.1.5-1.Final_redhat_00001.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989063"
+                  },
+                  {
+                    "Comment": "eap8-weld-web is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989064"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-jakarta-enterprise-concurrent is earlier than 0:3.0.1-1.redhat_00001.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989065"
+                  },
+                  {
+                    "Comment": "eap8-jakarta-enterprise-concurrent is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20252025016"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-wildfly is earlier than 0:8.0.7-3.GA_redhat_00004.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989067"
+                  },
+                  {
+                    "Comment": "eap8-wildfly is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202410386006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-wildfly-java-jdk11 is earlier than 0:8.0.7-3.GA_redhat_00004.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989069"
+                  },
+                  {
+                    "Comment": "eap8-wildfly-java-jdk11 is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202410386008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-wildfly-java-jdk17 is earlier than 0:8.0.7-3.GA_redhat_00004.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989071"
+                  },
+                  {
+                    "Comment": "eap8-wildfly-java-jdk17 is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202410386010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-wildfly-java-jdk21 is earlier than 0:8.0.7-3.GA_redhat_00004.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989073"
+                  },
+                  {
+                    "Comment": "eap8-wildfly-java-jdk21 is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202410386012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-wildfly-modules is earlier than 0:8.0.7-3.GA_redhat_00004.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989075"
+                  },
+                  {
+                    "Comment": "eap8-wildfly-modules is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202410386014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-reactive-streams is earlier than 0:1.0.4-3.redhat_00004.1.el8eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253989077"
+                  },
+                  {
+                    "Comment": "eap8-reactive-streams is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243580346"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
