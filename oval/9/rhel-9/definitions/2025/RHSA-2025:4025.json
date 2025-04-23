@@ -1,0 +1,126 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20254025",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2025:4025: libxslt security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:4025",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:4025"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-55549",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-55549"
+      }
+    ],
+    "Description": "libxslt is a library for transforming XML files into other textual formats (including HTML, plain text, and other XML representations of the underlying data) using the standard XSLT stylesheet transformation mechanism. \n\nSecurity Fix(es):\n\n* libxslt: Use-After-Free in libxslt (xsltGetInheritedNsList) (CVE-2024-55549)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-04-23"
+      },
+      "Updated": {
+        "Date": "2025-04-23"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-55549",
+          "Cvss3": "7.8/CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:N/I:H/A:H",
+          "Cwe": "CWE-416",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-55549",
+          "Public": "20250314"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2352484",
+          "ID": "2352484"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libxslt is earlier than 0:1.1.34-9.el9_5.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20254025001"
+                  },
+                  {
+                    "Comment": "libxslt is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253107002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libxslt-devel is earlier than 0:1.1.34-9.el9_5.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20254025003"
+                  },
+                  {
+                    "Comment": "libxslt-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20253107004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,23 +1,39 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:202455549",
-  "Version": "636",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20254025",
+  "Version": "637",
   "Metadata": {
-    "Title": "libxslt: Use-After-Free in libxslt (xsltGetInheritedNsList) (important)",
+    "Title": "RHSA-2025:4025: libxslt security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:4025",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:4025"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2024-55549",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2024-55549"
       }
     ],
-    "Description": "DOCUMENTATION: A flaw was found in libxslt. This vulnerability allows an attacker to trigger a use-after-free issue by excluding result prefixes. \n            \n            MITIGATION: Mitigation for this issue is either not available or the currently available options do not meet the Red Hat Product Security criteria comprising ease of use and deployment, applicability to widespread installation base or stability.",
+    "Description": "libxslt is a library for transforming XML files into other textual formats (including HTML, plain text, and other XML representations of the underlying data) using the standard XSLT stylesheet transformation mechanism. \n\nSecurity Fix(es):\n\n* libxslt: Use-After-Free in libxslt (xsltGetInheritedNsList) (CVE-2024-55549)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Important",
-      "Issued": {},
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-04-23"
+      },
       "Updated": {
-        "Date": "2025-03-17"
+        "Date": "2025-04-23"
       },
       "Cves": [
         {
@@ -27,6 +43,12 @@
           "Impact": "important",
           "Href": "https://access.redhat.com/security/cve/CVE-2024-55549",
           "Public": "20250314"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2352484",
+          "ID": "2352484"
         }
       ],
       "AffectedCpeList": [
@@ -44,9 +66,7 @@
         "cpe:/o:redhat:enterprise_linux:9::baseos"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -75,12 +95,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "libxslt-devel is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202340403001"
+                    "Comment": "libxslt is earlier than 0:1.1.34-9.el9_5.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20254025001"
                   },
                   {
-                    "Comment": "libxslt-devel is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:202340403002"
+                    "Comment": "libxslt is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:202340403004"
                   }
                 ]
               },
@@ -88,12 +108,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "libxslt is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202340403003"
+                    "Comment": "libxslt-devel is earlier than 0:1.1.34-9.el9_5.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20254025003"
                   },
                   {
-                    "Comment": "libxslt is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:202340403004"
+                    "Comment": "libxslt-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:202340403002"
                   }
                 ]
               }
