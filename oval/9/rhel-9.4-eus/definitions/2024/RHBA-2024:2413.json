@@ -1,0 +1,2929 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhba:def:20242413",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHBA-2024:2413: glibc bug fix and enhancement update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHBA-2024:2413",
+        "RefURL": "https://access.redhat.com/errata/RHBA-2024:2413"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2023-4806",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2023-4806"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2023-4813",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2023-4813"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2023-4911",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2023-4911"
+      }
+    ],
+    "Description": "For detailed information on changes in this release, see the Red Hat Enterprise Linux 9.4 Release Notes linked from the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-04-30"
+      },
+      "Updated": {
+        "Date": "2024-04-30"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2023-4806",
+          "Cvss3": "5.9/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-416",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2023-4806",
+          "Public": "20230912"
+        },
+        {
+          "CveID": "CVE-2023-4813",
+          "Cvss3": "5.9/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-416",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2023-4813",
+          "Public": "20220301"
+        },
+        {
+          "CveID": "CVE-2023-4911",
+          "Cvss3": "7.8/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-122",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2023-4911",
+          "Public": "20231003:1700"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2237782",
+          "ID": "2237782"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2237798",
+          "ID": "2237798"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2238352",
+          "ID": "2238352"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.4",
+        "cpe:/a:redhat:rhel_eus:9.4::appstream",
+        "cpe:/a:redhat:rhel_eus:9.4::crb",
+        "cpe:/a:redhat:rhel_eus:9.4::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.4::nfv",
+        "cpe:/a:redhat:rhel_eus:9.4::realtime",
+        "cpe:/a:redhat:rhel_eus:9.4::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.4::sap",
+        "cpe:/a:redhat:rhel_eus:9.4::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.4::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.4",
+        "cpe:/o:redhat:rhel_eus:9.4::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413001"
+                  },
+                  {
+                    "Comment": "glibc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-all-langpacks is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413003"
+                  },
+                  {
+                    "Comment": "glibc-all-langpacks is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-benchtests is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413005"
+                  },
+                  {
+                    "Comment": "glibc-benchtests is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-common is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413007"
+                  },
+                  {
+                    "Comment": "glibc-common is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-devel is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413009"
+                  },
+                  {
+                    "Comment": "glibc-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-doc is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413011"
+                  },
+                  {
+                    "Comment": "glibc-doc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-gconv-extra is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413013"
+                  },
+                  {
+                    "Comment": "glibc-gconv-extra is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-headers is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413015"
+                  },
+                  {
+                    "Comment": "glibc-headers is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413016"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-aa is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413017"
+                  },
+                  {
+                    "Comment": "glibc-langpack-aa is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413018"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-af is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413019"
+                  },
+                  {
+                    "Comment": "glibc-langpack-af is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413020"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-agr is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413021"
+                  },
+                  {
+                    "Comment": "glibc-langpack-agr is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413022"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-ak is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413023"
+                  },
+                  {
+                    "Comment": "glibc-langpack-ak is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413024"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-am is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413025"
+                  },
+                  {
+                    "Comment": "glibc-langpack-am is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413026"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-an is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413027"
+                  },
+                  {
+                    "Comment": "glibc-langpack-an is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413028"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-anp is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413029"
+                  },
+                  {
+                    "Comment": "glibc-langpack-anp is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413030"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-ar is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413031"
+                  },
+                  {
+                    "Comment": "glibc-langpack-ar is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413032"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-as is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413033"
+                  },
+                  {
+                    "Comment": "glibc-langpack-as is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413034"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-ast is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413035"
+                  },
+                  {
+                    "Comment": "glibc-langpack-ast is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413036"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-ayc is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413037"
+                  },
+                  {
+                    "Comment": "glibc-langpack-ayc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413038"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-az is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413039"
+                  },
+                  {
+                    "Comment": "glibc-langpack-az is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413040"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-be is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413041"
+                  },
+                  {
+                    "Comment": "glibc-langpack-be is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413042"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-bem is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413043"
+                  },
+                  {
+                    "Comment": "glibc-langpack-bem is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413044"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-ber is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413045"
+                  },
+                  {
+                    "Comment": "glibc-langpack-ber is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413046"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-bg is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413047"
+                  },
+                  {
+                    "Comment": "glibc-langpack-bg is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413048"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-bhb is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413049"
+                  },
+                  {
+                    "Comment": "glibc-langpack-bhb is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413050"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-bho is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413051"
+                  },
+                  {
+                    "Comment": "glibc-langpack-bho is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413052"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-bi is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413053"
+                  },
+                  {
+                    "Comment": "glibc-langpack-bi is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413054"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-bn is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413055"
+                  },
+                  {
+                    "Comment": "glibc-langpack-bn is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413056"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-bo is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413057"
+                  },
+                  {
+                    "Comment": "glibc-langpack-bo is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413058"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-br is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413059"
+                  },
+                  {
+                    "Comment": "glibc-langpack-br is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413060"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-brx is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413061"
+                  },
+                  {
+                    "Comment": "glibc-langpack-brx is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413062"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-bs is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413063"
+                  },
+                  {
+                    "Comment": "glibc-langpack-bs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413064"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-byn is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413065"
+                  },
+                  {
+                    "Comment": "glibc-langpack-byn is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413066"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-ca is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413067"
+                  },
+                  {
+                    "Comment": "glibc-langpack-ca is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413068"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-ce is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413069"
+                  },
+                  {
+                    "Comment": "glibc-langpack-ce is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413070"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-chr is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413071"
+                  },
+                  {
+                    "Comment": "glibc-langpack-chr is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413072"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-ckb is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413073"
+                  },
+                  {
+                    "Comment": "glibc-langpack-ckb is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413074"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-cmn is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413075"
+                  },
+                  {
+                    "Comment": "glibc-langpack-cmn is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413076"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-crh is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413077"
+                  },
+                  {
+                    "Comment": "glibc-langpack-crh is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413078"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-cs is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413079"
+                  },
+                  {
+                    "Comment": "glibc-langpack-cs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413080"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-csb is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413081"
+                  },
+                  {
+                    "Comment": "glibc-langpack-csb is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413082"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-cv is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413083"
+                  },
+                  {
+                    "Comment": "glibc-langpack-cv is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413084"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-cy is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413085"
+                  },
+                  {
+                    "Comment": "glibc-langpack-cy is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413086"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-da is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413087"
+                  },
+                  {
+                    "Comment": "glibc-langpack-da is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413088"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-de is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413089"
+                  },
+                  {
+                    "Comment": "glibc-langpack-de is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413090"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-doi is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413091"
+                  },
+                  {
+                    "Comment": "glibc-langpack-doi is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413092"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-dsb is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413093"
+                  },
+                  {
+                    "Comment": "glibc-langpack-dsb is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413094"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-dv is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413095"
+                  },
+                  {
+                    "Comment": "glibc-langpack-dv is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413096"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-dz is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413097"
+                  },
+                  {
+                    "Comment": "glibc-langpack-dz is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413098"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-el is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413099"
+                  },
+                  {
+                    "Comment": "glibc-langpack-el is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413100"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-en is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413101"
+                  },
+                  {
+                    "Comment": "glibc-langpack-en is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413102"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-eo is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413103"
+                  },
+                  {
+                    "Comment": "glibc-langpack-eo is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413104"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-es is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413105"
+                  },
+                  {
+                    "Comment": "glibc-langpack-es is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413106"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-et is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413107"
+                  },
+                  {
+                    "Comment": "glibc-langpack-et is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413108"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-eu is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413109"
+                  },
+                  {
+                    "Comment": "glibc-langpack-eu is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413110"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-fa is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413111"
+                  },
+                  {
+                    "Comment": "glibc-langpack-fa is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413112"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-ff is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413113"
+                  },
+                  {
+                    "Comment": "glibc-langpack-ff is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413114"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-fi is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413115"
+                  },
+                  {
+                    "Comment": "glibc-langpack-fi is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413116"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-fil is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413117"
+                  },
+                  {
+                    "Comment": "glibc-langpack-fil is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413118"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-fo is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413119"
+                  },
+                  {
+                    "Comment": "glibc-langpack-fo is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413120"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-fr is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413121"
+                  },
+                  {
+                    "Comment": "glibc-langpack-fr is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413122"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-fur is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413123"
+                  },
+                  {
+                    "Comment": "glibc-langpack-fur is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413124"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-fy is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413125"
+                  },
+                  {
+                    "Comment": "glibc-langpack-fy is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413126"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-ga is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413127"
+                  },
+                  {
+                    "Comment": "glibc-langpack-ga is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413128"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-gd is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413129"
+                  },
+                  {
+                    "Comment": "glibc-langpack-gd is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413130"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-gez is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413131"
+                  },
+                  {
+                    "Comment": "glibc-langpack-gez is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413132"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-gl is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413133"
+                  },
+                  {
+                    "Comment": "glibc-langpack-gl is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413134"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-gu is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413135"
+                  },
+                  {
+                    "Comment": "glibc-langpack-gu is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413136"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-gv is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413137"
+                  },
+                  {
+                    "Comment": "glibc-langpack-gv is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413138"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-ha is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413139"
+                  },
+                  {
+                    "Comment": "glibc-langpack-ha is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413140"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-hak is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413141"
+                  },
+                  {
+                    "Comment": "glibc-langpack-hak is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413142"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-he is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413143"
+                  },
+                  {
+                    "Comment": "glibc-langpack-he is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413144"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-hi is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413145"
+                  },
+                  {
+                    "Comment": "glibc-langpack-hi is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413146"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-hif is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413147"
+                  },
+                  {
+                    "Comment": "glibc-langpack-hif is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413148"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-hne is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413149"
+                  },
+                  {
+                    "Comment": "glibc-langpack-hne is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413150"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-hr is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413151"
+                  },
+                  {
+                    "Comment": "glibc-langpack-hr is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413152"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-hsb is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413153"
+                  },
+                  {
+                    "Comment": "glibc-langpack-hsb is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413154"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-ht is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413155"
+                  },
+                  {
+                    "Comment": "glibc-langpack-ht is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413156"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-hu is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413157"
+                  },
+                  {
+                    "Comment": "glibc-langpack-hu is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413158"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-hy is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413159"
+                  },
+                  {
+                    "Comment": "glibc-langpack-hy is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413160"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-ia is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413161"
+                  },
+                  {
+                    "Comment": "glibc-langpack-ia is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413162"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-id is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413163"
+                  },
+                  {
+                    "Comment": "glibc-langpack-id is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413164"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-ig is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413165"
+                  },
+                  {
+                    "Comment": "glibc-langpack-ig is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413166"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-ik is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413167"
+                  },
+                  {
+                    "Comment": "glibc-langpack-ik is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413168"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-is is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413169"
+                  },
+                  {
+                    "Comment": "glibc-langpack-is is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413170"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-it is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413171"
+                  },
+                  {
+                    "Comment": "glibc-langpack-it is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413172"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-iu is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413173"
+                  },
+                  {
+                    "Comment": "glibc-langpack-iu is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413174"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-ja is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413175"
+                  },
+                  {
+                    "Comment": "glibc-langpack-ja is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413176"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-ka is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413177"
+                  },
+                  {
+                    "Comment": "glibc-langpack-ka is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413178"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-kab is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413179"
+                  },
+                  {
+                    "Comment": "glibc-langpack-kab is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413180"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-kk is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413181"
+                  },
+                  {
+                    "Comment": "glibc-langpack-kk is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413182"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-kl is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413183"
+                  },
+                  {
+                    "Comment": "glibc-langpack-kl is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413184"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-km is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413185"
+                  },
+                  {
+                    "Comment": "glibc-langpack-km is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413186"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-kn is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413187"
+                  },
+                  {
+                    "Comment": "glibc-langpack-kn is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413188"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-ko is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413189"
+                  },
+                  {
+                    "Comment": "glibc-langpack-ko is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413190"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-kok is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413191"
+                  },
+                  {
+                    "Comment": "glibc-langpack-kok is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413192"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-ks is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413193"
+                  },
+                  {
+                    "Comment": "glibc-langpack-ks is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413194"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-ku is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413195"
+                  },
+                  {
+                    "Comment": "glibc-langpack-ku is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413196"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-kw is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413197"
+                  },
+                  {
+                    "Comment": "glibc-langpack-kw is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413198"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-ky is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413199"
+                  },
+                  {
+                    "Comment": "glibc-langpack-ky is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413200"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-lb is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413201"
+                  },
+                  {
+                    "Comment": "glibc-langpack-lb is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413202"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-lg is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413203"
+                  },
+                  {
+                    "Comment": "glibc-langpack-lg is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413204"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-li is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413205"
+                  },
+                  {
+                    "Comment": "glibc-langpack-li is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413206"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-lij is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413207"
+                  },
+                  {
+                    "Comment": "glibc-langpack-lij is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413208"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-ln is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413209"
+                  },
+                  {
+                    "Comment": "glibc-langpack-ln is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413210"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-lo is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413211"
+                  },
+                  {
+                    "Comment": "glibc-langpack-lo is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413212"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-lt is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413213"
+                  },
+                  {
+                    "Comment": "glibc-langpack-lt is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413214"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-lv is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413215"
+                  },
+                  {
+                    "Comment": "glibc-langpack-lv is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413216"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-lzh is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413217"
+                  },
+                  {
+                    "Comment": "glibc-langpack-lzh is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413218"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-mag is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413219"
+                  },
+                  {
+                    "Comment": "glibc-langpack-mag is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413220"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-mai is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413221"
+                  },
+                  {
+                    "Comment": "glibc-langpack-mai is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413222"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-mfe is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413223"
+                  },
+                  {
+                    "Comment": "glibc-langpack-mfe is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413224"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-mg is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413225"
+                  },
+                  {
+                    "Comment": "glibc-langpack-mg is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413226"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-mhr is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413227"
+                  },
+                  {
+                    "Comment": "glibc-langpack-mhr is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413228"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-mi is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413229"
+                  },
+                  {
+                    "Comment": "glibc-langpack-mi is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413230"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-miq is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413231"
+                  },
+                  {
+                    "Comment": "glibc-langpack-miq is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413232"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-mjw is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413233"
+                  },
+                  {
+                    "Comment": "glibc-langpack-mjw is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413234"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-mk is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413235"
+                  },
+                  {
+                    "Comment": "glibc-langpack-mk is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413236"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-ml is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413237"
+                  },
+                  {
+                    "Comment": "glibc-langpack-ml is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413238"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-mn is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413239"
+                  },
+                  {
+                    "Comment": "glibc-langpack-mn is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413240"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-mni is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413241"
+                  },
+                  {
+                    "Comment": "glibc-langpack-mni is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413242"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-mnw is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413243"
+                  },
+                  {
+                    "Comment": "glibc-langpack-mnw is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413244"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-mr is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413245"
+                  },
+                  {
+                    "Comment": "glibc-langpack-mr is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413246"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-ms is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413247"
+                  },
+                  {
+                    "Comment": "glibc-langpack-ms is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413248"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-mt is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413249"
+                  },
+                  {
+                    "Comment": "glibc-langpack-mt is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413250"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-my is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413251"
+                  },
+                  {
+                    "Comment": "glibc-langpack-my is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413252"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-nan is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413253"
+                  },
+                  {
+                    "Comment": "glibc-langpack-nan is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413254"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-nb is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413255"
+                  },
+                  {
+                    "Comment": "glibc-langpack-nb is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413256"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-nds is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413257"
+                  },
+                  {
+                    "Comment": "glibc-langpack-nds is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413258"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-ne is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413259"
+                  },
+                  {
+                    "Comment": "glibc-langpack-ne is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413260"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-nhn is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413261"
+                  },
+                  {
+                    "Comment": "glibc-langpack-nhn is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413262"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-niu is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413263"
+                  },
+                  {
+                    "Comment": "glibc-langpack-niu is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413264"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-nl is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413265"
+                  },
+                  {
+                    "Comment": "glibc-langpack-nl is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413266"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-nn is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413267"
+                  },
+                  {
+                    "Comment": "glibc-langpack-nn is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413268"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-nr is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413269"
+                  },
+                  {
+                    "Comment": "glibc-langpack-nr is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413270"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-nso is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413271"
+                  },
+                  {
+                    "Comment": "glibc-langpack-nso is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413272"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-oc is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413273"
+                  },
+                  {
+                    "Comment": "glibc-langpack-oc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413274"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-om is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413275"
+                  },
+                  {
+                    "Comment": "glibc-langpack-om is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413276"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-or is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413277"
+                  },
+                  {
+                    "Comment": "glibc-langpack-or is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413278"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-os is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413279"
+                  },
+                  {
+                    "Comment": "glibc-langpack-os is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413280"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-pa is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413281"
+                  },
+                  {
+                    "Comment": "glibc-langpack-pa is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413282"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-pap is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413283"
+                  },
+                  {
+                    "Comment": "glibc-langpack-pap is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413284"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-pl is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413285"
+                  },
+                  {
+                    "Comment": "glibc-langpack-pl is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413286"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-ps is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413287"
+                  },
+                  {
+                    "Comment": "glibc-langpack-ps is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413288"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-pt is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413289"
+                  },
+                  {
+                    "Comment": "glibc-langpack-pt is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413290"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-quz is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413291"
+                  },
+                  {
+                    "Comment": "glibc-langpack-quz is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413292"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-raj is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413293"
+                  },
+                  {
+                    "Comment": "glibc-langpack-raj is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413294"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-ro is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413295"
+                  },
+                  {
+                    "Comment": "glibc-langpack-ro is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413296"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-ru is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413297"
+                  },
+                  {
+                    "Comment": "glibc-langpack-ru is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413298"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-rw is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413299"
+                  },
+                  {
+                    "Comment": "glibc-langpack-rw is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413300"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-sa is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413301"
+                  },
+                  {
+                    "Comment": "glibc-langpack-sa is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413302"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-sah is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413303"
+                  },
+                  {
+                    "Comment": "glibc-langpack-sah is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413304"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-sat is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413305"
+                  },
+                  {
+                    "Comment": "glibc-langpack-sat is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413306"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-sc is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413307"
+                  },
+                  {
+                    "Comment": "glibc-langpack-sc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413308"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-sd is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413309"
+                  },
+                  {
+                    "Comment": "glibc-langpack-sd is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413310"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-se is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413311"
+                  },
+                  {
+                    "Comment": "glibc-langpack-se is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413312"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-sgs is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413313"
+                  },
+                  {
+                    "Comment": "glibc-langpack-sgs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413314"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-shn is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413315"
+                  },
+                  {
+                    "Comment": "glibc-langpack-shn is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413316"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-shs is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413317"
+                  },
+                  {
+                    "Comment": "glibc-langpack-shs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413318"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-si is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413319"
+                  },
+                  {
+                    "Comment": "glibc-langpack-si is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413320"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-sid is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413321"
+                  },
+                  {
+                    "Comment": "glibc-langpack-sid is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413322"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-sk is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413323"
+                  },
+                  {
+                    "Comment": "glibc-langpack-sk is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413324"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-sl is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413325"
+                  },
+                  {
+                    "Comment": "glibc-langpack-sl is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413326"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-sm is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413327"
+                  },
+                  {
+                    "Comment": "glibc-langpack-sm is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413328"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-so is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413329"
+                  },
+                  {
+                    "Comment": "glibc-langpack-so is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413330"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-sq is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413331"
+                  },
+                  {
+                    "Comment": "glibc-langpack-sq is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413332"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-sr is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413333"
+                  },
+                  {
+                    "Comment": "glibc-langpack-sr is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413334"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-ss is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413335"
+                  },
+                  {
+                    "Comment": "glibc-langpack-ss is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413336"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-st is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413337"
+                  },
+                  {
+                    "Comment": "glibc-langpack-st is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413338"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-sv is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413339"
+                  },
+                  {
+                    "Comment": "glibc-langpack-sv is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413340"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-sw is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413341"
+                  },
+                  {
+                    "Comment": "glibc-langpack-sw is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413342"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-szl is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413343"
+                  },
+                  {
+                    "Comment": "glibc-langpack-szl is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413344"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-ta is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413345"
+                  },
+                  {
+                    "Comment": "glibc-langpack-ta is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413346"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-tcy is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413347"
+                  },
+                  {
+                    "Comment": "glibc-langpack-tcy is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413348"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-te is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413349"
+                  },
+                  {
+                    "Comment": "glibc-langpack-te is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413350"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-tg is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413351"
+                  },
+                  {
+                    "Comment": "glibc-langpack-tg is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413352"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-th is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413353"
+                  },
+                  {
+                    "Comment": "glibc-langpack-th is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413354"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-the is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413355"
+                  },
+                  {
+                    "Comment": "glibc-langpack-the is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413356"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-ti is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413357"
+                  },
+                  {
+                    "Comment": "glibc-langpack-ti is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413358"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-tig is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413359"
+                  },
+                  {
+                    "Comment": "glibc-langpack-tig is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413360"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-tk is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413361"
+                  },
+                  {
+                    "Comment": "glibc-langpack-tk is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413362"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-tl is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413363"
+                  },
+                  {
+                    "Comment": "glibc-langpack-tl is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413364"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-tn is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413365"
+                  },
+                  {
+                    "Comment": "glibc-langpack-tn is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413366"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-to is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413367"
+                  },
+                  {
+                    "Comment": "glibc-langpack-to is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413368"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-tpi is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413369"
+                  },
+                  {
+                    "Comment": "glibc-langpack-tpi is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413370"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-tr is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413371"
+                  },
+                  {
+                    "Comment": "glibc-langpack-tr is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413372"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-ts is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413373"
+                  },
+                  {
+                    "Comment": "glibc-langpack-ts is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413374"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-tt is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413375"
+                  },
+                  {
+                    "Comment": "glibc-langpack-tt is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413376"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-ug is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413377"
+                  },
+                  {
+                    "Comment": "glibc-langpack-ug is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413378"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-uk is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413379"
+                  },
+                  {
+                    "Comment": "glibc-langpack-uk is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413380"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-unm is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413381"
+                  },
+                  {
+                    "Comment": "glibc-langpack-unm is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413382"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-ur is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413383"
+                  },
+                  {
+                    "Comment": "glibc-langpack-ur is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413384"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-uz is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413385"
+                  },
+                  {
+                    "Comment": "glibc-langpack-uz is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413386"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-ve is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413387"
+                  },
+                  {
+                    "Comment": "glibc-langpack-ve is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413388"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-vi is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413389"
+                  },
+                  {
+                    "Comment": "glibc-langpack-vi is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413390"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-wa is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413391"
+                  },
+                  {
+                    "Comment": "glibc-langpack-wa is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413392"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-wae is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413393"
+                  },
+                  {
+                    "Comment": "glibc-langpack-wae is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413394"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-wal is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413395"
+                  },
+                  {
+                    "Comment": "glibc-langpack-wal is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413396"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-wo is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413397"
+                  },
+                  {
+                    "Comment": "glibc-langpack-wo is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413398"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-xh is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413399"
+                  },
+                  {
+                    "Comment": "glibc-langpack-xh is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413400"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-yi is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413401"
+                  },
+                  {
+                    "Comment": "glibc-langpack-yi is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413402"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-yo is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413403"
+                  },
+                  {
+                    "Comment": "glibc-langpack-yo is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413404"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-yue is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413405"
+                  },
+                  {
+                    "Comment": "glibc-langpack-yue is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413406"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-yuw is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413407"
+                  },
+                  {
+                    "Comment": "glibc-langpack-yuw is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413408"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-zh is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413409"
+                  },
+                  {
+                    "Comment": "glibc-langpack-zh is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413410"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-langpack-zu is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413411"
+                  },
+                  {
+                    "Comment": "glibc-langpack-zu is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413412"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-locale-source is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413413"
+                  },
+                  {
+                    "Comment": "glibc-locale-source is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413414"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-minimal-langpack is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413415"
+                  },
+                  {
+                    "Comment": "glibc-minimal-langpack is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413416"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-nss-devel is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413417"
+                  },
+                  {
+                    "Comment": "glibc-nss-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413418"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-static is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413419"
+                  },
+                  {
+                    "Comment": "glibc-static is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413420"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glibc-utils is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413421"
+                  },
+                  {
+                    "Comment": "glibc-utils is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413422"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libnsl is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413423"
+                  },
+                  {
+                    "Comment": "libnsl is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413424"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "nscd is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413425"
+                  },
+                  {
+                    "Comment": "nscd is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413426"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "nss_db is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413427"
+                  },
+                  {
+                    "Comment": "nss_db is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413428"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "nss_hesiod is earlier than 0:2.34-100.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413429"
+                  },
+                  {
+                    "Comment": "nss_hesiod is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20242413430"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
