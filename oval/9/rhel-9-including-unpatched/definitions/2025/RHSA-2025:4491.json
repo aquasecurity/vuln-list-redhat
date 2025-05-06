@@ -1,23 +1,39 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:20252487",
-  "Version": "636",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20254491",
+  "Version": "637",
   "Metadata": {
-    "Title": "389-ds-base: null pointer dereference leads to denial of service (moderate)",
+    "Title": "RHSA-2025:4491: 389-ds-base security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:4491",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:4491"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2025-2487",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2025-2487"
       }
     ],
-    "Description": "DOCUMENTATION: A flaw was found in the 389-ds-base LDAP Server. This issue occurs when issuing a Modify DN LDAP operation through the ldap protocol, when the function return value is not tested and a NULL pointer is dereferenced. If a privileged user performs a ldap MODDN operation after a failed operation, it could lead to a Denial of Service (DoS) or system crash. \n            STATEMENT: Red Hat rates this as a Moderate severity since the impact is limited to privileged users who can perform the operations, leading to an impact on server Availability.\nThis issue is not reproducible in Red Hat Enterprise Linux (RHEL) 10 due to the way the RHEL 10 database write operations are serialized, therefore, it is not affected.\n            MITIGATION: Currently, no mitigation is available for this vulnerability.",
+    "Description": "389 Directory Server is an LDAP version 3 (LDAPv3) compliant server. The base packages include the Lightweight Directory Access Protocol (LDAP) server and command-line utilities for server administration.\n\nSecurity Fix(es):\n\n* 389-ds-base: null pointer dereference leads to denial of service (CVE-2025-2487)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Moderate",
-      "Issued": {},
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-05-06"
+      },
       "Updated": {
-        "Date": "2025-04-07"
+        "Date": "2025-05-06"
       },
       "Cves": [
         {
@@ -27,6 +43,12 @@
           "Impact": "moderate",
           "Href": "https://access.redhat.com/security/cve/CVE-2025-2487",
           "Public": "20250318"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2353071",
+          "ID": "2353071"
         }
       ],
       "AffectedCpeList": [
@@ -44,9 +66,7 @@
         "cpe:/o:redhat:enterprise_linux:9::baseos"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -75,34 +95,8 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "389-ds-base-libs is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:20223517009"
-                  },
-                  {
-                    "Comment": "389-ds-base-libs is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:20223517010"
-                  }
-                ]
-              },
-              {
-                "Operator": "AND",
-                "Criterions": [
-                  {
-                    "Comment": "389-ds-base-devel is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:20241062001"
-                  },
-                  {
-                    "Comment": "389-ds-base-devel is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:20241062002"
-                  }
-                ]
-              },
-              {
-                "Operator": "AND",
-                "Criterions": [
-                  {
-                    "Comment": "389-ds-base is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:20223517011"
+                    "Comment": "389-ds-base is earlier than 0:2.5.2-9.el9_5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20254491001"
                   },
                   {
                     "Comment": "389-ds-base is signed with Red Hat redhatrelease2 key",
@@ -114,8 +108,47 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "python3-lib389 is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:20223517007"
+                    "Comment": "389-ds-base-devel is earlier than 0:2.5.2-9.el9_5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20254491003"
+                  },
+                  {
+                    "Comment": "389-ds-base-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:20241062002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "389-ds-base-libs is earlier than 0:2.5.2-9.el9_5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20254491005"
+                  },
+                  {
+                    "Comment": "389-ds-base-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:20223517010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "389-ds-base-snmp is earlier than 0:2.5.2-9.el9_5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20254491007"
+                  },
+                  {
+                    "Comment": "389-ds-base-snmp is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20254491008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3-lib389 is earlier than 0:2.5.2-9.el9_5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20254491009"
                   },
                   {
                     "Comment": "python3-lib389 is signed with Red Hat redhatrelease2 key",
