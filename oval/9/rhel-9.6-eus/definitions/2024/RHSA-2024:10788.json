@@ -1,0 +1,397 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202410788",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2024:10788: postgresql:16 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2024:10788",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2024:10788"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-10976",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-10976"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-10978",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-10978"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-10979",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-10979"
+      }
+    ],
+    "Description": "PostgreSQL is an advanced object-relational database management system (DBMS).\n\nSecurity Fix(es):\n\n* postgresql: PostgreSQL SET ROLE, SET SESSION AUTHORIZATION reset to wrong user ID (CVE-2024-10978)\n\n* postgresql: PostgreSQL PL/Perl environment variable changes execute arbitrary code (CVE-2024-10979)\n\n* postgresql: PostgreSQL row security below e.g. subqueries disregards user ID changes (CVE-2024-10976)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2024 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2024-12-04"
+      },
+      "Updated": {
+        "Date": "2024-12-04"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-10976",
+          "Cvss3": "4.2/CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N",
+          "Cwe": "CWE-1250",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-10976",
+          "Public": "20241114:1300"
+        },
+        {
+          "CveID": "CVE-2024-10978",
+          "Cvss3": "4.2/CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N",
+          "Cwe": "CWE-266",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-10978",
+          "Public": "20241114:1300"
+        },
+        {
+          "CveID": "CVE-2024-10979",
+          "Cvss3": "8.8/CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-15",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-10979",
+          "Public": "20241114:1300"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2326251",
+          "ID": "2326251"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2326253",
+          "ID": "2326253"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2326263",
+          "ID": "2326263"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.6",
+        "cpe:/a:redhat:rhel_eus:9.6::appstream",
+        "cpe:/a:redhat:rhel_eus:9.6::crb",
+        "cpe:/a:redhat:rhel_eus:9.6::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.6::nfv",
+        "cpe:/a:redhat:rhel_eus:9.6::realtime",
+        "cpe:/a:redhat:rhel_eus:9.6::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.6::sap",
+        "cpe:/a:redhat:rhel_eus:9.6::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.6::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.6",
+        "cpe:/o:redhat:rhel_eus:9.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223991004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223991003"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "Module postgresql:16 is enabled",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202410788039"
+                  }
+                ],
+                "Criterias": [
+                  {
+                    "Operator": "OR",
+                    "Criterias": [
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "pg_repack is earlier than 0:1.5.1-1.module+el9.5.0+22557+8cb08ba5",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410788001"
+                          },
+                          {
+                            "Comment": "pg_repack is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410787002"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "pgaudit is earlier than 0:16.0-1.module+el9.4.0+20427+07482b8c",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410788003"
+                          },
+                          {
+                            "Comment": "pgaudit is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410787004"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "pgvector is earlier than 0:0.6.2-1.module+el9.5.0+21770+ad2986ef",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410788005"
+                          },
+                          {
+                            "Comment": "pgvector is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410788006"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "postgres-decoderbufs is earlier than 0:2.4.0-1.Final.module+el9.4.0+20427+07482b8c",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410788007"
+                          },
+                          {
+                            "Comment": "postgres-decoderbufs is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410787006"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "postgresql is earlier than 0:16.6-1.module+el9.5.0+22557+8cb08ba5",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410788009"
+                          },
+                          {
+                            "Comment": "postgresql is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20231693002"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "postgresql-contrib is earlier than 0:16.6-1.module+el9.5.0+22557+8cb08ba5",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410788011"
+                          },
+                          {
+                            "Comment": "postgresql-contrib is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20231693004"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "postgresql-docs is earlier than 0:16.6-1.module+el9.5.0+22557+8cb08ba5",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410788013"
+                          },
+                          {
+                            "Comment": "postgresql-docs is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20231693006"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "postgresql-plperl is earlier than 0:16.6-1.module+el9.5.0+22557+8cb08ba5",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410788015"
+                          },
+                          {
+                            "Comment": "postgresql-plperl is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20231693008"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "postgresql-plpython3 is earlier than 0:16.6-1.module+el9.5.0+22557+8cb08ba5",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410788017"
+                          },
+                          {
+                            "Comment": "postgresql-plpython3 is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20231693010"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "postgresql-pltcl is earlier than 0:16.6-1.module+el9.5.0+22557+8cb08ba5",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410788019"
+                          },
+                          {
+                            "Comment": "postgresql-pltcl is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20231693012"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "postgresql-private-devel is earlier than 0:16.6-1.module+el9.5.0+22557+8cb08ba5",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410788021"
+                          },
+                          {
+                            "Comment": "postgresql-private-devel is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20231693014"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "postgresql-private-libs is earlier than 0:16.6-1.module+el9.5.0+22557+8cb08ba5",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410788023"
+                          },
+                          {
+                            "Comment": "postgresql-private-libs is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20231693016"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "postgresql-server is earlier than 0:16.6-1.module+el9.5.0+22557+8cb08ba5",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410788025"
+                          },
+                          {
+                            "Comment": "postgresql-server is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20231693018"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "postgresql-server-devel is earlier than 0:16.6-1.module+el9.5.0+22557+8cb08ba5",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410788027"
+                          },
+                          {
+                            "Comment": "postgresql-server-devel is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20231693020"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "postgresql-static is earlier than 0:16.6-1.module+el9.5.0+22557+8cb08ba5",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410788029"
+                          },
+                          {
+                            "Comment": "postgresql-static is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20231693022"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "postgresql-test is earlier than 0:16.6-1.module+el9.5.0+22557+8cb08ba5",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410788031"
+                          },
+                          {
+                            "Comment": "postgresql-test is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20231693024"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "postgresql-test-rpm-macros is earlier than 0:16.6-1.module+el9.5.0+22557+8cb08ba5",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410788033"
+                          },
+                          {
+                            "Comment": "postgresql-test-rpm-macros is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410787032"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "postgresql-upgrade is earlier than 0:16.6-1.module+el9.5.0+22557+8cb08ba5",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410788035"
+                          },
+                          {
+                            "Comment": "postgresql-upgrade is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20231693026"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "postgresql-upgrade-devel is earlier than 0:16.6-1.module+el9.5.0+22557+8cb08ba5",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202410788037"
+                          },
+                          {
+                            "Comment": "postgresql-upgrade-devel is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20231693028"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
