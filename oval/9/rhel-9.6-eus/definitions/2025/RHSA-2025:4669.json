@@ -1,0 +1,139 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20254669",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2025:4669: osbuild-composer security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:4669",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:4669"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-30204",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-30204"
+      }
+    ],
+    "Description": "A service for building customized OS artifacts, such as VM images and OSTree commits, that uses osbuild under the hood. Besides building images for local usage, it can also upload images directly to cloud.  It is compatible with composer-cli and cockpit-composer clients.\n\nSecurity Fix(es):\n\n* golang-jwt/jwt: jwt-go allows excessive memory allocation during header parsing (CVE-2025-30204)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-05-07"
+      },
+      "Updated": {
+        "Date": "2025-05-07"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-30204",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-405",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-30204",
+          "Public": "20250321:2142"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2354195",
+          "ID": "2354195"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.6",
+        "cpe:/a:redhat:rhel_eus:9.6::appstream",
+        "cpe:/a:redhat:rhel_eus:9.6::crb",
+        "cpe:/a:redhat:rhel_eus:9.6::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.6::nfv",
+        "cpe:/a:redhat:rhel_eus:9.6::realtime",
+        "cpe:/a:redhat:rhel_eus:9.6::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.6::sap",
+        "cpe:/a:redhat:rhel_eus:9.6::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.6::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.6",
+        "cpe:/o:redhat:rhel_eus:9.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223991004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223991003"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "osbuild-composer is earlier than 0:118.2-1.el9_5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20254669001"
+                  },
+                  {
+                    "Comment": "osbuild-composer is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20232204004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "osbuild-composer-core is earlier than 0:118.2-1.el9_5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20254669003"
+                  },
+                  {
+                    "Comment": "osbuild-composer-core is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20232204006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "osbuild-composer-worker is earlier than 0:118.2-1.el9_5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20254669005"
+                  },
+                  {
+                    "Comment": "osbuild-composer-worker is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20232204010"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
