@@ -1,0 +1,224 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20254521",
+  "Version": "635",
+  "Metadata": {
+    "Title": "RHSA-2025:4521: Red Hat JBoss Web Server 5.8.4 release and security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat JBoss Web Server 5.8 on RHEL 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:4521",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:4521"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-56337",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-56337"
+      }
+    ],
+    "Description": "Red Hat JBoss Web Server is a fully integrated and certified set of components for hosting Java web applications. It is comprised of the Apache Tomcat Servlet container, JBoss HTTP Connector (mod_cluster), the PicketLink Vault extension for Apache Tomcat, and the Tomcat Native library.\n\nThis release of Red Hat JBoss Web Server 5.8.4 serves as a replacement for Red Hat JBoss Web Server 5.8.3. This release includes bug fixes, enhancements and component upgrades, which are documented in the Release Notes that are linked to in the References section.\n\nSecurity Fix(es):\n\n* tomcat: Incomplete fix for CVE-2024-50379 - RCE due to TOCTOU issue in JSP compilation [jws-5] (CVE-2024-56337)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-05-08"
+      },
+      "Updated": {
+        "Date": "2025-05-08"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-56337",
+          "Cvss3": "8.1/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-367",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-56337",
+          "Public": "20241220:1528"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2333521",
+          "ID": "2333521"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:jboss_enterprise_web_server:5.6",
+        "cpe:/a:redhat:jboss_enterprise_web_server:5.6::el9",
+        "cpe:/a:redhat:jboss_enterprise_web_server:5.7",
+        "cpe:/a:redhat:jboss_enterprise_web_server:5.7::el9",
+        "cpe:/a:redhat:jboss_enterprise_web_server:5.8",
+        "cpe:/a:redhat:jboss_enterprise_web_server:5.8::el9"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:20188014004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.cve:tst:20188014003"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "jws5-tomcat is earlier than 0:9.0.87-11.redhat_00010.1.el9jws",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20254521001"
+                  },
+                  {
+                    "Comment": "jws5-tomcat is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:20188014002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "jws5-tomcat-admin-webapps is earlier than 0:9.0.87-11.redhat_00010.1.el9jws",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20254521003"
+                  },
+                  {
+                    "Comment": "jws5-tomcat-admin-webapps is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20227272026"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "jws5-tomcat-docs-webapp is earlier than 0:9.0.87-11.redhat_00010.1.el9jws",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20254521005"
+                  },
+                  {
+                    "Comment": "jws5-tomcat-docs-webapp is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20227272028"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "jws5-tomcat-el-3.0-api is earlier than 0:9.0.87-11.redhat_00010.1.el9jws",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20254521007"
+                  },
+                  {
+                    "Comment": "jws5-tomcat-el-3.0-api is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20227272030"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "jws5-tomcat-javadoc is earlier than 0:9.0.87-11.redhat_00010.1.el9jws",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20254521009"
+                  },
+                  {
+                    "Comment": "jws5-tomcat-javadoc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20227272032"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "jws5-tomcat-jsp-2.3-api is earlier than 0:9.0.87-11.redhat_00010.1.el9jws",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20254521011"
+                  },
+                  {
+                    "Comment": "jws5-tomcat-jsp-2.3-api is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20227272034"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "jws5-tomcat-lib is earlier than 0:9.0.87-11.redhat_00010.1.el9jws",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20254521013"
+                  },
+                  {
+                    "Comment": "jws5-tomcat-lib is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20227272036"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "jws5-tomcat-selinux is earlier than 0:9.0.87-11.redhat_00010.1.el9jws",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20254521015"
+                  },
+                  {
+                    "Comment": "jws5-tomcat-selinux is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20227272038"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "jws5-tomcat-servlet-4.0-api is earlier than 0:9.0.87-11.redhat_00010.1.el9jws",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20254521017"
+                  },
+                  {
+                    "Comment": "jws5-tomcat-servlet-4.0-api is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20227272040"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "jws5-tomcat-webapps is earlier than 0:9.0.87-11.redhat_00010.1.el9jws",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20254521019"
+                  },
+                  {
+                    "Comment": "jws5-tomcat-webapps is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20227272042"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
