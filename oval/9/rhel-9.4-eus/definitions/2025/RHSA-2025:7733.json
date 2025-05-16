@@ -1,0 +1,101 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20257733",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2025:7733: compat-openssl11 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.4 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:7733",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:7733"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2023-0286",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2023-0286"
+      }
+    ],
+    "Description": "The OpenSSL toolkit provides support for secure communications between machines. This version of OpenSSL package contains only the libraries from the 1.1.1 version and is provided for compatibility with previous releases.\n\nSecurity Fix(es):\n\n* openssl: X.400 address type confusion in X.509 GeneralName (CVE-2023-0286)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-05-15"
+      },
+      "Updated": {
+        "Date": "2025-05-15"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2023-0286",
+          "Cvss3": "7.4/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:H",
+          "Cwe": "CWE-704",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2023-0286",
+          "Public": "20230207"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2164440",
+          "ID": "2164440"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.4",
+        "cpe:/a:redhat:rhel_eus:9.4::appstream",
+        "cpe:/a:redhat:rhel_eus:9.4::crb",
+        "cpe:/a:redhat:rhel_eus:9.4::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.4::nfv",
+        "cpe:/a:redhat:rhel_eus:9.4::realtime",
+        "cpe:/a:redhat:rhel_eus:9.4::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.4::sap",
+        "cpe:/a:redhat:rhel_eus:9.4::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.4::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.4",
+        "cpe:/o:redhat:rhel_eus:9.4::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
+          },
+          {
+            "Comment": "compat-openssl11 is earlier than 1:1.1.1k-5.el9_4.1",
+            "TestRef": "oval:com.redhat.rhsa:tst:20257733001"
+          },
+          {
+            "Comment": "compat-openssl11 is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20224899002"
+          }
+        ]
+      }
+    ]
+  }
+}
