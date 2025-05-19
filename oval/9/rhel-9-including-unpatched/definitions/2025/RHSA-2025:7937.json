@@ -1,23 +1,39 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:20230286",
-  "Version": "636",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20257937",
+  "Version": "637",
   "Metadata": {
-    "Title": "openssl: X.400 address type confusion in X.509 GeneralName (important)",
+    "Title": "RHSA-2025:7937: compat-openssl11 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:7937",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:7937"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2023-0286",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2023-0286"
       }
     ],
-    "Description": "DOCUMENTATION: A type confusion vulnerability was found in OpenSSL when OpenSSL X.400 addresses processing inside an X.509 GeneralName. When CRL checking is enabled (for example, the application sets the X509_V_FLAG_CRL_CHECK flag), this vulnerability may allow an attacker to pass arbitrary pointers to a memcmp call, enabling them to read memory contents or cause a denial of service. In most cases, the attack requires the attacker to provide both the certificate chain and CRL, of which neither needs a valid signature. If the attacker only controls one of these inputs, the other input must already contain an X.400 address as a CRL distribution point, which is uncommon. In this case, this vulnerability is likely only to affect applications that have implemented their own functionality for retrieving CRLs over a network. \n            STATEMENT: For shim in Red Hat Enterprise Linux 8 \u0026 9, is not affected as shim doesn't support any CRL processing.\n            MITIGATION: Mitigation for this issue is either not available or the currently available options don't meet the Red Hat Product Security criteria comprising ease of use and deployment, applicability to widespread installation base or stability.",
+    "Description": "The OpenSSL toolkit provides support for secure communications between machines. This version of OpenSSL package contains only the libraries from the 1.1.1 version and is provided for compatibility with previous releases.\n\nSecurity Fix(es):\n\n* openssl: X.400 address type confusion in X.509 GeneralName (CVE-2023-0286)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Important",
-      "Issued": {},
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-05-19"
+      },
       "Updated": {
-        "Date": "2025-04-30"
+        "Date": "2025-05-19"
       },
       "Cves": [
         {
@@ -27,6 +43,12 @@
           "Impact": "important",
           "Href": "https://access.redhat.com/security/cve/CVE-2023-0286",
           "Public": "20230207"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2164440",
+          "ID": "2164440"
         }
       ],
       "AffectedCpeList": [
@@ -44,9 +66,7 @@
         "cpe:/o:redhat:enterprise_linux:9::baseos"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -67,8 +87,8 @@
             "TestRef": "oval:com.redhat.cve:tst:20052541003"
           },
           {
-            "Comment": "compat-openssl11 is installed",
-            "TestRef": "oval:com.redhat.cve:tst:20221292001"
+            "Comment": "compat-openssl11 is earlier than 1:1.1.1k-5.el9_6.1",
+            "TestRef": "oval:com.redhat.rhsa:tst:20257937001"
           },
           {
             "Comment": "compat-openssl11 is signed with Red Hat redhatrelease2 key",
