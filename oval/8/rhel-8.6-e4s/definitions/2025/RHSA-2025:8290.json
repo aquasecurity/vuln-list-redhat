@@ -1,0 +1,146 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20258290",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2025:8290: pcs security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8.6 Update Services for SAP Solutions"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:8290",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:8290"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-46727",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-46727"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-47287",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-47287"
+      }
+    ],
+    "Description": "The pcs packages provide a command-line configuration system for the Pacemaker and Corosync utilities.\n\nSecurity Fix(es):\n\n* rubygem-rack: Unbounded-Parameter DoS in Rack::QueryParser (CVE-2025-46727)\n\n* tornado: Tornado Multipart Form-Data Denial of Service (CVE-2025-47287)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-05-29"
+      },
+      "Updated": {
+        "Date": "2025-05-29"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-46727",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "(CWE-400|CWE-770)",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-46727",
+          "Public": "20250507:2307"
+        },
+        {
+          "CveID": "CVE-2025-47287",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-770",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-47287",
+          "Public": "20250515:2117"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2364966",
+          "ID": "2364966"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2366703",
+          "ID": "2366703"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:8.6",
+        "cpe:/a:redhat:rhel_e4s:8.6::appstream",
+        "cpe:/a:redhat:rhel_e4s:8.6::highavailability",
+        "cpe:/a:redhat:rhel_e4s:8.6::nfv",
+        "cpe:/a:redhat:rhel_e4s:8.6::sap",
+        "cpe:/a:redhat:rhel_e4s:8.6::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:8.6",
+        "cpe:/o:redhat:rhel_e4s:8.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcs is earlier than 0:0.10.12-6.el8_6.8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20258290001"
+                  },
+                  {
+                    "Comment": "pcs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20202462002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pcs-snmp is earlier than 0:0.10.12-6.el8_6.8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20258290003"
+                  },
+                  {
+                    "Comment": "pcs-snmp is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20202462004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
