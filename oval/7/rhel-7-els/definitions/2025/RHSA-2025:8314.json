@@ -1,23 +1,39 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:20254638",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20258314",
   "Version": "636",
   "Metadata": {
-    "Title": "pcl: zlib: Improper Pointer Arithmetic in pcl (important)",
+    "Title": "RHSA-2025:8314: zlib security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 7 Extended Lifecycle Support"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:8314",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:8314"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2025-4638",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2025-4638"
       }
     ],
-    "Description": "DOCUMENTATION: A flaw was found in the inftrees.c component of the zlib library bundled within the PointCloudLibrary (PCL). This vulnerability allows context-dependent attackers to cause undefined behavior via improper pointer arithmetic. \n            STATEMENT: Since version 1.14.0, PCL by default uses a zlib installation from the system, unless the user sets WITH_SYSTEM_ZLIB=FALSE. This potential vulnerability is only relevant if the PCL version is older than 1.14.0 or the user specifically requests to not use the system zlib.",
+    "Description": "The zlib packages provide a general-purpose lossless data compression library that is used by many different programs.\n\nSecurity Fix(es):\n\n* pcl: zlib: Improper Pointer Arithmetic in pcl (CVE-2025-4638)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Important",
-      "Issued": {},
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-05-29"
+      },
       "Updated": {
-        "Date": "2025-05-26"
+        "Date": "2025-05-29"
       },
       "Cves": [
         {
@@ -29,22 +45,30 @@
           "Public": "20250514:1759"
         }
       ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2366317",
+          "ID": "2366317"
+        }
+      ],
       "AffectedCpeList": [
         "cpe:/a:redhat:rhel_extras:7",
         "cpe:/a:redhat:rhel_extras_oracle_java:7",
         "cpe:/a:redhat:rhel_extras_rt:7",
+        "cpe:/a:redhat:rhel_extras_rt_els:7",
         "cpe:/a:redhat:rhel_extras_sap:7",
+        "cpe:/a:redhat:rhel_extras_sap_els:7",
         "cpe:/a:redhat:rhel_extras_sap_hana:7",
+        "cpe:/a:redhat:rhel_extras_sap_hana_els:7",
         "cpe:/o:redhat:enterprise_linux:7",
         "cpe:/o:redhat:enterprise_linux:7::client",
         "cpe:/o:redhat:enterprise_linux:7::computenode",
         "cpe:/o:redhat:enterprise_linux:7::server",
-        "cpe:/o:redhat:enterprise_linux:7::workstation"
+        "cpe:/o:redhat:enterprise_linux:7::workstation",
+        "cpe:/o:redhat:rhel_els:7"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -53,7 +77,7 @@
     "Criterions": [
       {
         "Comment": "Red Hat Enterprise Linux must be installed",
-        "TestRef": "oval:com.redhat.cve:tst:20042779006"
+        "TestRef": "oval:com.redhat.rhba:tst:20150364028"
       }
     ],
     "Criterias": [
@@ -62,7 +86,7 @@
         "Criterions": [
           {
             "Comment": "Red Hat Enterprise Linux 7 is installed",
-            "TestRef": "oval:com.redhat.cve:tst:20042779005"
+            "TestRef": "oval:com.redhat.rhba:tst:20150364027"
           }
         ],
         "Criterias": [
@@ -73,25 +97,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "minizip-devel is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202345853007"
-                  },
-                  {
-                    "Comment": "minizip-devel is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:202345853008"
-                  }
-                ]
-              },
-              {
-                "Operator": "AND",
-                "Criterions": [
-                  {
-                    "Comment": "minizip is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202345853001"
+                    "Comment": "minizip is earlier than 0:1.2.7-21.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20258314001"
                   },
                   {
                     "Comment": "minizip is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:202345853002"
+                    "TestRef": "oval:com.redhat.rhsa:tst:20222213002"
                   }
                 ]
               },
@@ -99,12 +110,25 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "zlib is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202345853009"
+                    "Comment": "minizip-devel is earlier than 0:1.2.7-21.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20258314003"
+                  },
+                  {
+                    "Comment": "minizip-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20222213004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "zlib is earlier than 0:1.2.7-21.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20258314005"
                   },
                   {
                     "Comment": "zlib is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:202345853010"
+                    "TestRef": "oval:com.redhat.rhsa:tst:20222213006"
                   }
                 ]
               },
@@ -112,12 +136,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "zlib-devel is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202345853003"
+                    "Comment": "zlib-devel is earlier than 0:1.2.7-21.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20258314007"
                   },
                   {
                     "Comment": "zlib-devel is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:202345853004"
+                    "TestRef": "oval:com.redhat.rhsa:tst:20222213008"
                   }
                 ]
               },
@@ -125,12 +149,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "zlib-static is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202345853005"
+                    "Comment": "zlib-static is earlier than 0:1.2.7-21.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20258314009"
                   },
                   {
                     "Comment": "zlib-static is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:202345853006"
+                    "TestRef": "oval:com.redhat.rhsa:tst:20222213010"
                   }
                 ]
               }
