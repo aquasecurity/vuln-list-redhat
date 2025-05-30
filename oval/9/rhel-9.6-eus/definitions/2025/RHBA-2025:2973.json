@@ -1,0 +1,101 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhba:def:20252973",
+  "Version": "641",
+  "Metadata": {
+    "Title": "RHBA-2025:2973: mod_proxy_cluster bug fix update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHBA-2025:2973",
+        "RefURL": "https://access.redhat.com/errata/RHBA-2025:2973"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-10306",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-10306"
+      }
+    ],
+    "Description": "The mod_proxy_cluster module is a plugin for the Apache HTTP Server that provides load-balancer functionality.\n\nBug Fix(es):\n\n* Rebuild mod_proxy_cluster against httpd 2.4.62 (JIRA:RHEL-70140)\n\n* Rebase mod_proxy_cluster to upstream 1.3.22.Final release (JIRA:RHEL-80435)\n\n* Update deprecated misspeled EnableMCPMReceive directive (JIRA:RHEL-82135)",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-03-18"
+      },
+      "Updated": {
+        "Date": "2025-03-18"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-10306",
+          "Cvss3": "5.4/CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N",
+          "Cwe": "CWE-863",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-10306",
+          "Public": "20250228"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2321302",
+          "ID": "2321302"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.6",
+        "cpe:/a:redhat:rhel_eus:9.6::appstream",
+        "cpe:/a:redhat:rhel_eus:9.6::crb",
+        "cpe:/a:redhat:rhel_eus:9.6::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.6::nfv",
+        "cpe:/a:redhat:rhel_eus:9.6::realtime",
+        "cpe:/a:redhat:rhel_eus:9.6::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.6::sap",
+        "cpe:/a:redhat:rhel_eus:9.6::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.6::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.6",
+        "cpe:/o:redhat:rhel_eus:9.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223991004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223991003"
+          },
+          {
+            "Comment": "mod_proxy_cluster is earlier than 0:1.3.22-1.el9_5.2",
+            "TestRef": "oval:com.redhat.rhba:tst:20252973001"
+          },
+          {
+            "Comment": "mod_proxy_cluster is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhba:tst:20252973002"
+          }
+        ]
+      }
+    ]
+  }
+}
