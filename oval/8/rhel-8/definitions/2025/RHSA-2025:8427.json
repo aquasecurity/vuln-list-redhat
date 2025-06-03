@@ -1,0 +1,133 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20258427",
+  "Version": "638",
+  "Metadata": {
+    "Title": "RHSA-2025:8427: pandoc security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:8427",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:8427"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2023-24824",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2023-24824"
+      }
+    ],
+    "Description": "Pandoc is a Haskell library for converting from one markup format to another, and a command-line tool that uses this library. It can read several dialects of Markdown and (subsets of) HTML, reStructuredText, LaTeX, DocBook, JATS, MediaWiki markup, TWiki markup, TikiWiki markup, Creole 1.0, Haddock markup, OPML, Emacs Org-Mode, Emacs Muse, txt2tags, Vimwiki, Word Docx, ODT, and Textile, and it can write Markdown, reStructuredText, XHTML, HTML 5, LaTeX, ConTeXt, DocBook, JATS, OPML, TEI, OpenDocument, ODT, Word docx, RTF, MediaWiki, DokuWiki, ZimWiki, Textile, groff man, groff ms, plain text, Emacs Org-Mode, AsciiDoc, Haddock markup, EPUB (v2 and v3), FictionBook2, InDesign ICML, Muse, LaTeX beamer slides, PowerPoint, and several kinds of HTML/JavaScript slide shows (S5, Slidy, Slideous, DZSlides, reveal.js).  In contrast to most existing tools for converting Markdown to HTML, pandoc has a modular design: it consists of a set of readers, which parse text in a given format and produce a native representation of the document, and a set of writers, which convert this native representation into a target format. Thus, adding an input or output format requires only adding a reader or writer.  For pdf output please also install pandoc-pdf.\n\nSecurity Fix(es):\n\n* cmark-gfm: Quadratic complexity bugs may lead to a denial of service (CVE-2023-24824)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-06-03"
+      },
+      "Updated": {
+        "Date": "2025-06-03"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2023-24824",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "(CWE-400|CWE-407)",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2023-24824",
+          "Public": "20230401"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2210172",
+          "ID": "2210172"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:8",
+        "cpe:/a:redhat:enterprise_linux:8::appstream",
+        "cpe:/a:redhat:enterprise_linux:8::crb",
+        "cpe:/a:redhat:enterprise_linux:8::highavailability",
+        "cpe:/a:redhat:enterprise_linux:8::nfv",
+        "cpe:/a:redhat:enterprise_linux:8::realtime",
+        "cpe:/a:redhat:enterprise_linux:8::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:8::sap",
+        "cpe:/a:redhat:enterprise_linux:8::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:8::supplementary",
+        "cpe:/o:redhat:enterprise_linux:8",
+        "cpe:/o:redhat:enterprise_linux:8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pandoc is earlier than 0:2.0.6-7.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20258427001"
+                  },
+                  {
+                    "Comment": "pandoc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20211972002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pandoc-common is earlier than 0:2.0.6-7.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20258427003"
+                  },
+                  {
+                    "Comment": "pandoc-common is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20211972004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
