@@ -1,23 +1,39 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:202340403",
-  "Version": "636",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20258676",
+  "Version": "637",
   "Metadata": {
-    "Title": "libxslt: Processing web content may disclose sensitive information (moderate)",
+    "Title": "RHSA-2025:8676: libxslt security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:8676",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:8676"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2023-40403",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2023-40403"
       }
     ],
-    "Description": "DOCUMENTATION: A flaw was found in libxslt package. Processing web content may disclose sensitive information. This issue was addressed with improved memory handling. \n            STATEMENT: This CVE is a duplicate of CVE-2022-4909.\n\nWithin regulated environments, a combination of the following controls acts as a significant barrier to successfully exploiting a CWE-200: Exposure of Sensitive Information to an Unauthorized Actor vulnerability and therefore downgrades the severity of this particular CVE from Moderate to Low.\n\nAccess to the platform is granted only after successful hard token, multi-factor authentication (MFA), which is coupled with account management controls, including integration with single sign-on (SSO), to ensure that user permissions are restricted to only the functions necessary for their roles. Access to sensitive information is explicitly authorized and enforced based on predefined access policies. Event logs are collected and processed for centralization, correlation, analysis, monitoring, reporting, alerting, and retention. This process ensures that audit logs are generated for specific events involving sensitive information, which helps identify patterns of unauthorized access or data exposure. The platform enforces the use of validated cryptographic modules across compute resources to protect the confidentiality of information, even in the event of interception.",
+    "Description": "libxslt is a library for transforming XML files into other textual formats (including HTML, plain text, and other XML representations of the underlying data) using the standard XSLT stylesheet transformation mechanism. \n\nSecurity Fix(es):\n\n* libxslt: Processing web content may disclose sensitive information (CVE-2023-40403)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Moderate",
-      "Issued": {},
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-06-09"
+      },
       "Updated": {
-        "Date": "2025-05-01"
+        "Date": "2025-06-09"
       },
       "Cves": [
         {
@@ -27,6 +43,12 @@
           "Impact": "moderate",
           "Href": "https://access.redhat.com/security/cve/CVE-2023-40403",
           "Public": "20230926:2014"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2349766",
+          "ID": "2349766"
         }
       ],
       "AffectedCpeList": [
@@ -44,9 +66,7 @@
         "cpe:/o:redhat:enterprise_linux:8::baseos"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -61,13 +81,20 @@
     "Criterias": [
       {
         "Operator": "AND",
-        "Criterions": [
-          {
-            "Comment": "Red Hat Enterprise Linux 8 is installed",
-            "TestRef": "oval:com.redhat.cve:tst:20052541003"
-          }
-        ],
         "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.cve:tst:20052541003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
           {
             "Operator": "OR",
             "Criterias": [
@@ -75,8 +102,8 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "libxslt is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:201913117003"
+                    "Comment": "libxslt is earlier than 0:1.1.32-6.2.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20258676001"
                   },
                   {
                     "Comment": "libxslt is signed with Red Hat redhatrelease2 key",
@@ -88,8 +115,8 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "libxslt-devel is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:201913117001"
+                    "Comment": "libxslt-devel is earlier than 0:1.1.32-6.2.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20258676003"
                   },
                   {
                     "Comment": "libxslt-devel is signed with Red Hat redhatrelease2 key",
