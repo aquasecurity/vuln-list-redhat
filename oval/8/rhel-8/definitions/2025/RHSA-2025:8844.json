@@ -1,23 +1,39 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:202547947",
-  "Version": "636",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20258844",
+  "Version": "637",
   "Metadata": {
-    "Title": "modsecurity: ModSecurity Has Possible DoS Vulnerability (important)",
+    "Title": "RHSA-2025:8844: mod_security security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:8844",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:8844"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2025-47947",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2025-47947"
       }
     ],
-    "Description": "DOCUMENTATION: A flaw was found in the mod_security2 Apache2 module. Versions up to and including 2.9.8 are vulnerable to denial of service in one special case. In stable released versions, when the payload's content type is `application/json`, at least one rule performs a `sanitiseMatchedBytes` action, a security control that automatically cleans or neutralizes specific patterns of potentially harmful data that prevents malicious input from reaching systems or sensitive information from leaking.",
+    "Description": "ModSecurity is an open source intrusion detection and prevention engine for web applications.\n\nSecurity Fix(es):\n\n* modsecurity: ModSecurity Has Possible DoS Vulnerability (CVE-2025-47947)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Important",
-      "Issued": {},
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-06-11"
+      },
       "Updated": {
-        "Date": "2025-06-02"
+        "Date": "2025-06-11"
       },
       "Cves": [
         {
@@ -27,6 +43,12 @@
           "Impact": "important",
           "Href": "https://access.redhat.com/security/cve/CVE-2025-47947",
           "Public": "20250521:2208"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2367903",
+          "ID": "2367903"
         }
       ],
       "AffectedCpeList": [
@@ -44,9 +66,7 @@
         "cpe:/o:redhat:enterprise_linux:8::baseos"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -55,19 +75,26 @@
     "Criterions": [
       {
         "Comment": "Red Hat Enterprise Linux must be installed",
-        "TestRef": "oval:com.redhat.cve:tst:20052541004"
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
       }
     ],
     "Criterias": [
       {
         "Operator": "AND",
-        "Criterions": [
-          {
-            "Comment": "Red Hat Enterprise Linux 8 is installed",
-            "TestRef": "oval:com.redhat.cve:tst:20052541003"
-          }
-        ],
         "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
           {
             "Operator": "OR",
             "Criterias": [
@@ -75,12 +102,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "mod_security is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202248279001"
+                    "Comment": "mod_security is earlier than 0:2.9.6-2.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20258844001"
                   },
                   {
                     "Comment": "mod_security is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:202248279002"
+                    "TestRef": "oval:com.redhat.rhsa:tst:20258844002"
                   }
                 ]
               },
@@ -88,12 +115,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "mod_security-mlogc is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202248279003"
+                    "Comment": "mod_security-mlogc is earlier than 0:2.9.6-2.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20258844003"
                   },
                   {
                     "Comment": "mod_security-mlogc is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:202248279004"
+                    "TestRef": "oval:com.redhat.rhsa:tst:20258844004"
                   }
                 ]
               }
