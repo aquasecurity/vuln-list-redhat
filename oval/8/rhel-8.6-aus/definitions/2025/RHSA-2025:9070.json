@@ -1,0 +1,104 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20259070",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2025:9070: grafana security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8.6 Advanced Mission Critical Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:9070",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:9070"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-22871",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-22871"
+      }
+    ],
+    "Description": "Grafana is an open source, feature rich metrics dashboard and graph editor for Graphite, InfluxDB \u0026 OpenTSDB. \n\nSecurity Fix(es):\n\n* net/http: Request smuggling due to acceptance of invalid chunked data in net/http (CVE-2025-22871)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-06-16"
+      },
+      "Updated": {
+        "Date": "2025-06-16"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-22871",
+          "Cvss3": "5.4/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:L/A:N",
+          "Cwe": "CWE-444",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-22871",
+          "Public": "20250408:2004"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2358493",
+          "ID": "2358493"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_aus:8.6",
+        "cpe:/a:redhat:rhel_aus:8.6::appstream",
+        "cpe:/o:redhat:rhel_aus:8.6",
+        "cpe:/o:redhat:rhel_aus:8.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "grafana is earlier than 0:7.5.11-7.el8_6",
+            "TestRef": "oval:com.redhat.rhsa:tst:20259070001"
+          },
+          {
+            "Comment": "grafana is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20201659002"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
