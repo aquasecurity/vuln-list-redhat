@@ -1,0 +1,123 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20259279",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2025:9279: OpenShift Container Platform 4.19.1 packages and security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat OpenShift Container Platform 4.19"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:9279",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:9279"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-22871",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-22871"
+      }
+    ],
+    "Description": "Red Hat OpenShift Container Platform is Red Hat's cloud computing Kubernetes application platform solution designed for on-premise or private cloud deployments.\n\nThis advisory contains the RPM packages for Red Hat OpenShift Container Platform 4.19.1. See the following advisory for the container images for this release:\n\nhttps://access.redhat.com/errata/RHSA-2025:9278\n\nSecurity Fix(es):\n\n* net/http: Request smuggling due to acceptance of invalid chunked data in\nnet/http (CVE-2025-22871)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n\nAll OpenShift Container Platform 4.19 users are advised to upgrade to these\nupdated packages and images when they are available in the appropriate release channel. To check for available updates, use the OpenShift CLI (oc) or web console. Instructions for upgrading a cluster are available at\nhttps://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html-single/updating_clusters/index#updating-cluster-cli.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-06-24"
+      },
+      "Updated": {
+        "Date": "2025-06-24"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-22871",
+          "Cvss3": "5.4/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:L/A:N",
+          "Cwe": "CWE-444",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-22871",
+          "Public": "20250408:2004"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2358493",
+          "ID": "2358493"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:openshift:4.19",
+        "cpe:/a:redhat:openshift:4.19::el8"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:20169840004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.cve:tst:20169840003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhsa:tst:20259279006"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openshift-clients is earlier than 0:4.19.0-202506161807.p0.gfa1fd95.assembly.stream.el8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20259279001"
+                  },
+                  {
+                    "Comment": "openshift-clients is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:201714623002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openshift-clients-redistributable is earlier than 0:4.19.0-202506161807.p0.gfa1fd95.assembly.stream.el8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20259279003"
+                  },
+                  {
+                    "Comment": "openshift-clients-redistributable is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:201714623004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

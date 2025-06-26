@@ -1,0 +1,127 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20259332",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2025:9332: mpfr security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 7 Extended Lifecycle Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:9332",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:9332"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2014-9474",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2014-9474"
+      }
+    ],
+    "Description": "The MPFR library is a C library for multiple-precision floating-point computations with \"correct rounding\". The MPFR is efficient and also has a well-defined semantics. It copies the good ideas from the ANSI/IEEE-754 standard for double-precision floating-point arithmetic (53-bit mantissa). MPFR is based on the GMP multiple-precision library.\n\nSecurity Fix(es):\n\n* mpfr: buffer overflow in mpfr_strtofr (CVE-2014-9474)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-06-23"
+      },
+      "Updated": {
+        "Date": "2025-06-23"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2014-9474",
+          "Cvss2": "1.2/AV:L/AC:H/Au:N/C:N/I:N/A:P",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2014-9474",
+          "Public": "20131216"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/1171701",
+          "ID": "1171701"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_extras:7",
+        "cpe:/a:redhat:rhel_extras_oracle_java:7",
+        "cpe:/a:redhat:rhel_extras_rt:7",
+        "cpe:/a:redhat:rhel_extras_rt_els:7",
+        "cpe:/a:redhat:rhel_extras_sap:7",
+        "cpe:/a:redhat:rhel_extras_sap_els:7",
+        "cpe:/a:redhat:rhel_extras_sap_hana:7",
+        "cpe:/a:redhat:rhel_extras_sap_hana_els:7",
+        "cpe:/o:redhat:enterprise_linux:7",
+        "cpe:/o:redhat:enterprise_linux:7::client",
+        "cpe:/o:redhat:enterprise_linux:7::computenode",
+        "cpe:/o:redhat:enterprise_linux:7::server",
+        "cpe:/o:redhat:enterprise_linux:7::workstation",
+        "cpe:/o:redhat:rhel_els:7"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20150364028"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 7 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20150364027"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "mpfr is earlier than 0:3.1.1-4.el7_9.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20259332001"
+                  },
+                  {
+                    "Comment": "mpfr is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20259332002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "mpfr-devel is earlier than 0:3.1.1-4.el7_9.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20259332003"
+                  },
+                  {
+                    "Comment": "mpfr-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20259332004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
