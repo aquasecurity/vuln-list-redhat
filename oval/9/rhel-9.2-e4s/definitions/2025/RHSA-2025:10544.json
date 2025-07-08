@@ -1,0 +1,99 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202510544",
+  "Version": "639",
+  "Metadata": {
+    "Title": "RHSA-2025:10544: socat security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.2 Update Services for SAP Solutions"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:10544",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:10544"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-54661",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-54661"
+      }
+    ],
+    "Description": "The socat utility establishes bi-directional byte streams and transfers data between them. The utility can establish streams between a large set of channels, such as files, pipes, devices, and sockets.\n\nSecurity Fix(es):\n\n* socat: arbitrary file overwrite via predictable /tmp directory (CVE-2024-54661)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-07-08"
+      },
+      "Updated": {
+        "Date": "2025-07-08"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-54661",
+          "Cvss3": "5.3/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
+          "Cwe": "CWE-377",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-54661",
+          "Public": "20241204"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2330297",
+          "ID": "2330297"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.2",
+        "cpe:/a:redhat:rhel_e4s:9.2::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.2::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.2::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.2::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.2::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.2::sap",
+        "cpe:/a:redhat:rhel_e4s:9.2::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.2",
+        "cpe:/o:redhat:rhel_e4s:9.2::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
+          },
+          {
+            "Comment": "socat is earlier than 0:1.7.4.1-5.el9_2.2",
+            "TestRef": "oval:com.redhat.rhsa:tst:202510544001"
+          },
+          {
+            "Comment": "socat is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:202510544002"
+          }
+        ]
+      }
+    ]
+  }
+}
