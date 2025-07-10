@@ -1,0 +1,544 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202510796",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2025:10796: libblockdev security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 7 Extended Lifecycle Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:10796",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:10796"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-6019",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-6019"
+      }
+    ],
+    "Description": "The libblockdev packages provide a C library with GObject introspection support used for low-level operations on block devices. The library serves as a thin wrapper around plug-ins for specific functionality, such as LVM, Btrfs, LUKS, or MD RAID.\n\nSecurity Fix(es):\n\n* libblockdev: LPE from allow_active to root in libblockdev via udisks (CVE-2025-6019)\n\nFor more details about the security issue(s), including the impact, a CVSS\nscore, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-07-10"
+      },
+      "Updated": {
+        "Date": "2025-07-10"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-6019",
+          "Cvss3": "7.0/CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-250",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-6019",
+          "Public": "20250617"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2370051",
+          "ID": "2370051"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_extras:7",
+        "cpe:/a:redhat:rhel_extras_oracle_java:7",
+        "cpe:/a:redhat:rhel_extras_rt:7",
+        "cpe:/a:redhat:rhel_extras_rt_els:7",
+        "cpe:/a:redhat:rhel_extras_sap:7",
+        "cpe:/a:redhat:rhel_extras_sap_els:7",
+        "cpe:/a:redhat:rhel_extras_sap_hana:7",
+        "cpe:/a:redhat:rhel_extras_sap_hana_els:7",
+        "cpe:/o:redhat:enterprise_linux:7",
+        "cpe:/o:redhat:enterprise_linux:7::client",
+        "cpe:/o:redhat:enterprise_linux:7::computenode",
+        "cpe:/o:redhat:enterprise_linux:7::server",
+        "cpe:/o:redhat:enterprise_linux:7::workstation",
+        "cpe:/o:redhat:rhel_els:7"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20150364028"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 7 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20150364027"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libblockdev is earlier than 0:2.18-5.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796001"
+                  },
+                  {
+                    "Comment": "libblockdev is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libblockdev-btrfs is earlier than 0:2.18-5.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796003"
+                  },
+                  {
+                    "Comment": "libblockdev-btrfs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libblockdev-btrfs-devel is earlier than 0:2.18-5.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796005"
+                  },
+                  {
+                    "Comment": "libblockdev-btrfs-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libblockdev-crypto is earlier than 0:2.18-5.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796007"
+                  },
+                  {
+                    "Comment": "libblockdev-crypto is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libblockdev-crypto-devel is earlier than 0:2.18-5.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796009"
+                  },
+                  {
+                    "Comment": "libblockdev-crypto-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libblockdev-devel is earlier than 0:2.18-5.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796011"
+                  },
+                  {
+                    "Comment": "libblockdev-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libblockdev-dm is earlier than 0:2.18-5.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796013"
+                  },
+                  {
+                    "Comment": "libblockdev-dm is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libblockdev-dm-devel is earlier than 0:2.18-5.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796015"
+                  },
+                  {
+                    "Comment": "libblockdev-dm-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796016"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libblockdev-fs is earlier than 0:2.18-5.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796017"
+                  },
+                  {
+                    "Comment": "libblockdev-fs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796018"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libblockdev-fs-devel is earlier than 0:2.18-5.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796019"
+                  },
+                  {
+                    "Comment": "libblockdev-fs-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796020"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libblockdev-kbd is earlier than 0:2.18-5.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796021"
+                  },
+                  {
+                    "Comment": "libblockdev-kbd is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796022"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libblockdev-kbd-devel is earlier than 0:2.18-5.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796023"
+                  },
+                  {
+                    "Comment": "libblockdev-kbd-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796024"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libblockdev-loop is earlier than 0:2.18-5.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796025"
+                  },
+                  {
+                    "Comment": "libblockdev-loop is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796026"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libblockdev-loop-devel is earlier than 0:2.18-5.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796027"
+                  },
+                  {
+                    "Comment": "libblockdev-loop-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796028"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libblockdev-lvm is earlier than 0:2.18-5.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796029"
+                  },
+                  {
+                    "Comment": "libblockdev-lvm is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796030"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libblockdev-lvm-devel is earlier than 0:2.18-5.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796031"
+                  },
+                  {
+                    "Comment": "libblockdev-lvm-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796032"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libblockdev-mdraid is earlier than 0:2.18-5.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796033"
+                  },
+                  {
+                    "Comment": "libblockdev-mdraid is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796034"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libblockdev-mdraid-devel is earlier than 0:2.18-5.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796035"
+                  },
+                  {
+                    "Comment": "libblockdev-mdraid-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796036"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libblockdev-mpath is earlier than 0:2.18-5.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796037"
+                  },
+                  {
+                    "Comment": "libblockdev-mpath is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796038"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libblockdev-mpath-devel is earlier than 0:2.18-5.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796039"
+                  },
+                  {
+                    "Comment": "libblockdev-mpath-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796040"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libblockdev-nvdimm is earlier than 0:2.18-5.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796041"
+                  },
+                  {
+                    "Comment": "libblockdev-nvdimm is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796042"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libblockdev-nvdimm-devel is earlier than 0:2.18-5.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796043"
+                  },
+                  {
+                    "Comment": "libblockdev-nvdimm-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796044"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libblockdev-part is earlier than 0:2.18-5.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796045"
+                  },
+                  {
+                    "Comment": "libblockdev-part is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796046"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libblockdev-part-devel is earlier than 0:2.18-5.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796047"
+                  },
+                  {
+                    "Comment": "libblockdev-part-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796048"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libblockdev-plugins-all is earlier than 0:2.18-5.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796049"
+                  },
+                  {
+                    "Comment": "libblockdev-plugins-all is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796050"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libblockdev-s390 is earlier than 0:2.18-5.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796051"
+                  },
+                  {
+                    "Comment": "libblockdev-s390 is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796052"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libblockdev-s390-devel is earlier than 0:2.18-5.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796053"
+                  },
+                  {
+                    "Comment": "libblockdev-s390-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796054"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libblockdev-swap is earlier than 0:2.18-5.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796055"
+                  },
+                  {
+                    "Comment": "libblockdev-swap is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796056"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libblockdev-swap-devel is earlier than 0:2.18-5.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796057"
+                  },
+                  {
+                    "Comment": "libblockdev-swap-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796058"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libblockdev-utils is earlier than 0:2.18-5.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796059"
+                  },
+                  {
+                    "Comment": "libblockdev-utils is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796060"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libblockdev-utils-devel is earlier than 0:2.18-5.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796061"
+                  },
+                  {
+                    "Comment": "libblockdev-utils-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796062"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libblockdev-vdo is earlier than 0:2.18-5.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796063"
+                  },
+                  {
+                    "Comment": "libblockdev-vdo is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796064"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libblockdev-vdo-devel is earlier than 0:2.18-5.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796065"
+                  },
+                  {
+                    "Comment": "libblockdev-vdo-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796066"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python2-blockdev is earlier than 0:2.18-5.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796067"
+                  },
+                  {
+                    "Comment": "python2-blockdev is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202510796068"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
