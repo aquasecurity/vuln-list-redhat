@@ -1,23 +1,39 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:20246174",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202510848",
   "Version": "636",
   "Metadata": {
-    "Title": "cloud-init: Cloud init permissions flaw (important)",
+    "Title": "RHSA-2025:10848: cloud-init security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:10848",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:10848"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2024-6174",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2024-6174"
       }
     ],
-    "Description": "DOCUMENTATION: An access permissions flaw was found in cloud-init. When a non-x86 platform is detected, cloud-init grants root access to a hardcoded URL with a local IP address, which creates a security exposure. \n            \n            MITIGATION: Mitigation for this issue is either not available or the currently available options do not meet the Red Hat Product Security criteria comprising ease of use and deployment, applicability to widespread installation base or stability.",
+    "Description": "The cloud-init packages provide a set of init scripts for cloud instances. Cloud instances need special scripts to run during initialization to retrieve and install SSH keys, and to let the user run various scripts.\n\nSecurity Fix(es):\n\n* cloud-init: Cloud init permissions flaw (CVE-2024-6174)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Important",
-      "Issued": {},
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-07-14"
+      },
       "Updated": {
-        "Date": "2025-07-07"
+        "Date": "2025-07-14"
       },
       "Cves": [
         {
@@ -27,6 +43,12 @@
           "Impact": "important",
           "Href": "https://access.redhat.com/security/cve/CVE-2024-6174",
           "Public": "20250626:0915"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2374924",
+          "ID": "2374924"
         }
       ],
       "AffectedCpeList": [
@@ -44,9 +66,7 @@
         "cpe:/o:redhat:enterprise_linux:9::baseos"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -55,7 +75,7 @@
     "Criterions": [
       {
         "Comment": "Red Hat Enterprise Linux must be installed",
-        "TestRef": "oval:com.redhat.cve:tst:20052541004"
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
       }
     ],
     "Criterias": [
@@ -64,15 +84,15 @@
         "Criterions": [
           {
             "Comment": "Red Hat Enterprise Linux 9 is installed",
-            "TestRef": "oval:com.redhat.cve:tst:20052541003"
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
           },
           {
-            "Comment": "cloud-init is installed",
-            "TestRef": "oval:com.redhat.cve:tst:202411584001"
+            "Comment": "cloud-init is earlier than 0:24.4-4.el9_6.3",
+            "TestRef": "oval:com.redhat.rhsa:tst:202510848001"
           },
           {
             "Comment": "cloud-init is signed with Red Hat redhatrelease2 key",
-            "TestRef": "oval:com.redhat.cve:tst:202411584002"
+            "TestRef": "oval:com.redhat.rhsa:tst:20236371002"
           }
         ]
       }
