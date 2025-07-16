@@ -1,0 +1,126 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202511320",
+  "Version": "638",
+  "Metadata": {
+    "Title": "RHSA-2025:11320: iputils security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.4 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:11320",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:11320"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-47268",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-47268"
+      }
+    ],
+    "Description": "The iputils packages contain basic utilities for monitoring a network, including ping. \n\nSecurity Fix(es):\n\n* iputils: Signed Integer Overflow in Timestamp Multiplication in iputils ping (CVE-2025-47268)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-07-16"
+      },
+      "Updated": {
+        "Date": "2025-07-16"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-47268",
+          "Cvss3": "6.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L",
+          "Cwe": "CWE-190",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-47268",
+          "Public": "20250505"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2364090",
+          "ID": "2364090"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.4",
+        "cpe:/a:redhat:rhel_eus:9.4::appstream",
+        "cpe:/a:redhat:rhel_eus:9.4::crb",
+        "cpe:/a:redhat:rhel_eus:9.4::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.4::nfv",
+        "cpe:/a:redhat:rhel_eus:9.4::realtime",
+        "cpe:/a:redhat:rhel_eus:9.4::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.4::sap",
+        "cpe:/a:redhat:rhel_eus:9.4::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.4::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.4",
+        "cpe:/o:redhat:rhel_eus:9.4::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "iputils is earlier than 0:20210202-9.el9_4.3",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202511320001"
+                  },
+                  {
+                    "Comment": "iputils is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202511320002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "iputils-ninfod is earlier than 0:20210202-9.el9_4.3",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202511320003"
+                  },
+                  {
+                    "Comment": "iputils-ninfod is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202511320004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
