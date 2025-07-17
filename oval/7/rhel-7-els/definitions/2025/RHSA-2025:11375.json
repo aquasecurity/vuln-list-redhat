@@ -1,0 +1,223 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202511375",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2025:11375: kernel-rt security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 7 Extended Lifecycle Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:11375",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:11375"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2022-50066",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2022-50066"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-22004",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-22004"
+      }
+    ],
+    "Description": "The kernel-rt packages provide the Real Time Linux Kernel, which enables fine-tuning for systems with extremely high determinism requirements.\n\nSecurity Fix(es):\n\n* kernel: net: atm: fix use after free in lec_send() (CVE-2025-22004)\n\n* kernel: net: atlantic: fix aq_vec index out of range error (CVE-2022-50066)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-07-17"
+      },
+      "Updated": {
+        "Date": "2025-07-17"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2022-50066",
+          "Cvss3": "7.0/CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-823",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2022-50066",
+          "Public": "20250618"
+        },
+        {
+          "CveID": "CVE-2025-22004",
+          "Cvss3": "7.0/CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-416",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-22004",
+          "Public": "20250403"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2357142",
+          "ID": "2357142"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2373683",
+          "ID": "2373683"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_extras:7",
+        "cpe:/a:redhat:rhel_extras_oracle_java:7",
+        "cpe:/a:redhat:rhel_extras_rt:7",
+        "cpe:/a:redhat:rhel_extras_rt_els:7",
+        "cpe:/a:redhat:rhel_extras_sap:7",
+        "cpe:/a:redhat:rhel_extras_sap_els:7",
+        "cpe:/a:redhat:rhel_extras_sap_hana:7",
+        "cpe:/a:redhat:rhel_extras_sap_hana_els:7",
+        "cpe:/o:redhat:enterprise_linux:7",
+        "cpe:/o:redhat:enterprise_linux:7::client",
+        "cpe:/o:redhat:enterprise_linux:7::computenode",
+        "cpe:/o:redhat:enterprise_linux:7::server",
+        "cpe:/o:redhat:enterprise_linux:7::workstation",
+        "cpe:/o:redhat:rhel_els:7"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20150364028"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 7 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20150364027"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "kernel-rt earlier than 0:3.10.0-1160.136.1.rt56.1288.el7 is currently running",
+                "TestRef": "oval:com.redhat.rhsa:tst:202511358033"
+              },
+              {
+                "Comment": "kernel-rt earlier than 0:3.10.0-1160.136.1.rt56.1288.el7 is set to boot up on next boot",
+                "TestRef": "oval:com.redhat.rhsa:tst:202511375016"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "kernel-rt is earlier than 0:3.10.0-1160.136.1.rt56.1288.el7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202511375001"
+                  },
+                  {
+                    "Comment": "kernel-rt is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20203527002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "kernel-rt-debug is earlier than 0:3.10.0-1160.136.1.rt56.1288.el7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202511375003"
+                  },
+                  {
+                    "Comment": "kernel-rt-debug is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20203527004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "kernel-rt-debug-devel is earlier than 0:3.10.0-1160.136.1.rt56.1288.el7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202511375005"
+                  },
+                  {
+                    "Comment": "kernel-rt-debug-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20203527006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "kernel-rt-devel is earlier than 0:3.10.0-1160.136.1.rt56.1288.el7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202511375007"
+                  },
+                  {
+                    "Comment": "kernel-rt-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20203527010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "kernel-rt-doc is earlier than 0:3.10.0-1160.136.1.rt56.1288.el7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202511375009"
+                  },
+                  {
+                    "Comment": "kernel-rt-doc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20203527012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "kernel-rt-trace is earlier than 0:3.10.0-1160.136.1.rt56.1288.el7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202511375011"
+                  },
+                  {
+                    "Comment": "kernel-rt-trace is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20203527016"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "kernel-rt-trace-devel is earlier than 0:3.10.0-1160.136.1.rt56.1288.el7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202511375013"
+                  },
+                  {
+                    "Comment": "kernel-rt-trace-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20203527018"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
