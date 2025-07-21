@@ -1,0 +1,269 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202511402",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2025:11402: avahi security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:11402",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:11402"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-52615",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-52615"
+      }
+    ],
+    "Description": "Avahi is an implementation of the DNS Service Discovery and Multicast DNS specifications for Zero Configuration Networking. It facilitates service discovery on a local network. Avahi and Avahi-aware applications allow you to plug your computer into a network and, with no configuration, view other people to chat with, view printers to print with, and find shared files on other computers.\n\nSecurity Fix(es):\n\n* avahi: Avahi Wide-Area DNS Uses Constant Source Port (CVE-2024-52615)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-07-21"
+      },
+      "Updated": {
+        "Date": "2025-07-21"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-52615",
+          "Cvss3": "5.3/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+          "Cwe": "CWE-330",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-52615",
+          "Public": "20241115"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2326418",
+          "ID": "2326418"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "avahi is earlier than 0:0.8-22.el9_6.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202511402001"
+                  },
+                  {
+                    "Comment": "avahi is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20236707002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "avahi-autoipd is earlier than 0:0.8-22.el9_6.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202511402003"
+                  },
+                  {
+                    "Comment": "avahi-autoipd is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202511402004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "avahi-compat-howl is earlier than 0:0.8-22.el9_6.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202511402005"
+                  },
+                  {
+                    "Comment": "avahi-compat-howl is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20236707004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "avahi-compat-howl-devel is earlier than 0:0.8-22.el9_6.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202511402007"
+                  },
+                  {
+                    "Comment": "avahi-compat-howl-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20236707006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "avahi-compat-libdns_sd is earlier than 0:0.8-22.el9_6.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202511402009"
+                  },
+                  {
+                    "Comment": "avahi-compat-libdns_sd is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20236707008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "avahi-compat-libdns_sd-devel is earlier than 0:0.8-22.el9_6.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202511402011"
+                  },
+                  {
+                    "Comment": "avahi-compat-libdns_sd-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20236707010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "avahi-devel is earlier than 0:0.8-22.el9_6.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202511402013"
+                  },
+                  {
+                    "Comment": "avahi-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20236707012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "avahi-glib is earlier than 0:0.8-22.el9_6.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202511402015"
+                  },
+                  {
+                    "Comment": "avahi-glib is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20236707014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "avahi-glib-devel is earlier than 0:0.8-22.el9_6.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202511402017"
+                  },
+                  {
+                    "Comment": "avahi-glib-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20236707016"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "avahi-gobject is earlier than 0:0.8-22.el9_6.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202511402019"
+                  },
+                  {
+                    "Comment": "avahi-gobject is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202511402020"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "avahi-gobject-devel is earlier than 0:0.8-22.el9_6.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202511402021"
+                  },
+                  {
+                    "Comment": "avahi-gobject-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202511402022"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "avahi-libs is earlier than 0:0.8-22.el9_6.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202511402023"
+                  },
+                  {
+                    "Comment": "avahi-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20236707018"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "avahi-tools is earlier than 0:0.8-22.el9_6.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202511402025"
+                  },
+                  {
+                    "Comment": "avahi-tools is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20236707020"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
