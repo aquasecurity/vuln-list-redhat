@@ -1,23 +1,39 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:202549133",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202512100",
   "Version": "636",
   "Metadata": {
-    "Title": "libtpms: Libtpms Out-of-Bounds Read Vulnerability (moderate)",
+    "Title": "RHSA-2025:12100: libtpms security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:12100",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:12100"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2025-49133",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2025-49133"
       }
     ],
-    "Description": "DOCUMENTATION: A flaw was found in libtpms. A heap buffer overflow can occur in the `tpms_parse_pssh` function when parsing a malformed Public Signature Key Exchange (PSK) structure. A local attacker can trigger this overflow by providing a crafted PSK structure to the library. This can lead to a denial of service or allow for arbitrary code execution. \n            STATEMENT: This vulnerability, identified as a potential out-of-bounds read, is triggered by inconsistent parameters within the CryptHmacSign function of the vTPM (virtual Trusted Platform Module). Although the attack is local to the system, it requires user interaction in the form of sending malicious commands to the vTPM. The primary impact is a denial-of-service (DoS) to the virtual machine (VM) by rendering its vTPM unavailable. This prevents the VM from utilizing critical TPM functionality, which can lead to significant operational disruption. While this flaw does not enable arbitrary code execution, the potential for DoS and broader system instability justifies a Moderate severity rating. The requirement for specific user interaction reduces its severity from what would otherwise be an Important classification.\n            MITIGATION: Mitigation for this issue is either not available or the currently available options do not meet the Red Hat Product Security criteria comprising ease of use and deployment, applicability to widespread installation base or stability.",
+    "Description": "The libtpms is a library providing Trusted Platform Module (TPM) functionality for virtual machines.\n\nSecurity Fix(es):\n\n* libtpms: Libtpms Out-of-Bounds Read Vulnerability (CVE-2025-49133)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Moderate",
-      "Issued": {},
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-07-29"
+      },
       "Updated": {
-        "Date": "2025-06-30"
+        "Date": "2025-07-29"
       },
       "Cves": [
         {
@@ -27,6 +43,12 @@
           "Impact": "moderate",
           "Href": "https://access.redhat.com/security/cve/CVE-2025-49133",
           "Public": "20250610:1946"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2371585",
+          "ID": "2371585"
         }
       ],
       "AffectedCpeList": [
@@ -44,9 +66,7 @@
         "cpe:/o:redhat:enterprise_linux:9::baseos"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -67,12 +87,12 @@
             "TestRef": "oval:com.redhat.cve:tst:20052541003"
           },
           {
-            "Comment": "libtpms is installed",
-            "TestRef": "oval:com.redhat.cve:tst:202549133001"
+            "Comment": "libtpms is earlier than 0:0.9.1-5.20211126git1ff6fe1f43.el9_6",
+            "TestRef": "oval:com.redhat.rhsa:tst:202512100001"
           },
           {
             "Comment": "libtpms is signed with Red Hat redhatrelease2 key",
-            "TestRef": "oval:com.redhat.cve:tst:202549133002"
+            "TestRef": "oval:com.redhat.rhsa:tst:20232453002"
           }
         ]
       }
