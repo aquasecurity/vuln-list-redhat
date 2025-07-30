@@ -1,0 +1,176 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202512282",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2025:12282: jackson-annotations, jackson-core, jackson-databind, jackson-jaxrs-providers, and jackson-modules-base security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.2 Update Services for SAP Solutions"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:12282",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:12282"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-52999",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-52999"
+      }
+    ],
+    "Description": "Core part of Jackson that defines Streaming API as well as basic shared abstractions.\n\nSecurity Fix(es):\n\n* com.fasterxml.jackson.core/jackson-core: jackson-core Potential StackoverflowError (CVE-2025-52999)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-07-30"
+      },
+      "Updated": {
+        "Date": "2025-07-30"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-52999",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-121",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-52999",
+          "Public": "20250625:1702"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2374804",
+          "ID": "2374804"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.2",
+        "cpe:/a:redhat:rhel_e4s:9.2::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.2::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.2::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.2::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.2::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.2::sap",
+        "cpe:/a:redhat:rhel_e4s:9.2::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.2",
+        "cpe:/o:redhat:rhel_e4s:9.2::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pki-jackson-core is earlier than 0:2.19.1-1.el9_2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202512282001"
+                  },
+                  {
+                    "Comment": "pki-jackson-core is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202512282002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pki-jackson-databind is earlier than 0:2.19.1-1.el9_2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202512282003"
+                  },
+                  {
+                    "Comment": "pki-jackson-databind is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20232312002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pki-jackson-jaxrs-json-provider is earlier than 0:2.19.1-1.el9_2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202512282005"
+                  },
+                  {
+                    "Comment": "pki-jackson-jaxrs-json-provider is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202512282006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pki-jackson-jaxrs-providers is earlier than 0:2.19.1-1.el9_2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202512282007"
+                  },
+                  {
+                    "Comment": "pki-jackson-jaxrs-providers is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202512282008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pki-jackson-module-jaxb-annotations is earlier than 0:2.19.1-1.el9_2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202512282009"
+                  },
+                  {
+                    "Comment": "pki-jackson-module-jaxb-annotations is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202512282010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pki-jackson-annotations is earlier than 0:2.19.1-1.el9_2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202512282011"
+                  },
+                  {
+                    "Comment": "pki-jackson-annotations is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202512282012"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
