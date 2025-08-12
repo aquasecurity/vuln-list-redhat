@@ -1,23 +1,39 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:202523266",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202513673",
   "Version": "636",
   "Metadata": {
-    "Title": "nvidia-container-toolkit: Privilege Escalation via Hook Initialization in NVIDIA Container Toolkit (important)",
+    "Title": "RHSA-2025:13673: toolbox security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:13673",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:13673"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2025-23266",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2025-23266"
       }
     ],
-    "Description": "DOCUMENTATION: A flaw was found in the NVIDIA Container Toolkit. This vulnerability allows execution of arbitrary code with elevated permissions via improperly secured container initialization hooks. This can potentially lead to privilege escalation, data tampering, information disclosure, and denial of service. \n            STATEMENT: RHEL AI is not affected because it uses CDI mode with NVIDIA Container Toolkit versions later than 1.17.5, which are not vulnerable, and does not rely on the enable-cuda-compat hook, thereby eliminating the attack vector entirely.\n\nThis vulnerability is marked as Important rather than Critical primarily due to its attack prerequisites and execution context, despite its high CVSS score. While the vulnerability allows privilege escalation via the enable-cuda-compat hook in the NVIDIA Container Toolkit, it is not exploitable remotely—it requires local access and low privileges within a containerized environment. This significantly reduces its initial attack surface compared to a truly critical vulnerability that could be exploited over the network without authentication.\n            MITIGATION: No mitigation is currently available that meets Red Hat Product Security’s standards for usability, deployment, applicability, or stability.",
+    "Description": "Toolbox is a tool for Linux operating systems, which allows the use of containerized command line environments. It is built on top of Podman and other standard container technologies from OCI.\n\nSecurity Fix(es):\n\n* nvidia-container-toolkit: Privilege Escalation via Hook Initialization in NVIDIA Container Toolkit (CVE-2025-23266)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Important",
-      "Issued": {},
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-08-12"
+      },
       "Updated": {
-        "Date": "2025-07-22"
+        "Date": "2025-08-12"
       },
       "Cves": [
         {
@@ -27,6 +43,12 @@
           "Impact": "important",
           "Href": "https://access.redhat.com/security/cve/CVE-2025-23266",
           "Public": "20250717:1908"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2381794",
+          "ID": "2381794"
         }
       ],
       "AffectedCpeList": [
@@ -44,9 +66,7 @@
         "cpe:/o:redhat:enterprise_linux:9::baseos"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -75,12 +95,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "toolbox-tests is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202230629015"
+                    "Comment": "toolbox is earlier than 0:0.2-1.el9_6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202513673001"
                   },
                   {
-                    "Comment": "toolbox-tests is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:202230629016"
+                    "Comment": "toolbox is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:202230629004"
                   }
                 ]
               },
@@ -88,12 +108,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "toolbox is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202230629003"
+                    "Comment": "toolbox-tests is earlier than 0:0.2-1.el9_6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202513673003"
                   },
                   {
-                    "Comment": "toolbox is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:202230629004"
+                    "Comment": "toolbox-tests is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:202230629016"
                   }
                 ]
               }
