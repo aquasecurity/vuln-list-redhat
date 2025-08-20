@@ -1,0 +1,99 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202514138",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2025:14138: libvpx security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.2 Update Services for SAP Solutions"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:14138",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:14138"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-5197",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-5197"
+      }
+    ],
+    "Description": "The libvpx packages provide the VP8 SDK, which allows the encoding and decoding of the VP8 video codec, commonly used with the WebM multimedia container file format.\n\nSecurity Fix(es):\n\n* libvpx: Integer overflow in vpx_img_alloc() (CVE-2024-5197)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-08-20"
+      },
+      "Updated": {
+        "Date": "2025-08-20"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-5197",
+          "Cvss3": "7.1/CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-190",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-5197",
+          "Public": "20240604"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2291198",
+          "ID": "2291198"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.2",
+        "cpe:/a:redhat:rhel_e4s:9.2::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.2::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.2::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.2::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.2::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.2::sap",
+        "cpe:/a:redhat:rhel_e4s:9.2::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.2",
+        "cpe:/o:redhat:rhel_e4s:9.2::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
+          },
+          {
+            "Comment": "libvpx is earlier than 0:1.9.0-7.el9_2.2",
+            "TestRef": "oval:com.redhat.rhsa:tst:202514138001"
+          },
+          {
+            "Comment": "libvpx is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20235539002"
+          }
+        ]
+      }
+    ]
+  }
+}
