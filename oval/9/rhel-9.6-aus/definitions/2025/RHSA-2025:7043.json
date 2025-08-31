@@ -1,0 +1,127 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20257043",
+  "Version": "638",
+  "Metadata": {
+    "Title": "RHSA-2025:7043: microcode_ctl security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:7043",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:7043"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-28047",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-28047"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-31157",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-31157"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-39279",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-39279"
+      }
+    ],
+    "Description": "The microcode_ctl packages provide microcode updates for Intel and AMD processors.\n\nSecurity Fix(es):\n\n* microcode_ctl: Improper input validation in UEFI firmware (CVE-2024-28047)\n\n* microcode_ctl: Insufficient granularity of access control in UEFI firmware (CVE-2024-39279)\n\n* microcode_ctl: mproper initialization in UEFI firmware OutOfBandXML module (CVE-2024-31157)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n\nAdditional Changes:\n\nFor detailed information on changes in this release, see the Red Hat Enterprise Linux 9 Release Notes linked from the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-05-13"
+      },
+      "Updated": {
+        "Date": "2025-05-13"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-28047",
+          "Cvss3": "5.3/CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:C/C:H/I:N/A:N",
+          "Cwe": "CWE-20",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-28047",
+          "Public": "20250212:2119"
+        },
+        {
+          "CveID": "CVE-2024-31157",
+          "Cvss3": "5.3/CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:C/C:H/I:N/A:N",
+          "Cwe": "CWE-665",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-31157",
+          "Public": "20250212:2119"
+        },
+        {
+          "CveID": "CVE-2024-39279",
+          "Cvss3": "6.5/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:N/I:N/A:H",
+          "Cwe": "CWE-1220",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-39279",
+          "Public": "20250212:2119"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2345363",
+          "ID": "2345363"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2345381",
+          "ID": "2345381"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2345421",
+          "ID": "2345421"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_aus:9.6",
+        "cpe:/a:redhat:rhel_aus:9.6::appstream",
+        "cpe:/o:redhat:rhel_aus:9.6",
+        "cpe:/o:redhat:rhel_aus:9.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          },
+          {
+            "Comment": "microcode_ctl is earlier than 4:20250211-1.el9_6",
+            "TestRef": "oval:com.redhat.rhsa:tst:20257043001"
+          },
+          {
+            "Comment": "microcode_ctl is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhba:tst:20252991002"
+          }
+        ]
+      }
+    ]
+  }
+}
