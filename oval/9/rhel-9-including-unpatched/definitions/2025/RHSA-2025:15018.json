@@ -1,23 +1,39 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:20258067",
-  "Version": "636",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202515018",
+  "Version": "637",
   "Metadata": {
-    "Title": "udisks: Out-of-bounds read in UDisks Daemon (important)",
+    "Title": "RHSA-2025:15018: udisks2 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:15018",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:15018"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2025-8067",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2025-8067"
       }
     ],
-    "Description": "DOCUMENTATION: A flaw was found in the Udisks daemon, where it allows unprivileged users to create loop devices using the D-BUS system. This is achieved via the loop device handler, which handles requests sent through the D-BUS interface. As two of the parameters of this handle, it receives the file descriptor list and index specifying the file where the loop device should be backed. The function itself validates the index value to ensure it isn't bigger than the maximum value allowed. However, it fails to validate the lower bound, allowing the index parameter to be a negative value. Under these circumstances, an attacker can cause the UDisks daemon to crash or perform a local privilege escalation by gaining access to files owned by privileged users. \n            STATEMENT: This vulnerability has been rated with an Important severity by the Red Hat Product Security team. This is due to the low complexity to exploit it and the possible local privilege execution risk associated to a successful exploitation of this flaw.\n            MITIGATION: There's no available mitigation other than installing the updated package as soon as available.",
+    "Description": "The Udisks project provides a daemon, tools, and libraries to access and manipulate disks, storage devices, and technologies.\n\nSecurity Fix(es):\n\n* udisks: Out-of-bounds read in UDisks Daemon (CVE-2025-8067)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Important",
-      "Issued": {},
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-09-02"
+      },
       "Updated": {
-        "Date": "2025-08-28"
+        "Date": "2025-09-02"
       },
       "Cves": [
         {
@@ -27,6 +43,12 @@
           "Impact": "important",
           "Href": "https://access.redhat.com/security/cve/CVE-2025-8067",
           "Public": "20250828:1442"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2388623",
+          "ID": "2388623"
         }
       ],
       "AffectedCpeList": [
@@ -44,9 +66,7 @@
         "cpe:/o:redhat:enterprise_linux:9::baseos"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -75,51 +95,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "libudisks2-devel is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:20258067001"
-                  },
-                  {
-                    "Comment": "libudisks2-devel is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:20258067002"
-                  }
-                ]
-              },
-              {
-                "Operator": "AND",
-                "Criterions": [
-                  {
-                    "Comment": "udisks2 is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:20258067003"
-                  },
-                  {
-                    "Comment": "udisks2 is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:20258067004"
-                  }
-                ]
-              },
-              {
-                "Operator": "AND",
-                "Criterions": [
-                  {
-                    "Comment": "udisks2-lsm is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:20258067005"
-                  },
-                  {
-                    "Comment": "udisks2-lsm is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:20258067006"
-                  }
-                ]
-              },
-              {
-                "Operator": "AND",
-                "Criterions": [
-                  {
-                    "Comment": "libudisks2 is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:20258067007"
+                    "Comment": "libudisks2 is earlier than 0:2.9.4-11.el9_6.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202515018001"
                   },
                   {
                     "Comment": "libudisks2 is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:20258067008"
+                    "TestRef": "oval:com.redhat.rhsa:tst:202515018002"
                   }
                 ]
               },
@@ -127,12 +108,38 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "udisks2-iscsi is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:20258067009"
+                    "Comment": "libudisks2-devel is earlier than 0:2.9.4-11.el9_6.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202515018003"
+                  },
+                  {
+                    "Comment": "libudisks2-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202515018004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "udisks2 is earlier than 0:2.9.4-11.el9_6.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202515018005"
+                  },
+                  {
+                    "Comment": "udisks2 is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202515018006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "udisks2-iscsi is earlier than 0:2.9.4-11.el9_6.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202515018007"
                   },
                   {
                     "Comment": "udisks2-iscsi is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:20258067010"
+                    "TestRef": "oval:com.redhat.rhsa:tst:202515018008"
                   }
                 ]
               },
@@ -140,12 +147,25 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "udisks2-lvm2 is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:20258067011"
+                    "Comment": "udisks2-lsm is earlier than 0:2.9.4-11.el9_6.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202515018009"
+                  },
+                  {
+                    "Comment": "udisks2-lsm is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202515018010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "udisks2-lvm2 is earlier than 0:2.9.4-11.el9_6.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202515018011"
                   },
                   {
                     "Comment": "udisks2-lvm2 is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:20258067012"
+                    "TestRef": "oval:com.redhat.rhsa:tst:202515018012"
                   }
                 ]
               }
