@@ -1,0 +1,156 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202515099",
+  "Version": "641",
+  "Metadata": {
+    "Title": "RHSA-2025:15099: pam security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:15099",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:15099"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-6020",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-6020"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-8941",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-8941"
+      }
+    ],
+    "Description": "Pluggable Authentication Modules (PAM) provide a system to set up authentication policies without the need to recompile programs to handle authentication.\n\nSecurity Fix(es):\n\n* linux-pam: Linux-pam directory Traversal (CVE-2025-6020)\n\n* linux-pam: Incomplete fix for CVE-2025-6020 (CVE-2025-8941)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-09-03"
+      },
+      "Updated": {
+        "Date": "2025-09-03"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-6020",
+          "Cvss3": "7.8/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-22",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-6020",
+          "Public": "20250617"
+        },
+        {
+          "CveID": "CVE-2025-8941",
+          "Cvss3": "7.8/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-22",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-8941",
+          "Public": "20250813"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2372512",
+          "ID": "2372512"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2388220",
+          "ID": "2388220"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.8",
+        "cpe:/a:redhat:rhel_eus:9.8::appstream",
+        "cpe:/a:redhat:rhel_eus:9.8::crb",
+        "cpe:/a:redhat:rhel_eus:9.8::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.8::nfv",
+        "cpe:/a:redhat:rhel_eus:9.8::realtime",
+        "cpe:/a:redhat:rhel_eus:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.8::sap",
+        "cpe:/a:redhat:rhel_eus:9.8::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.8::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.8",
+        "cpe:/o:redhat:rhel_eus:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pam is earlier than 0:1.5.1-26.el9_6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202515099001"
+                  },
+                  {
+                    "Comment": "pam is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242438002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pam-devel is earlier than 0:1.5.1-26.el9_6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202515099003"
+                  },
+                  {
+                    "Comment": "pam-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242438004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pam-docs is earlier than 0:1.5.1-26.el9_6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202515099005"
+                  },
+                  {
+                    "Comment": "pam-docs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242438006"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
