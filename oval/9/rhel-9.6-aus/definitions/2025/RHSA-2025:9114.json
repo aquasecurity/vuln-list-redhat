@@ -1,0 +1,93 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20259114",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2025:9114: apache-commons-beanutils security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:9114",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:9114"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-48734",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-48734"
+      }
+    ],
+    "Description": "The Apache Commons BeanUtils library provides utility methods for accessing and modifying properties of arbitrary JavaBeans.\n\nSecurity Fix(es):\n\n* commons-beanutils: Apache Commons BeanUtils: PropertyUtilsBean does not suppresses an enum's declaredClass property by default (CVE-2025-48734)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-06-16"
+      },
+      "Updated": {
+        "Date": "2025-06-16"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-48734",
+          "Cvss3": "8.8/CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-284",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-48734",
+          "Public": "20250528:1332"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2368956",
+          "ID": "2368956"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_aus:9.6",
+        "cpe:/a:redhat:rhel_aus:9.6::appstream",
+        "cpe:/o:redhat:rhel_aus:9.6",
+        "cpe:/o:redhat:rhel_aus:9.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          },
+          {
+            "Comment": "apache-commons-beanutils is earlier than 0:1.9.4-10.el9_6",
+            "TestRef": "oval:com.redhat.rhsa:tst:20259114001"
+          },
+          {
+            "Comment": "apache-commons-beanutils is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20259114002"
+          }
+        ]
+      }
+    ]
+  }
+}
