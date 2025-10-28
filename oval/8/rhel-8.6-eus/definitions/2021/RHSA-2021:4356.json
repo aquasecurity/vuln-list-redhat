@@ -302,6 +302,11 @@
         "Source": "CVE",
         "RefID": "CVE-2022-50073",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2022-50073"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2023-53598",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2023-53598"
       }
     ],
     "Description": "The kernel packages contain the Linux kernel, the core of any Linux operating system.\n\nSecurity Fix(es):\n* kernel: out-of-bounds reads in pinctrl subsystem (CVE-2020-0427)\n* kernel: Improper input validation in some Intel(R) Ethernet E810 Adapter drivers (CVE-2020-24502)\n* kernel: Insufficient access control in some Intel(R) Ethernet E810 Adapter drivers (CVE-2020-24503)\n* kernel: Uncontrolled resource consumption in some Intel(R) Ethernet E810 Adapter drivers (CVE-2020-24504)\n* kernel: Fragmentation cache not cleared on reconnection (CVE-2020-24586)\n* kernel: Reassembling fragments encrypted under different keys (CVE-2020-24587)\n* kernel: wifi frame payload being parsed incorrectly as an L2 frame (CVE-2020-24588)\n* kernel: Forwarding EAPOL from unauthenticated wifi client (CVE-2020-26139)\n* kernel: accepting plaintext data frames in protected networks (CVE-2020-26140)\n* kernel: not verifying TKIP MIC of fragmented frames (CVE-2020-26141)\n* kernel: accepting fragmented plaintext frames in protected networks (CVE-2020-26143)\n* kernel: accepting unencrypted A-MSDU frames that start with RFC1042 header (CVE-2020-26144)\n* kernel: accepting plaintext broadcast fragments as full frames (CVE-2020-26145)\n* kernel: powerpc: RTAS calls can be used to compromise kernel integrity (CVE-2020-27777)\n* kernel: locking inconsistency in tty_io.c and tty_jobctrl.c can lead to a read-after-free (CVE-2020-29660)\n* kernel: buffer overflow in mwifiex_cmd_802_11_ad_hoc_start function via a long SSID value (CVE-2020-36158)\n* kernel: slab out-of-bounds read in hci_extended_inquiry_result_evt()  (CVE-2020-36386)\n* kernel: Improper access control in BlueZ may allow information disclosure vulnerability. (CVE-2021-0129)\n* kernel: Use-after-free in ndb_queue_rq() in drivers/block/nbd.c (CVE-2021-3348)\n* kernel: Linux kernel eBPF RINGBUF map oversized allocation (CVE-2021-3489)\n* kernel: double free in bluetooth subsystem when the HCI device initialization fails (CVE-2021-3564)\n* kernel: use-after-free in function hci_sock_bound_ioctl() (CVE-2021-3573)\n* kernel: eBPF 32-bit source register truncation on div/mod (CVE-2021-3600)\n* kernel: DoS in rb_per_cpu_empty() (CVE-2021-3679)\n* kernel: Mounting overlayfs inside an unprivileged user namespace can reveal files (CVE-2021-3732)\n* kernel: heap overflow in __cgroup_bpf_run_filter_getsockopt() (CVE-2021-20194)\n* kernel: Race condition in sctp_destroy_sock list_del (CVE-2021-23133)\n* kernel: fuse: stall on CPU can occur because a retry loop continually finds the same bad inode (CVE-2021-28950)\n* kernel: System crash in intel_pmu_drain_pebs_nhm in arch/x86/events/intel/ds.c (CVE-2021-28971)\n* kernel: protection can be bypassed to leak content of kernel memory (CVE-2021-29155)\n* kernel: improper input validation in tipc_nl_retrieve_key function in net/tipc/node.c (CVE-2021-29646)\n* kernel: lack a full memory barrier may lead to DoS (CVE-2021-29650)\n* kernel: local escalation of privileges in handling of eBPF programs (CVE-2021-31440)\n* kernel: protection of stack pointer against speculative pointer arithmetic can be bypassed to leak content of kernel memory (CVE-2021-31829)\n* kernel: out-of-bounds reads and writes due to enforcing incorrect limits for pointer arithmetic operations by BPF verifier (CVE-2021-33200)\n* kernel: reassembling encrypted fragments with non-consecutive packet numbers (CVE-2020-26146)\n* kernel: reassembling mixed encrypted/plaintext fragments (CVE-2020-26147)\n* kernel: the copy-on-write implementation can grant unintended write access because of a race condition in a THP mapcount check (CVE-2020-29368)\n* kernel: flowtable list del corruption with kernel BUG at lib/list_debug.c:50 (CVE-2021-3635)\n* kernel: NULL pointer dereference in llsec_key_alloc() in net/mac802154/llsec.c (CVE-2021-3659)\n* kernel: setsockopt System Call Untrusted Pointer Dereference Information Disclosure (CVE-2021-20239)\n* kernel: out of bounds array access in drivers/md/dm-ioctl.c (CVE-2021-31916)",
@@ -771,6 +776,14 @@
           "Impact": "moderate",
           "Href": "https://access.redhat.com/security/cve/CVE-2022-50073",
           "Public": "20250618"
+        },
+        {
+          "CveID": "CVE-2023-53598",
+          "Cvss3": "4.7/CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-787",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2023-53598",
+          "Public": "20251004"
         }
       ],
       "Bugzilla": [
@@ -1001,6 +1014,10 @@
         {
           "Href": "https://bugzilla.redhat.com/2373691",
           "ID": "2373691"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2401500",
+          "ID": "2401500"
         }
       ],
       "AffectedCpeList": [
@@ -1119,21 +1136,8 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "kernel-cross-headers is earlier than 0:4.18.0-348.el8",
-                    "TestRef": "oval:com.redhat.rhsa:tst:20214356009"
-                  },
-                  {
-                    "Comment": "kernel-cross-headers is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.rhsa:tst:20191167010"
-                  }
-                ]
-              },
-              {
-                "Operator": "AND",
-                "Criterions": [
-                  {
                     "Comment": "kernel-debug is earlier than 0:4.18.0-348.el8",
-                    "TestRef": "oval:com.redhat.rhsa:tst:20214356011"
+                    "TestRef": "oval:com.redhat.rhsa:tst:20214356009"
                   },
                   {
                     "Comment": "kernel-debug is signed with Red Hat redhatrelease2 key",
@@ -1146,7 +1150,7 @@
                 "Criterions": [
                   {
                     "Comment": "kernel-debug-core is earlier than 0:4.18.0-348.el8",
-                    "TestRef": "oval:com.redhat.rhsa:tst:20214356013"
+                    "TestRef": "oval:com.redhat.rhsa:tst:20214356011"
                   },
                   {
                     "Comment": "kernel-debug-core is signed with Red Hat redhatrelease2 key",
@@ -1159,7 +1163,7 @@
                 "Criterions": [
                   {
                     "Comment": "kernel-debug-devel is earlier than 0:4.18.0-348.el8",
-                    "TestRef": "oval:com.redhat.rhsa:tst:20214356015"
+                    "TestRef": "oval:com.redhat.rhsa:tst:20214356013"
                   },
                   {
                     "Comment": "kernel-debug-devel is signed with Red Hat redhatrelease2 key",
@@ -1172,7 +1176,7 @@
                 "Criterions": [
                   {
                     "Comment": "kernel-debug-modules is earlier than 0:4.18.0-348.el8",
-                    "TestRef": "oval:com.redhat.rhsa:tst:20214356017"
+                    "TestRef": "oval:com.redhat.rhsa:tst:20214356015"
                   },
                   {
                     "Comment": "kernel-debug-modules is signed with Red Hat redhatrelease2 key",
@@ -1185,7 +1189,7 @@
                 "Criterions": [
                   {
                     "Comment": "kernel-debug-modules-extra is earlier than 0:4.18.0-348.el8",
-                    "TestRef": "oval:com.redhat.rhsa:tst:20214356019"
+                    "TestRef": "oval:com.redhat.rhsa:tst:20214356017"
                   },
                   {
                     "Comment": "kernel-debug-modules-extra is signed with Red Hat redhatrelease2 key",
@@ -1198,7 +1202,7 @@
                 "Criterions": [
                   {
                     "Comment": "kernel-devel is earlier than 0:4.18.0-348.el8",
-                    "TestRef": "oval:com.redhat.rhsa:tst:20214356021"
+                    "TestRef": "oval:com.redhat.rhsa:tst:20214356019"
                   },
                   {
                     "Comment": "kernel-devel is signed with Red Hat redhatrelease2 key",
@@ -1211,7 +1215,7 @@
                 "Criterions": [
                   {
                     "Comment": "kernel-doc is earlier than 0:4.18.0-348.el8",
-                    "TestRef": "oval:com.redhat.rhsa:tst:20214356023"
+                    "TestRef": "oval:com.redhat.rhsa:tst:20214356021"
                   },
                   {
                     "Comment": "kernel-doc is signed with Red Hat redhatrelease2 key",
@@ -1223,21 +1227,8 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "kernel-headers is earlier than 0:4.18.0-348.el8",
-                    "TestRef": "oval:com.redhat.rhsa:tst:20214356025"
-                  },
-                  {
-                    "Comment": "kernel-headers is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.rhsa:tst:20191167026"
-                  }
-                ]
-              },
-              {
-                "Operator": "AND",
-                "Criterions": [
-                  {
                     "Comment": "kernel-modules is earlier than 0:4.18.0-348.el8",
-                    "TestRef": "oval:com.redhat.rhsa:tst:20214356027"
+                    "TestRef": "oval:com.redhat.rhsa:tst:20214356023"
                   },
                   {
                     "Comment": "kernel-modules is signed with Red Hat redhatrelease2 key",
@@ -1250,7 +1241,7 @@
                 "Criterions": [
                   {
                     "Comment": "kernel-modules-extra is earlier than 0:4.18.0-348.el8",
-                    "TestRef": "oval:com.redhat.rhsa:tst:20214356029"
+                    "TestRef": "oval:com.redhat.rhsa:tst:20214356025"
                   },
                   {
                     "Comment": "kernel-modules-extra is signed with Red Hat redhatrelease2 key",
@@ -1263,7 +1254,7 @@
                 "Criterions": [
                   {
                     "Comment": "kernel-tools is earlier than 0:4.18.0-348.el8",
-                    "TestRef": "oval:com.redhat.rhsa:tst:20214356031"
+                    "TestRef": "oval:com.redhat.rhsa:tst:20214356027"
                   },
                   {
                     "Comment": "kernel-tools is signed with Red Hat redhatrelease2 key",
@@ -1276,7 +1267,7 @@
                 "Criterions": [
                   {
                     "Comment": "kernel-tools-libs is earlier than 0:4.18.0-348.el8",
-                    "TestRef": "oval:com.redhat.rhsa:tst:20214356033"
+                    "TestRef": "oval:com.redhat.rhsa:tst:20214356029"
                   },
                   {
                     "Comment": "kernel-tools-libs is signed with Red Hat redhatrelease2 key",
@@ -1289,7 +1280,7 @@
                 "Criterions": [
                   {
                     "Comment": "kernel-tools-libs-devel is earlier than 0:4.18.0-348.el8",
-                    "TestRef": "oval:com.redhat.rhsa:tst:20214356035"
+                    "TestRef": "oval:com.redhat.rhsa:tst:20214356031"
                   },
                   {
                     "Comment": "kernel-tools-libs-devel is signed with Red Hat redhatrelease2 key",
@@ -1302,7 +1293,7 @@
                 "Criterions": [
                   {
                     "Comment": "kernel-zfcpdump is earlier than 0:4.18.0-348.el8",
-                    "TestRef": "oval:com.redhat.rhsa:tst:20214356037"
+                    "TestRef": "oval:com.redhat.rhsa:tst:20214356033"
                   },
                   {
                     "Comment": "kernel-zfcpdump is signed with Red Hat redhatrelease2 key",
@@ -1315,7 +1306,7 @@
                 "Criterions": [
                   {
                     "Comment": "kernel-zfcpdump-core is earlier than 0:4.18.0-348.el8",
-                    "TestRef": "oval:com.redhat.rhsa:tst:20214356039"
+                    "TestRef": "oval:com.redhat.rhsa:tst:20214356035"
                   },
                   {
                     "Comment": "kernel-zfcpdump-core is signed with Red Hat redhatrelease2 key",
@@ -1328,7 +1319,7 @@
                 "Criterions": [
                   {
                     "Comment": "kernel-zfcpdump-devel is earlier than 0:4.18.0-348.el8",
-                    "TestRef": "oval:com.redhat.rhsa:tst:20214356041"
+                    "TestRef": "oval:com.redhat.rhsa:tst:20214356037"
                   },
                   {
                     "Comment": "kernel-zfcpdump-devel is signed with Red Hat redhatrelease2 key",
@@ -1341,7 +1332,7 @@
                 "Criterions": [
                   {
                     "Comment": "kernel-zfcpdump-modules is earlier than 0:4.18.0-348.el8",
-                    "TestRef": "oval:com.redhat.rhsa:tst:20214356043"
+                    "TestRef": "oval:com.redhat.rhsa:tst:20214356039"
                   },
                   {
                     "Comment": "kernel-zfcpdump-modules is signed with Red Hat redhatrelease2 key",
@@ -1354,7 +1345,7 @@
                 "Criterions": [
                   {
                     "Comment": "kernel-zfcpdump-modules-extra is earlier than 0:4.18.0-348.el8",
-                    "TestRef": "oval:com.redhat.rhsa:tst:20214356045"
+                    "TestRef": "oval:com.redhat.rhsa:tst:20214356041"
                   },
                   {
                     "Comment": "kernel-zfcpdump-modules-extra is signed with Red Hat redhatrelease2 key",
@@ -1367,7 +1358,7 @@
                 "Criterions": [
                   {
                     "Comment": "perf is earlier than 0:4.18.0-348.el8",
-                    "TestRef": "oval:com.redhat.rhsa:tst:20214356047"
+                    "TestRef": "oval:com.redhat.rhsa:tst:20214356043"
                   },
                   {
                     "Comment": "perf is signed with Red Hat redhatrelease2 key",
@@ -1380,7 +1371,7 @@
                 "Criterions": [
                   {
                     "Comment": "python3-perf is earlier than 0:4.18.0-348.el8",
-                    "TestRef": "oval:com.redhat.rhsa:tst:20214356049"
+                    "TestRef": "oval:com.redhat.rhsa:tst:20214356045"
                   },
                   {
                     "Comment": "python3-perf is signed with Red Hat redhatrelease2 key",
