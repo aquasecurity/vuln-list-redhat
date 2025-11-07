@@ -1,0 +1,176 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202519906",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2025:19906: mingw-libtiff security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:19906",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:19906"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-8176",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-8176"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-9900",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-9900"
+      }
+    ],
+    "Description": "The libtiff package contains a library of functions for manipulating TIFF (Tagged Image File Format) image format files.  TIFF is a widely used file format for bitmapped images.  TIFF files usually end in the .tif extension and they are often quite large.  The libtiff package should be installed if you need to manipulate TIFF format image files.\n\nSecurity Fix(es):\n\n* libtiff: LibTIFF Use-After-Free Vulnerability (CVE-2025-8176)\n\n* libtiff: Libtiff Write-What-Where (CVE-2025-9900)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-11-06"
+      },
+      "Updated": {
+        "Date": "2025-11-06"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-8176",
+          "Cvss3": "7.8/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "(CWE-119|CWE-416)",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-8176",
+          "Public": "20250726:0332"
+        },
+        {
+          "CveID": "CVE-2025-9900",
+          "Cvss3": "8.8/CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-123",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-9900",
+          "Public": "20250922:1429"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2383598",
+          "ID": "2383598"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2392784",
+          "ID": "2392784"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:8",
+        "cpe:/a:redhat:enterprise_linux:8::appstream",
+        "cpe:/a:redhat:enterprise_linux:8::crb",
+        "cpe:/a:redhat:enterprise_linux:8::highavailability",
+        "cpe:/a:redhat:enterprise_linux:8::nfv",
+        "cpe:/a:redhat:enterprise_linux:8::realtime",
+        "cpe:/a:redhat:enterprise_linux:8::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:8::sap",
+        "cpe:/a:redhat:enterprise_linux:8::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:8::supplementary",
+        "cpe:/o:redhat:enterprise_linux:8",
+        "cpe:/o:redhat:enterprise_linux:8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:20052541004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.cve:tst:20052541003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "mingw32-libtiff is earlier than 0:4.0.9-3.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202519906001"
+                  },
+                  {
+                    "Comment": "mingw32-libtiff is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:201817100006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "mingw32-libtiff-static is earlier than 0:4.0.9-3.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202519906003"
+                  },
+                  {
+                    "Comment": "mingw32-libtiff-static is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:201817100002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "mingw64-libtiff is earlier than 0:4.0.9-3.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202519906005"
+                  },
+                  {
+                    "Comment": "mingw64-libtiff is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:201817100004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "mingw64-libtiff-static is earlier than 0:4.0.9-3.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202519906007"
+                  },
+                  {
+                    "Comment": "mingw64-libtiff-static is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:201817100008"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
