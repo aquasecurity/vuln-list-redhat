@@ -1,0 +1,225 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202519950",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2025:19950: bind9.18 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:19950",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:19950"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-40778",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-40778"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-40780",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-40780"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-8677",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-8677"
+      }
+    ],
+    "Description": "BIND (Berkeley Internet Name Domain) is an implementation of the DNS (Domain Name System) protocols. BIND includes a DNS server (named), which resolves host names to IP addresses; a resolver library (routines for applications to use when interfacing with DNS); and tools for verifying that the DNS server is operating properly.\n\nSecurity Fix(es):\n\n* bind: Cache poisoning attacks with unsolicited RRs (CVE-2025-40778)\n\n* bind: Cache poisoning due to weak PRNG (CVE-2025-40780)\n\n* bind: Resource exhaustion via malformed DNSKEY handling (CVE-2025-8677)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-11-10"
+      },
+      "Updated": {
+        "Date": "2025-11-10"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-40778",
+          "Cvss3": "8.6/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:N",
+          "Cwe": "CWE-347",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-40778",
+          "Public": "20251022"
+        },
+        {
+          "CveID": "CVE-2025-40780",
+          "Cvss3": "8.6/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:N",
+          "Cwe": "CWE-338",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-40780",
+          "Public": "20251022"
+        },
+        {
+          "CveID": "CVE-2025-8677",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-400",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-8677",
+          "Public": "20251022"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2405827",
+          "ID": "2405827"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2405829",
+          "ID": "2405829"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2405830",
+          "ID": "2405830"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.6",
+        "cpe:/a:redhat:rhel_eus:9.6::appstream",
+        "cpe:/a:redhat:rhel_eus:9.6::crb",
+        "cpe:/a:redhat:rhel_eus:9.6::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.6::nfv",
+        "cpe:/a:redhat:rhel_eus:9.6::realtime",
+        "cpe:/a:redhat:rhel_eus:9.6::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.6::sap",
+        "cpe:/a:redhat:rhel_eus:9.6::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.6::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.6",
+        "cpe:/o:redhat:rhel_eus:9.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind9.18 is earlier than 32:9.18.29-4.el9_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202519950001"
+                  },
+                  {
+                    "Comment": "bind9.18 is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251670002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind9.18-chroot is earlier than 32:9.18.29-4.el9_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202519950003"
+                  },
+                  {
+                    "Comment": "bind9.18-chroot is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251670004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind9.18-devel is earlier than 32:9.18.29-4.el9_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202519950005"
+                  },
+                  {
+                    "Comment": "bind9.18-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251670006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind9.18-dnssec-utils is earlier than 32:9.18.29-4.el9_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202519950007"
+                  },
+                  {
+                    "Comment": "bind9.18-dnssec-utils is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251670008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind9.18-doc is earlier than 32:9.18.29-4.el9_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202519950009"
+                  },
+                  {
+                    "Comment": "bind9.18-doc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251670010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind9.18-libs is earlier than 32:9.18.29-4.el9_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202519950011"
+                  },
+                  {
+                    "Comment": "bind9.18-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251670012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind9.18-utils is earlier than 32:9.18.29-4.el9_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202519950013"
+                  },
+                  {
+                    "Comment": "bind9.18-utils is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251670014"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
