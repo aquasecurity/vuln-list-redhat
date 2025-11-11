@@ -1,0 +1,158 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202520960",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2025:20960: xorg-x11-server-Xwayland security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:20960",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:20960"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-62229",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-62229"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-62230",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-62230"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-62231",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-62231"
+      }
+    ],
+    "Description": "Xwayland is an X server for running X clients under Wayland.\n\nSecurity Fix(es):\n\n* xorg: xmayland: Use-after-free in XPresentNotify structure creation (CVE-2025-62229)\n\n* xorg: xwayland: Use-after-free in Xkb client resource removal (CVE-2025-62230)\n\n* xorg: xmayland: Value overflow in XkbSetCompatMap() (CVE-2025-62231)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-11-11"
+      },
+      "Updated": {
+        "Date": "2025-11-11"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-62229",
+          "Cvss3": "7.3/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:H",
+          "Cwe": "CWE-416",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-62229",
+          "Public": "20251029"
+        },
+        {
+          "CveID": "CVE-2025-62230",
+          "Cvss3": "7.3/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:H",
+          "Cwe": "CWE-416",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-62230",
+          "Public": "20251029"
+        },
+        {
+          "CveID": "CVE-2025-62231",
+          "Cvss3": "7.3/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:H",
+          "Cwe": "CWE-190",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-62231",
+          "Public": "20251029"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2402649",
+          "ID": "2402649"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2402653",
+          "ID": "2402653"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2402660",
+          "ID": "2402660"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.8",
+        "cpe:/a:redhat:rhel_e4s:9.8::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.8::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.8::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.8::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.8",
+        "cpe:/o:redhat:rhel_e4s:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "xorg-x11-server-Xwayland is earlier than 0:23.2.7-5.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202520960001"
+                  },
+                  {
+                    "Comment": "xorg-x11-server-Xwayland is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20228222002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "xorg-x11-server-Xwayland-devel is earlier than 0:23.2.7-5.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202520960003"
+                  },
+                  {
+                    "Comment": "xorg-x11-server-Xwayland-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20249093004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
