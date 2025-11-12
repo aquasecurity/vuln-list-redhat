@@ -1,0 +1,93 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202521066",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2025:21066: squid security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.6 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:21066",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:21066"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-62168",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-62168"
+      }
+    ],
+    "Description": "Squid is a high-performance proxy caching server for web clients, supporting FTP, and HTTP data objects.\n\nSecurity Fix(es):\n\n* squid-cache: Squid vulnerable to information disclosure via authentication credential leakage in error handling (CVE-2025-62168)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-11-12"
+      },
+      "Updated": {
+        "Date": "2025-11-12"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-62168",
+          "Cvss3": "8.6/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N",
+          "Cwe": "CWE-209",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-62168",
+          "Public": "20251017:1621"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2404736",
+          "ID": "2404736"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_aus:9.6",
+        "cpe:/a:redhat:rhel_aus:9.6::appstream",
+        "cpe:/o:redhat:rhel_aus:9.6",
+        "cpe:/o:redhat:rhel_aus:9.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          },
+          {
+            "Comment": "squid is earlier than 7:5.5-19.el9_6.2",
+            "TestRef": "oval:com.redhat.rhsa:tst:202521066001"
+          },
+          {
+            "Comment": "squid is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20225527002"
+          }
+        ]
+      }
+    ]
+  }
+}
