@@ -1,0 +1,116 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202521138",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2025:21138: python-kdcproxy security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.6 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:21138",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:21138"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-59088",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-59088"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-59089",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-59089"
+      }
+    ],
+    "Description": "Python is an interpreted, interactive, object-oriented programming language, which includes modules, classes, exceptions, very high level dynamic data types and dynamic typing. Python supports interfaces to many system calls and libraries, as well as to various windowing systems.\n\nSecurity Fix(es):\n\n* python-kdcproxy: Unauthenticated SSRF via Realm?Controlled DNS SRV (CVE-2025-59088)\n\n* python-kdcproxy: Remote DoS via unbounded TCP upstream buffering (CVE-2025-59089)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-11-12"
+      },
+      "Updated": {
+        "Date": "2025-11-12"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-59088",
+          "Cvss3": "8.6/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N",
+          "Cwe": "CWE-918",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-59088",
+          "Public": "20251112"
+        },
+        {
+          "CveID": "CVE-2025-59089",
+          "Cvss3": "5.9/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-770",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-59089",
+          "Public": "20251112"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2393955",
+          "ID": "2393955"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2393958",
+          "ID": "2393958"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.6",
+        "cpe:/a:redhat:rhel_e4s:9.6::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.6::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.6::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.6::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.6::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.6::sap",
+        "cpe:/a:redhat:rhel_e4s:9.6::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.6",
+        "cpe:/o:redhat:rhel_e4s:9.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          },
+          {
+            "Comment": "python3-kdcproxy is earlier than 0:1.0.0-9.el9_6",
+            "TestRef": "oval:com.redhat.rhsa:tst:202521138001"
+          },
+          {
+            "Comment": "python3-kdcproxy is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:202521138002"
+          }
+        ]
+      }
+    ]
+  }
+}
