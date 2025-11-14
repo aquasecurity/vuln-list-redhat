@@ -1,23 +1,39 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:202522247",
-  "Version": "636",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhba:def:202520841",
+  "Version": "638",
   "Metadata": {
-    "Title": "open-vm-tools: Insecure file handling (moderate)",
+    "Title": "RHBA-2025:20841: open-vm-tools bug fix and enhancement update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHBA-2025:20841",
+        "RefURL": "https://access.redhat.com/errata/RHBA-2025:20841"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2025-22247",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2025-22247"
       }
     ],
-    "Description": "DOCUMENTATION: A vulnerability was found in open-vm-tools. A malicious actor with non-administrative privileges on a guest virtual machine (VM) may tamper with the local files to trigger insecure file operations within that VM. \n            \n            MITIGATION: Currently, no mitigation is available for this vulnerability.",
+    "Description": "For detailed information on changes in this release, see the Red Hat Enterprise Linux 9 Release Notes linked from the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Moderate",
-      "Issued": {},
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-11-11"
+      },
       "Updated": {
-        "Date": "2025-11-12"
+        "Date": "2025-11-11"
       },
       "Cves": [
         {
@@ -27,6 +43,12 @@
           "Impact": "moderate",
           "Href": "https://access.redhat.com/security/cve/CVE-2025-22247",
           "Public": "20250512"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2364261",
+          "ID": "2364261"
         }
       ],
       "AffectedCpeList": [
@@ -45,9 +67,7 @@
         "cpe:/o:redhat:enterprise_linux:9::baseos"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Fix deferred"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -76,38 +96,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "open-vm-tools-salt-minion is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202522247001"
-                  },
-                  {
-                    "Comment": "open-vm-tools-salt-minion is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:202522247002"
-                  }
-                ]
-              },
-              {
-                "Operator": "AND",
-                "Criterions": [
-                  {
-                    "Comment": "open-vm-tools-desktop is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202522247003"
-                  },
-                  {
-                    "Comment": "open-vm-tools-desktop is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:202522247004"
-                  }
-                ]
-              },
-              {
-                "Operator": "AND",
-                "Criterions": [
-                  {
-                    "Comment": "open-vm-tools is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202522247005"
+                    "Comment": "open-vm-tools is earlier than 0:13.0.0-1.el9_7.1",
+                    "TestRef": "oval:com.redhat.rhba:tst:202520841001"
                   },
                   {
                     "Comment": "open-vm-tools is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:202522247006"
+                    "TestRef": "oval:com.redhat.rhba:tst:202520841002"
                   }
                 ]
               },
@@ -115,12 +109,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "open-vm-tools-test is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202522247007"
+                    "Comment": "open-vm-tools-desktop is earlier than 0:13.0.0-1.el9_7.1",
+                    "TestRef": "oval:com.redhat.rhba:tst:202520841003"
                   },
                   {
-                    "Comment": "open-vm-tools-test is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:202522247008"
+                    "Comment": "open-vm-tools-desktop is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:202520841004"
                   }
                 ]
               },
@@ -128,12 +122,38 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "open-vm-tools-sdmp is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202522247009"
+                    "Comment": "open-vm-tools-salt-minion is earlier than 0:13.0.0-1.el9_7.1",
+                    "TestRef": "oval:com.redhat.rhba:tst:202520841005"
+                  },
+                  {
+                    "Comment": "open-vm-tools-salt-minion is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:202520841006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "open-vm-tools-sdmp is earlier than 0:13.0.0-1.el9_7.1",
+                    "TestRef": "oval:com.redhat.rhba:tst:202520841007"
                   },
                   {
                     "Comment": "open-vm-tools-sdmp is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:202522247010"
+                    "TestRef": "oval:com.redhat.rhba:tst:202520841008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "open-vm-tools-test is earlier than 0:13.0.0-1.el9_7.1",
+                    "TestRef": "oval:com.redhat.rhba:tst:202520841009"
+                  },
+                  {
+                    "Comment": "open-vm-tools-test is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:202520841010"
                   }
                 ]
               }
