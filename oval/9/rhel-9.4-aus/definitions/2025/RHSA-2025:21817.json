@@ -1,0 +1,239 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202521817",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2025:21817: bind security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.4 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:21817",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:21817"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-40778",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-40778"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-40780",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-40780"
+      }
+    ],
+    "Description": "The Berkeley Internet Name Domain (BIND) is an implementation of the Domain Name System (DNS) protocols. BIND includes a DNS server (named); a resolver library (routines for applications to use when interfacing with DNS); and tools for verifying that the DNS server is operating correctly.\n\nSecurity Fix(es):\n\n* bind: Cache poisoning attacks with unsolicited RRs (CVE-2025-40778)\n\n* bind: Cache poisoning due to weak PRNG (CVE-2025-40780)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-11-20"
+      },
+      "Updated": {
+        "Date": "2025-11-20"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-40778",
+          "Cvss3": "8.6/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:N",
+          "Cwe": "CWE-347",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-40778",
+          "Public": "20251022"
+        },
+        {
+          "CveID": "CVE-2025-40780",
+          "Cvss3": "8.6/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:N",
+          "Cwe": "CWE-338",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-40780",
+          "Public": "20251022"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2405827",
+          "ID": "2405827"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2405829",
+          "ID": "2405829"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_aus:9.4",
+        "cpe:/a:redhat:rhel_aus:9.4::appstream",
+        "cpe:/o:redhat:rhel_aus:9.4",
+        "cpe:/o:redhat:rhel_aus:9.4::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind is earlier than 32:9.16.23-18.el9_4.10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202521817001"
+                  },
+                  {
+                    "Comment": "bind is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20226763002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind-chroot is earlier than 32:9.16.23-18.el9_4.10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202521817003"
+                  },
+                  {
+                    "Comment": "bind-chroot is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20226763004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind-devel is earlier than 32:9.16.23-18.el9_4.10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202521817005"
+                  },
+                  {
+                    "Comment": "bind-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20226763006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind-dnssec-doc is earlier than 32:9.16.23-18.el9_4.10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202521817007"
+                  },
+                  {
+                    "Comment": "bind-dnssec-doc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20226763008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind-dnssec-utils is earlier than 32:9.16.23-18.el9_4.10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202521817009"
+                  },
+                  {
+                    "Comment": "bind-dnssec-utils is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20226763010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind-doc is earlier than 32:9.16.23-18.el9_4.10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202521817011"
+                  },
+                  {
+                    "Comment": "bind-doc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20228068012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind-libs is earlier than 32:9.16.23-18.el9_4.10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202521817013"
+                  },
+                  {
+                    "Comment": "bind-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20226763012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind-license is earlier than 32:9.16.23-18.el9_4.10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202521817015"
+                  },
+                  {
+                    "Comment": "bind-license is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20226763014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bind-utils is earlier than 32:9.16.23-18.el9_4.10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202521817017"
+                  },
+                  {
+                    "Comment": "bind-utils is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20226763016"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3-bind is earlier than 32:9.16.23-18.el9_4.10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202521817019"
+                  },
+                  {
+                    "Comment": "python3-bind is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20226763018"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
