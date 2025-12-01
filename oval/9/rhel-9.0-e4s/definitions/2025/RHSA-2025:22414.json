@@ -1,0 +1,137 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202522414",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2025:22414: qt5-qt3d security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.0 Update Services for SAP Solutions"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:22414",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:22414"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-11277",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-11277"
+      }
+    ],
+    "Description": "Qt 3D provides functionality for near-realtime simulation systems with support for 2D and 3D rendering in both Qt C++ and Qt Quick applications).\n\nSecurity Fix(es):\n\n* assimp: Open Asset Import Library Assimp Q3DLoader.cpp InternReadFile heap-based overflow (CVE-2025-11277)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-12-01"
+      },
+      "Updated": {
+        "Date": "2025-12-01"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-11277",
+          "Cvss3": "6.1/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:H",
+          "Cwe": "(CWE-122|CWE-787)",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-11277",
+          "Public": "20251005:0132"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2401622",
+          "ID": "2401622"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.0",
+        "cpe:/a:redhat:rhel_e4s:9.0::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.0::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.0::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.0::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.0::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.0::sap",
+        "cpe:/a:redhat:rhel_e4s:9.0::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.0",
+        "cpe:/o:redhat:rhel_e4s:9.0::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qt5-qt3d is earlier than 0:5.15.2-10.el9_0.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202522414001"
+                  },
+                  {
+                    "Comment": "qt5-qt3d is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202515463002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qt5-qt3d-devel is earlier than 0:5.15.2-10.el9_0.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202522414003"
+                  },
+                  {
+                    "Comment": "qt5-qt3d-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202515463004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qt5-qt3d-examples is earlier than 0:5.15.2-10.el9_0.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202522414005"
+                  },
+                  {
+                    "Comment": "qt5-qt3d-examples is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202515463006"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
