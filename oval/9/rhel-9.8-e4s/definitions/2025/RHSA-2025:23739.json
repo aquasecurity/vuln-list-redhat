@@ -1,0 +1,99 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202523739",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2025:23739: mod_md security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2025:23739",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2025:23739"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-55753",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-55753"
+      }
+    ],
+    "Description": "This module manages common properties of domains for one or more virtual hosts. Specifically it can use the ACME protocol to automate certificate provisioning.  Certificates will be configured for managed domains and their virtual hosts automatically, including at renewal.\n\nSecurity Fix(es):\n\n* mod_md: Apache HTTP Server: mod_md (ACME), unintended retry intervals (CVE-2025-55753)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2025 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2025-12-22"
+      },
+      "Updated": {
+        "Date": "2025-12-22"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-55753",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "Cwe": "CWE-190",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-55753",
+          "Public": "20251205:1012"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2419140",
+          "ID": "2419140"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.8",
+        "cpe:/a:redhat:rhel_e4s:9.8::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.8::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.8::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.8::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.8",
+        "cpe:/o:redhat:rhel_e4s:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          },
+          {
+            "Comment": "mod_md is earlier than 1:2.4.26-1.el9_7.1",
+            "TestRef": "oval:com.redhat.rhsa:tst:202523739001"
+          },
+          {
+            "Comment": "mod_md is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:202523739002"
+          }
+        ]
+      }
+    ]
+  }
+}
