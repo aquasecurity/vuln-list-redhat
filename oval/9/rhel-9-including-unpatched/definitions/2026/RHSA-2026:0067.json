@@ -1,23 +1,39 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:202545582",
-  "Version": "636",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20260067",
+  "Version": "637",
   "Metadata": {
-    "Title": "tar: Tar path traversal (moderate)",
+    "Title": "RHSA-2026:0067: tar security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:0067",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:0067"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2025-45582",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2025-45582"
       }
     ],
-    "Description": "DOCUMENTATION: A relative path traversal flaw was found in the gnu tar utility. When archives with relative paths are extracted without the ‘--keep-old-files’ (‘-k’), the extraction process may overwrite existing files that the current user has access to. The server may be impacted if these files are critical to the operation of some service. \n            STATEMENT: Within regulated environments, a combination of the following controls acts as a significant barrier to successful exploitation of a CWE-24: Path Traversal: '../filedir' and therefore downgrades the severity of this particular CVE from Moderate to Low.\n\nBaseline configurations enforce strict privilege levels for code execution, allowing only authorized processes to access or modify files within approved directories. Input validation sanitizes and verifies user-supplied file paths against defined patterns, blocking traversal sequences that could enable unauthorized access outside designated locations. Configuration settings further restrict directory and file system access, ensuring applications operate within approved resources and execution boundaries.\n            MITIGATION: Mitigation for this issue is either not available or the currently available options do not meet the Red Hat Product Security criteria comprising ease of use and deployment, applicability to widespread installation base or stability.",
+    "Description": "The GNU tar program can save multiple files in an archive and restore files from an archive.\n\nSecurity Fix(es):\n\n* tar: Tar path traversal (CVE-2025-45582)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Moderate",
-      "Issued": {},
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-01-05"
+      },
       "Updated": {
-        "Date": "2025-11-24"
+        "Date": "2026-01-05"
       },
       "Cves": [
         {
@@ -27,6 +43,12 @@
           "Impact": "moderate",
           "Href": "https://access.redhat.com/security/cve/CVE-2025-45582",
           "Public": "20250711"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2379592",
+          "ID": "2379592"
         }
       ],
       "AffectedCpeList": [
@@ -45,9 +67,7 @@
         "cpe:/o:redhat:enterprise_linux:9::baseos"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -68,8 +88,8 @@
             "TestRef": "oval:com.redhat.cve:tst:20052541003"
           },
           {
-            "Comment": "tar is installed",
-            "TestRef": "oval:com.redhat.cve:tst:20052541001"
+            "Comment": "tar is earlier than 2:1.34-9.el9_7",
+            "TestRef": "oval:com.redhat.rhsa:tst:20260067001"
           },
           {
             "Comment": "tar is signed with Red Hat redhatrelease2 key",
