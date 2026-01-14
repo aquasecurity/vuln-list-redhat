@@ -1,0 +1,143 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20260312",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:0312: cups security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:0312",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:0312"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-58436",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-58436"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-61915",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-61915"
+      }
+    ],
+    "Description": "The Common UNIX Printing System (CUPS) provides a portable printing layer for Linux, UNIX, and similar operating systems.\n\nSecurity Fix(es):\n\n* CUPS: Local denial-of-service via cupsd.conf update and related issues (CVE-2025-61915)\n\n* cups: Slow client communication leads to a possible DoS attack (CVE-2025-58436)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-01-08"
+      },
+      "Updated": {
+        "Date": "2026-01-08"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-58436",
+          "Cvss3": "5.1/CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-412",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-58436",
+          "Public": "20251201"
+        },
+        {
+          "CveID": "CVE-2025-61915",
+          "Cvss3": "6.0/CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:C/C:N/I:N/A:H",
+          "Cwe": "CWE-1173",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-61915",
+          "Public": "20251128"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2416039",
+          "ID": "2416039"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2416040",
+          "ID": "2416040"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.8",
+        "cpe:/a:redhat:rhel_eus:9.8::appstream",
+        "cpe:/a:redhat:rhel_eus:9.8::crb",
+        "cpe:/a:redhat:rhel_eus:9.8::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.8::nfv",
+        "cpe:/a:redhat:rhel_eus:9.8::realtime",
+        "cpe:/a:redhat:rhel_eus:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.8::sap",
+        "cpe:/a:redhat:rhel_eus:9.8::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.8::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.8",
+        "cpe:/o:redhat:rhel_eus:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "cups is earlier than 1:2.3.3op2-34.el9_7.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260312001"
+                  },
+                  {
+                    "Comment": "cups is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260312002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "cups-libs is earlier than 1:2.3.3op2-34.el9_7.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260312003"
+                  },
+                  {
+                    "Comment": "cups-libs is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260312004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

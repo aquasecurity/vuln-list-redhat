@@ -1,0 +1,93 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20260435",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:0435: tar security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.6 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:0435",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:0435"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-45582",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-45582"
+      }
+    ],
+    "Description": "The GNU tar program can save multiple files in an archive and restore files from an archive.\n\nSecurity Fix(es):\n\n* tar: Tar path traversal (CVE-2025-45582)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-01-12"
+      },
+      "Updated": {
+        "Date": "2026-01-12"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-45582",
+          "Cvss3": "5.6/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L",
+          "Cwe": "CWE-24",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-45582",
+          "Public": "20250711"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2379592",
+          "ID": "2379592"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_aus:9.6",
+        "cpe:/a:redhat:rhel_aus:9.6::appstream",
+        "cpe:/o:redhat:rhel_aus:9.6",
+        "cpe:/o:redhat:rhel_aus:9.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          },
+          {
+            "Comment": "tar is earlier than 2:1.34-7.el9_6.2",
+            "TestRef": "oval:com.redhat.rhsa:tst:20260435001"
+          },
+          {
+            "Comment": "tar is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20230959002"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,724 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20260384",
+  "Version": "638",
+  "Metadata": {
+    "Title": "RHSA-2026:0384: Red Hat JBoss Enterprise Application Platform 8.1.3 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat JBoss Enterprise Application Platform 8.1 for RHEL 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:0384",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:0384"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-3884",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-3884"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-12543",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-12543"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-9784",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-9784"
+      }
+    ],
+    "Description": "Red Hat JBoss Enterprise Application Platform 8 is a platform for Java applications based on the WildFly application runtime. This release of Red Hat JBoss  Enterprise Application Platform 8.1.3 serves as a replacement for Red Hat JBoss Enterprise Application Platform 8.1.2, and includes bug fixes and enhancements. See the Red Hat JBoss Enterprise Application Platform 8.1.3 Release Notes for information about the most significant bug fixes and enhancements included in this release.\n\nSecurity Fix(es):\n\n* undertow-core: Undertow HTTP Server Fails to Reject Malformed Host Headers Leading to Potential Cache Poisoning and SSRF [eap-8.1.z] (CVE-2025-12543)\n\n* undertow: OutOfMemory when parsing form data encoding with application/x-www-form-urlencoded [eap-8.1.z] (CVE-2024-3884)\n\n* undertow-core: Undertow MadeYouReset HTTP/2 DDoS Vulnerability [eap-8.1.z] (CVE-2025-9784)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-01-08"
+      },
+      "Updated": {
+        "Date": "2026-01-08"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-3884",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-20",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-3884",
+          "Public": "20251203:1650"
+        },
+        {
+          "CveID": "CVE-2025-12543",
+          "Cvss3": "9.6/CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:L",
+          "Cwe": "CWE-20",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-12543",
+          "Public": "20260108"
+        },
+        {
+          "CveID": "CVE-2025-9784",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-770",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-9784",
+          "Public": "20250901:0621"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2275287",
+          "ID": "2275287"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2392306",
+          "ID": "2392306"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2408784",
+          "ID": "2408784"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:jboss_enterprise_application_platform:8.0",
+        "cpe:/a:redhat:jboss_enterprise_application_platform:8.0::el9",
+        "cpe:/a:redhat:jboss_enterprise_application_platform:8.1",
+        "cpe:/a:redhat:jboss_enterprise_application_platform:8.1::el9"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhsa:tst:202410386016"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhsa:tst:202410386015"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-wildfly-clustering is earlier than 0:5.0.12-1.Final_redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384001"
+                  },
+                  {
+                    "Comment": "eap8-wildfly-clustering is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202522188088"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-wildfly-clustering-cache-infinispan-common is earlier than 0:5.0.12-1.Final_redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384003"
+                  },
+                  {
+                    "Comment": "eap8-wildfly-clustering-cache-infinispan-common is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202522188090"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-wildfly-clustering-cache-infinispan-embedded is earlier than 0:5.0.12-1.Final_redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384005"
+                  },
+                  {
+                    "Comment": "eap8-wildfly-clustering-cache-infinispan-embedded is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202522188092"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-wildfly-clustering-cache-infinispan-remote is earlier than 0:5.0.12-1.Final_redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384007"
+                  },
+                  {
+                    "Comment": "eap8-wildfly-clustering-cache-infinispan-remote is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202522188094"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-wildfly-clustering-cache-spi is earlier than 0:5.0.12-1.Final_redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384009"
+                  },
+                  {
+                    "Comment": "eap8-wildfly-clustering-cache-spi is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202522188096"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-wildfly-clustering-context is earlier than 0:5.0.12-1.Final_redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384011"
+                  },
+                  {
+                    "Comment": "eap8-wildfly-clustering-context is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202522188098"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-wildfly-clustering-marshalling-jboss is earlier than 0:5.0.12-1.Final_redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384013"
+                  },
+                  {
+                    "Comment": "eap8-wildfly-clustering-marshalling-jboss is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202522188100"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-wildfly-clustering-marshalling-protostream is earlier than 0:5.0.12-1.Final_redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384015"
+                  },
+                  {
+                    "Comment": "eap8-wildfly-clustering-marshalling-protostream is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202522188102"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-wildfly-clustering-marshalling-spi is earlier than 0:5.0.12-1.Final_redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384017"
+                  },
+                  {
+                    "Comment": "eap8-wildfly-clustering-marshalling-spi is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202522188104"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-wildfly-clustering-server-api is earlier than 0:5.0.12-1.Final_redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384019"
+                  },
+                  {
+                    "Comment": "eap8-wildfly-clustering-server-api is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202522188106"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-wildfly-clustering-server-infinispan is earlier than 0:5.0.12-1.Final_redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384021"
+                  },
+                  {
+                    "Comment": "eap8-wildfly-clustering-server-infinispan is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202522188108"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-wildfly-clustering-server-jgroups is earlier than 0:5.0.12-1.Final_redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384023"
+                  },
+                  {
+                    "Comment": "eap8-wildfly-clustering-server-jgroups is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202522188110"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-wildfly-clustering-server-local is earlier than 0:5.0.12-1.Final_redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384025"
+                  },
+                  {
+                    "Comment": "eap8-wildfly-clustering-server-local is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202522188112"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-wildfly-clustering-server-spi is earlier than 0:5.0.12-1.Final_redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384027"
+                  },
+                  {
+                    "Comment": "eap8-wildfly-clustering-server-spi is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202522188114"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-wildfly-clustering-session-cache is earlier than 0:5.0.12-1.Final_redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384029"
+                  },
+                  {
+                    "Comment": "eap8-wildfly-clustering-session-cache is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202522188116"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-wildfly-clustering-session-infinispan-embedded is earlier than 0:5.0.12-1.Final_redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384031"
+                  },
+                  {
+                    "Comment": "eap8-wildfly-clustering-session-infinispan-embedded is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202522188118"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-wildfly-clustering-session-infinispan-remote is earlier than 0:5.0.12-1.Final_redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384033"
+                  },
+                  {
+                    "Comment": "eap8-wildfly-clustering-session-infinispan-remote is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202522188120"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-wildfly-clustering-session-spec-servlet-6.0 is earlier than 0:5.0.12-1.Final_redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384035"
+                  },
+                  {
+                    "Comment": "eap8-wildfly-clustering-session-spec-servlet-6.0 is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202522188122"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-wildfly-clustering-session-spec-spi is earlier than 0:5.0.12-1.Final_redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384037"
+                  },
+                  {
+                    "Comment": "eap8-wildfly-clustering-session-spec-spi is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202522188124"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-wildfly-clustering-session-spi is earlier than 0:5.0.12-1.Final_redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384039"
+                  },
+                  {
+                    "Comment": "eap8-wildfly-clustering-session-spi is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202522188126"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-wildfly-elytron is earlier than 0:2.6.6-1.Final_redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384041"
+                  },
+                  {
+                    "Comment": "eap8-wildfly-elytron is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202411560002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-wildfly-elytron-tool is earlier than 0:2.6.6-1.Final_redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384043"
+                  },
+                  {
+                    "Comment": "eap8-wildfly-elytron-tool is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202411560004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-apache-cxf is earlier than 0:4.0.10-1.redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384045"
+                  },
+                  {
+                    "Comment": "eap8-apache-cxf is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243581154"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-apache-cxf-rt is earlier than 0:4.0.10-1.redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384047"
+                  },
+                  {
+                    "Comment": "eap8-apache-cxf-rt is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243581156"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-apache-cxf-services is earlier than 0:4.0.10-1.redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384049"
+                  },
+                  {
+                    "Comment": "eap8-apache-cxf-services is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243581158"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-apache-cxf-tools is earlier than 0:4.0.10-1.redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384051"
+                  },
+                  {
+                    "Comment": "eap8-apache-cxf-tools is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243581160"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-hibernate is earlier than 0:6.6.36-1.Final_redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384053"
+                  },
+                  {
+                    "Comment": "eap8-hibernate is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202411560068"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-hibernate-core is earlier than 0:6.6.36-1.Final_redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384055"
+                  },
+                  {
+                    "Comment": "eap8-hibernate-core is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202411560070"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-hibernate-envers is earlier than 0:6.6.36-1.Final_redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384057"
+                  },
+                  {
+                    "Comment": "eap8-hibernate-envers is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202411560072"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-eap-product-conf-parent is earlier than 0:801.3.0-1.GA_redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384059"
+                  },
+                  {
+                    "Comment": "eap8-eap-product-conf-parent is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202410386002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-eap-product-conf-wildfly-ee-feature-pack is earlier than 0:801.3.0-1.GA_redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384061"
+                  },
+                  {
+                    "Comment": "eap8-eap-product-conf-wildfly-ee-feature-pack is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202410386004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-jboss-el-api_5.0_spec is earlier than 0:4.0.2-1.Final_redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202522775069"
+                  },
+                  {
+                    "Comment": "eap8-jboss-el-api_5.0_spec is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20252026038"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-jboss-threads is earlier than 0:2.5.0-1.redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384065"
+                  },
+                  {
+                    "Comment": "eap8-jboss-threads is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20252026062"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-wildfly-javadocs is earlier than 0:8.1.1-4.GA_redhat_00007.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384067"
+                  },
+                  {
+                    "Comment": "eap8-wildfly-javadocs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202522188082"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-bouncycastle is earlier than 0:1.82.0-1.redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202522775071"
+                  },
+                  {
+                    "Comment": "eap8-bouncycastle is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20245481034"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-bouncycastle-jmail is earlier than 0:1.82.0-1.redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202522775073"
+                  },
+                  {
+                    "Comment": "eap8-bouncycastle-jmail is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20245481036"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-bouncycastle-pg is earlier than 0:1.82.0-1.redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202522775075"
+                  },
+                  {
+                    "Comment": "eap8-bouncycastle-pg is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20245481038"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-bouncycastle-pkix is earlier than 0:1.82.0-1.redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202522775077"
+                  },
+                  {
+                    "Comment": "eap8-bouncycastle-pkix is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20245481040"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-bouncycastle-prov is earlier than 0:1.82.0-1.redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202522775079"
+                  },
+                  {
+                    "Comment": "eap8-bouncycastle-prov is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20245481042"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-bouncycastle-util is earlier than 0:1.82.0-1.redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202522775081"
+                  },
+                  {
+                    "Comment": "eap8-bouncycastle-util is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20245481044"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-eventstream is earlier than 0:1.0.1-3.redhat_00003.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384081"
+                  },
+                  {
+                    "Comment": "eap8-eventstream is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384082"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-undertow is earlier than 0:2.3.20-2.SP4_redhat_00001.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384083"
+                  },
+                  {
+                    "Comment": "eap8-undertow is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202411560024"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-wildfly is earlier than 0:8.1.3-4.GA_redhat_00006.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384085"
+                  },
+                  {
+                    "Comment": "eap8-wildfly is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202410386006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-wildfly-java-jdk17 is earlier than 0:8.1.3-4.GA_redhat_00006.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384087"
+                  },
+                  {
+                    "Comment": "eap8-wildfly-java-jdk17 is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202410386010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-wildfly-java-jdk21 is earlier than 0:8.1.3-4.GA_redhat_00006.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384089"
+                  },
+                  {
+                    "Comment": "eap8-wildfly-java-jdk21 is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202410386012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "eap8-wildfly-modules is earlier than 0:8.1.3-4.GA_redhat_00006.1.el9eap",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260384091"
+                  },
+                  {
+                    "Comment": "eap8-wildfly-modules is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202410386014"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

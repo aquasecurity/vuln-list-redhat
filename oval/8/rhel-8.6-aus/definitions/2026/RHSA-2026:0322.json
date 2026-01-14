@@ -1,0 +1,159 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20260322",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:0322: libpng security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8.6 Advanced Mission Critical Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:0322",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:0322"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-64720",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-64720"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-65018",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-65018"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-66293",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-66293"
+      }
+    ],
+    "Description": "The libpng packages contain a library of functions for creating and manipulating Portable Network Graphics (PNG) image format files.\n\nSecurity Fix(es):\n\n* libpng: LIBPNG buffer overflow (CVE-2025-64720)\n\n* libpng: LIBPNG heap buffer overflow (CVE-2025-65018)\n\n* libpng: LIBPNG out-of-bounds read in png_image_read_composite (CVE-2025-66293)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-01-08"
+      },
+      "Updated": {
+        "Date": "2026-01-08"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-64720",
+          "Cvss3": "7.1/CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:H",
+          "Cwe": "CWE-125",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-64720",
+          "Public": "20251124:2345"
+        },
+        {
+          "CveID": "CVE-2025-65018",
+          "Cvss3": "7.1/CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:H",
+          "Cwe": "(CWE-122|CWE-787)",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-65018",
+          "Public": "20251124:2350"
+        },
+        {
+          "CveID": "CVE-2025-66293",
+          "Cvss3": "7.1/CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:H",
+          "Cwe": "CWE-125",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-66293",
+          "Public": "20251203:2033"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2416904",
+          "ID": "2416904"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2416907",
+          "ID": "2416907"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2418711",
+          "ID": "2418711"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_aus:8.6",
+        "cpe:/a:redhat:rhel_aus:8.6::appstream",
+        "cpe:/o:redhat:rhel_aus:8.6",
+        "cpe:/o:redhat:rhel_aus:8.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libpng is earlier than 2:1.6.34-8.el8_6.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260322001"
+                  },
+                  {
+                    "Comment": "libpng is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260322002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libpng-devel is earlier than 2:1.6.34-8.el8_6.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260322003"
+                  },
+                  {
+                    "Comment": "libpng-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260322004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
