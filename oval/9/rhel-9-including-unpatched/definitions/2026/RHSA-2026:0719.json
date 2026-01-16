@@ -1,23 +1,39 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:202568973",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20260719",
   "Version": "636",
   "Metadata": {
-    "Title": "GnuPG: GnuPG: Information disclosure and potential arbitrary code execution via out-of-bounds write (important)",
+    "Title": "RHSA-2026:0719: gnupg2 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:0719",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:0719"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2025-68973",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2025-68973"
       }
     ],
-    "Description": "DOCUMENTATION: A flaw was found in GnuPG. An attacker can provide crafted input to the `armor_filter` function, which incorrectly increments an index variable, leading to an out-of-bounds write. This memory corruption vulnerability may allow for information disclosure and could potentially lead to arbitrary code execution. \n            STATEMENT: This vulnerability is rated Important for Red Hat products. The flaw in GnuPG's `armor_filter` function allows an attacker with local access to provide crafted input, potentially leading to information disclosure and arbitrary code execution due to an out-of-bounds write. Exploitation requires high attack complexity.\n            MITIGATION: To mitigate this issue, users should avoid processing untrusted or unverified input with GnuPG. Exercise caution when handling GnuPG-encrypted or signed data from unknown or suspicious sources, as specially crafted input could trigger the vulnerability. This operational control reduces the attack surface by limiting exposure to malicious data.",
+    "Description": "The GNU Privacy Guard (GnuPG or GPG) is a tool for encrypting data and creating digital signatures, compliant with OpenPGP and S/MIME standards.\n\nSecurity Fix(es):\n\n* GnuPG: GnuPG: Information disclosure and potential arbitrary code execution via out-of-bounds write (CVE-2025-68973)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Important",
-      "Issued": {},
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-01-15"
+      },
       "Updated": {
-        "Date": "2026-01-07"
+        "Date": "2026-01-15"
       },
       "Cves": [
         {
@@ -27,6 +43,12 @@
           "Impact": "important",
           "Href": "https://access.redhat.com/security/cve/CVE-2025-68973",
           "Public": "20251228:1619"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2425966",
+          "ID": "2425966"
         }
       ],
       "AffectedCpeList": [
@@ -45,9 +67,7 @@
         "cpe:/o:redhat:enterprise_linux:9::baseos"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -76,12 +96,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "gnupg2-smime is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:20223219001"
+                    "Comment": "gnupg2 is earlier than 0:2.3.3-5.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260719001"
                   },
                   {
-                    "Comment": "gnupg2-smime is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:20223219002"
+                    "Comment": "gnupg2 is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.cve:tst:202568972002"
                   }
                 ]
               },
@@ -89,12 +109,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "gnupg2 is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:20223219003"
+                    "Comment": "gnupg2-smime is earlier than 0:2.3.3-5.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260719003"
                   },
                   {
-                    "Comment": "gnupg2 is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:20223219004"
+                    "Comment": "gnupg2-smime is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.cve:tst:202568972004"
                   }
                 ]
               }
