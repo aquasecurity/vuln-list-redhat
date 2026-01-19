@@ -1,0 +1,118 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20260745",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:0745: libpq security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.6 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:0745",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:0745"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-12818",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-12818"
+      }
+    ],
+    "Description": "The libpq package provides the PostgreSQL client library, which allows client programs to connect to PostgreSQL servers. \n\nSecurity Fix(es):\n\n* postgresql: libpq undersizes allocations, via integer wraparound (CVE-2025-12818)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-01-19"
+      },
+      "Updated": {
+        "Date": "2026-01-19"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-12818",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-190",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-12818",
+          "Public": "20251113:1300"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2414826",
+          "ID": "2414826"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_aus:9.6",
+        "cpe:/a:redhat:rhel_aus:9.6::appstream",
+        "cpe:/o:redhat:rhel_aus:9.6",
+        "cpe:/o:redhat:rhel_aus:9.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libpq is earlier than 0:13.23-1.el9_6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260745001"
+                  },
+                  {
+                    "Comment": "libpq is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20236429002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libpq-devel is earlier than 0:13.23-1.el9_6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260745003"
+                  },
+                  {
+                    "Comment": "libpq-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20236429004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

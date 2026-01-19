@@ -1,0 +1,102 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20260752",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:0752: jmc security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:0752",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:0752"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-66566",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-66566"
+      }
+    ],
+    "Description": "JDK Mission Control is a powerful profiler for HotSpot JVMs and has an advanced set of tools that enables efficient and detailed analysis of the extensive data collected by JDK Flight Recorder. The tool chain enables developers and administrators to collect and analyze data from Java applications running locally or deployed in production environments.\n\nSecurity Fix(es):\n\n* lz4-java: lz4-java: Information Disclosure via Insufficient Output Buffer Clearing (CVE-2025-66566)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-01-19"
+      },
+      "Updated": {
+        "Date": "2026-01-19"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-66566",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "Cwe": "CWE-908",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-66566",
+          "Public": "20251205:1810"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2419500",
+          "ID": "2419500"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::extensions",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
+          },
+          {
+            "Comment": "jmc is earlier than 0:8.2.0-18.el9_7.2",
+            "TestRef": "oval:com.redhat.rhsa:tst:20260752001"
+          },
+          {
+            "Comment": "jmc is signed with Red Hat release4,release2,ima key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20260752002"
+          }
+        ]
+      }
+    ]
+  }
+}
