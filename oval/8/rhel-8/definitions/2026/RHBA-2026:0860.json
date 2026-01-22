@@ -1,0 +1,159 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhba:def:20260860",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHBA-2026:0860: open-vm-tools bug fix and enhancement update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHBA-2026:0860",
+        "RefURL": "https://access.redhat.com/errata/RHBA-2026:0860"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-22247",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-22247"
+      }
+    ],
+    "Description": "The Open Virtual Machine Tools are the open source implementation of the VMware Tools. They are a set of guest operating system virtualization components that enhance performance and user experience of virtual machines.\n\nBug Fix(es) and Enhancement(s):\n\n* Backport of CVE-2025-22247 to 8.10 (JIRA:RHEL-129361)",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-01-20"
+      },
+      "Updated": {
+        "Date": "2026-01-20"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-22247",
+          "Cvss3": "6.1/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:N",
+          "Cwe": "CWE-266",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-22247",
+          "Public": "20250512"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2364261",
+          "ID": "2364261"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:8",
+        "cpe:/a:redhat:enterprise_linux:8::appstream",
+        "cpe:/a:redhat:enterprise_linux:8::crb",
+        "cpe:/a:redhat:enterprise_linux:8::highavailability",
+        "cpe:/a:redhat:enterprise_linux:8::nfv",
+        "cpe:/a:redhat:enterprise_linux:8::realtime",
+        "cpe:/a:redhat:enterprise_linux:8::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:8::sap",
+        "cpe:/a:redhat:enterprise_linux:8::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:8::supplementary",
+        "cpe:/o:redhat:enterprise_linux:8",
+        "cpe:/o:redhat:enterprise_linux:8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "open-vm-tools is earlier than 0:12.3.5-2.el8_10.2",
+                    "TestRef": "oval:com.redhat.rhba:tst:20260860001"
+                  },
+                  {
+                    "Comment": "open-vm-tools is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20260860002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "open-vm-tools-desktop is earlier than 0:12.3.5-2.el8_10.2",
+                    "TestRef": "oval:com.redhat.rhba:tst:20260860003"
+                  },
+                  {
+                    "Comment": "open-vm-tools-desktop is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20260860004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "open-vm-tools-salt-minion is earlier than 0:12.3.5-2.el8_10.2",
+                    "TestRef": "oval:com.redhat.rhba:tst:20260860005"
+                  },
+                  {
+                    "Comment": "open-vm-tools-salt-minion is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20260860006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "open-vm-tools-sdmp is earlier than 0:12.3.5-2.el8_10.2",
+                    "TestRef": "oval:com.redhat.rhba:tst:20260860007"
+                  },
+                  {
+                    "Comment": "open-vm-tools-sdmp is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20260860008"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
