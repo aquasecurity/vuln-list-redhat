@@ -1,0 +1,101 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20261377",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:1377: image-builder security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:1377",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:1377"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-58183",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-58183"
+      }
+    ],
+    "Description": "A local binary for building customized OS artifacts such as VM images and OSTree commits. Uses osbuild under the hood.\n\nSecurity Fix(es):\n\n* golang: archive/tar: Unbounded allocation when parsing GNU sparse map (CVE-2025-58183)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-01-27"
+      },
+      "Updated": {
+        "Date": "2026-01-27"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-58183",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-770",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-58183",
+          "Public": "20251029:2210"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2407258",
+          "ID": "2407258"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.8",
+        "cpe:/a:redhat:rhel_eus:9.8::appstream",
+        "cpe:/a:redhat:rhel_eus:9.8::crb",
+        "cpe:/a:redhat:rhel_eus:9.8::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.8::nfv",
+        "cpe:/a:redhat:rhel_eus:9.8::realtime",
+        "cpe:/a:redhat:rhel_eus:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.8::sap",
+        "cpe:/a:redhat:rhel_eus:9.8::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.8::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.8",
+        "cpe:/o:redhat:rhel_eus:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          },
+          {
+            "Comment": "image-builder is earlier than 0:31-2.el9_7",
+            "TestRef": "oval:com.redhat.rhsa:tst:20261377001"
+          },
+          {
+            "Comment": "image-builder is signed with Red Hat release4,release2,ima key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20261377002"
+          }
+        ]
+      }
+    ]
+  }
+}
