@@ -52,16 +52,6 @@
         "Source": "CVE",
         "RefID": "CVE-2012-3451",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2012-3451"
-      },
-      {
-        "Source": "CVE",
-        "RefID": "CVE-2012-4549",
-        "RefURL": "https://access.redhat.com/security/cve/CVE-2012-4549"
-      },
-      {
-        "Source": "CVE",
-        "RefID": "CVE-2012-4550",
-        "RefURL": "https://access.redhat.com/security/cve/CVE-2012-4550"
       }
     ],
     "Description": "JBoss Enterprise Application Platform 6 is a platform for Java applications\nbased on JBoss Application Server 7.\n\nThis release serves as a replacement for JBoss Enterprise Application\nPlatform 6.0.0, and includes bug fixes and enhancements. Refer to the 6.0.1\nRelease Notes for information on the most significant of these changes,\navailable shortly from https://access.redhat.com/knowledge/docs/\n\nThis update removes unused signed JARs; unused SHA1 checksums from JAR\nMANIFEST.MF files to reduce the Server memory footprint; adds MANIFEST.MF\nto JAR files where it was previously missing; and removes redundant Javadoc\nfiles from the main packages. (BZ#830291)\n\nSecurity fixes:\n\nApache CXF checked to ensure XML elements were signed or encrypted by a\nSupporting Token, but not whether the correct token was used. A remote\nattacker could transmit confidential information without the appropriate\nsecurity, and potentially circumvent access controls on web services\nexposed via Apache CXF. (CVE-2012-2379)\n\nWhen using role-based authorization to configure EJB access, JACC\npermissions should be used to determine access; however, due to a flaw the\nconfigured authorization modules (JACC, XACML, etc.) were not called, and\nthe JACC permissions were not used to determine access to an EJB.\n(CVE-2012-4550)\n\nA flaw in the way Apache CXF enforced child policies of WS-SecurityPolicy\n1.1 on the client side could, in certain cases, lead to a client failing to\nsign or encrypt certain elements as directed by the security policy,\nleading to information disclosure and insecure information transmission.\n(CVE-2012-2378)\n\nA flaw was found in the way IronJacamar authenticated credentials and\nreturned a valid datasource connection when configured to\n\"allow-multiple-users\". A remote attacker, provided the correct subject,\ncould obtain a datasource connection that might belong to a privileged\nuser. (CVE-2012-3428)\n\nIt was found that Apache CXF was vulnerable to SOAPAction spoofing attacks\nunder certain conditions. Note that WS-Policy validation is performed\nagainst the operation being invoked, and an attack must pass validation to\nbe successful. (CVE-2012-3451)\n\nWhen there are no allowed roles for an EJB method invocation, the\ninvocation should be denied for all users. It was found that the\nprocessInvocation() method in\norg.jboss.as.ejb3.security.AuthorizationInterceptor incorrectly authorizes\nall method invocations to proceed when the list of allowed roles is empty.\n(CVE-2012-4549)\n\nIt was found that in Mojarra, the FacesContext that is made available\nduring application startup is held in a ThreadLocal. The reference is not\nproperly cleaned up in all cases. As a result, if a JavaServer Faces (JSF)\nWAR calls FacesContext.getCurrentInstance() during application startup,\nanother WAR can get access to the leftover context and thus get access to\nthe other WAR's resources. A local attacker could use this flaw to access\nanother WAR's resources using a crafted, deployed application.\n(CVE-2012-2672)\n\nAn input sanitization flaw was found in the mod_negotiation Apache HTTP\nServer module. A remote attacker able to upload or create files with\narbitrary names in a directory that has the MultiViews options enabled,\ncould use this flaw to conduct cross-site scripting attacks against users\nvisiting the site. (CVE-2008-0455, CVE-2012-2687)\n\nRed Hat would like to thank the Apache CXF project for reporting\nCVE-2012-2379, CVE-2012-2378, and CVE-2012-3451. The CVE-2012-4550 issue\nwas discovered by Josef Cacek of the Red Hat JBoss EAP Quality Engineering\nteam; CVE-2012-3428 and CVE-2012-4549 were discovered by Arun Neelicattu of\nthe Red Hat Security Response Team; and CVE-2012-2672 was discovered by\nMarek Schmidt and Stan Silvert of Red Hat.\n\nWarning: Before applying this update, back up your existing JBoss\nEnterprise Application Platform installation and deployed applications.\nRefer to the Solution section for further details.",
@@ -126,20 +116,6 @@
           "Impact": "moderate",
           "Href": "https://access.redhat.com/security/cve/CVE-2012-3451",
           "Public": "20120919"
-        },
-        {
-          "CveID": "CVE-2012-4549",
-          "Cvss2": "5.8/AV:N/AC:M/Au:N/C:P/I:P/A:N",
-          "Impact": "moderate",
-          "Href": "https://access.redhat.com/security/cve/CVE-2012-4549",
-          "Public": "20121218"
-        },
-        {
-          "CveID": "CVE-2012-4550",
-          "Cvss2": "6.4/AV:N/AC:L/Au:N/C:P/I:P/A:N",
-          "Impact": "important",
-          "Href": "https://access.redhat.com/security/cve/CVE-2012-4550",
-          "Public": "20120419"
         }
       ],
       "Bugzilla": [
@@ -166,14 +142,6 @@
         {
           "Href": "https://bugzilla.redhat.com/851896",
           "ID": "851896"
-        },
-        {
-          "Href": "https://bugzilla.redhat.com/870868",
-          "ID": "870868"
-        },
-        {
-          "Href": "https://bugzilla.redhat.com/870871",
-          "ID": "870871"
         }
       ],
       "AffectedCpeList": [
