@@ -1,0 +1,133 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20261619",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:1619: python3.12-urllib3 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.6 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:1619",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:1619"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-66418",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-66418"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-66471",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-66471"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-21441",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-21441"
+      }
+    ],
+    "Description": "Python is an interpreted, interactive, object-oriented programming language, which includes modules, classes, exceptions, very high level dynamic data types and dynamic typing. Python supports interfaces to many system calls and libraries, as well as to various windowing systems.\n\nSecurity Fix(es):\n\n* urllib3: urllib3: Unbounded decompression chain leads to resource exhaustion (CVE-2025-66418)\n\n* urllib3: urllib3 Streaming API improperly handles highly compressed data (CVE-2025-66471)\n\n* urllib3: urllib3 vulnerable to decompression-bomb safeguard bypass when following HTTP redirects (streaming API) (CVE-2026-21441)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-02-02"
+      },
+      "Updated": {
+        "Date": "2026-02-02"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-66418",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-770",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-66418",
+          "Public": "20251205:1602"
+        },
+        {
+          "CveID": "CVE-2025-66471",
+          "Cwe": "CWE-409",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-66471",
+          "Public": "20251205:1606"
+        },
+        {
+          "CveID": "CVE-2026-21441",
+          "Cwe": "CWE-409",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-21441",
+          "Public": "20260107:2209"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2419455",
+          "ID": "2419455"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2419467",
+          "ID": "2419467"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2427726",
+          "ID": "2427726"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.6",
+        "cpe:/a:redhat:rhel_eus:9.6::appstream",
+        "cpe:/a:redhat:rhel_eus:9.6::crb",
+        "cpe:/a:redhat:rhel_eus:9.6::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.6::nfv",
+        "cpe:/a:redhat:rhel_eus:9.6::realtime",
+        "cpe:/a:redhat:rhel_eus:9.6::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.6::sap",
+        "cpe:/a:redhat:rhel_eus:9.6::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.6::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.6",
+        "cpe:/o:redhat:rhel_eus:9.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          },
+          {
+            "Comment": "python3.12-urllib3 is earlier than 0:1.26.19-1.el9_6.1",
+            "TestRef": "oval:com.redhat.rhsa:tst:20261619001"
+          },
+          {
+            "Comment": "python3.12-urllib3 is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20249457002"
+          }
+        ]
+      }
+    ]
+  }
+}
