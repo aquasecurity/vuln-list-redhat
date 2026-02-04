@@ -1,0 +1,93 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20261823",
+  "Version": "639",
+  "Metadata": {
+    "Title": "RHSA-2026:1823: JMC bug fix and enhancement update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.4 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:1823",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:1823"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-66566",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-66566"
+      }
+    ],
+    "Description": "JDK Mission Control (JMC) is a powerful profiler for HotSpot JVMs and has an advanced set of tools that enables efficient and detailed analysis of the extensive data collected by JDK Flight Recorder. The tool chain enables developers and administrators to collect and analyze data from Java applications running locally or deployed in production environments.\n\nBug Fix(es) and Enhancement(s):\n\n* jmc: lz4-java: Information Disclosure via Insufficient Output Buffer Clearing [rhel-9.4.z] (JIRA:RHEL-135476)",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-02-03"
+      },
+      "Updated": {
+        "Date": "2026-02-03"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-66566",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "Cwe": "CWE-908",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-66566",
+          "Public": "20251205:1810"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2419500",
+          "ID": "2419500"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_aus:9.4",
+        "cpe:/a:redhat:rhel_aus:9.4::appstream",
+        "cpe:/o:redhat:rhel_aus:9.4",
+        "cpe:/o:redhat:rhel_aus:9.4::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          },
+          {
+            "Comment": "jmc is earlier than 0:8.2.0-17.el9_4.2",
+            "TestRef": "oval:com.redhat.rhsa:tst:20261823001"
+          },
+          {
+            "Comment": "jmc is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20261823002"
+          }
+        ]
+      }
+    ]
+  }
+}
