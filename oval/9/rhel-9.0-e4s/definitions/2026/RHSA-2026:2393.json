@@ -1,0 +1,163 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20262393",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:2393: python3.9 security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.0 Update Services for SAP Solutions"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:2393",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:2393"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-12084",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-12084"
+      }
+    ],
+    "Description": "Python is an interpreted, interactive, object-oriented programming language, which includes modules, classes, exceptions, very high level dynamic data types and dynamic typing. Python supports interfaces to many system calls and libraries, as well as to various windowing systems.\n\nSecurity Fix(es):\n\n* cpython: python: cpython: Quadratic algorithm in xml.dom.minidom leads to denial of service (CVE-2025-12084)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-02-10"
+      },
+      "Updated": {
+        "Date": "2026-02-10"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-12084",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-770",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-12084",
+          "Public": "20251203:1855"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2418655",
+          "ID": "2418655"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.0",
+        "cpe:/a:redhat:rhel_e4s:9.0::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.0::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.0::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.0::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.0::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.0::sap",
+        "cpe:/a:redhat:rhel_e4s:9.0::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.0",
+        "cpe:/o:redhat:rhel_e4s:9.0::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python-unversioned-command is earlier than 0:3.9.10-4.el9_0.8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20262393001"
+                  },
+                  {
+                    "Comment": "python-unversioned-command is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20227323002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3 is earlier than 0:3.9.10-4.el9_0.8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20262393003"
+                  },
+                  {
+                    "Comment": "python3 is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20227323004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3-devel is earlier than 0:3.9.10-4.el9_0.8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20262393005"
+                  },
+                  {
+                    "Comment": "python3-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20227323008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3-libs is earlier than 0:3.9.10-4.el9_0.8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20262393007"
+                  },
+                  {
+                    "Comment": "python3-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20227323012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3-tkinter is earlier than 0:3.9.10-4.el9_0.8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20262393009"
+                  },
+                  {
+                    "Comment": "python3-tkinter is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20227323016"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20262328",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:2328: iperf3 security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8.8 Update Services for SAP Solutions"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:2328",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:2328"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-54349",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-54349"
+      }
+    ],
+    "Description": "Iperf is a tool which can measure maximum TCP bandwidth and tune various parameters and UDP characteristics. Iperf reports bandwidth, delay jitter, and data-gram loss.\n\nSecurity Fix(es):\n\n* iperf3: iperf Heap Buffer Overflow (CVE-2025-54349)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-02-09"
+      },
+      "Updated": {
+        "Date": "2026-02-09"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-54349",
+          "Cvss3": "6.5/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:L/A:L",
+          "Cwe": "CWE-193",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-54349",
+          "Public": "20250803"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2386151",
+          "ID": "2386151"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:8.8",
+        "cpe:/a:redhat:rhel_e4s:8.8::appstream",
+        "cpe:/a:redhat:rhel_e4s:8.8::highavailability",
+        "cpe:/a:redhat:rhel_e4s:8.8::sap",
+        "cpe:/a:redhat:rhel_e4s:8.8::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:8.8",
+        "cpe:/o:redhat:rhel_e4s:8.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "iperf3 is earlier than 0:3.5-7.el8_8.2",
+            "TestRef": "oval:com.redhat.rhsa:tst:20262328001"
+          },
+          {
+            "Comment": "iperf3 is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20234570002"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

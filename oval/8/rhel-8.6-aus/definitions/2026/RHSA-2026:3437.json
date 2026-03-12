@@ -1,0 +1,151 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20263437",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:3437: openssl security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8.6 Advanced Mission Critical Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:3437",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:3437"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-69419",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-69419"
+      }
+    ],
+    "Description": "OpenSSL is a toolkit that implements the Secure Sockets Layer (SSL) and Transport Layer Security (TLS) protocols, as well as a full-strength general-purpose cryptography library.\n\nSecurity Fix(es):\n\n* openssl: OpenSSL: Arbitrary code execution due to out-of-bounds write in PKCS#12 processing (CVE-2025-69419)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-02-26"
+      },
+      "Updated": {
+        "Date": "2026-02-26"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-69419",
+          "Cvss3": "7.4/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+          "Cwe": "CWE-131",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-69419",
+          "Public": "20260127"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2430386",
+          "ID": "2430386"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_aus:8.6",
+        "cpe:/a:redhat:rhel_aus:8.6::appstream",
+        "cpe:/o:redhat:rhel_aus:8.6",
+        "cpe:/o:redhat:rhel_aus:8.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openssl is earlier than 1:1.1.1k-15.el8_6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20263437001"
+                  },
+                  {
+                    "Comment": "openssl is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193700002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openssl-devel is earlier than 1:1.1.1k-15.el8_6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20263437003"
+                  },
+                  {
+                    "Comment": "openssl-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193700004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openssl-libs is earlier than 1:1.1.1k-15.el8_6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20263437005"
+                  },
+                  {
+                    "Comment": "openssl-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193700006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openssl-perl is earlier than 1:1.1.1k-15.el8_6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20263437007"
+                  },
+                  {
+                    "Comment": "openssl-perl is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193700008"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

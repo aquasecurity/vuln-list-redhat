@@ -1,0 +1,289 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20261852",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:1852: util-linux security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:1852",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:1852"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-14104",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-14104"
+      }
+    ],
+    "Description": "The util-linux packages contain a large variety of low-level system utilities that are necessary for a Linux system to function. Among others, these include the fdisk configuration tool and the login program.\n\nSecurity Fix(es):\n\n* util-linux: util-linux: Heap buffer overread in setpwnam() when processing 256-byte usernames (CVE-2025-14104)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-02-04"
+      },
+      "Updated": {
+        "Date": "2026-02-04"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-14104",
+          "Cvss3": "6.1/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:H",
+          "Cwe": "CWE-125",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-14104",
+          "Public": "20251205"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2419369",
+          "ID": "2419369"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:8",
+        "cpe:/a:redhat:enterprise_linux:8::appstream",
+        "cpe:/a:redhat:enterprise_linux:8::crb",
+        "cpe:/a:redhat:enterprise_linux:8::highavailability",
+        "cpe:/a:redhat:enterprise_linux:8::nfv",
+        "cpe:/a:redhat:enterprise_linux:8::realtime",
+        "cpe:/a:redhat:enterprise_linux:8::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:8::sap",
+        "cpe:/a:redhat:enterprise_linux:8::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:8::supplementary",
+        "cpe:/o:redhat:enterprise_linux:8",
+        "cpe:/o:redhat:enterprise_linux:8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:20052541004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.cve:tst:20052541003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libblkid is earlier than 0:2.32.1-48.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261852001"
+                  },
+                  {
+                    "Comment": "libblkid is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261852002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libblkid-devel is earlier than 0:2.32.1-48.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261852003"
+                  },
+                  {
+                    "Comment": "libblkid-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261852004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libfdisk is earlier than 0:2.32.1-48.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261852005"
+                  },
+                  {
+                    "Comment": "libfdisk is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261852006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libfdisk-devel is earlier than 0:2.32.1-48.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261852007"
+                  },
+                  {
+                    "Comment": "libfdisk-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261852008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libmount is earlier than 0:2.32.1-48.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261852009"
+                  },
+                  {
+                    "Comment": "libmount is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261852010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libmount-devel is earlier than 0:2.32.1-48.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261852011"
+                  },
+                  {
+                    "Comment": "libmount-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261852012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libsmartcols is earlier than 0:2.32.1-48.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261852013"
+                  },
+                  {
+                    "Comment": "libsmartcols is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261852014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libsmartcols-devel is earlier than 0:2.32.1-48.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261852015"
+                  },
+                  {
+                    "Comment": "libsmartcols-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261852016"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libuuid is earlier than 0:2.32.1-48.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261852017"
+                  },
+                  {
+                    "Comment": "libuuid is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261852018"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libuuid-devel is earlier than 0:2.32.1-48.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261852019"
+                  },
+                  {
+                    "Comment": "libuuid-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261852020"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3-libmount is earlier than 0:2.32.1-48.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261852021"
+                  },
+                  {
+                    "Comment": "python3-libmount is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261852022"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "util-linux is earlier than 0:2.32.1-48.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261852023"
+                  },
+                  {
+                    "Comment": "util-linux is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261852024"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "util-linux-user is earlier than 0:2.32.1-48.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261852025"
+                  },
+                  {
+                    "Comment": "util-linux-user is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261852026"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "uuidd is earlier than 0:2.32.1-48.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261852027"
+                  },
+                  {
+                    "Comment": "uuidd is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261852028"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

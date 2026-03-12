@@ -1,0 +1,180 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20264188",
+  "Version": "638",
+  "Metadata": {
+    "Title": "RHSA-2026:4188: gnutls security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:4188",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:4188"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-14831",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-14831"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-9820",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-9820"
+      }
+    ],
+    "Description": "The gnutls packages provide the GNU Transport Layer Security (GnuTLS) library, which implements cryptographic algorithms and protocols such as SSL, TLS, and DTLS.\n\nSecurity Fix(es):\n\n* gnutls: Stack-based Buffer Overflow in gnutls_pkcs11_token_init() Function (CVE-2025-9820)\n\n* gnutls: GnuTLS: Denial of Service via excessive resource consumption during certificate verification (CVE-2025-14831)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-03-10"
+      },
+      "Updated": {
+        "Date": "2026-03-10"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-14831",
+          "Cvss3": "5.3/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+          "Cwe": "CWE-407",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-14831",
+          "Public": "20260209:1426"
+        },
+        {
+          "CveID": "CVE-2025-9820",
+          "Cvss3": "4.0/CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+          "Cwe": "CWE-121",
+          "Impact": "low",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-9820",
+          "Public": "20251118"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2392528",
+          "ID": "2392528"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2423177",
+          "ID": "2423177"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.8",
+        "cpe:/a:redhat:rhel_e4s:9.8::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.8::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.8::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.8::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.8",
+        "cpe:/o:redhat:rhel_e4s:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "gnutls is earlier than 0:3.8.3-10.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20264188001"
+                  },
+                  {
+                    "Comment": "gnutls is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20264188002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "gnutls-c++ is earlier than 0:3.8.3-10.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20264188003"
+                  },
+                  {
+                    "Comment": "gnutls-c++ is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20264188004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "gnutls-dane is earlier than 0:3.8.3-10.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20264188005"
+                  },
+                  {
+                    "Comment": "gnutls-dane is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20264188006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "gnutls-devel is earlier than 0:3.8.3-10.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20264188007"
+                  },
+                  {
+                    "Comment": "gnutls-devel is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20264188008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "gnutls-utils is earlier than 0:3.8.3-10.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20264188009"
+                  },
+                  {
+                    "Comment": "gnutls-utils is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20264188010"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

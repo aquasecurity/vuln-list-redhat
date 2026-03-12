@@ -1,0 +1,144 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20263507",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:3507: valkey security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:3507",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:3507"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-67733",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-67733"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-21863",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-21863"
+      }
+    ],
+    "Description": "Valkey is an advanced key-value store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets and sorted sets.  You can run atomic operations on these types, like appending to a string; incrementing the value in a hash; pushing to a list; computing set intersection, union and difference; or getting the member with highest ranking in a sorted set.  In order to achieve its outstanding performance, Valkey works with an in-memory dataset. Depending on your use case, you can persist it either by dumping the dataset to disk every once in a while, or by appending each command to a log.  Valkey also supports trivial-to-setup master-slave replication, with very fast non-blocking first synchronization, auto-reconnection on net split and so forth.  Other features include Transactions, Pub/Sub, Lua scripting, Keys with a limited time-to-live, and configuration settings to make Valkey behave like a cache.  You can use Valkey from most programming languages also.\n\nSecurity Fix(es):\n\n* Valkey: Valkey: Data tampering and denial of service via improper null character handling in Lua scripts (CVE-2025-67733)\n\n* valkey: Valkey: Denial of Service via invalid clusterbus packet (CVE-2026-21863)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-03-02"
+      },
+      "Updated": {
+        "Date": "2026-03-02"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-67733",
+          "Cvss3": "7.1/CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:H",
+          "Cwe": "CWE-170",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-67733",
+          "Public": "20260223:1939"
+        },
+        {
+          "CveID": "CVE-2026-21863",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-125",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-21863",
+          "Public": "20260223:1941"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2442025",
+          "ID": "2442025"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2442026",
+          "ID": "2442026"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::extensions",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:20052541004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.cve:tst:20052541003"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "valkey is earlier than 0:8.0.7-1.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20263507001"
+                  },
+                  {
+                    "Comment": "valkey is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20263507002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "valkey-devel is earlier than 0:8.0.7-1.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20263507003"
+                  },
+                  {
+                    "Comment": "valkey-devel is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20263507004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

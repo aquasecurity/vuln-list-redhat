@@ -1,0 +1,200 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20263067",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:3067: freerdp security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:3067",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:3067"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-22855",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-22855"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-22858",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-22858"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-22859",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-22859"
+      }
+    ],
+    "Description": "FreeRDP is a free implementation of the Remote Desktop Protocol (RDP), released under the Apache license. The xfreerdp client can connect to RDP servers such as Microsoft Windows machines, xrdp, and VirtualBox.\n\nSecurity Fix(es):\n\n* freerdp: FreeRDP heap-buffer-overflow (CVE-2026-22855)\n\n* freerdp: FreeRDP global-buffer-overflow (CVE-2026-22858)\n\n* freerdp: FreeRDP heap-buffer-overflow (CVE-2026-22859)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-02-23"
+      },
+      "Updated": {
+        "Date": "2026-02-23"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-22855",
+          "Cvss3": "7.4/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:H",
+          "Cwe": "CWE-125",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-22855",
+          "Public": "20260114:1750"
+        },
+        {
+          "CveID": "CVE-2026-22858",
+          "Cvss3": "7.4/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:H",
+          "Cwe": "CWE-787",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-22858",
+          "Public": "20260114:1756"
+        },
+        {
+          "CveID": "CVE-2026-22859",
+          "Cvss3": "7.4/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:H",
+          "Cwe": "CWE-125",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-22859",
+          "Public": "20260114:1757"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2429645",
+          "ID": "2429645"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2429649",
+          "ID": "2429649"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2429653",
+          "ID": "2429653"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::extensions",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:20052541004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.cve:tst:20052541003"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "freerdp is earlier than 2:2.11.7-1.el9_7.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20263067001"
+                  },
+                  {
+                    "Comment": "freerdp is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.cve:tst:202622851008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "freerdp-devel is earlier than 2:2.11.7-1.el9_7.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20263067003"
+                  },
+                  {
+                    "Comment": "freerdp-devel is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.cve:tst:202622851002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "freerdp-libs is earlier than 2:2.11.7-1.el9_7.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20263067005"
+                  },
+                  {
+                    "Comment": "freerdp-libs is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.cve:tst:202622851010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libwinpr is earlier than 2:2.11.7-1.el9_7.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20263067007"
+                  },
+                  {
+                    "Comment": "libwinpr is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.cve:tst:202622851004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libwinpr-devel is earlier than 2:2.11.7-1.el9_7.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20263067009"
+                  },
+                  {
+                    "Comment": "libwinpr-devel is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.cve:tst:202622851006"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

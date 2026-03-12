@@ -1,0 +1,200 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20261892",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:1892: python3.11 security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.6 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:1892",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:1892"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-12084",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-12084"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-13836",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-13836"
+      }
+    ],
+    "Description": "Python is an interpreted, interactive, object-oriented programming language, which includes modules, classes, exceptions, very high level dynamic data types and dynamic typing. Python supports interfaces to many system calls and libraries, as well as to various windowing systems.\n\nSecurity Fix(es):\n\n* cpython: Excessive read buffering DoS in http.client (CVE-2025-13836)\n\n* cpython: python: cpython: Quadratic algorithm in xml.dom.minidom leads to denial of service (CVE-2025-12084)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-02-04"
+      },
+      "Updated": {
+        "Date": "2026-02-04"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-12084",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-770",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-12084",
+          "Public": "20251203:1855"
+        },
+        {
+          "CveID": "CVE-2025-13836",
+          "Cvss3": "6.8/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:N/I:N/A:H",
+          "Cwe": "CWE-770",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-13836",
+          "Public": "20251201:1802"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2418078",
+          "ID": "2418078"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2418655",
+          "ID": "2418655"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_aus:9.6",
+        "cpe:/a:redhat:rhel_aus:9.6::appstream",
+        "cpe:/o:redhat:rhel_aus:9.6",
+        "cpe:/o:redhat:rhel_aus:9.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3.11 is earlier than 0:3.11.11-2.el9_6.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261892001"
+                  },
+                  {
+                    "Comment": "python3.11 is signed with Red Hat release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261892002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3.11-debug is earlier than 0:3.11.11-2.el9_6.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261892003"
+                  },
+                  {
+                    "Comment": "python3.11-debug is signed with Red Hat release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261892004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3.11-devel is earlier than 0:3.11.11-2.el9_6.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261892005"
+                  },
+                  {
+                    "Comment": "python3.11-devel is signed with Red Hat release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261892006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3.11-idle is earlier than 0:3.11.11-2.el9_6.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261892007"
+                  },
+                  {
+                    "Comment": "python3.11-idle is signed with Red Hat release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261892008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3.11-libs is earlier than 0:3.11.11-2.el9_6.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261892009"
+                  },
+                  {
+                    "Comment": "python3.11-libs is signed with Red Hat release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261892010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3.11-test is earlier than 0:3.11.11-2.el9_6.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261892011"
+                  },
+                  {
+                    "Comment": "python3.11-test is signed with Red Hat release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261892012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3.11-tkinter is earlier than 0:3.11.11-2.el9_6.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261892013"
+                  },
+                  {
+                    "Comment": "python3.11-tkinter is signed with Red Hat release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20261892014"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

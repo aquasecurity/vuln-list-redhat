@@ -1,0 +1,154 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20262453",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:2453: resource-agents security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8.6 Telecommunications Update Service"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:2453",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:2453"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-23490",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-23490"
+      }
+    ],
+    "Description": "The resource-agents packages provide the Pacemaker and RGManager service managers with a set of scripts. These scripts interface with several services to allow operating in a high-availability (HA) environment.\n\nSecurity Fix(es):\n\n* pyasn1: pyasn1: Denial of Service due to memory exhaustion from malformed RELATIVE-OID (CVE-2026-23490)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-02-10"
+      },
+      "Updated": {
+        "Date": "2026-02-10"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-23490",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-770",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-23490",
+          "Public": "20260116:1903"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2430472",
+          "ID": "2430472"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_tus:8.6",
+        "cpe:/a:redhat:rhel_tus:8.6::appstream",
+        "cpe:/a:redhat:rhel_tus:8.6::highavailability",
+        "cpe:/a:redhat:rhel_tus:8.6::nfv",
+        "cpe:/a:redhat:rhel_tus:8.6::realtime",
+        "cpe:/o:redhat:rhel_tus:8.6",
+        "cpe:/o:redhat:rhel_tus:8.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "resource-agents is earlier than 0:4.9.0-16.el8_6.20",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20262453001"
+                  },
+                  {
+                    "Comment": "resource-agents is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20204605002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "resource-agents-aliyun is earlier than 0:4.9.0-16.el8_6.20",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20262453003"
+                  },
+                  {
+                    "Comment": "resource-agents-aliyun is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20204605004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "resource-agents-gcp is earlier than 0:4.9.0-16.el8_6.20",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20262453005"
+                  },
+                  {
+                    "Comment": "resource-agents-gcp is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20204605006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "resource-agents-paf is earlier than 0:4.9.0-16.el8_6.20",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20262453007"
+                  },
+                  {
+                    "Comment": "resource-agents-paf is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20214139008"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

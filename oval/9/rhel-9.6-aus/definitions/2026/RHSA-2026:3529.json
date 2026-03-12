@@ -1,0 +1,118 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20263529",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:3529: grafana security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.6 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:3529",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:3529"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-21721",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-21721"
+      }
+    ],
+    "Description": "Grafana is an open source, feature rich metrics dashboard and graph editor for Graphite, InfluxDB \u0026 OpenTSDB. \n\nSecurity Fix(es):\n\n* grafana/grafana/pkg/services/dashboards: Grafana Dashboard Permissions Scope Bypass Enables Cross?Dashboard Privilege Escalation (CVE-2026-21721)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-03-02"
+      },
+      "Updated": {
+        "Date": "2026-03-02"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-21721",
+          "Cvss3": "8.1/CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
+          "Cwe": "CWE-639",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-21721",
+          "Public": "20260127:0907"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2433242",
+          "ID": "2433242"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_aus:9.6",
+        "cpe:/a:redhat:rhel_aus:9.6::appstream",
+        "cpe:/o:redhat:rhel_aus:9.6",
+        "cpe:/o:redhat:rhel_aus:9.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "grafana is earlier than 0:10.2.6-17.el9_6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20263529001"
+                  },
+                  {
+                    "Comment": "grafana is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20225716002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "grafana-selinux is earlier than 0:10.2.6-17.el9_6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20263529003"
+                  },
+                  {
+                    "Comment": "grafana-selinux is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20242568004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

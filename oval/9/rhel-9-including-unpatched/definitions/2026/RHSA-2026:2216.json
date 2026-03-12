@@ -1,0 +1,144 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20262216",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:2216: libsoup security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:2216",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:2216"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-0719",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-0719"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-1761",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-1761"
+      }
+    ],
+    "Description": "The libsoup packages provide an HTTP client and server library for GNOME.\n\nSecurity Fix(es):\n\n* libsoup: Signed to Unsigned Conversion Error Leading to Stack-Based Buffer Overflow in libsoup NTLM Authentication (CVE-2026-0719)\n\n* libsoup: Stack-Based Buffer Overflow in libsoup Multipart Response Parsingmultipart HTTP response (CVE-2026-1761)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-02-09"
+      },
+      "Updated": {
+        "Date": "2026-02-09"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-0719",
+          "Cvss3": "8.6/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:H",
+          "Cwe": "CWE-121",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-0719",
+          "Public": "20260108"
+        },
+        {
+          "CveID": "CVE-2026-1761",
+          "Cvss3": "8.6/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:L",
+          "Cwe": "CWE-121",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-1761",
+          "Public": "20260202"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2427906",
+          "ID": "2427906"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2435961",
+          "ID": "2435961"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::extensions",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:20052541004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.cve:tst:20052541003"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libsoup is earlier than 0:2.72.0-12.el9_7.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20262216001"
+                  },
+                  {
+                    "Comment": "libsoup is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.cve:tst:20260716004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libsoup-devel is earlier than 0:2.72.0-12.el9_7.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20262216003"
+                  },
+                  {
+                    "Comment": "libsoup-devel is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.cve:tst:20260716002"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

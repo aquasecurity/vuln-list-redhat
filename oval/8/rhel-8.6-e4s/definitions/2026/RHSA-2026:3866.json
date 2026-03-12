@@ -1,0 +1,388 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20263866",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:3866: kpatch-patch-4_18_0-372_131_1, kpatch-patch-4_18_0-372_137_1, kpatch-patch-4_18_0-372_145_1, kpatch-patch-4_18_0-372_158_1, and kpatch-patch-4_18_0-372_170_1 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8.6 Update Services for SAP Solutions"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:3866",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:3866"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-40248",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-40248"
+      }
+    ],
+    "Description": "This is a kernel live patch module which can be loaded by the kpatch command line utility to modify the code of a running kernel.  This patch module is targeted for kernel-4.18.0-372.131.1.el8_6.\n\nSecurity Fix(es):\n\n* kernel: Linux kernel: vsock vulnerability may lead to memory corruption (CVE-2025-40248)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-03-05"
+      },
+      "Updated": {
+        "Date": "2026-03-05"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-40248",
+          "Cvss3": "7.0/CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-364",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-40248",
+          "Public": "20251204"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2418872",
+          "ID": "2418872"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:8.6",
+        "cpe:/a:redhat:rhel_e4s:8.6::appstream",
+        "cpe:/a:redhat:rhel_e4s:8.6::highavailability",
+        "cpe:/a:redhat:rhel_e4s:8.6::nfv",
+        "cpe:/a:redhat:rhel_e4s:8.6::sap",
+        "cpe:/a:redhat:rhel_e4s:8.6::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:8.6",
+        "cpe:/o:redhat:rhel_e4s:8.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterias": [
+                  {
+                    "Operator": "OR",
+                    "Criterions": [
+                      {
+                        "Comment": "kernel version 0:4.18.0-372.131.1.el8_6 is currently running",
+                        "TestRef": "oval:com.redhat.rhsa:tst:20250067018"
+                      },
+                      {
+                        "Comment": "kernel version 0:4.18.0-372.131.1.el8_6 is set to boot up on next boot",
+                        "TestRef": "oval:com.redhat.rhsa:tst:20250067019"
+                      }
+                    ]
+                  },
+                  {
+                    "Operator": "AND",
+                    "Criterions": [
+                      {
+                        "Comment": "kernel version equals 0:4.18.0-372.131.1.el8_6",
+                        "TestRef": "oval:com.redhat.rhsa:tst:20250067014"
+                      },
+                      {
+                        "Comment": "kernel is signed with Red Hat redhatrelease2 key",
+                        "TestRef": "oval:com.redhat.rhsa:tst:20191167004"
+                      }
+                    ],
+                    "Criterias": [
+                      {
+                        "Operator": "OR",
+                        "Criterions": [
+                          {
+                            "Comment": "kpatch-patch not installed for 0:4.18.0-372.131.1.el8_6",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20250067015"
+                          }
+                        ],
+                        "Criterias": [
+                          {
+                            "Operator": "AND",
+                            "Criterions": [
+                              {
+                                "Comment": "kpatch-patch-4_18_0-372_131_1 is earlier than 0:1-12.el8_6",
+                                "TestRef": "oval:com.redhat.rhsa:tst:20263866004"
+                              },
+                              {
+                                "Comment": "kpatch-patch-4_18_0-372_131_1 is signed with Red Hat redhatrelease2 key",
+                                "TestRef": "oval:com.redhat.rhsa:tst:20250067017"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterias": [
+                  {
+                    "Operator": "OR",
+                    "Criterions": [
+                      {
+                        "Comment": "kernel version 0:4.18.0-372.137.1.el8_6 is currently running",
+                        "TestRef": "oval:com.redhat.rhsa:tst:202510976024"
+                      },
+                      {
+                        "Comment": "kernel version 0:4.18.0-372.137.1.el8_6 is set to boot up on next boot",
+                        "TestRef": "oval:com.redhat.rhsa:tst:202510976025"
+                      }
+                    ]
+                  },
+                  {
+                    "Operator": "AND",
+                    "Criterions": [
+                      {
+                        "Comment": "kernel version equals 0:4.18.0-372.137.1.el8_6",
+                        "TestRef": "oval:com.redhat.rhsa:tst:202510976020"
+                      },
+                      {
+                        "Comment": "kernel is signed with Red Hat redhatrelease2 key",
+                        "TestRef": "oval:com.redhat.rhsa:tst:20191167004"
+                      }
+                    ],
+                    "Criterias": [
+                      {
+                        "Operator": "OR",
+                        "Criterions": [
+                          {
+                            "Comment": "kpatch-patch not installed for 0:4.18.0-372.137.1.el8_6",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202510976021"
+                          }
+                        ],
+                        "Criterias": [
+                          {
+                            "Operator": "AND",
+                            "Criterions": [
+                              {
+                                "Comment": "kpatch-patch-4_18_0-372_137_1 is earlier than 0:1-9.el8_6",
+                                "TestRef": "oval:com.redhat.rhsa:tst:20263866010"
+                              },
+                              {
+                                "Comment": "kpatch-patch-4_18_0-372_137_1 is signed with Red Hat redhatrelease2 key",
+                                "TestRef": "oval:com.redhat.rhsa:tst:202510976023"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterias": [
+                  {
+                    "Operator": "OR",
+                    "Criterions": [
+                      {
+                        "Comment": "kernel version 0:4.18.0-372.145.1.el8_6 is currently running",
+                        "TestRef": "oval:com.redhat.rhsa:tst:202510976030"
+                      },
+                      {
+                        "Comment": "kernel version 0:4.18.0-372.145.1.el8_6 is set to boot up on next boot",
+                        "TestRef": "oval:com.redhat.rhsa:tst:202510976031"
+                      }
+                    ]
+                  },
+                  {
+                    "Operator": "AND",
+                    "Criterions": [
+                      {
+                        "Comment": "kernel version equals 0:4.18.0-372.145.1.el8_6",
+                        "TestRef": "oval:com.redhat.rhsa:tst:202510976026"
+                      },
+                      {
+                        "Comment": "kernel is signed with Red Hat redhatrelease2 key",
+                        "TestRef": "oval:com.redhat.rhsa:tst:20191167004"
+                      }
+                    ],
+                    "Criterias": [
+                      {
+                        "Operator": "OR",
+                        "Criterions": [
+                          {
+                            "Comment": "kpatch-patch not installed for 0:4.18.0-372.145.1.el8_6",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202510976027"
+                          }
+                        ],
+                        "Criterias": [
+                          {
+                            "Operator": "AND",
+                            "Criterions": [
+                              {
+                                "Comment": "kpatch-patch-4_18_0-372_145_1 is earlier than 0:1-7.el8_6",
+                                "TestRef": "oval:com.redhat.rhsa:tst:20263866016"
+                              },
+                              {
+                                "Comment": "kpatch-patch-4_18_0-372_145_1 is signed with Red Hat redhatrelease2 key",
+                                "TestRef": "oval:com.redhat.rhsa:tst:202510976029"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterias": [
+                  {
+                    "Operator": "OR",
+                    "Criterions": [
+                      {
+                        "Comment": "kernel version 0:4.18.0-372.158.1.el8_6 is currently running",
+                        "TestRef": "oval:com.redhat.rhsa:tst:202516045030"
+                      },
+                      {
+                        "Comment": "kernel version 0:4.18.0-372.158.1.el8_6 is set to boot up on next boot",
+                        "TestRef": "oval:com.redhat.rhsa:tst:202516045031"
+                      }
+                    ]
+                  },
+                  {
+                    "Operator": "AND",
+                    "Criterions": [
+                      {
+                        "Comment": "kernel version equals 0:4.18.0-372.158.1.el8_6",
+                        "TestRef": "oval:com.redhat.rhsa:tst:202516045026"
+                      },
+                      {
+                        "Comment": "kernel is signed with Red Hat redhatrelease2 key",
+                        "TestRef": "oval:com.redhat.rhsa:tst:20191167004"
+                      }
+                    ],
+                    "Criterias": [
+                      {
+                        "Operator": "OR",
+                        "Criterions": [
+                          {
+                            "Comment": "kpatch-patch not installed for 0:4.18.0-372.158.1.el8_6",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202516045027"
+                          }
+                        ],
+                        "Criterias": [
+                          {
+                            "Operator": "AND",
+                            "Criterions": [
+                              {
+                                "Comment": "kpatch-patch-4_18_0-372_158_1 is earlier than 0:1-3.el8_6",
+                                "TestRef": "oval:com.redhat.rhsa:tst:20263866022"
+                              },
+                              {
+                                "Comment": "kpatch-patch-4_18_0-372_158_1 is signed with Red Hat redhatrelease2 key",
+                                "TestRef": "oval:com.redhat.rhsa:tst:202516045029"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterias": [
+                  {
+                    "Operator": "OR",
+                    "Criterions": [
+                      {
+                        "Comment": "kernel version 0:4.18.0-372.170.1.el8_6 is currently running",
+                        "TestRef": "oval:com.redhat.rhsa:tst:20262558030"
+                      },
+                      {
+                        "Comment": "kernel version 0:4.18.0-372.170.1.el8_6 is set to boot up on next boot",
+                        "TestRef": "oval:com.redhat.rhsa:tst:20262558031"
+                      }
+                    ]
+                  },
+                  {
+                    "Operator": "AND",
+                    "Criterions": [
+                      {
+                        "Comment": "kernel version equals 0:4.18.0-372.170.1.el8_6",
+                        "TestRef": "oval:com.redhat.rhsa:tst:20262558026"
+                      },
+                      {
+                        "Comment": "kernel is signed with Red Hat redhatrelease2 key",
+                        "TestRef": "oval:com.redhat.rhsa:tst:20191167004"
+                      }
+                    ],
+                    "Criterias": [
+                      {
+                        "Operator": "OR",
+                        "Criterions": [
+                          {
+                            "Comment": "kpatch-patch not installed for 0:4.18.0-372.170.1.el8_6",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20262558027"
+                          }
+                        ],
+                        "Criterias": [
+                          {
+                            "Operator": "AND",
+                            "Criterions": [
+                              {
+                                "Comment": "kpatch-patch-4_18_0-372_170_1 is earlier than 0:1-2.el8_6",
+                                "TestRef": "oval:com.redhat.rhsa:tst:20263866028"
+                              },
+                              {
+                                "Comment": "kpatch-patch-4_18_0-372_170_1 is signed with Red Hat redhatrelease2 key",
+                                "TestRef": "oval:com.redhat.rhsa:tst:20262558029"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20262039",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:2039: fontforge security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:2039",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:2039"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-15269",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-15269"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-15275",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-15275"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-15279",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-15279"
+      }
+    ],
+    "Description": "FontForge is a font editor for outline and bitmap fonts. It supports a range of font formats, including PostScript (ASCII and binary Type 1, some Type 3 and Type 0), TrueType, OpenType (Type2) and CID-keyed fonts. \n\nSecurity Fix(es):\n\n* fontforge: FontForge: Remote Code Execution via heap-based buffer overflow in BMP file parsing (CVE-2025-15279)\n\n* fontforge: FontForge: Remote Code Execution via Use-After-Free in SFD file parsing (CVE-2025-15269)\n\n* fontforge: FontForge: Arbitrary code execution via SFD file parsing buffer overflow (CVE-2025-15275)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-02-05"
+      },
+      "Updated": {
+        "Date": "2026-02-05"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-15269",
+          "Cvss3": "8.8/CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-416",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-15269",
+          "Public": "20251231:0658"
+        },
+        {
+          "CveID": "CVE-2025-15275",
+          "Cvss3": "8.8/CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-122",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-15275",
+          "Public": "20251231:0659"
+        },
+        {
+          "CveID": "CVE-2025-15279",
+          "Cvss3": "7.8/CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-122",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-15279",
+          "Public": "20251231:0659"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2426421",
+          "ID": "2426421"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2426423",
+          "ID": "2426423"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2426429",
+          "ID": "2426429"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.8",
+        "cpe:/a:redhat:rhel_e4s:9.8::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.8::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.8::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.8::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.8",
+        "cpe:/o:redhat:rhel_e4s:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          },
+          {
+            "Comment": "fontforge is earlier than 0:20201107-7.el9_7",
+            "TestRef": "oval:com.redhat.rhsa:tst:20262039001"
+          },
+          {
+            "Comment": "fontforge is signed with Red Hat release4,release2,ima key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20262039002"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20262071",
+  "Version": "638",
+  "Metadata": {
+    "Title": "RHSA-2026:2071: OpenShift Container Platform 4.18.33 packages and security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat OpenShift Container Platform 4.18"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:2071",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:2071"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-58183",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-58183"
+      }
+    ],
+    "Description": "Red Hat OpenShift Container Platform is Red Hat's cloud computing Kubernetes application platform solution designed for on-premise or private cloud deployments.\n\nThis advisory contains the RPM packages for Red Hat OpenShift Container Platform 4.18.33. See the following advisory for the container images for this release:\n\nhttps://access.redhat.com/errata/RHSA-2026:2078\n\nSecurity Fix(es):\n\n* golang: archive/tar: Unbounded allocation when parsing GNU sparse map (CVE-2025-58183)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n\nAll OpenShift Container Platform 4.18 users are advised to upgrade to these updated packages and images when they are available in the appropriate release channel. To check for available updates, use the OpenShift CLI (oc) or web console. Instructions for upgrading a cluster are available at https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html-single/updating_clusters/index#updating-cluster-cli.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-02-11"
+      },
+      "Updated": {
+        "Date": "2026-02-11"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-58183",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-770",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-58183",
+          "Public": "20251029:2210"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2407258",
+          "ID": "2407258"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:openshift:4.18",
+        "cpe:/a:redhat:openshift:4.18::el9"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:202515712190"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:202515712189"
+          },
+          {
+            "Comment": "cri-o is earlier than 0:1.31.13-6.rhaos4.18.git7ed6156.el9",
+            "TestRef": "oval:com.redhat.rhsa:tst:20262071001"
+          },
+          {
+            "Comment": "cri-o is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhba:tst:202515712004"
+          }
+        ]
+      }
+    ]
+  }
+}
