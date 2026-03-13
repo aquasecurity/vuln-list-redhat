@@ -1,23 +1,39 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:20262447",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20264447",
   "Version": "636",
   "Metadata": {
-    "Title": "libvpx: Heap buffer overflow in libvpx (important)",
+    "Title": "RHSA-2026:4447: libvpx security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:4447",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:4447"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2026-2447",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2026-2447"
       }
     ],
-    "Description": "DOCUMENTATION: The CVE program describes this issue as: Heap buffer overflow in libvpx. This vulnerability affects Firefox \u003c 147.0.4, Firefox ESR \u003c 140.7.1, Firefox ESR \u003c 115.32.1, Thunderbird \u003c 140.7.2, and Thunderbird \u003c 147.0.2. \n            STATEMENT: Red Hat Product Security rates the severity of this flaw as determined by the Mozilla Foundation Security Advisory.\n            MITIGATION: Mitigation for this issue is either not available or the currently available options do not meet the Red Hat Product Security criteria comprising ease of use and deployment, applicability to widespread installation base or stability.",
+    "Description": "The libvpx packages provide the VP8 SDK, which allows the encoding and decoding of the VP8 video codec, commonly used with the WebM multimedia container file format.\n\nSecurity Fix(es):\n\n* libvpx: Heap buffer overflow in libvpx (CVE-2026-2447)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Important",
-      "Issued": {},
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-03-12"
+      },
       "Updated": {
-        "Date": "2026-03-02"
+        "Date": "2026-03-12"
       },
       "Cves": [
         {
@@ -26,6 +42,12 @@
           "Impact": "important",
           "Href": "https://access.redhat.com/security/cve/CVE-2026-2447",
           "Public": "20260216:1413"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2440219",
+          "ID": "2440219"
         }
       ],
       "AffectedCpeList": [
@@ -44,9 +66,7 @@
         "cpe:/o:redhat:enterprise_linux:9::baseos"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -55,7 +75,7 @@
     "Criterions": [
       {
         "Comment": "Red Hat Enterprise Linux must be installed",
-        "TestRef": "oval:com.redhat.cve:tst:20052541004"
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
       }
     ],
     "Criterias": [
@@ -64,7 +84,7 @@
         "Criterions": [
           {
             "Comment": "Red Hat Enterprise Linux 9 is installed",
-            "TestRef": "oval:com.redhat.cve:tst:20052541003"
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
           }
         ],
         "Criterias": [
@@ -75,12 +95,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "libvpx-devel is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:20236349001"
+                    "Comment": "libvpx is earlier than 0:1.9.0-10.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20264447001"
                   },
                   {
-                    "Comment": "libvpx-devel is signed with Red Hat release4,release2,ima key",
-                    "TestRef": "oval:com.redhat.cve:tst:20262447002"
+                    "Comment": "libvpx is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20264447002"
                   }
                 ]
               },
@@ -88,12 +108,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "libvpx is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:20236349003"
+                    "Comment": "libvpx-devel is earlier than 0:1.9.0-10.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20264447003"
                   },
                   {
-                    "Comment": "libvpx is signed with Red Hat release4,release2,ima key",
-                    "TestRef": "oval:com.redhat.cve:tst:20262447004"
+                    "Comment": "libvpx-devel is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20264447004"
                   }
                 ]
               }
