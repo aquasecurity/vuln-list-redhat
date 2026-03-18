@@ -1,0 +1,245 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20264832",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:4832: java-1.8.0-ibm security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:4832",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:4832"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-21925",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-21925"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-21933",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-21933"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-21945",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-21945"
+      }
+    ],
+    "Description": "IBM Java SE version 8 includes the IBM Java Runtime Environment and the IBM Java Software Development Kit.\n\nSecurity Fix(es):\n\n* openjdk: Improve JMX connections (Oracle CPU 2026-01) (CVE-2026-21925)\n\n* openjdk: Improve HttpServer Request handling (Oracle CPU 2026-01) (CVE-2026-21933)\n\n* openjdk: Enhance Certificate Checking (Oracle CPU 2026-01) (CVE-2026-21945)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-03-17"
+      },
+      "Updated": {
+        "Date": "2026-03-17"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-21925",
+          "Cvss3": "4.8/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N",
+          "Cwe": "CWE-322",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-21925",
+          "Public": "20260120:2121"
+        },
+        {
+          "CveID": "CVE-2026-21933",
+          "Cvss3": "6.1/CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "Cwe": "CWE-93",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-21933",
+          "Public": "20260120:2121"
+        },
+        {
+          "CveID": "CVE-2026-21945",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-295",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-21945",
+          "Public": "20260120:2121"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2429924",
+          "ID": "2429924"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2429926",
+          "ID": "2429926"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2429927",
+          "ID": "2429927"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:8",
+        "cpe:/a:redhat:enterprise_linux:8::appstream",
+        "cpe:/a:redhat:enterprise_linux:8::crb",
+        "cpe:/a:redhat:enterprise_linux:8::highavailability",
+        "cpe:/a:redhat:enterprise_linux:8::nfv",
+        "cpe:/a:redhat:enterprise_linux:8::realtime",
+        "cpe:/a:redhat:enterprise_linux:8::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:8::sap",
+        "cpe:/a:redhat:enterprise_linux:8::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:8::supplementary",
+        "cpe:/o:redhat:enterprise_linux:8",
+        "cpe:/o:redhat:enterprise_linux:8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "java-1.8.0-ibm is earlier than 1:1.8.0.8.60-1.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20264832001"
+                  },
+                  {
+                    "Comment": "java-1.8.0-ibm is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20191238002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "java-1.8.0-ibm-demo is earlier than 1:1.8.0.8.60-1.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20264832003"
+                  },
+                  {
+                    "Comment": "java-1.8.0-ibm-demo is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20191238004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "java-1.8.0-ibm-devel is earlier than 1:1.8.0.8.60-1.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20264832005"
+                  },
+                  {
+                    "Comment": "java-1.8.0-ibm-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20191238006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "java-1.8.0-ibm-headless is earlier than 1:1.8.0.8.60-1.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20264832007"
+                  },
+                  {
+                    "Comment": "java-1.8.0-ibm-headless is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20191238008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "java-1.8.0-ibm-jdbc is earlier than 1:1.8.0.8.60-1.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20264832009"
+                  },
+                  {
+                    "Comment": "java-1.8.0-ibm-jdbc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20191238010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "java-1.8.0-ibm-plugin is earlier than 1:1.8.0.8.60-1.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20264832011"
+                  },
+                  {
+                    "Comment": "java-1.8.0-ibm-plugin is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20191238012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "java-1.8.0-ibm-src is earlier than 1:1.8.0.8.60-1.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20264832013"
+                  },
+                  {
+                    "Comment": "java-1.8.0-ibm-src is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20191238014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "java-1.8.0-ibm-webstart is earlier than 1:1.8.0.8.60-1.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20264832015"
+                  },
+                  {
+                    "Comment": "java-1.8.0-ibm-webstart is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20191238016"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
