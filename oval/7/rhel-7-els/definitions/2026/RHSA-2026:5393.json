@@ -1,0 +1,210 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20265393",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:5393: python security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 7 Extended Lifecycle Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:5393",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:5393"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-15366",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-15366"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-15367",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-15367"
+      }
+    ],
+    "Description": "Python is an interpreted, interactive, object-oriented programming language, which includes modules, classes, exceptions, very high level dynamic data types and dynamic typing. Python supports interfaces to many system calls and libraries, as well as to various windowing systems.\n\nSecurity Fix(es):\n\n* cpython: IMAP command injection in user-controlled commands (CVE-2025-15366)\n\n* cpython: POP3 command injection in user-controlled commands (CVE-2025-15367)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-03-23"
+      },
+      "Updated": {
+        "Date": "2026-03-23"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-15366",
+          "Cvss3": "7.1/CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:N",
+          "Cwe": "CWE-77",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-15366",
+          "Public": "20260120:2140"
+        },
+        {
+          "CveID": "CVE-2025-15367",
+          "Cvss3": "7.1/CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:N",
+          "Cwe": "CWE-77",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-15367",
+          "Public": "20260120:2147"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2431368",
+          "ID": "2431368"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2431373",
+          "ID": "2431373"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_extras:7",
+        "cpe:/a:redhat:rhel_extras_oracle_java:7",
+        "cpe:/a:redhat:rhel_extras_rt:7",
+        "cpe:/a:redhat:rhel_extras_rt_els:7",
+        "cpe:/a:redhat:rhel_extras_sap:7",
+        "cpe:/a:redhat:rhel_extras_sap_els:7",
+        "cpe:/a:redhat:rhel_extras_sap_hana:7",
+        "cpe:/a:redhat:rhel_extras_sap_hana_els:7",
+        "cpe:/o:redhat:enterprise_linux:7",
+        "cpe:/o:redhat:enterprise_linux:7::client",
+        "cpe:/o:redhat:enterprise_linux:7::computenode",
+        "cpe:/o:redhat:enterprise_linux:7::server",
+        "cpe:/o:redhat:enterprise_linux:7::workstation",
+        "cpe:/o:redhat:rhel_els:7"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20150364028"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 7 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20150364027"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python is earlier than 0:2.7.5-94.el7_9.3",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20265393001"
+                  },
+                  {
+                    "Comment": "python is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20152101002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python-debug is earlier than 0:2.7.5-94.el7_9.3",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20265393003"
+                  },
+                  {
+                    "Comment": "python-debug is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20152101004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python-devel is earlier than 0:2.7.5-94.el7_9.3",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20265393005"
+                  },
+                  {
+                    "Comment": "python-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20152101006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python-libs is earlier than 0:2.7.5-94.el7_9.3",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20265393007"
+                  },
+                  {
+                    "Comment": "python-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20152101008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python-test is earlier than 0:2.7.5-94.el7_9.3",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20265393009"
+                  },
+                  {
+                    "Comment": "python-test is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20152101010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python-tools is earlier than 0:2.7.5-94.el7_9.3",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20265393011"
+                  },
+                  {
+                    "Comment": "python-tools is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20152101012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tkinter is earlier than 0:2.7.5-94.el7_9.3",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20265393013"
+                  },
+                  {
+                    "Comment": "tkinter is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20152101014"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
