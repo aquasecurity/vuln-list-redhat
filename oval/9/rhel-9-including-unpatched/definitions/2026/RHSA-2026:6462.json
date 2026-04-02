@@ -1,0 +1,179 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20266462",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:6462: openssh security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:6462",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:6462"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-3497",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-3497"
+      }
+    ],
+    "Description": "OpenSSH is an SSH protocol implementation supported by a number of Linux, UNIX, and similar operating systems. It includes the core files necessary for both the OpenSSH client and server.\n\nSecurity Fix(es):\n\n* openssh: OpenSSH GSSAPI: Information disclosure or denial of service due to uninitialized variables (CVE-2026-3497)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-04-02"
+      },
+      "Updated": {
+        "Date": "2026-04-02"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-3497",
+          "Cvss3": "8.2/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H",
+          "Cwe": "CWE-824",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-3497",
+          "Public": "20260312:1827"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2447085",
+          "ID": "2447085"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::extensions",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:20052541004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.cve:tst:20052541003"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openssh is earlier than 0:8.7p1-48.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20266462001"
+                  },
+                  {
+                    "Comment": "openssh is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.cve:tst:202532728006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openssh-askpass is earlier than 0:8.7p1-48.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20266462003"
+                  },
+                  {
+                    "Comment": "openssh-askpass is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.cve:tst:202532728010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openssh-clients is earlier than 0:8.7p1-48.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20266462005"
+                  },
+                  {
+                    "Comment": "openssh-clients is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.cve:tst:202532728004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openssh-keycat is earlier than 0:8.7p1-48.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20266462007"
+                  },
+                  {
+                    "Comment": "openssh-keycat is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.cve:tst:202532728008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openssh-server is earlier than 0:8.7p1-48.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20266462009"
+                  },
+                  {
+                    "Comment": "openssh-server is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.cve:tst:202532728002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pam_ssh_agent_auth is earlier than 0:0.10.4-5.48.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20266462011"
+                  },
+                  {
+                    "Comment": "pam_ssh_agent_auth is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.cve:tst:202532728012"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
