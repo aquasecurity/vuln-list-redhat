@@ -1,0 +1,119 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20266301",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:6301: squid security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:6301",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:6301"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-32748",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-32748"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-33526",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-33526"
+      }
+    ],
+    "Description": "Squid is a high-performance proxy caching server for web clients, supporting FTP, and HTTP data objects.\n\nSecurity Fix(es):\n\n* squid: Squid: Denial of Service via heap Use-After-Free vulnerability in ICP handling (CVE-2026-33526)\n\n* Squid: Squid: Denial of Service via crafted ICP traffic (CVE-2026-32748)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-03-31"
+      },
+      "Updated": {
+        "Date": "2026-03-31"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-32748",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-826",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-32748",
+          "Public": "20260326:0011"
+        },
+        {
+          "CveID": "CVE-2026-33526",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-825",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-33526",
+          "Public": "20260326:0016"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2451574",
+          "ID": "2451574"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2451577",
+          "ID": "2451577"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::extensions",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
+          },
+          {
+            "Comment": "squid is earlier than 7:5.5-22.el9_7.4",
+            "TestRef": "oval:com.redhat.rhsa:tst:20266301001"
+          },
+          {
+            "Comment": "squid is signed with Red Hat release4,release2,ima key",
+            "TestRef": "oval:com.redhat.rhsa:tst:202520935002"
+          }
+        ]
+      }
+    ]
+  }
+}
