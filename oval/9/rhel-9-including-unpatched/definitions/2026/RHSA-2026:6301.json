@@ -1,25 +1,54 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:202633526",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20266301",
   "Version": "636",
   "Metadata": {
-    "Title": "squid: Squid: Denial of Service via heap Use-After-Free vulnerability in ICP handling (important)",
+    "Title": "RHSA-2026:6301: squid security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:6301",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:6301"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-32748",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-32748"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2026-33526",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2026-33526"
       }
     ],
-    "Description": "DOCUMENTATION: A flaw was found in Squid. A remote attacker can exploit a heap Use-After-Free vulnerability when handling ICP (Internet Cache Protocol) traffic. This allows them to perform a reliable and repeatable Denial of Service (DoS) attack, making the Squid service unavailable. This attack is limited to deployments where ICP support is explicitly enabled. \n            STATEMENT: Important: A heap Use-After-Free vulnerability in Squid's ICP handling can lead to a denial of service. This flaw affects Red Hat products where the Squid proxy is configured to explicitly enable Internet Cache Protocol (ICP) support by setting a non-zero `icp_port`. Deployments with default configurations, where ICP is typically disabled, are not affected.\n            MITIGATION: To mitigate this issue, disable ICP support in Squid by ensuring that `icp_port` is set to `0` in the `squid.conf` configuration file. This will prevent Squid from processing ICP traffic and eliminate the attack vector. After modifying the configuration, the Squid service must be restarted for the changes to take effect.",
+    "Description": "Squid is a high-performance proxy caching server for web clients, supporting FTP, and HTTP data objects.\n\nSecurity Fix(es):\n\n* squid: Squid: Denial of Service via heap Use-After-Free vulnerability in ICP handling (CVE-2026-33526)\n\n* Squid: Squid: Denial of Service via crafted ICP traffic (CVE-2026-32748)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Important",
-      "Issued": {},
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-03-31"
+      },
       "Updated": {
-        "Date": "2026-04-01"
+        "Date": "2026-03-31"
       },
       "Cves": [
+        {
+          "CveID": "CVE-2026-32748",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-826",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-32748",
+          "Public": "20260326:0011"
+        },
         {
           "CveID": "CVE-2026-33526",
           "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
@@ -27,6 +56,16 @@
           "Impact": "important",
           "Href": "https://access.redhat.com/security/cve/CVE-2026-33526",
           "Public": "20260326:0016"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2451574",
+          "ID": "2451574"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2451577",
+          "ID": "2451577"
         }
       ],
       "AffectedCpeList": [
@@ -45,9 +84,7 @@
         "cpe:/o:redhat:enterprise_linux:9::baseos"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -68,12 +105,12 @@
             "TestRef": "oval:com.redhat.cve:tst:20052541003"
           },
           {
-            "Comment": "squid is installed",
-            "TestRef": "oval:com.redhat.cve:tst:201918860001"
+            "Comment": "squid is earlier than 7:5.5-22.el9_7.4",
+            "TestRef": "oval:com.redhat.rhsa:tst:20266301001"
           },
           {
             "Comment": "squid is signed with Red Hat release4,release2,ima key",
-            "TestRef": "oval:com.redhat.cve:tst:202632748002"
+            "TestRef": "oval:com.redhat.cve:tst:202633515002"
           }
         ]
       }
