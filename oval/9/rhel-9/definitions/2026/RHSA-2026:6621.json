@@ -1,23 +1,39 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:202630892",
-  "Version": "636",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20266621",
+  "Version": "637",
   "Metadata": {
-    "Title": "crun: crun: Privilege escalation due to incorrect parsing of the `--user` option (moderate)",
+    "Title": "RHSA-2026:6621: crun security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:6621",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:6621"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2026-30892",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2026-30892"
       }
     ],
-    "Description": "DOCUMENTATION: A flaw was found in crun, an open-source OCI Container Runtime. A local user can exploit this vulnerability due to incorrect parsing of the `--user` option when using `crun exec`. The value `1` is misinterpreted as root privileges (User ID 0 and Group ID 0) instead of the intended User ID 1 and Group ID 0. This allows a process to run with higher privileges than expected, leading to privilege escalation. \n            \n            MITIGATION: Mitigation for this issue is either not available or the currently available options do not meet the Red Hat Product Security criteria comprising ease of use and deployment, applicability to widespread installation base, or stability.",
+    "Description": "crun is a OCI runtime\n\nSecurity Fix(es):\n\n* crun: crun: Privilege escalation due to incorrect parsing of the `--user` option (CVE-2026-30892)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Moderate",
-      "Issued": {},
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-04-06"
+      },
       "Updated": {
-        "Date": "2026-03-27"
+        "Date": "2026-04-06"
       },
       "Cves": [
         {
@@ -27,6 +43,12 @@
           "Impact": "moderate",
           "Href": "https://access.redhat.com/security/cve/CVE-2026-30892",
           "Public": "20260325:2357"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2451576",
+          "ID": "2451576"
         }
       ],
       "AffectedCpeList": [
@@ -45,9 +67,7 @@
         "cpe:/o:redhat:enterprise_linux:9::baseos"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -56,7 +76,7 @@
     "Criterions": [
       {
         "Comment": "Red Hat Enterprise Linux must be installed",
-        "TestRef": "oval:com.redhat.cve:tst:20052541004"
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
       }
     ],
     "Criterias": [
@@ -65,15 +85,15 @@
         "Criterions": [
           {
             "Comment": "Red Hat Enterprise Linux 9 is installed",
-            "TestRef": "oval:com.redhat.cve:tst:20052541003"
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
           },
           {
-            "Comment": "crun is installed",
-            "TestRef": "oval:com.redhat.cve:tst:202630892001"
+            "Comment": "crun is earlier than 0:1.27-1.el9_7",
+            "TestRef": "oval:com.redhat.rhsa:tst:20266621001"
           },
           {
             "Comment": "crun is signed with Red Hat release4,release2,ima key",
-            "TestRef": "oval:com.redhat.cve:tst:202630892002"
+            "TestRef": "oval:com.redhat.rhsa:tst:20266621002"
           }
         ]
       }
