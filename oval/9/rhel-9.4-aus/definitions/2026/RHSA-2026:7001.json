@@ -1,0 +1,87 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20267001",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:7001: fontforge security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.4 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:7001",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:7001"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-15270",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-15270"
+      }
+    ],
+    "Description": "FontForge is a font editor for outline and bitmap fonts. It supports a range of font formats, including PostScript (ASCII and binary Type 1, some Type 3 and Type 0), TrueType, OpenType (Type2) and CID-keyed fonts. \n\nSecurity Fix(es):\n\n* fontforge: FontForge: Remote Code Execution via malicious SFD file parsing (CVE-2025-15270)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-04-08"
+      },
+      "Updated": {
+        "Date": "2026-04-08"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-15270",
+          "Cvss3": "8.8/CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-129",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-15270",
+          "Public": "20251231:0658"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2426434",
+          "ID": "2426434"
+        }
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          },
+          {
+            "Comment": "fontforge is earlier than 0:20201107-7.el9_4",
+            "TestRef": "oval:com.redhat.rhsa:tst:20267001001"
+          },
+          {
+            "Comment": "fontforge is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20262566002"
+          }
+        ]
+      }
+    ]
+  }
+}
