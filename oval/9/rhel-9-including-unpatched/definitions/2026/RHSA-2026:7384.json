@@ -1,0 +1,205 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20267384",
+  "Version": "635",
+  "Metadata": {
+    "Title": "RHSA-2026:7384: cockpit: Unauthenticated remote code execution due to SSH command-line argument injection (Critical)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:7384",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:7384"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-4631",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-4631"
+      }
+    ],
+    "Description": "Cockpit enables users to administer GNU/Linux servers using a web browser. It\noffers network configuration, log inspection, diagnostic reports, SELinux\ntroubleshooting, interactive command-line sessions, and more.\n\nSecurity Fix(es):\n\n* cockpit: ws: be more explicit when handling hostnames on cli (CVE-2026-4631)\n\nFor more details about the security issue(s), including the impact, a CVSS\nscore, acknowledgments, and other related information, refer to the CVE page(s)\nlisted in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Critical",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-04-10"
+      },
+      "Updated": {
+        "Date": "2026-04-10"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-4631",
+          "Cvss3": "9.8/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-78",
+          "Impact": "critical",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-4631",
+          "Public": "20260407:1552"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2450246",
+          "ID": "2450246"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::extensions",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:20052541004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.cve:tst:20052541003"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "cockpit is earlier than 0:344-2.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20267384001"
+                  },
+                  {
+                    "Comment": "cockpit is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.cve:tst:202513465018"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "cockpit-bridge is earlier than 0:344-2.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20267384003"
+                  },
+                  {
+                    "Comment": "cockpit-bridge is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.cve:tst:202513465052"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "cockpit-doc is earlier than 0:344-2.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20267384005"
+                  },
+                  {
+                    "Comment": "cockpit-doc is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.cve:tst:202513465038"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "cockpit-packagekit is earlier than 0:344-2.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20267384007"
+                  },
+                  {
+                    "Comment": "cockpit-packagekit is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.cve:tst:202513465004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "cockpit-storaged is earlier than 0:344-2.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20267384009"
+                  },
+                  {
+                    "Comment": "cockpit-storaged is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.cve:tst:202513465014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "cockpit-system is earlier than 0:344-2.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20267384011"
+                  },
+                  {
+                    "Comment": "cockpit-system is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.cve:tst:202513465040"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "cockpit-ws is earlier than 0:344-2.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20267384013"
+                  },
+                  {
+                    "Comment": "cockpit-ws is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.cve:tst:202513465032"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "cockpit-ws-selinux is earlier than 0:344-2.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20267384015"
+                  },
+                  {
+                    "Comment": "cockpit-ws-selinux is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20267384016"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
