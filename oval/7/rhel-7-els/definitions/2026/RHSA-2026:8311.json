@@ -1,0 +1,103 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20268311",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:8311: perl-YAML-Syck security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 7 Extended Lifecycle Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:8311",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:8311"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-4177",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-4177"
+      }
+    ],
+    "Description": "This module provides a Perl interface to the libsyck data serialization library. It exports the Dump and Load functions for converting Perl data structures to YAML strings, and the other way around.\n\nSecurity Fix(es):\n\n* perl-YAML-Syck: YAML::Syck versions through 1.36 for Perl has several potential security vulnerabilities including a high-severity heap buffer overflow in the YAML emitter (CVE-2026-4177)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-04-15"
+      },
+      "Updated": {
+        "Date": "2026-04-15"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-4177",
+          "Cvss3": "7.3/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+          "Cwe": "CWE-120",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-4177",
+          "Public": "20260316:2230"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2448277",
+          "ID": "2448277"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_extras:7",
+        "cpe:/a:redhat:rhel_extras_oracle_java:7",
+        "cpe:/a:redhat:rhel_extras_rt:7",
+        "cpe:/a:redhat:rhel_extras_rt_els:7",
+        "cpe:/a:redhat:rhel_extras_sap:7",
+        "cpe:/a:redhat:rhel_extras_sap_els:7",
+        "cpe:/a:redhat:rhel_extras_sap_hana:7",
+        "cpe:/a:redhat:rhel_extras_sap_hana_els:7",
+        "cpe:/o:redhat:enterprise_linux:7",
+        "cpe:/o:redhat:enterprise_linux:7::client",
+        "cpe:/o:redhat:enterprise_linux:7::computenode",
+        "cpe:/o:redhat:enterprise_linux:7::server",
+        "cpe:/o:redhat:enterprise_linux:7::workstation",
+        "cpe:/o:redhat:rhel_els:7"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20150364028"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 7 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20150364027"
+          },
+          {
+            "Comment": "perl-YAML-Syck is earlier than 0:1.27-3.el7_9.1",
+            "TestRef": "oval:com.redhat.rhsa:tst:20268311001"
+          },
+          {
+            "Comment": "perl-YAML-Syck is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20268311002"
+          }
+        ]
+      }
+    ]
+  }
+}
