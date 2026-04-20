@@ -1,0 +1,141 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20268883",
+  "Version": "638",
+  "Metadata": {
+    "Title": "RHSA-2026:8883: giflib security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 7 Extended Lifecycle Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:8883",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:8883"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-23868",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-23868"
+      }
+    ],
+    "Description": "The giflib package contains a shared library of functions for loading and saving GIF format image files. It is API and ABI compatible with libungif, the library which supported uncompressed GIFs while the Unisys LZW patent was in effect.\n\nSecurity Fix(es):\n\n* giflib: Giflib: Double-free vulnerability leading to memory corruption (CVE-2026-23868)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-04-20"
+      },
+      "Updated": {
+        "Date": "2026-04-20"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-23868",
+          "Cvss3": "7.0/CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-825",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-23868",
+          "Public": "20260310:1853"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2446207",
+          "ID": "2446207"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_extras:7",
+        "cpe:/a:redhat:rhel_extras_oracle_java:7",
+        "cpe:/a:redhat:rhel_extras_rt:7",
+        "cpe:/a:redhat:rhel_extras_rt_els:7",
+        "cpe:/a:redhat:rhel_extras_sap:7",
+        "cpe:/a:redhat:rhel_extras_sap_els:7",
+        "cpe:/a:redhat:rhel_extras_sap_hana:7",
+        "cpe:/a:redhat:rhel_extras_sap_hana_els:7",
+        "cpe:/o:redhat:enterprise_linux:7",
+        "cpe:/o:redhat:enterprise_linux:7::client",
+        "cpe:/o:redhat:enterprise_linux:7::computenode",
+        "cpe:/o:redhat:enterprise_linux:7::server",
+        "cpe:/o:redhat:enterprise_linux:7::workstation",
+        "cpe:/o:redhat:rhel_els:7"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20150364028"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 7 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20150364027"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "giflib is earlier than 0:4.1.6-9.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20268883001"
+                  },
+                  {
+                    "Comment": "giflib is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20268883002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "giflib-devel is earlier than 0:4.1.6-9.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20268883003"
+                  },
+                  {
+                    "Comment": "giflib-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20268883004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "giflib-utils is earlier than 0:4.1.6-9.el7_9.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20268883005"
+                  },
+                  {
+                    "Comment": "giflib-utils is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20268883006"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
