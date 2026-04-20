@@ -1,0 +1,138 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20268848",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:8848: go-rpm-macros security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.6 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:8848",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:8848"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-25679",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-25679"
+      }
+    ],
+    "Description": "This package provides build-stage rpm automation to simplify the creation of Go language (golang) packages.  It does not need to be included in the default build root: go-srpm-macros will pull it in for Go packages only.\n\nSecurity Fix(es):\n\n* net/url: Incorrect parsing of IPv6 host literals in net/url (CVE-2026-25679)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-04-20"
+      },
+      "Updated": {
+        "Date": "2026-04-20"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-25679",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-1286",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-25679",
+          "Public": "20260306:2128"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2445356",
+          "ID": "2445356"
+        }
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "go-filesystem is earlier than 0:3.6.0-13.el9_6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20268848001"
+                  },
+                  {
+                    "Comment": "go-filesystem is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202522004002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "go-rpm-macros is earlier than 0:3.6.0-13.el9_6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20268848003"
+                  },
+                  {
+                    "Comment": "go-rpm-macros is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202522004004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "go-rpm-templates is earlier than 0:3.6.0-13.el9_6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20268848005"
+                  },
+                  {
+                    "Comment": "go-rpm-templates is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202522004006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "go-srpm-macros is earlier than 0:3.6.0-13.el9_6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20268848007"
+                  },
+                  {
+                    "Comment": "go-srpm-macros is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202522004008"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
