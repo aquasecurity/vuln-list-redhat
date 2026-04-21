@@ -1,0 +1,104 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:20269259",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:9259: perl-XML-Parser security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.4 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:9259",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:9259"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2006-10002",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2006-10002"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2006-10003",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2006-10003"
+      }
+    ],
+    "Description": "This module provides ways to parse XML documents. It is built on top of XML::Parser::Expat, which is a lower level interface to James Clark's expat library. Each call to one of the parsing methods creates a new instance of XML::Parser::Expat which is then used to parse the document. Expat options may be provided when the XML::Parser object is created. These options are then passed on to the Expat object on each parse call. They can also be given as extra arguments to the parse methods, in which case they override options given at XML::Parser creation time.\n\nSecurity Fix(es):\n\n* perl-xml-parser: XML::Parser: Memory corruption via deeply nested XML files (CVE-2006-10003)\n\n* perl-xml-parser: XML::Parser for Perl: Heap corruption and denial of service from crafted XML input (CVE-2006-10002)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-04-21"
+      },
+      "Updated": {
+        "Date": "2026-04-21"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2006-10002",
+          "Cvss3": "6.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-131",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2006-10002",
+          "Public": "20260319:1103"
+        },
+        {
+          "CveID": "CVE-2006-10003",
+          "Cvss3": "8.8/CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-193",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2006-10003",
+          "Public": "20260319:1108"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2448999",
+          "ID": "2448999"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2449001",
+          "ID": "2449001"
+        }
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          },
+          {
+            "Comment": "perl-XML-Parser is earlier than 0:2.46-9.el9_4.1",
+            "TestRef": "oval:com.redhat.rhsa:tst:20269259001"
+          },
+          {
+            "Comment": "perl-XML-Parser is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20269259002"
+          }
+        ]
+      }
+    ]
+  }
+}
