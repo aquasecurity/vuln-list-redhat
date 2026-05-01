@@ -1,0 +1,104 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202612340",
+  "Version": "638",
+  "Metadata": {
+    "Title": "RHSA-2026:12340: OpenEXR security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8.2 Advanced Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:12340",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:12340"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-27622",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-27622"
+      }
+    ],
+    "Description": "OpenEXR is a high dynamic-range (HDR) image file format developed by Industrial Light \u0026 Magic for use in computer imaging applications. This package contains libraries and sample applications for handling the format. \n\nSecurity Fix(es):\n\n* openexr: OpenEXR: Arbitrary code execution via integer overflow in EXR file processing (CVE-2026-27622)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-04-30"
+      },
+      "Updated": {
+        "Date": "2026-04-30"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-27622",
+          "Cvss3": "7.4/CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-190",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-27622",
+          "Public": "20260303:2242"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2444251",
+          "ID": "2444251"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_aus:8.2",
+        "cpe:/a:redhat:rhel_aus:8.2::appstream",
+        "cpe:/o:redhat:rhel_aus:8.2",
+        "cpe:/o:redhat:rhel_aus:8.2::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "OpenEXR-libs is earlier than 0:2.2.0-11.el8_2.1",
+            "TestRef": "oval:com.redhat.rhsa:tst:202612340001"
+          },
+          {
+            "Comment": "OpenEXR-libs is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:202612340002"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

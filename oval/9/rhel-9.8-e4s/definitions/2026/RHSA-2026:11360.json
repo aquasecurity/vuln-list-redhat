@@ -1,0 +1,141 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202611360",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:11360: LibRaw security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:11360",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:11360"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-21413",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-21413"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-24450",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-24450"
+      }
+    ],
+    "Description": "LibRaw is a library for reading RAW files obtained from digital photo cameras (CRW/CR2, NEF, RAF, DNG, and others).\n\nSecurity Fix(es):\n\n* LibRaw: LibRaw: Arbitrary code execution via a specially crafted malicious file (CVE-2026-24450)\n\n* LibRaw: LibRaw: Arbitrary code execution via heap-based buffer overflow in lossless JPEG loading (CVE-2026-21413)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-04-28"
+      },
+      "Updated": {
+        "Date": "2026-04-28"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-21413",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-787",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-21413",
+          "Public": "20260407:1349"
+        },
+        {
+          "CveID": "CVE-2026-24450",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-190",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-24450",
+          "Public": "20260407:1349"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2455925",
+          "ID": "2455925"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2455929",
+          "ID": "2455929"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.8",
+        "cpe:/a:redhat:rhel_e4s:9.8::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.8::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.8::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.8::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.8",
+        "cpe:/o:redhat:rhel_e4s:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "LibRaw is earlier than 0:0.21.1-2.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202611360001"
+                  },
+                  {
+                    "Comment": "LibRaw is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202611360002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "LibRaw-devel is earlier than 0:0.21.1-2.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202611360003"
+                  },
+                  {
+                    "Comment": "LibRaw-devel is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202611360004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

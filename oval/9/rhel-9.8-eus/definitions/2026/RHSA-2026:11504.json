@@ -1,0 +1,178 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202611504",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:11504: PackageKit security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:11504",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:11504"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-41651",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-41651"
+      }
+    ],
+    "Description": "PackageKit is a D-Bus abstraction layer that allows the session user to manage packages in a secure way using a cross-distribution, cross-architecture API.\n\nSecurity Fix(es):\n\n* PackageKit: race condition vulnerability leads to arbitrary package installation as root (CVE-2026-41651)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-04-29"
+      },
+      "Updated": {
+        "Date": "2026-04-29"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-41651",
+          "Cvss3": "8.8/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+          "Cwe": "CWE-367",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-41651",
+          "Public": "20260422:1311"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2460604",
+          "ID": "2460604"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.8",
+        "cpe:/a:redhat:rhel_eus:9.8::appstream",
+        "cpe:/a:redhat:rhel_eus:9.8::crb",
+        "cpe:/a:redhat:rhel_eus:9.8::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.8::nfv",
+        "cpe:/a:redhat:rhel_eus:9.8::realtime",
+        "cpe:/a:redhat:rhel_eus:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.8::sap",
+        "cpe:/a:redhat:rhel_eus:9.8::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.8::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.8",
+        "cpe:/o:redhat:rhel_eus:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "PackageKit is earlier than 0:1.2.6-2.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202611504001"
+                  },
+                  {
+                    "Comment": "PackageKit is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202611504002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "PackageKit-command-not-found is earlier than 0:1.2.6-2.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202611504003"
+                  },
+                  {
+                    "Comment": "PackageKit-command-not-found is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202611504004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "PackageKit-glib is earlier than 0:1.2.6-2.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202611504005"
+                  },
+                  {
+                    "Comment": "PackageKit-glib is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202611504006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "PackageKit-glib-devel is earlier than 0:1.2.6-2.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202611504007"
+                  },
+                  {
+                    "Comment": "PackageKit-glib-devel is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202611504008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "PackageKit-gstreamer-plugin is earlier than 0:1.2.6-2.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202611504009"
+                  },
+                  {
+                    "Comment": "PackageKit-gstreamer-plugin is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202611504010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "PackageKit-gtk3-module is earlier than 0:1.2.6-2.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202611504011"
+                  },
+                  {
+                    "Comment": "PackageKit-gtk3-module is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202611504012"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
