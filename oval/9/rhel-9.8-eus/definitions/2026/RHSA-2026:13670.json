@@ -1,0 +1,118 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202613670",
+  "Version": "638",
+  "Metadata": {
+    "Title": "RHSA-2026:13670: python-tornado security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:13670",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:13670"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-31958",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-31958"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-35536",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-35536"
+      }
+    ],
+    "Description": "Python is an interpreted, interactive, object-oriented programming language, which includes modules, classes, exceptions, very high level dynamic data types and dynamic typing. Python supports interfaces to many system calls and libraries, as well as to various windowing systems.\n\nSecurity Fix(es):\n\n* tornado-python: Tornado: Denial of Service via large multipart bodies (CVE-2026-31958)\n\n* tornado: Tornado: Cookie attribute injection due to improper handling of cookie arguments (CVE-2026-35536)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-05-05"
+      },
+      "Updated": {
+        "Date": "2026-05-05"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-31958",
+          "Cvss3": "5.3/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+          "Cwe": "CWE-770",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-31958",
+          "Public": "20260311:1927"
+        },
+        {
+          "CveID": "CVE-2026-35536",
+          "Cvss3": "5.4/CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N",
+          "Cwe": "CWE-88",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-35536",
+          "Public": "20260403:0225"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2446765",
+          "ID": "2446765"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2454716",
+          "ID": "2454716"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.8",
+        "cpe:/a:redhat:rhel_eus:9.8::appstream",
+        "cpe:/a:redhat:rhel_eus:9.8::crb",
+        "cpe:/a:redhat:rhel_eus:9.8::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.8::nfv",
+        "cpe:/a:redhat:rhel_eus:9.8::realtime",
+        "cpe:/a:redhat:rhel_eus:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.8::sap",
+        "cpe:/a:redhat:rhel_eus:9.8::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.8::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.8",
+        "cpe:/o:redhat:rhel_eus:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          },
+          {
+            "Comment": "python3-tornado is earlier than 0:6.5.5-1.el9_7.1",
+            "TestRef": "oval:com.redhat.rhsa:tst:202613670001"
+          },
+          {
+            "Comment": "python3-tornado is signed with Red Hat release4,release2,ima key",
+            "TestRef": "oval:com.redhat.rhsa:tst:202613670002"
+          }
+        ]
+      }
+    ]
+  }
+}
