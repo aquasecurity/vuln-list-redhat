@@ -1,0 +1,155 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202614212",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:14212: corosync security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.4 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:14212",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:14212"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-35091",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-35091"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-35092",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-35092"
+      }
+    ],
+    "Description": "The corosync packages provide the Corosync Cluster Engine and C APIs for Red Hat Enterprise Linux cluster software.\n\nSecurity Fix(es):\n\n* corosync: Corosync: Denial of Service and information disclosure via crafted UDP packet (CVE-2026-35091)\n\n* corosync: Corosync: Denial of Service via integer overflow in join message validation (CVE-2026-35092)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-05-06"
+      },
+      "Updated": {
+        "Date": "2026-05-06"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-35091",
+          "Cvss3": "8.2/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H",
+          "Cwe": "CWE-253",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-35091",
+          "Public": "20260401:1148"
+        },
+        {
+          "CveID": "CVE-2026-35092",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-190",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-35092",
+          "Public": "20260401:1148"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2453813",
+          "ID": "2453813"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2453814",
+          "ID": "2453814"
+        }
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "corosync is earlier than 0:3.1.8-1.el9_4.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202614212001"
+                  },
+                  {
+                    "Comment": "corosync is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202614212002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "corosync-vqsim is earlier than 0:3.1.8-1.el9_4.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202614212003"
+                  },
+                  {
+                    "Comment": "corosync-vqsim is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202614212004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "corosynclib is earlier than 0:3.1.8-1.el9_4.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202614212005"
+                  },
+                  {
+                    "Comment": "corosynclib is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202614212006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "corosynclib-devel is earlier than 0:3.1.8-1.el9_4.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202614212007"
+                  },
+                  {
+                    "Comment": "corosynclib-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202614212008"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

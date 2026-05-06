@@ -1,23 +1,39 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:20265119",
-  "Version": "636",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202613978",
+  "Version": "637",
   "Metadata": {
-    "Title": "libsoup: libsoup: Information disclosure via cleartext transmission of cookies during HTTPS tunnel establishment (moderate)",
+    "Title": "RHSA-2026:13978: libsoup security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:13978",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:13978"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2026-5119",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2026-5119"
       }
     ],
-    "Description": "DOCUMENTATION: A flaw was found in libsoup. When establishing HTTPS tunnels through a configured HTTP proxy, sensitive session cookies are transmitted in cleartext within the initial HTTP CONNECT request. A network-positioned attacker or a malicious HTTP proxy can intercept these cookies, leading to potential session hijacking or user impersonation. \n            STATEMENT: Moderate impact. This flaw in libsoup allows sensitive session cookies to be transmitted in cleartext within the initial HTTP CONNECT request when establishing HTTPS tunnels through a configured HTTP proxy. A network-positioned attacker or a malicious HTTP proxy could intercept these cookies, potentially leading to session hijacking or user impersonation. This affects Red Hat Enterprise Linux systems configured to use an HTTP proxy for HTTPS connections.\n            MITIGATION: To mitigate this issue, ensure that all HTTP proxies used for HTTPS tunnels are trusted and operate within a secure network. Avoid configuring applications to use untrusted HTTP proxies. If feasible, configure applications to bypass proxies for sensitive connections or utilize a secure proxy solution that encrypts the entire communication channel. A service restart or application reload may be required for changes to take effect.",
+    "Description": "The libsoup packages provide an HTTP client and server library for GNOME.\n\nSecurity Fix(es):\n\n* libsoup: libsoup: Information disclosure via cleartext transmission of cookies during HTTPS tunnel establishment (CVE-2026-5119)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Moderate",
-      "Issued": {},
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-05-06"
+      },
       "Updated": {
-        "Date": "2026-04-13"
+        "Date": "2026-05-06"
       },
       "Cves": [
         {
@@ -27,6 +43,12 @@
           "Impact": "moderate",
           "Href": "https://access.redhat.com/security/cve/CVE-2026-5119",
           "Public": "20260330:0530"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2452932",
+          "ID": "2452932"
         }
       ],
       "AffectedCpeList": [
@@ -45,9 +67,7 @@
         "cpe:/o:redhat:enterprise_linux:9::baseos"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -76,12 +96,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "libsoup-devel is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202532909001"
+                    "Comment": "libsoup is earlier than 0:2.72.0-12.el9_7.6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202613978001"
                   },
                   {
-                    "Comment": "libsoup-devel is signed with Red Hat release4,release2,ima key",
-                    "TestRef": "oval:com.redhat.cve:tst:20260716004"
+                    "Comment": "libsoup is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.cve:tst:20254476004"
                   }
                 ]
               },
@@ -89,12 +109,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "libsoup is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202532909003"
+                    "Comment": "libsoup-devel is earlier than 0:2.72.0-12.el9_7.6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202613978003"
                   },
                   {
-                    "Comment": "libsoup is signed with Red Hat release4,release2,ima key",
-                    "TestRef": "oval:com.redhat.cve:tst:20260716002"
+                    "Comment": "libsoup-devel is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.cve:tst:20254476002"
                   }
                 ]
               }
