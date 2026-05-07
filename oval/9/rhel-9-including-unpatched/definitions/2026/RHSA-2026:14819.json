@@ -1,23 +1,39 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:202633554",
-  "Version": "636",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202614819",
+  "Version": "637",
   "Metadata": {
-    "Title": "freeipmi: buffer overflows on response messages via ipmi-oem (moderate)",
+    "Title": "RHSA-2026:14819: freeipmi security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:14819",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:14819"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2026-33554",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2026-33554"
       }
     ],
-    "Description": "DOCUMENTATION: A flaw was found in FreeIPMI. The `ipmi-oem` program is used to send Intelligent Platform Management Interface (IPMI) OEM commands for specific hardware vendors to retrieve specific information from the hardware. A malicious server can reply with crafted response messages and cause buffer overflows when processed, potentially resulting in a denial of service and memory corruption. \n            STATEMENT: To exploit this vulnerability, a user needs to execute the `ipmi-oem` program to retrieve information from a compromised or malicious Baseboard Management Controller (BMC) server, limiting the exposure of this flaw.\n\nSpecifically, the following `ipmi-oem` commands are vulnerable to this issue:\n\n- ipmi-oem dell get-last-post-code\n- ipmi-oem supermicro extra-firmware-info\n- ipmi-oem wistron read-proprietary-string\n\nDefault Red Hat Enterprise Linux security features, including SELinux enforcement, Address Space Layout Randomization (ASLR) and NX (No-Execute) stack protection, significantly increase the difficulty of achieving arbitrary code execution, limiting the impact of this vulnerability.\n\nDue to these reasons, this flaw has been rated with a moderate severity.\n            MITIGATION: To mitigate this issue, ensure all BMCs and the servers running FreeIPMI are isolated on a dedicated and restricted network environment.",
+    "Description": "The freeipmi packages contain an Intelligent Platform Management Interface (IPMI) remote console and system management software based on the IPMI specification.\n\nSecurity Fix(es):\n\n* freeipmi: buffer overflows on response messages via ipmi-oem (CVE-2026-33554)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Moderate",
-      "Issued": {},
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-05-07"
+      },
       "Updated": {
-        "Date": "2026-04-01"
+        "Date": "2026-05-07"
       },
       "Cves": [
         {
@@ -27,6 +43,12 @@
           "Impact": "moderate",
           "Href": "https://access.redhat.com/security/cve/CVE-2026-33554",
           "Public": "20260324"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2450778",
+          "ID": "2450778"
         }
       ],
       "AffectedCpeList": [
@@ -45,9 +67,7 @@
         "cpe:/o:redhat:enterprise_linux:9::baseos"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -76,12 +96,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "freeipmi is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202633554001"
+                    "Comment": "freeipmi is earlier than 0:1.6.17-1.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202614819001"
                   },
                   {
                     "Comment": "freeipmi is signed with Red Hat release4,release2,ima key",
-                    "TestRef": "oval:com.redhat.cve:tst:202633554002"
+                    "TestRef": "oval:com.redhat.rhsa:tst:202614819002"
                   }
                 ]
               },
@@ -89,12 +109,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "freeipmi-bmc-watchdog is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202633554003"
+                    "Comment": "freeipmi-bmc-watchdog is earlier than 0:1.6.17-1.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202614819003"
                   },
                   {
                     "Comment": "freeipmi-bmc-watchdog is signed with Red Hat release4,release2,ima key",
-                    "TestRef": "oval:com.redhat.cve:tst:202633554004"
+                    "TestRef": "oval:com.redhat.rhsa:tst:202614819004"
                   }
                 ]
               },
@@ -102,38 +122,38 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "freeipmi-ipmiseld is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202633554005"
-                  },
-                  {
-                    "Comment": "freeipmi-ipmiseld is signed with Red Hat release4,release2,ima key",
-                    "TestRef": "oval:com.redhat.cve:tst:202633554006"
-                  }
-                ]
-              },
-              {
-                "Operator": "AND",
-                "Criterions": [
-                  {
-                    "Comment": "freeipmi-ipmidetectd is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202633554007"
-                  },
-                  {
-                    "Comment": "freeipmi-ipmidetectd is signed with Red Hat release4,release2,ima key",
-                    "TestRef": "oval:com.redhat.cve:tst:202633554008"
-                  }
-                ]
-              },
-              {
-                "Operator": "AND",
-                "Criterions": [
-                  {
-                    "Comment": "freeipmi-devel is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202633554009"
+                    "Comment": "freeipmi-devel is earlier than 0:1.6.17-1.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202614819005"
                   },
                   {
                     "Comment": "freeipmi-devel is signed with Red Hat release4,release2,ima key",
-                    "TestRef": "oval:com.redhat.cve:tst:202633554010"
+                    "TestRef": "oval:com.redhat.rhsa:tst:202614819006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "freeipmi-ipmidetectd is earlier than 0:1.6.17-1.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202614819007"
+                  },
+                  {
+                    "Comment": "freeipmi-ipmidetectd is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202614819008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "freeipmi-ipmiseld is earlier than 0:1.6.17-1.el9_7",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202614819009"
+                  },
+                  {
+                    "Comment": "freeipmi-ipmiseld is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202614819010"
                   }
                 ]
               }
