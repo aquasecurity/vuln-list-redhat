@@ -1,0 +1,124 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202614673",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:14673: LibRaw security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8.8 Telecommunications Update Service"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:14673",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:14673"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-20889",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-20889"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-21413",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-21413"
+      }
+    ],
+    "Description": "LibRaw is a library for reading RAW files obtained from digital photo cameras (CRW/CR2, NEF, RAF, DNG, and others).\n\nSecurity Fix(es):\n\n* LibRaw: LibRaw: Arbitrary code execution via heap-based buffer overflow in lossless JPEG loading (CVE-2026-21413)\n\n* LibRaw: LibRaw: Arbitrary code execution via specially crafted image file (CVE-2026-20889)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-05-07"
+      },
+      "Updated": {
+        "Date": "2026-05-07"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-20889",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-120",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-20889",
+          "Public": "20260407:1349"
+        },
+        {
+          "CveID": "CVE-2026-21413",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-787",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-21413",
+          "Public": "20260407:1349"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2455929",
+          "ID": "2455929"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2455942",
+          "ID": "2455942"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_tus:8.8",
+        "cpe:/a:redhat:rhel_tus:8.8::appstream",
+        "cpe:/a:redhat:rhel_tus:8.8::highavailability",
+        "cpe:/a:redhat:rhel_tus:8.8::nfv",
+        "cpe:/a:redhat:rhel_tus:8.8::realtime",
+        "cpe:/o:redhat:rhel_tus:8.8",
+        "cpe:/o:redhat:rhel_tus:8.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "LibRaw is earlier than 0:0.19.5-3.el8_8.1",
+            "TestRef": "oval:com.redhat.rhsa:tst:202614673001"
+          },
+          {
+            "Comment": "LibRaw is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20201766026"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
