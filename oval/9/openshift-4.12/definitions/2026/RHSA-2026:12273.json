@@ -1,0 +1,91 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202612273",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:12273: OpenShift Container Platform 4.12.88 packages and security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat OpenShift Container Platform 4.12"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:12273",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:12273"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-65637",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-65637"
+      }
+    ],
+    "Description": "Red Hat OpenShift Container Platform is Red Hat's cloud computing\nKubernetes application platform solution designed for on-premise or private\ncloud deployments.\n\nThis advisory contains the RPM packages for Red Hat OpenShift Container\nPlatform 4.12.88. See the following advisory for the container images for\nthis release:\n\nhttps://access.redhat.com/errata/RHSA-2026:12282\n\nSecurity Fix(es):\n\nNone\n\nFor more details about the security issue(s), including the impact, a CVSS\nscore, acknowledgments, and other related information, refer to the CVE\npage(s) listed in the References section.\n\nAll OpenShift Container Platform 4.12 users are advised to upgrade to these\nupdated packages and images when they are available in the appropriate\nrelease channel. To check for available updates, use the OpenShift CLI (oc)\nor web console. Instructions for upgrading a cluster are available at\nhttps://docs.redhat.com/en/documentation/openshift_container_platform/4.12/html-single/updating_clusters/index#updating-cluster-within-minor.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-05-08"
+      },
+      "Updated": {
+        "Date": "2026-05-08"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-65637",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-400",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-65637",
+          "Public": "20251204"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2418900",
+          "ID": "2418900"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:openshift:4.12",
+        "cpe:/a:redhat:openshift:4.12::el9"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20230568010"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20230568009"
+          },
+          {
+            "Comment": "openshift-hyperkube is earlier than 0:4.12.0-202604271501.p2.gedc7ba9.assembly.stream.el9",
+            "TestRef": "oval:com.redhat.rhsa:tst:202612273001"
+          },
+          {
+            "Comment": "openshift-hyperkube is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20227398056"
+          }
+        ]
+      }
+    ]
+  }
+}
