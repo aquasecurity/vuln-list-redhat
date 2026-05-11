@@ -1,0 +1,182 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202615971",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:15971: glib2 security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:15971",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:15971"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-14087",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-14087"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-14512",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-14512"
+      }
+    ],
+    "Description": "GLib provides the core application building blocks for libraries and applications written in C. It provides the core object system used in GNOME, the main loop implementation, and a large set of utility functions for strings and common data structures.\n\nSecurity Fix(es):\n\n* glib: GLib: Buffer underflow in GVariant parser leads to heap corruption (CVE-2025-14087)\n\n* glib: Integer Overflow in GLib GIO Attribute Escaping Causes Heap Buffer Overflow (CVE-2025-14512)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-05-11"
+      },
+      "Updated": {
+        "Date": "2026-05-11"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-14087",
+          "Cvss3": "5.6/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L",
+          "Cwe": "CWE-190",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-14087",
+          "Public": "20251205"
+        },
+        {
+          "CveID": "CVE-2025-14512",
+          "Cvss3": "6.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-190",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-14512",
+          "Public": "20251211"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2419093",
+          "ID": "2419093"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2421339",
+          "ID": "2421339"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.8",
+        "cpe:/a:redhat:rhel_eus:9.8::appstream",
+        "cpe:/a:redhat:rhel_eus:9.8::crb",
+        "cpe:/a:redhat:rhel_eus:9.8::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.8::nfv",
+        "cpe:/a:redhat:rhel_eus:9.8::realtime",
+        "cpe:/a:redhat:rhel_eus:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.8::sap",
+        "cpe:/a:redhat:rhel_eus:9.8::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.8::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.8",
+        "cpe:/o:redhat:rhel_eus:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glib2 is earlier than 0:2.68.4-18.el9_7.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202615971001"
+                  },
+                  {
+                    "Comment": "glib2 is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260936002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glib2-devel is earlier than 0:2.68.4-18.el9_7.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202615971003"
+                  },
+                  {
+                    "Comment": "glib2-devel is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260936004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glib2-doc is earlier than 0:2.68.4-18.el9_7.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202615971005"
+                  },
+                  {
+                    "Comment": "glib2-doc is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260936006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glib2-static is earlier than 0:2.68.4-18.el9_7.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202615971007"
+                  },
+                  {
+                    "Comment": "glib2-static is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260936008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glib2-tests is earlier than 0:2.68.4-18.el9_7.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202615971009"
+                  },
+                  {
+                    "Comment": "glib2-tests is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260936010"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
