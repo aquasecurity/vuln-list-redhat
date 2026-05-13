@@ -1,25 +1,54 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:202640164",
-  "Version": "636",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202616693",
+  "Version": "637",
   "Metadata": {
-    "Title": "jq: jq: Denial of Service via crafted JSON object causing hash collisions (important)",
+    "Title": "RHSA-2026:16693: jq security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:16693",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:16693"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-39979",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-39979"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2026-40164",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2026-40164"
       }
     ],
-    "Description": "DOCUMENTATION: A flaw was found in jq, a command-line JSON processor. A remote attacker could exploit this vulnerability by providing a specially crafted JSON object. This object leverages a weakness in jq's hashing algorithm, which uses a hardcoded, publicly known seed. By crafting the JSON object to cause hash collisions, an attacker can degrade the performance of JSON object hash table operations, leading to significant CPU exhaustion and a denial of service (DoS) for systems processing the malicious JSON data. \n            \n            MITIGATION: Mitigation for this issue is either not available or the currently available options do not meet the Red Hat Product Security criteria comprising ease of use and deployment, applicability to widespread installation base or stability.",
+    "Description": "jq is a lightweight and flexible command-line JSON processor. jq is like sed for JSON data. You can use it to slice, filter, map, or transform structured data with the same ease that sed, awk, grep, or similar applications allow you to manipulate text.\n\nSecurity Fix(es):\n\n* jq: out-of-bounds read in jv_parse_sized() on error formatting for non-NUL-terminated buffers (CVE-2026-39979)\n\n* jq: jq: Denial of Service via crafted JSON object causing hash collisions (CVE-2026-40164)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Important",
-      "Issued": {},
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-05-13"
+      },
       "Updated": {
-        "Date": "2026-04-15"
+        "Date": "2026-05-13"
       },
       "Cves": [
+        {
+          "CveID": "CVE-2026-39979",
+          "Cvss3": "8.2/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H",
+          "Cwe": "CWE-125",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-39979",
+          "Public": "20260413:2218"
+        },
         {
           "CveID": "CVE-2026-40164",
           "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
@@ -27,6 +56,16 @@
           "Impact": "important",
           "Href": "https://access.redhat.com/security/cve/CVE-2026-40164",
           "Public": "20260413:2340"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2458077",
+          "ID": "2458077"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2458084",
+          "ID": "2458084"
         }
       ],
       "AffectedCpeList": [
@@ -45,9 +84,7 @@
         "cpe:/o:redhat:enterprise_linux:9::baseos"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -76,8 +113,8 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "jq is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:20259403001"
+                    "Comment": "jq is earlier than 0:1.6-19.el9_7.0.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202616693001"
                   },
                   {
                     "Comment": "jq is signed with Red Hat release4,release2,ima key",
@@ -89,8 +126,8 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "jq-devel is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:20259403003"
+                    "Comment": "jq-devel is earlier than 0:1.6-19.el9_7.0.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202616693003"
                   },
                   {
                     "Comment": "jq-devel is signed with Red Hat release4,release2,ima key",
