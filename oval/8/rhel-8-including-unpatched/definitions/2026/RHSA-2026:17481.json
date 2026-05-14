@@ -1,23 +1,39 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:202641035",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202617481",
   "Version": "636",
   "Metadata": {
-    "Title": "rsync: Rsync: Use-after-free vulnerability in extended attribute handling (important)",
+    "Title": "RHSA-2026:17481: rsync security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:17481",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:17481"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2026-41035",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2026-41035"
       }
     ],
-    "Description": "DOCUMENTATION: A flaw was found in rsync. When rsync is configured to handle extended attributes (using the -X or --xattrs option), a remote attacker can exploit a use-after-free vulnerability. This occurs because the receive_xattr function incorrectly processes an untrusted length value during a sorting operation, leading to memory corruption. Successful exploitation can result in a denial of service, causing the rsync process to crash, and may potentially allow for arbitrary code execution. \n            STATEMENT: This is an Important flaw in rsync that allows a remote attacker to cause a denial of service or potentially execute arbitrary code. The vulnerability is present when rsync is used with extended attributes enabled via the `-X` or `--xattrs` option, which is not a default configuration. Exploitation requires the victim to explicitly enable this feature.\n            MITIGATION: To mitigate this vulnerability, avoid using the -X or --xattrs options with rsync if extended attribute handling is not essential for your operations. Disabling these options prevents the vulnerable code path from being exercised. This may impact functionality that relies on extended attributes.",
+    "Description": "The rsync utility enables the users to copy and synchronize files locally or across a network. Synchronization with rsync is fast because rsync only sends the differences in files over the network instead of sending whole files. The rsync utility is also used as a mirroring tool.\n\nSecurity Fix(es):\n\n* rsync: Rsync: Use-after-free vulnerability in extended attribute handling (CVE-2026-41035)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Important",
-      "Issued": {},
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-05-14"
+      },
       "Updated": {
-        "Date": "2026-04-28"
+        "Date": "2026-05-14"
       },
       "Cves": [
         {
@@ -27,6 +43,12 @@
           "Impact": "important",
           "Href": "https://access.redhat.com/security/cve/CVE-2026-41035",
           "Public": "20260416:0653"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2458898",
+          "ID": "2458898"
         }
       ],
       "AffectedCpeList": [
@@ -44,9 +66,7 @@
         "cpe:/o:redhat:enterprise_linux:8::baseos"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -61,13 +81,20 @@
     "Criterias": [
       {
         "Operator": "AND",
-        "Criterions": [
-          {
-            "Comment": "Red Hat Enterprise Linux 8 is installed",
-            "TestRef": "oval:com.redhat.cve:tst:20052541003"
-          }
-        ],
         "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.cve:tst:20052541003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
           {
             "Operator": "OR",
             "Criterias": [
@@ -75,8 +102,8 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "rsync is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202412086003"
+                    "Comment": "rsync is earlier than 0:3.1.3-25.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202617481001"
                   },
                   {
                     "Comment": "rsync is signed with Red Hat redhatrelease2 key",
@@ -88,8 +115,8 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "rsync-daemon is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202412086001"
+                    "Comment": "rsync-daemon is earlier than 0:3.1.3-25.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202617481003"
                   },
                   {
                     "Comment": "rsync-daemon is signed with Red Hat redhatrelease2 key",
