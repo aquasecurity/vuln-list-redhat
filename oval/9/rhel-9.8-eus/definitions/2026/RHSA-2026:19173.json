@@ -1,0 +1,165 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202619173",
+  "Version": "641",
+  "Metadata": {
+    "Title": "RHSA-2026:19173: podman security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:19173",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:19173"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-34986",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-34986"
+      }
+    ],
+    "Description": "The podman tool manages pods, container images, and containers. It is part of the libpod library, which is for applications that use container pods. Container pods is a concept in Kubernetes.\n\nSecurity Fix(es):\n\n* github.com/go-jose/go-jose/v3: github.com/go-jose/go-jose/v4: Go JOSE: Denial of Service via crafted JSON Web Encryption (JWE) object (CVE-2026-34986)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-05-19"
+      },
+      "Updated": {
+        "Date": "2026-05-19"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-34986",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-131",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-34986",
+          "Public": "20260406:1622"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2455470",
+          "ID": "2455470"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.8",
+        "cpe:/a:redhat:rhel_eus:9.8::appstream",
+        "cpe:/a:redhat:rhel_eus:9.8::crb",
+        "cpe:/a:redhat:rhel_eus:9.8::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.8::nfv",
+        "cpe:/a:redhat:rhel_eus:9.8::realtime",
+        "cpe:/a:redhat:rhel_eus:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.8::sap",
+        "cpe:/a:redhat:rhel_eus:9.8::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.8::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.8",
+        "cpe:/o:redhat:rhel_eus:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "podman is earlier than 6:5.8.2-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619173001"
+                  },
+                  {
+                    "Comment": "podman is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202520909002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "podman-docker is earlier than 6:5.8.2-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619173003"
+                  },
+                  {
+                    "Comment": "podman-docker is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202520909004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "podman-plugins is earlier than 6:5.8.2-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619173005"
+                  },
+                  {
+                    "Comment": "podman-plugins is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202520909006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "podman-remote is earlier than 6:5.8.2-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619173007"
+                  },
+                  {
+                    "Comment": "podman-remote is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202520909008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "podman-tests is earlier than 6:5.8.2-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619173009"
+                  },
+                  {
+                    "Comment": "podman-tests is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202520909010"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

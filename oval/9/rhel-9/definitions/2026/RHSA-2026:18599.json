@@ -1,0 +1,166 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202618599",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:18599: p11-kit security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:18599",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:18599"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-2100",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-2100"
+      }
+    ],
+    "Description": "The p11-kit packages provide a mechanism to manage PKCS#11 modules. The p11-kit-trust subpackage includes a PKCS#11 trust module that provides certificate anchors and black lists based on configuration files.\n\nSecurity Fix(es):\n\n* p11-kit: p11-kit: NULL dereference via C_DeriveKey with specific NULL parameters (CVE-2026-2100)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n\nAdditional Changes:\n\nFor detailed information on changes in this release, see the Red Hat Enterprise Linux 9 Release Notes linked from the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-05-19"
+      },
+      "Updated": {
+        "Date": "2026-05-19"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-2100",
+          "Cvss3": "5.3/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+          "Cwe": "CWE-824",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-2100",
+          "Public": "20260206:0808"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2437308",
+          "ID": "2437308"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::extensions",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "p11-kit is earlier than 0:0.26.2-1.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618599001"
+                  },
+                  {
+                    "Comment": "p11-kit is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618599002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "p11-kit-client is earlier than 0:0.26.2-1.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618599003"
+                  },
+                  {
+                    "Comment": "p11-kit-client is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618599004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "p11-kit-devel is earlier than 0:0.26.2-1.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618599005"
+                  },
+                  {
+                    "Comment": "p11-kit-devel is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618599006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "p11-kit-server is earlier than 0:0.26.2-1.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618599007"
+                  },
+                  {
+                    "Comment": "p11-kit-server is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618599008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "p11-kit-trust is earlier than 0:0.26.2-1.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618599009"
+                  },
+                  {
+                    "Comment": "p11-kit-trust is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618599010"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
