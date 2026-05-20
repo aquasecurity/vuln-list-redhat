@@ -1,0 +1,383 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202619575",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:19575: kpatch-patch-5_14_0-70_124_1, kpatch-patch-5_14_0-70_132_1, kpatch-patch-5_14_0-70_144_1, kpatch-patch-5_14_0-70_155_1, and kpatch-patch-5_14_0-70_167_1 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.0 Update Services for SAP Solutions"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:19575",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:19575"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-43284",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-43284"
+      }
+    ],
+    "Description": "This is a kernel live patch module which can be loaded by the kpatch command line utility to modify the code of a running kernel.  This patch module is targeted for kernel-5.14.0-70.124.1.el9_0.\n\nSecurity Fix(es):\n\n* kernel: \"Dirty Frag\" is a new universal Local Privilege Escalation (LPE) vulnerability in the Linux kernel (CVE-2026-43284)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-05-20"
+      },
+      "Updated": {
+        "Date": "2026-05-20"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-43284",
+          "Cvss3": "7.8/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-123",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-43284",
+          "Public": "20260507"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2467771",
+          "ID": "2467771"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.0",
+        "cpe:/a:redhat:rhel_e4s:9.0::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.0::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.0::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.0::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.0::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.0::sap",
+        "cpe:/a:redhat:rhel_e4s:9.0::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.0",
+        "cpe:/o:redhat:rhel_e4s:9.0::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterias": [
+                  {
+                    "Operator": "OR",
+                    "Criterions": [
+                      {
+                        "Comment": "kernel version 0:5.14.0-70.124.1.el9_0 is currently running",
+                        "TestRef": "oval:com.redhat.rhsa:tst:202510978024"
+                      },
+                      {
+                        "Comment": "kernel version 0:5.14.0-70.124.1.el9_0 is set to boot up on next boot",
+                        "TestRef": "oval:com.redhat.rhsa:tst:202510978025"
+                      }
+                    ]
+                  },
+                  {
+                    "Operator": "AND",
+                    "Criterions": [
+                      {
+                        "Comment": "kernel version equals 0:5.14.0-70.124.1.el9_0",
+                        "TestRef": "oval:com.redhat.rhsa:tst:202510978020"
+                      },
+                      {
+                        "Comment": "kernel is signed with Red Hat redhatrelease2 key",
+                        "TestRef": "oval:com.redhat.rhsa:tst:20225214002"
+                      }
+                    ],
+                    "Criterias": [
+                      {
+                        "Operator": "OR",
+                        "Criterions": [
+                          {
+                            "Comment": "kpatch-patch not installed for 0:5.14.0-70.124.1.el9_0",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202510978021"
+                          }
+                        ],
+                        "Criterias": [
+                          {
+                            "Operator": "AND",
+                            "Criterions": [
+                              {
+                                "Comment": "kpatch-patch-5_14_0-70_124_1 is earlier than 0:1-13.el9_0",
+                                "TestRef": "oval:com.redhat.rhsa:tst:202619575004"
+                              },
+                              {
+                                "Comment": "kpatch-patch-5_14_0-70_124_1 is signed with Red Hat redhatrelease2 key",
+                                "TestRef": "oval:com.redhat.rhsa:tst:202510978023"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterias": [
+                  {
+                    "Operator": "OR",
+                    "Criterions": [
+                      {
+                        "Comment": "kernel version 0:5.14.0-70.132.1.el9_0 is currently running",
+                        "TestRef": "oval:com.redhat.rhsa:tst:202510978030"
+                      },
+                      {
+                        "Comment": "kernel version 0:5.14.0-70.132.1.el9_0 is set to boot up on next boot",
+                        "TestRef": "oval:com.redhat.rhsa:tst:202510978031"
+                      }
+                    ]
+                  },
+                  {
+                    "Operator": "AND",
+                    "Criterions": [
+                      {
+                        "Comment": "kernel version equals 0:5.14.0-70.132.1.el9_0",
+                        "TestRef": "oval:com.redhat.rhsa:tst:202510978026"
+                      },
+                      {
+                        "Comment": "kernel is signed with Red Hat redhatrelease2 key",
+                        "TestRef": "oval:com.redhat.rhsa:tst:20225214002"
+                      }
+                    ],
+                    "Criterias": [
+                      {
+                        "Operator": "OR",
+                        "Criterions": [
+                          {
+                            "Comment": "kpatch-patch not installed for 0:5.14.0-70.132.1.el9_0",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202510978027"
+                          }
+                        ],
+                        "Criterias": [
+                          {
+                            "Operator": "AND",
+                            "Criterions": [
+                              {
+                                "Comment": "kpatch-patch-5_14_0-70_132_1 is earlier than 0:1-9.el9_0",
+                                "TestRef": "oval:com.redhat.rhsa:tst:202619575010"
+                              },
+                              {
+                                "Comment": "kpatch-patch-5_14_0-70_132_1 is signed with Red Hat redhatrelease2 key",
+                                "TestRef": "oval:com.redhat.rhsa:tst:202510978029"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterias": [
+                  {
+                    "Operator": "OR",
+                    "Criterions": [
+                      {
+                        "Comment": "kernel version 0:5.14.0-70.144.1.el9_0 is currently running",
+                        "TestRef": "oval:com.redhat.rhsa:tst:202515933030"
+                      },
+                      {
+                        "Comment": "kernel version 0:5.14.0-70.144.1.el9_0 is set to boot up on next boot",
+                        "TestRef": "oval:com.redhat.rhsa:tst:202515933031"
+                      }
+                    ]
+                  },
+                  {
+                    "Operator": "AND",
+                    "Criterions": [
+                      {
+                        "Comment": "kernel version equals 0:5.14.0-70.144.1.el9_0",
+                        "TestRef": "oval:com.redhat.rhsa:tst:202515933026"
+                      },
+                      {
+                        "Comment": "kernel is signed with Red Hat redhatrelease2 key",
+                        "TestRef": "oval:com.redhat.rhsa:tst:20225214002"
+                      }
+                    ],
+                    "Criterias": [
+                      {
+                        "Operator": "OR",
+                        "Criterions": [
+                          {
+                            "Comment": "kpatch-patch not installed for 0:5.14.0-70.144.1.el9_0",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202515933027"
+                          }
+                        ],
+                        "Criterias": [
+                          {
+                            "Operator": "AND",
+                            "Criterions": [
+                              {
+                                "Comment": "kpatch-patch-5_14_0-70_144_1 is earlier than 0:1-5.el9_0",
+                                "TestRef": "oval:com.redhat.rhsa:tst:202619575016"
+                              },
+                              {
+                                "Comment": "kpatch-patch-5_14_0-70_144_1 is signed with Red Hat redhatrelease2 key",
+                                "TestRef": "oval:com.redhat.rhsa:tst:202515933029"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterias": [
+                  {
+                    "Operator": "OR",
+                    "Criterions": [
+                      {
+                        "Comment": "kernel version 0:5.14.0-70.155.1.el9_0 is currently running",
+                        "TestRef": "oval:com.redhat.rhsa:tst:202616209024"
+                      },
+                      {
+                        "Comment": "kernel version 0:5.14.0-70.155.1.el9_0 is set to boot up on next boot",
+                        "TestRef": "oval:com.redhat.rhsa:tst:202616209025"
+                      }
+                    ]
+                  },
+                  {
+                    "Operator": "AND",
+                    "Criterions": [
+                      {
+                        "Comment": "kernel version equals 0:5.14.0-70.155.1.el9_0",
+                        "TestRef": "oval:com.redhat.rhsa:tst:202616209020"
+                      },
+                      {
+                        "Comment": "kernel is signed with Red Hat redhatrelease2 key",
+                        "TestRef": "oval:com.redhat.rhsa:tst:20225214002"
+                      }
+                    ],
+                    "Criterias": [
+                      {
+                        "Operator": "OR",
+                        "Criterions": [
+                          {
+                            "Comment": "kpatch-patch not installed for 0:5.14.0-70.155.1.el9_0",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202616209021"
+                          }
+                        ],
+                        "Criterias": [
+                          {
+                            "Operator": "AND",
+                            "Criterions": [
+                              {
+                                "Comment": "kpatch-patch-5_14_0-70_155_1 is earlier than 0:1-4.el9_0",
+                                "TestRef": "oval:com.redhat.rhsa:tst:202619575022"
+                              },
+                              {
+                                "Comment": "kpatch-patch-5_14_0-70_155_1 is signed with Red Hat redhatrelease2 key",
+                                "TestRef": "oval:com.redhat.rhsa:tst:202616209023"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterias": [
+                  {
+                    "Operator": "OR",
+                    "Criterions": [
+                      {
+                        "Comment": "kernel version 0:5.14.0-70.167.1.el9_0 is currently running",
+                        "TestRef": "oval:com.redhat.rhsa:tst:202616209030"
+                      },
+                      {
+                        "Comment": "kernel version 0:5.14.0-70.167.1.el9_0 is set to boot up on next boot",
+                        "TestRef": "oval:com.redhat.rhsa:tst:202616209031"
+                      }
+                    ]
+                  },
+                  {
+                    "Operator": "AND",
+                    "Criterions": [
+                      {
+                        "Comment": "kernel version equals 0:5.14.0-70.167.1.el9_0",
+                        "TestRef": "oval:com.redhat.rhsa:tst:202616209026"
+                      },
+                      {
+                        "Comment": "kernel is signed with Red Hat redhatrelease2 key",
+                        "TestRef": "oval:com.redhat.rhsa:tst:20225214002"
+                      }
+                    ],
+                    "Criterias": [
+                      {
+                        "Operator": "OR",
+                        "Criterions": [
+                          {
+                            "Comment": "kpatch-patch not installed for 0:5.14.0-70.167.1.el9_0",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202616209027"
+                          }
+                        ],
+                        "Criterias": [
+                          {
+                            "Operator": "AND",
+                            "Criterions": [
+                              {
+                                "Comment": "kpatch-patch-5_14_0-70_167_1 is earlier than 0:1-2.el9_0",
+                                "TestRef": "oval:com.redhat.rhsa:tst:202619575028"
+                              },
+                              {
+                                "Comment": "kpatch-patch-5_14_0-70_167_1 is signed with Red Hat redhatrelease2 key",
+                                "TestRef": "oval:com.redhat.rhsa:tst:202616209029"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

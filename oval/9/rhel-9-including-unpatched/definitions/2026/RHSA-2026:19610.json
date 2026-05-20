@@ -1,23 +1,39 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:202637555",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202619610",
   "Version": "636",
   "Metadata": {
-    "Title": "libsndfile: integer overflow in ima_reader_init() (important)",
+    "Title": "RHSA-2026:19610: libsndfile security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:19610",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:19610"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2026-37555",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2026-37555"
       }
     ],
-    "Description": "DOCUMENTATION: A flaw was found in the libsndfile library. An integer overflow in the IMA ADPCM codec can occur when a specially crafted WAV audio file is processed, specifically with malicious samplesperblock and blocks values. This can lead to a heap-based buffer overflow, causing a crash to the application linked to the library and memory corruption. \n            STATEMENT: To exploit this issue, an attacker needs to be able to process a malicious WAV file with an application linked to the libsndfile library.\n\nDefault Red Hat Enterprise Linux security features, including SELinux enforcement, Address Space Layout Randomization (ASLR) and NX (No-Execute) stack protection, significantly increase the difficulty of achieving arbitrary code execution, limiting the impact of this vulnerability.\n\nDue to these reasons, this flaw has been rated with an important severity.\n            MITIGATION: Do not process untrusted WAV files with the libsndfile library.",
+    "Description": "libsndfile is a C library for reading and writing files containing sampled sound, such as AIFF, AU, or WAV. \n\nSecurity Fix(es):\n\n* libsndfile: integer overflow in ima_reader_init() (CVE-2026-37555)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Important",
-      "Issued": {},
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-05-20"
+      },
       "Updated": {
-        "Date": "2026-05-07"
+        "Date": "2026-05-20"
       },
       "Cves": [
         {
@@ -27,6 +43,12 @@
           "Impact": "important",
           "Href": "https://access.redhat.com/security/cve/CVE-2026-37555",
           "Public": "20260429"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2463856",
+          "ID": "2463856"
         }
       ],
       "AffectedCpeList": [
@@ -45,9 +67,7 @@
         "cpe:/o:redhat:enterprise_linux:9::baseos"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -76,8 +96,8 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "libsndfile is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:201813419001"
+                    "Comment": "libsndfile is earlier than 0:1.0.31-9.el9_8.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619610001"
                   },
                   {
                     "Comment": "libsndfile is signed with Red Hat release4,release2,ima key",
@@ -89,12 +109,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "libsndfile-utils is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:201813419005"
+                    "Comment": "libsndfile-devel is earlier than 0:1.0.31-9.el9_8.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619610003"
                   },
                   {
-                    "Comment": "libsndfile-utils is signed with Red Hat release4,release2,ima key",
-                    "TestRef": "oval:com.redhat.cve:tst:201813419006"
+                    "Comment": "libsndfile-devel is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.cve:tst:201813419004"
                   }
                 ]
               },
@@ -102,12 +122,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "libsndfile-devel is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:201813419003"
+                    "Comment": "libsndfile-utils is earlier than 0:1.0.31-9.el9_8.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619610005"
                   },
                   {
-                    "Comment": "libsndfile-devel is signed with Red Hat release4,release2,ima key",
-                    "TestRef": "oval:com.redhat.cve:tst:201813419004"
+                    "Comment": "libsndfile-utils is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.cve:tst:201813419006"
                   }
                 ]
               }
