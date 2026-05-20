@@ -1,0 +1,238 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202619343",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:19343: xorg-x11-server security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:19343",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:19343"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-33999",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-33999"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-34001",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-34001"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-34003",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-34003"
+      }
+    ],
+    "Description": "X.Org is an open-source implementation of the X Window System. It provides the basic low-level functionality that full-fledged graphical user interfaces are designed upon.\n\nSecurity Fix(es):\n\n* xorg: xwayland: X.Org X server: Denial of Service via integer underflow in XKB compatibility map handling (CVE-2026-33999)\n\n* xorg: xwayland: X.Org X server: Use-after-free vulnerability leads to server crash and potential memory corruption (CVE-2026-34001)\n\n* xorg: xwayland: X.Org X server: Information exposure and denial of service via out-of-bounds memory access (CVE-2026-34003)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-05-19"
+      },
+      "Updated": {
+        "Date": "2026-05-19"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-33999",
+          "Cvss3": "7.8/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-191",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-33999",
+          "Public": "20260423:1411"
+        },
+        {
+          "CveID": "CVE-2026-34001",
+          "Cvss3": "7.8/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-825",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-34001",
+          "Public": "20260423:1414"
+        },
+        {
+          "CveID": "CVE-2026-34003",
+          "Cvss3": "7.8/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-125",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-34003",
+          "Public": "20260423:1418"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2451106",
+          "ID": "2451106"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2451109",
+          "ID": "2451109"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2451113",
+          "ID": "2451113"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.8",
+        "cpe:/a:redhat:rhel_eus:9.8::appstream",
+        "cpe:/a:redhat:rhel_eus:9.8::crb",
+        "cpe:/a:redhat:rhel_eus:9.8::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.8::nfv",
+        "cpe:/a:redhat:rhel_eus:9.8::realtime",
+        "cpe:/a:redhat:rhel_eus:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.8::sap",
+        "cpe:/a:redhat:rhel_eus:9.8::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.8::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.8",
+        "cpe:/o:redhat:rhel_eus:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "xorg-x11-server-Xdmx is earlier than 0:1.20.11-34.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619343001"
+                  },
+                  {
+                    "Comment": "xorg-x11-server-Xdmx is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202520961002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "xorg-x11-server-Xephyr is earlier than 0:1.20.11-34.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619343003"
+                  },
+                  {
+                    "Comment": "xorg-x11-server-Xephyr is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202520961004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "xorg-x11-server-Xnest is earlier than 0:1.20.11-34.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619343005"
+                  },
+                  {
+                    "Comment": "xorg-x11-server-Xnest is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202520961006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "xorg-x11-server-Xorg is earlier than 0:1.20.11-34.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619343007"
+                  },
+                  {
+                    "Comment": "xorg-x11-server-Xorg is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202520961008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "xorg-x11-server-Xvfb is earlier than 0:1.20.11-34.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619343009"
+                  },
+                  {
+                    "Comment": "xorg-x11-server-Xvfb is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202520961010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "xorg-x11-server-common is earlier than 0:1.20.11-34.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619343011"
+                  },
+                  {
+                    "Comment": "xorg-x11-server-common is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202520961012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "xorg-x11-server-devel is earlier than 0:1.20.11-34.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619343013"
+                  },
+                  {
+                    "Comment": "xorg-x11-server-devel is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202520961014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "xorg-x11-server-source is earlier than 0:1.20.11-34.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619343015"
+                  },
+                  {
+                    "Comment": "xorg-x11-server-source is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202520961016"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

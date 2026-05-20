@@ -1,0 +1,199 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202619364",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:19364: dovecot security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:19364",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:19364"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-59032",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-59032"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-27857",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-27857"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-27858",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-27858"
+      }
+    ],
+    "Description": "Dovecot is an IMAP server for Linux and other UNIX-like systems, written primarily with security in mind. It also contains a small POP3 server, and supports e-mail in either the maildir or mbox format. The SQL drivers and authentication plug-ins are provided as subpackages. \n\nSecurity Fix(es):\n\n* dovecot: ManageSieve: Denial of Service via crafted SASL initial response in AUTHENTICATE command (CVE-2025-59032)\n\n* dovecot: denial of service via crafted message before authentication (CVE-2026-27858)\n\n* dovecot: denial of service via specially crafted NOOP command (CVE-2026-27857)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-05-19"
+      },
+      "Updated": {
+        "Date": "2026-05-19"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-59032",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-229",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-59032",
+          "Public": "20260327:0810"
+        },
+        {
+          "CveID": "CVE-2026-27857",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-770",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-27857",
+          "Public": "20260327:0810"
+        },
+        {
+          "CveID": "CVE-2026-27858",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-770",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-27858",
+          "Public": "20260327:0810"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2452172",
+          "ID": "2452172"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2452175",
+          "ID": "2452175"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2452179",
+          "ID": "2452179"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.8",
+        "cpe:/a:redhat:rhel_eus:9.8::appstream",
+        "cpe:/a:redhat:rhel_eus:9.8::crb",
+        "cpe:/a:redhat:rhel_eus:9.8::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.8::nfv",
+        "cpe:/a:redhat:rhel_eus:9.8::realtime",
+        "cpe:/a:redhat:rhel_eus:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.8::sap",
+        "cpe:/a:redhat:rhel_eus:9.8::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.8::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.8",
+        "cpe:/o:redhat:rhel_eus:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "dovecot is earlier than 1:2.3.16-18.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619364001"
+                  },
+                  {
+                    "Comment": "dovecot is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202613857002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "dovecot-devel is earlier than 1:2.3.16-18.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619364003"
+                  },
+                  {
+                    "Comment": "dovecot-devel is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202613857004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "dovecot-mysql is earlier than 1:2.3.16-18.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619364005"
+                  },
+                  {
+                    "Comment": "dovecot-mysql is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202613857006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "dovecot-pgsql is earlier than 1:2.3.16-18.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619364007"
+                  },
+                  {
+                    "Comment": "dovecot-pgsql is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202613857008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "dovecot-pigeonhole is earlier than 1:2.3.16-18.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619364009"
+                  },
+                  {
+                    "Comment": "dovecot-pigeonhole is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202613857010"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

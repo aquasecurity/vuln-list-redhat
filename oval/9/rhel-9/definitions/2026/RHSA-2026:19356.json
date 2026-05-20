@@ -1,0 +1,127 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202619356",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:19356: libsoup security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:19356",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:19356"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-5119",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-5119"
+      }
+    ],
+    "Description": "The libsoup packages provide an HTTP client and server library for GNOME.\n\nSecurity Fix(es):\n\n* libsoup: libsoup: Information disclosure via cleartext transmission of cookies during HTTPS tunnel establishment (CVE-2026-5119)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-05-19"
+      },
+      "Updated": {
+        "Date": "2026-05-19"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-5119",
+          "Cvss3": "5.9/CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:L/A:N",
+          "Cwe": "CWE-319",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-5119",
+          "Public": "20260330:0530"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2452932",
+          "ID": "2452932"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::extensions",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libsoup is earlier than 0:2.72.0-16.el9_8.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619356001"
+                  },
+                  {
+                    "Comment": "libsoup is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202520959002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libsoup-devel is earlier than 0:2.72.0-16.el9_8.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619356003"
+                  },
+                  {
+                    "Comment": "libsoup-devel is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202520959004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

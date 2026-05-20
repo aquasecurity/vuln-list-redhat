@@ -1,0 +1,160 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202619352",
+  "Version": "638",
+  "Metadata": {
+    "Title": "RHSA-2026:19352: grafana security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:19352",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:19352"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-27877",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-27877"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-32282",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-32282"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-32283",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-32283"
+      }
+    ],
+    "Description": "Grafana is an open source, feature rich metrics dashboard and graph editor for Graphite, InfluxDB \u0026 OpenTSDB. \n\nSecurity Fix(es):\n\n* grafana: Grafana: Information disclosure of data-source passwords via public dashboards (CVE-2026-27877)\n\n* golang: internal/syscall/unix: Root.Chmod can follow symlinks out of the root (CVE-2026-32282)\n\n* crypto/tls: golang: Go crypto/tls: Denial of Service via multiple TLS 1.3 key update messages (CVE-2026-32283)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-05-19"
+      },
+      "Updated": {
+        "Date": "2026-05-19"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-27877",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "Cwe": "CWE-201",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-27877",
+          "Public": "20260327:1402"
+        },
+        {
+          "CveID": "CVE-2026-32282",
+          "Cvss3": "7.8/CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H",
+          "Cwe": "CWE-367",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-32282",
+          "Public": "20260408:0106"
+        },
+        {
+          "CveID": "CVE-2026-32283",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-764",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-32283",
+          "Public": "20260408:0106"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2452293",
+          "ID": "2452293"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2456336",
+          "ID": "2456336"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2456338",
+          "ID": "2456338"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.8",
+        "cpe:/a:redhat:rhel_eus:9.8::appstream",
+        "cpe:/a:redhat:rhel_eus:9.8::crb",
+        "cpe:/a:redhat:rhel_eus:9.8::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.8::nfv",
+        "cpe:/a:redhat:rhel_eus:9.8::realtime",
+        "cpe:/a:redhat:rhel_eus:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.8::sap",
+        "cpe:/a:redhat:rhel_eus:9.8::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.8::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.8",
+        "cpe:/o:redhat:rhel_eus:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "grafana is earlier than 0:10.2.6-22.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619352001"
+                  },
+                  {
+                    "Comment": "grafana is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202523087002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "grafana-selinux is earlier than 0:10.2.6-22.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619352003"
+                  },
+                  {
+                    "Comment": "grafana-selinux is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202523087004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
