@@ -1,0 +1,180 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202619457",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:19457: glib2 security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.6 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:19457",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:19457"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-14087",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-14087"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-14512",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-14512"
+      }
+    ],
+    "Description": "GLib provides the core application building blocks for libraries and applications written in C. It provides the core object system used in GNOME, the main loop implementation, and a large set of utility functions for strings and common data structures.\n\nSecurity Fix(es):\n\n* glib: GLib: Buffer underflow in GVariant parser leads to heap corruption (CVE-2025-14087)\n\n* glib: Integer Overflow in GLib GIO Attribute Escaping Causes Heap Buffer Overflow (CVE-2025-14512)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-05-20"
+      },
+      "Updated": {
+        "Date": "2026-05-20"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-14087",
+          "Cvss3": "5.6/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L",
+          "Cwe": "CWE-190",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-14087",
+          "Public": "20251205"
+        },
+        {
+          "CveID": "CVE-2025-14512",
+          "Cvss3": "6.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-190",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-14512",
+          "Public": "20251211"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2419093",
+          "ID": "2419093"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2421339",
+          "ID": "2421339"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.6",
+        "cpe:/a:redhat:rhel_e4s:9.6::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.6::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.6::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.6::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.6::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.6::sap",
+        "cpe:/a:redhat:rhel_e4s:9.6::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.6",
+        "cpe:/o:redhat:rhel_e4s:9.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glib2 is earlier than 0:2.68.4-16.el9_6.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619457001"
+                  },
+                  {
+                    "Comment": "glib2 is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20236631002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glib2-devel is earlier than 0:2.68.4-16.el9_6.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619457003"
+                  },
+                  {
+                    "Comment": "glib2-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20236631004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glib2-doc is earlier than 0:2.68.4-16.el9_6.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619457005"
+                  },
+                  {
+                    "Comment": "glib2-doc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20236631006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glib2-static is earlier than 0:2.68.4-16.el9_6.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619457007"
+                  },
+                  {
+                    "Comment": "glib2-static is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20236631008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "glib2-tests is earlier than 0:2.68.4-16.el9_6.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619457009"
+                  },
+                  {
+                    "Comment": "glib2-tests is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20236631010"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
