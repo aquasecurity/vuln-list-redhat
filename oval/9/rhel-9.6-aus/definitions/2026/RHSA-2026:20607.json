@@ -1,0 +1,146 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202620607",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:20607: buildah security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.6 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:20607",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:20607"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-32280",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-32280"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-32283",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-32283"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-34986",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-34986"
+      }
+    ],
+    "Description": "The buildah package provides a tool for facilitating building OCI container images. Among other things, buildah enables you to: Create a working container, either from scratch or using an image as a starting point; Create an image, either from a working container or using the instructions in a Dockerfile; Build both Docker and OCI images. \n\nSecurity Fix(es):\n\n* github.com/go-jose/go-jose/v3: github.com/go-jose/go-jose/v4: Go JOSE: Denial of Service via crafted JSON Web Encryption (JWE) object (CVE-2026-34986)\n\n* crypto/tls: golang: Go crypto/tls: Denial of Service via multiple TLS 1.3 key update messages (CVE-2026-32283)\n\n* crypto/x509: crypto/tls: golang: Go: Denial of Service vulnerability in certificate chain building (CVE-2026-32280)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-05-26"
+      },
+      "Updated": {
+        "Date": "2026-05-26"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-32280",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-770",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-32280",
+          "Public": "20260408:0106"
+        },
+        {
+          "CveID": "CVE-2026-32283",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-764",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-32283",
+          "Public": "20260408:0106"
+        },
+        {
+          "CveID": "CVE-2026-34986",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-131",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-34986",
+          "Public": "20260406:1622"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2455470",
+          "ID": "2455470"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2456338",
+          "ID": "2456338"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2456339",
+          "ID": "2456339"
+        }
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "buildah is earlier than 2:1.39.9-1.el9_6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202620607001"
+                  },
+                  {
+                    "Comment": "buildah is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20228008002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "buildah-tests is earlier than 2:1.39.9-1.el9_6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202620607003"
+                  },
+                  {
+                    "Comment": "buildah-tests is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20228008004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

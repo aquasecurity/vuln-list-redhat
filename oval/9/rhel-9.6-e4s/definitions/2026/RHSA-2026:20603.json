@@ -1,0 +1,158 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202620603",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:20603: rsync security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.6 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:20603",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:20603"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2024-12086",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2024-12086"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-10158",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-10158"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-41035",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-41035"
+      }
+    ],
+    "Description": "The rsync utility enables the users to copy and synchronize files locally or across a network. Synchronization with rsync is fast because rsync only sends the differences in files over the network instead of sending whole files. The rsync utility is also used as a mirroring tool.\n\nSecurity Fix(es):\n\n* rsync: rsync server leaks arbitrary client files (CVE-2024-12086)\n\n* rsync: Rsync: Out of bounds array access via negative index (CVE-2025-10158)\n\n* rsync: Rsync: Use-after-free vulnerability in extended attribute handling (CVE-2026-41035)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-05-26"
+      },
+      "Updated": {
+        "Date": "2026-05-26"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2024-12086",
+          "Cvss3": "6.1/CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:N/A:N",
+          "Cwe": "CWE-390",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2024-12086",
+          "Public": "20250114:1506"
+        },
+        {
+          "CveID": "CVE-2025-10158",
+          "Cvss3": "4.3/CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
+          "Cwe": "CWE-129",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-10158",
+          "Public": "20251118:1424"
+        },
+        {
+          "CveID": "CVE-2026-41035",
+          "Cvss3": "7.4/CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:L",
+          "Cwe": "CWE-805",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-41035",
+          "Public": "20260416:0653"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2330577",
+          "ID": "2330577"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2415637",
+          "ID": "2415637"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2458898",
+          "ID": "2458898"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.6",
+        "cpe:/a:redhat:rhel_e4s:9.6::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.6::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.6::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.6::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.6::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.6::sap",
+        "cpe:/a:redhat:rhel_e4s:9.6::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.6",
+        "cpe:/o:redhat:rhel_e4s:9.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "rsync is earlier than 0:3.2.5-3.el9_6.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202620603001"
+                  },
+                  {
+                    "Comment": "rsync is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20224592002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "rsync-daemon is earlier than 0:3.2.5-3.el9_6.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202620603003"
+                  },
+                  {
+                    "Comment": "rsync-daemon is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20224592004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
