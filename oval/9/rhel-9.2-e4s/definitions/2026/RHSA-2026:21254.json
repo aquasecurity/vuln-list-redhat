@@ -1,0 +1,124 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202621254",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:21254: libcap security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.2 Update Services for SAP Solutions"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:21254",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:21254"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-4878",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-4878"
+      }
+    ],
+    "Description": "Libcap is a library for getting and setting POSIX.1e (formerly POSIX 6) draft 15 capabilities.\n\nSecurity Fix(es):\n\n* libcap: libcap: Privilege escalation via TOCTOU race condition in cap_set_file() (CVE-2026-4878)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-05-27"
+      },
+      "Updated": {
+        "Date": "2026-05-27"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-4878",
+          "Cvss3": "6.7/CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-367",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-4878",
+          "Public": "20260406"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2451615",
+          "ID": "2451615"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.2",
+        "cpe:/a:redhat:rhel_e4s:9.2::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.2::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.2::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.2::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.2::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.2::sap",
+        "cpe:/a:redhat:rhel_e4s:9.2::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.2",
+        "cpe:/o:redhat:rhel_e4s:9.2::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libcap is earlier than 0:2.48-9.el9_2.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202621254001"
+                  },
+                  {
+                    "Comment": "libcap is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20235071002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libcap-devel is earlier than 0:2.48-9.el9_2.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202621254003"
+                  },
+                  {
+                    "Comment": "libcap-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20235071004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
