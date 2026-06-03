@@ -1,0 +1,155 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202621701",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:21701: OpenShift Container Platform 4.20.24 packages and security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat OpenShift Container Platform 4.20"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:21701",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:21701"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-58183",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-58183"
+      }
+    ],
+    "Description": "Red Hat OpenShift Container Platform is Red Hat's cloud computing Kubernetes application platform solution designed for on-premise or private cloud deployments.\n\nThis advisory contains the RPM packages for Red Hat OpenShift Container Platform 4.20.24. See the following advisory for the container images for this release:\n\nhttps://access.redhat.com/errata/RHSA-2026:21703\n\nSecurity Fix(es):\n\n* golang: archive/tar: Unbounded allocation when parsing GNU sparse map (CVE-2025-58183)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n\nAll OpenShift Container Platform 4.20 users are advised to upgrade to these updated packages and images when they are available in the appropriate release channel. To check for available updates, use the OpenShift CLI (oc) or web console. Instructions for upgrading a cluster are available at https://docs.redhat.com/en/documentation/openshift_container_platform/4.20/html-single/updating_clusters/index#updating-cluster-cli.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-06-03"
+      },
+      "Updated": {
+        "Date": "2026-06-03"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-58183",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-770",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-58183",
+          "Public": "20251029:2210"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2407258",
+          "ID": "2407258"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:openshift:4.20",
+        "cpe:/a:redhat:openshift:4.20::el9"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhea:tst:20254782052"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhea:tst:20254782051"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openshift-hyperkube is earlier than 0:4.20.0-202605141748.p2.g2a0461f.assembly.stream.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202621701001"
+                  },
+                  {
+                    "Comment": "openshift-hyperkube is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhea:tst:20254782032"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openshift-kube-apiserver is earlier than 0:4.20.0-202605141748.p2.g2a0461f.assembly.stream.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202621701003"
+                  },
+                  {
+                    "Comment": "openshift-kube-apiserver is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhea:tst:20254782034"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openshift-kube-controller-manager is earlier than 0:4.20.0-202605141748.p2.g2a0461f.assembly.stream.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202621701005"
+                  },
+                  {
+                    "Comment": "openshift-kube-controller-manager is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhea:tst:20254782036"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openshift-kube-scheduler is earlier than 0:4.20.0-202605141748.p2.g2a0461f.assembly.stream.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202621701007"
+                  },
+                  {
+                    "Comment": "openshift-kube-scheduler is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhea:tst:20254782038"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openshift-kubelet is earlier than 0:4.20.0-202605141748.p2.g2a0461f.assembly.stream.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202621701009"
+                  },
+                  {
+                    "Comment": "openshift-kubelet is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhea:tst:20254782040"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
