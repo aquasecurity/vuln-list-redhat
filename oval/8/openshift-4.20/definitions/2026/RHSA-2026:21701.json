@@ -22,6 +22,11 @@
         "Source": "CVE",
         "RefID": "CVE-2025-58183",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2025-58183"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-46333",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-46333"
       }
     ],
     "Description": "Red Hat OpenShift Container Platform is Red Hat's cloud computing Kubernetes application platform solution designed for on-premise or private cloud deployments.\n\nThis advisory contains the RPM packages for Red Hat OpenShift Container Platform 4.20.24. See the following advisory for the container images for this release:\n\nhttps://access.redhat.com/errata/RHSA-2026:21703\n\nSecurity Fix(es):\n\n* golang: archive/tar: Unbounded allocation when parsing GNU sparse map (CVE-2025-58183)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n\nAll OpenShift Container Platform 4.20 users are advised to upgrade to these updated packages and images when they are available in the appropriate release channel. To check for available updates, use the OpenShift CLI (oc) or web console. Instructions for upgrading a cluster are available at https://docs.redhat.com/en/documentation/openshift_container_platform/4.20/html-single/updating_clusters/index#updating-cluster-cli.",
@@ -43,12 +48,24 @@
           "Impact": "moderate",
           "Href": "https://access.redhat.com/security/cve/CVE-2025-58183",
           "Public": "20251029:2210"
+        },
+        {
+          "CveID": "CVE-2026-46333",
+          "Cvss3": "7.8/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-269",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-46333",
+          "Public": "20260515:0555"
         }
       ],
       "Bugzilla": [
         {
           "Href": "https://bugzilla.redhat.com/2407258",
           "ID": "2407258"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2477802",
+          "ID": "2477802"
         }
       ],
       "AffectedCpeList": [
@@ -150,6 +167,32 @@
                   {
                     "Comment": "openshift-kubelet is signed with Red Hat redhatrelease2 key",
                     "TestRef": "oval:com.redhat.rhea:tst:20254782026"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openshift-clients is earlier than 0:4.20.0-202605211651.p2.g02b0b2d.assembly.stream.el8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202621701011"
+                  },
+                  {
+                    "Comment": "openshift-clients is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhea:tst:20254782014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openshift-clients-redistributable is earlier than 0:4.20.0-202605211651.p2.g02b0b2d.assembly.stream.el8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202621701013"
+                  },
+                  {
+                    "Comment": "openshift-clients-redistributable is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhea:tst:20254782016"
                   }
                 ]
               }
