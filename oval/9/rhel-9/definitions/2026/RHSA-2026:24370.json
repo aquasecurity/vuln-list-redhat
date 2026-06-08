@@ -1,0 +1,144 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202624370",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:24370: frr10 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:24370",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:24370"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-37457",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-37457"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-37459",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-37459"
+      }
+    ],
+    "Description": "FRRouting is free software that manages TCP/IP based routing protocols. It takes a multi-server and multi-threaded approach to resolve the current complexity of the Internet.  FRRouting supports BGP4, OSPFv2, OSPFv3, ISIS, RIP, RIPng, PIM, NHRP, PBR, EIGRP and BFD.  FRRouting is a fork of Quagga.\n\nSecurity Fix(es):\n\n* frr: denial of service via crafted FlowSpec component (CVE-2026-37457)\n\n* frr: denial of service via crafted BGP UPDATE message (CVE-2026-37459)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-06-08"
+      },
+      "Updated": {
+        "Date": "2026-06-08"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-37457",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-787",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-37457",
+          "Public": "20260501"
+        },
+        {
+          "CveID": "CVE-2026-37459",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-191",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-37459",
+          "Public": "20260504"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2464548",
+          "ID": "2464548"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2466513",
+          "ID": "2466513"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::extensions",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "frr10 is earlier than 0:10.4.3-3.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202624370001"
+                  },
+                  {
+                    "Comment": "frr10 is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202624370002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "frr10-selinux is earlier than 0:10.4.3-3.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202624370003"
+                  },
+                  {
+                    "Comment": "frr10-selinux is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202624370004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
