@@ -1,0 +1,175 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202624365",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:24365: unbound security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:24365",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:24365"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-42944",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-42944"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-42959",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-42959"
+      }
+    ],
+    "Description": "The unbound packages provide a validating, recursive, and caching DNS or DNSSEC resolver. \n\nSecurity Fix(es):\n\n* unbound: Heap overflow and crash with multiple nsid, cookie, padding EDNS options (CVE-2026-42944)\n\n* unbound: Unbound DNSSEC Validator Denial of Service via Incorrect Write Offset Counter in Chase-Reply Messages (CVE-2026-42959)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-06-08"
+      },
+      "Updated": {
+        "Date": "2026-06-08"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-42944",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-42944",
+          "Public": "20260520:1133"
+        },
+        {
+          "CveID": "CVE-2026-42959",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-824",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-42959",
+          "Public": "20260520"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2479774",
+          "ID": "2479774"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2479806",
+          "ID": "2479806"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:8",
+        "cpe:/a:redhat:enterprise_linux:8::appstream",
+        "cpe:/a:redhat:enterprise_linux:8::crb",
+        "cpe:/a:redhat:enterprise_linux:8::highavailability",
+        "cpe:/a:redhat:enterprise_linux:8::nfv",
+        "cpe:/a:redhat:enterprise_linux:8::realtime",
+        "cpe:/a:redhat:enterprise_linux:8::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:8::sap",
+        "cpe:/a:redhat:enterprise_linux:8::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:8::supplementary",
+        "cpe:/o:redhat:enterprise_linux:8",
+        "cpe:/o:redhat:enterprise_linux:8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:20052541004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.cve:tst:20052541003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3-unbound is earlier than 0:1.16.2-5.11.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202624365001"
+                  },
+                  {
+                    "Comment": "python3-unbound is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:201916866004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "unbound is earlier than 0:1.16.2-5.11.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202624365003"
+                  },
+                  {
+                    "Comment": "unbound is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:201916866008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "unbound-devel is earlier than 0:1.16.2-5.11.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202624365005"
+                  },
+                  {
+                    "Comment": "unbound-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:201916866006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "unbound-libs is earlier than 0:1.16.2-5.11.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202624365007"
+                  },
+                  {
+                    "Comment": "unbound-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:201916866002"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
