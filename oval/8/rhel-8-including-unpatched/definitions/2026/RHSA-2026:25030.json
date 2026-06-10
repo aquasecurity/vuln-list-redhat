@@ -1,23 +1,39 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:202642198",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202625030",
   "Version": "636",
   "Metadata": {
-    "Title": "jdbc.postgresql.org: pgjdbc: Client-side Denial of Service via malicious SCRAM-SHA-256 authentication (important)",
+    "Title": "RHSA-2026:25030: postgresql-jdbc security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:25030",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:25030"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2026-42198",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2026-42198"
       }
     ],
-    "Description": "DOCUMENTATION: A flaw was found in pgjdbc, an open-source PostgreSQL JDBC Driver. A malicious server can exploit this vulnerability by instructing the driver to perform SCRAM-SHA-256 (Salted Challenge Response Authentication Mechanism Secure Hash Algorithm 256) authentication with an excessively large iteration count. This causes the client to spend an unbounded amount of CPU time performing PBKDF2 (Password-Based Key Derivation Function 2) computations, leading to a client-side Denial of Service (DoS). This can exhaust client CPU resources and wedge connection pools.",
+    "Description": "PostgreSQL is an advanced object-relational database management system. The postgresql-jdbc package includes the .jar files needed for Java programs to access a PostgreSQL database.\n\nSecurity Fix(es):\n\n* jdbc.postgresql.org: pgjdbc: Client-side Denial of Service via malicious SCRAM-SHA-256 authentication (CVE-2026-42198)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Important",
-      "Issued": {},
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-06-10"
+      },
       "Updated": {
-        "Date": "2026-05-06"
+        "Date": "2026-06-10"
       },
       "Cves": [
         {
@@ -27,6 +43,12 @@
           "Impact": "important",
           "Href": "https://access.redhat.com/security/cve/CVE-2026-42198",
           "Public": "20260429:1558"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2463857",
+          "ID": "2463857"
         }
       ],
       "AffectedCpeList": [
@@ -44,9 +66,7 @@
         "cpe:/o:redhat:enterprise_linux:8::baseos"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -61,13 +81,20 @@
     "Criterias": [
       {
         "Operator": "AND",
-        "Criterions": [
-          {
-            "Comment": "Red Hat Enterprise Linux 8 is installed",
-            "TestRef": "oval:com.redhat.cve:tst:20052541003"
-          }
-        ],
         "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.cve:tst:20052541003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
           {
             "Operator": "OR",
             "Criterias": [
@@ -75,8 +102,8 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "postgresql-jdbc is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:201810936001"
+                    "Comment": "postgresql-jdbc is earlier than 0:42.2.14-4.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202625030001"
                   },
                   {
                     "Comment": "postgresql-jdbc is signed with Red Hat redhatrelease2 key",
@@ -88,8 +115,8 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "postgresql-jdbc-javadoc is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:201810936003"
+                    "Comment": "postgresql-jdbc-javadoc is earlier than 0:42.2.14-4.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202625030003"
                   },
                   {
                     "Comment": "postgresql-jdbc-javadoc is signed with Red Hat redhatrelease2 key",
