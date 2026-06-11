@@ -1,0 +1,187 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202625219",
+  "Version": "640",
+  "Metadata": {
+    "Title": "RHSA-2026:25219: redis:7 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:25219",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:25219"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-23479",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-23479"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-23631",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-23631"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-25243",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-25243"
+      }
+    ],
+    "Description": "Redis is an advanced key-value store. It is often referred to as a data-structure server since keys can contain strings, hashes, lists, sets, and sorted sets. For performance, Redis works with an in-memory data set. You can persist it either by dumping the data set to disk every once in a while, or by appending each command to a log.\n\nSecurity Fix(es):\n\n* redis: use-after-free in unblock client flow may allow remote code execution (CVE-2026-23479)\n\n* redis: Remote code execution via use-after-free in Lua scripting (CVE-2026-23631)\n\n* redis: RESTORE invalid memory access may allow remote code execution (CVE-2026-25243)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-06-11"
+      },
+      "Updated": {
+        "Date": "2026-06-11"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-23479",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-416",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-23479",
+          "Public": "20260505:1636"
+        },
+        {
+          "CveID": "CVE-2026-23631",
+          "Cvss3": "8.8/CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-416",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-23631",
+          "Public": "20260505:1639"
+        },
+        {
+          "CveID": "CVE-2026-25243",
+          "Cvss3": "8.8/CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-122",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-25243",
+          "Public": "20260505:1644"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2466780",
+          "ID": "2466780"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2466788",
+          "ID": "2466788"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2466828",
+          "ID": "2466828"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.8",
+        "cpe:/a:redhat:rhel_e4s:9.8::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.8::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.8::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.8::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.8",
+        "cpe:/o:redhat:rhel_e4s:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "Module redis:7 is enabled",
+                    "TestRef": "oval:com.redhat.rhea:tst:20241143007"
+                  }
+                ],
+                "Criterias": [
+                  {
+                    "Operator": "OR",
+                    "Criterias": [
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "redis is earlier than 0:7.2.14-1.module+el9.8.0+24327+41ceb644",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202625219001"
+                          },
+                          {
+                            "Comment": "redis is signed with Red Hat release4,release2,ima key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202520926002"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "redis-devel is earlier than 0:7.2.14-1.module+el9.8.0+24327+41ceb644",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202625219003"
+                          },
+                          {
+                            "Comment": "redis-devel is signed with Red Hat release4,release2,ima key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202520926004"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "redis-doc is earlier than 0:7.2.14-1.module+el9.8.0+24327+41ceb644",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202625219005"
+                          },
+                          {
+                            "Comment": "redis-doc is signed with Red Hat release4,release2,ima key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202520926006"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

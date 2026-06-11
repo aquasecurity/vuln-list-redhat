@@ -1,0 +1,297 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202625221",
+  "Version": "639",
+  "Metadata": {
+    "Title": "RHSA-2026:25221: .NET 9.0 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:25221",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:25221"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-45491",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-45491"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-45591",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-45591"
+      }
+    ],
+    "Description": ".NET is a managed-software framework. It implements a subset of the .NET framework APIs and several new APIs, and it includes a CLR implementation.\n\nNew versions of .NET that address a security vulnerability are now available. The updated versions are .NET SDK 9.0.118 and .NET Runtime 9.0.17.Security Fix(es):\n\n* dotnet: .NET: Local file tampering via link following vulnerability (CVE-2026-45491)\n\n* dotnet: ASP.NET Core: Denial of Service via uncontrolled resource consumption (CVE-2026-45591)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-06-11"
+      },
+      "Updated": {
+        "Date": "2026-06-11"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-45491",
+          "Cvss3": "6.2/CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+          "Cwe": "CWE-59",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-45491",
+          "Public": "20260609:1704"
+        },
+        {
+          "CveID": "CVE-2026-45591",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-770",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-45591",
+          "Public": "20260609:1705"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2487164",
+          "ID": "2487164"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2487224",
+          "ID": "2487224"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.8",
+        "cpe:/a:redhat:rhel_e4s:9.8::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.8::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.8::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.8::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.8",
+        "cpe:/o:redhat:rhel_e4s:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "aspnetcore-runtime-9.0 is earlier than 0:9.0.17-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202625221001"
+                  },
+                  {
+                    "Comment": "aspnetcore-runtime-9.0 is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202621296002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "aspnetcore-runtime-dbg-9.0 is earlier than 0:9.0.17-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202625221003"
+                  },
+                  {
+                    "Comment": "aspnetcore-runtime-dbg-9.0 is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202621296004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "aspnetcore-targeting-pack-9.0 is earlier than 0:9.0.17-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202625221005"
+                  },
+                  {
+                    "Comment": "aspnetcore-targeting-pack-9.0 is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202621296006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "dotnet-apphost-pack-9.0 is earlier than 0:9.0.17-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202625221007"
+                  },
+                  {
+                    "Comment": "dotnet-apphost-pack-9.0 is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202621296008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "dotnet-hostfxr-9.0 is earlier than 0:9.0.17-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202625221009"
+                  },
+                  {
+                    "Comment": "dotnet-hostfxr-9.0 is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202621296010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "dotnet-runtime-9.0 is earlier than 0:9.0.17-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202625221011"
+                  },
+                  {
+                    "Comment": "dotnet-runtime-9.0 is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202621296012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "dotnet-runtime-dbg-9.0 is earlier than 0:9.0.17-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202625221013"
+                  },
+                  {
+                    "Comment": "dotnet-runtime-dbg-9.0 is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202621296014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "dotnet-sdk-9.0 is earlier than 0:9.0.118-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202625221015"
+                  },
+                  {
+                    "Comment": "dotnet-sdk-9.0 is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202621296016"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "dotnet-sdk-9.0-source-built-artifacts is earlier than 0:9.0.118-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202625221017"
+                  },
+                  {
+                    "Comment": "dotnet-sdk-9.0-source-built-artifacts is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202621296018"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "dotnet-sdk-aot-9.0 is earlier than 0:9.0.118-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202625221019"
+                  },
+                  {
+                    "Comment": "dotnet-sdk-aot-9.0 is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202621296020"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "dotnet-sdk-dbg-9.0 is earlier than 0:9.0.118-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202625221021"
+                  },
+                  {
+                    "Comment": "dotnet-sdk-dbg-9.0 is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202621296022"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "dotnet-targeting-pack-9.0 is earlier than 0:9.0.17-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202625221023"
+                  },
+                  {
+                    "Comment": "dotnet-targeting-pack-9.0 is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202621296024"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "dotnet-templates-9.0 is earlier than 0:9.0.118-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202625221025"
+                  },
+                  {
+                    "Comment": "dotnet-templates-9.0 is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202621296026"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "netstandard-targeting-pack-2.1 is earlier than 0:9.0.118-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202625221027"
+                  },
+                  {
+                    "Comment": "netstandard-targeting-pack-2.1 is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202621296028"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
