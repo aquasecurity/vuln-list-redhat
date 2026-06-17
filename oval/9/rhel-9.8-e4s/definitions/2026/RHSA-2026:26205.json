@@ -1,0 +1,215 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202626205",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:26205: postfix security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:26205",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:26205"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-43964",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-43964"
+      }
+    ],
+    "Description": "The postfix packages provide a Mail Transport Agent (MTA), which supports protocols like LDAP, SMTP AUTH (SASL), and TLS.\n\nSecurity Fix(es):\n\n* postfix: buffer over-read via malformed enhanced status code (CVE-2026-43964)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-06-16"
+      },
+      "Updated": {
+        "Date": "2026-06-16"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-43964",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-193",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-43964",
+          "Public": "20260504:1810"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2466488",
+          "ID": "2466488"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.8",
+        "cpe:/a:redhat:rhel_e4s:9.8::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.8::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.8::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.8::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.8",
+        "cpe:/o:redhat:rhel_e4s:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "postfix is earlier than 2:3.5.25-3.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202626205001"
+                  },
+                  {
+                    "Comment": "postfix is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202626205002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "postfix-cdb is earlier than 2:3.5.25-3.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202626205003"
+                  },
+                  {
+                    "Comment": "postfix-cdb is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202626205004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "postfix-ldap is earlier than 2:3.5.25-3.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202626205005"
+                  },
+                  {
+                    "Comment": "postfix-ldap is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202626205006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "postfix-lmdb is earlier than 2:3.5.25-3.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202626205007"
+                  },
+                  {
+                    "Comment": "postfix-lmdb is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202626205008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "postfix-mysql is earlier than 2:3.5.25-3.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202626205009"
+                  },
+                  {
+                    "Comment": "postfix-mysql is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202626205010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "postfix-pcre is earlier than 2:3.5.25-3.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202626205011"
+                  },
+                  {
+                    "Comment": "postfix-pcre is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202626205012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "postfix-perl-scripts is earlier than 2:3.5.25-3.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202626205013"
+                  },
+                  {
+                    "Comment": "postfix-perl-scripts is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202626205014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "postfix-pgsql is earlier than 2:3.5.25-3.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202626205015"
+                  },
+                  {
+                    "Comment": "postfix-pgsql is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202626205016"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "postfix-sqlite is earlier than 2:3.5.25-3.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202626205017"
+                  },
+                  {
+                    "Comment": "postfix-sqlite is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202626205018"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
