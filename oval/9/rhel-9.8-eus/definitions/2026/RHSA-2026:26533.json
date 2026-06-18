@@ -1,0 +1,204 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202626533",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:26533: dracut security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:26533",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:26533"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-6893",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-6893"
+      }
+    ],
+    "Description": "The dracut packages contain an event-driven initial RAM file system (initramfs) generator infrastructure based on the udev device manager. The virtual file system, initramfs, is loaded together with the kernel at boot time and initializes the system, so it can read and boot from the root partition.\n\nSecurity Fix(es):\n\n* dracut: dracut: Root code execution via DHCP options command injection (CVE-2026-6893)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-06-17"
+      },
+      "Updated": {
+        "Date": "2026-06-17"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-6893",
+          "Cvss3": "7.5/CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-78",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-6893",
+          "Public": "20260610:1939"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2459963",
+          "ID": "2459963"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.8",
+        "cpe:/a:redhat:rhel_eus:9.8::appstream",
+        "cpe:/a:redhat:rhel_eus:9.8::crb",
+        "cpe:/a:redhat:rhel_eus:9.8::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.8::nfv",
+        "cpe:/a:redhat:rhel_eus:9.8::realtime",
+        "cpe:/a:redhat:rhel_eus:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.8::sap",
+        "cpe:/a:redhat:rhel_eus:9.8::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.8::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.8",
+        "cpe:/o:redhat:rhel_eus:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "dracut is earlier than 0:057-115.git20260527.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202626533001"
+                  },
+                  {
+                    "Comment": "dracut is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202626533002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "dracut-caps is earlier than 0:057-115.git20260527.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202626533003"
+                  },
+                  {
+                    "Comment": "dracut-caps is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202626533004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "dracut-config-generic is earlier than 0:057-115.git20260527.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202626533005"
+                  },
+                  {
+                    "Comment": "dracut-config-generic is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202626533006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "dracut-config-rescue is earlier than 0:057-115.git20260527.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202626533007"
+                  },
+                  {
+                    "Comment": "dracut-config-rescue is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202626533008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "dracut-live is earlier than 0:057-115.git20260527.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202626533009"
+                  },
+                  {
+                    "Comment": "dracut-live is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202626533010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "dracut-network is earlier than 0:057-115.git20260527.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202626533011"
+                  },
+                  {
+                    "Comment": "dracut-network is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202626533012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "dracut-squash is earlier than 0:057-115.git20260527.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202626533013"
+                  },
+                  {
+                    "Comment": "dracut-squash is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202626533014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "dracut-tools is earlier than 0:057-115.git20260527.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202626533015"
+                  },
+                  {
+                    "Comment": "dracut-tools is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202626533016"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
