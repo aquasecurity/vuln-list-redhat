@@ -1,0 +1,163 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202627723",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:27723: poppler security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.2 Update Services for SAP Solutions"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:27723",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:27723"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-10118",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-10118"
+      }
+    ],
+    "Description": "Poppler is a Portable Document Format (PDF) rendering library, used by applications such as Evince.\n\nSecurity Fix(es):\n\n* poppler: Integer overflow in Poppler SplashOutputDev::tilingPatternFill leads to heap buffer overflow via unchecked dimension multiplication (CVE-2026-10118)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-06-22"
+      },
+      "Updated": {
+        "Date": "2026-06-22"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-10118",
+          "Cvss3": "7.8/CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-190",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-10118",
+          "Public": "20260601:1525"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2460428",
+          "ID": "2460428"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.2",
+        "cpe:/a:redhat:rhel_e4s:9.2::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.2::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.2::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.2::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.2::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.2::sap",
+        "cpe:/a:redhat:rhel_e4s:9.2::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.2",
+        "cpe:/o:redhat:rhel_e4s:9.2::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "poppler is earlier than 0:21.01.0-15.el9_2.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202627723001"
+                  },
+                  {
+                    "Comment": "poppler is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20228151002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "poppler-cpp is earlier than 0:21.01.0-15.el9_2.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202627723003"
+                  },
+                  {
+                    "Comment": "poppler-cpp is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20228151004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "poppler-glib is earlier than 0:21.01.0-15.el9_2.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202627723005"
+                  },
+                  {
+                    "Comment": "poppler-glib is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20228151010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "poppler-qt5 is earlier than 0:21.01.0-15.el9_2.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202627723007"
+                  },
+                  {
+                    "Comment": "poppler-qt5 is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20228151014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "poppler-utils is earlier than 0:21.01.0-15.el9_2.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202627723009"
+                  },
+                  {
+                    "Comment": "poppler-utils is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20228151018"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
