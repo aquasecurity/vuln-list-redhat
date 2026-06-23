@@ -1,0 +1,198 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202628044",
+  "Version": "638",
+  "Metadata": {
+    "Title": "RHSA-2026:28044: Red Hat OpenStack Platform 17.1 (openstack-keystone) security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat OpenStack Platform 17.1 for RHEL 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:28044",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:28044"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-65073",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-65073"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-33551",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-33551"
+      }
+    ],
+    "Description": "Keystone is a Python implementation of the OpenStack\n(http://www.openstack.org) identity service API.\n\nSecurity Fix(es):\n\n* OpenStack Keystone: Privilege escalation through EC2 credential creation\n(CVE-2026-33551)\n\n* OpenStack Keystone: Unauthenticated access to EC2/S3 token endpoints can grant Keystone authorization (CVE-2025-65073)\n\nFor more details about the security issue(s), including the impact, a CVSS\nscore, acknowledgments, and other related information, refer to the CVE\npage listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-06-22"
+      },
+      "Updated": {
+        "Date": "2026-06-22"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-65073",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:H/A:N",
+          "Cwe": "CWE-863",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-65073",
+          "Public": "20251117"
+        },
+        {
+          "CveID": "CVE-2026-33551",
+          "Cvss3": "3.5/CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:N/I:L/A:N",
+          "Cwe": "CWE-266",
+          "Impact": "low",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-33551",
+          "Public": "20260407:1500"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2415344",
+          "ID": "2415344"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2451037",
+          "ID": "2451037"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:openstack:17.1",
+        "cpe:/a:redhat:openstack:17.1::el9"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhsa:tst:20235969010"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhsa:tst:20235969009"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openstack-swift-account is earlier than 0:2.27.1-17.1.20231004180819.el9ost",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202628044001"
+                  },
+                  {
+                    "Comment": "openstack-swift-account is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202628044002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openstack-swift-container is earlier than 0:2.27.1-17.1.20231004180819.el9ost",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202628044003"
+                  },
+                  {
+                    "Comment": "openstack-swift-container is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202628044004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openstack-swift-object is earlier than 0:2.27.1-17.1.20231004180819.el9ost",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202628044005"
+                  },
+                  {
+                    "Comment": "openstack-swift-object is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202628044006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openstack-swift-proxy is earlier than 0:2.27.1-17.1.20231004180819.el9ost",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202628044007"
+                  },
+                  {
+                    "Comment": "openstack-swift-proxy is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202628044008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3-swift is earlier than 0:2.27.1-17.1.20231004180819.el9ost",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202628044009"
+                  },
+                  {
+                    "Comment": "python3-swift is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202628044010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openstack-keystone is earlier than 1:19.0.2-17.1.20260529190847.54dd95d.el9ost",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202628044011"
+                  },
+                  {
+                    "Comment": "openstack-keystone is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202628044012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3-keystone is earlier than 1:19.0.2-17.1.20260529190847.54dd95d.el9ost",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202628044013"
+                  },
+                  {
+                    "Comment": "python3-keystone is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202628044014"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
