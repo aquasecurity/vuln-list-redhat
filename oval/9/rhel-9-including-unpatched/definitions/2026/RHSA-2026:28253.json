@@ -1,23 +1,39 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:202513151",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202628253",
   "Version": "636",
   "Metadata": {
-    "Title": "libtasn1: libtasn1: Denial of Service via stack-based buffer overflow in asn1_expend_octet_string (low)",
+    "Title": "RHSA-2026:28253: libtasn1 security update (Low)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:28253",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:28253"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2025-13151",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2025-13151"
       }
     ],
-    "Description": "DOCUMENTATION: A flaw was found in libtasn1. A remote attacker could exploit a stack-based buffer overflow vulnerability in the `asn1_expend_octet_string` function. This occurs due to a failure in validating the size of input data. Successful exploitation can lead to a Denial of Service (DoS) condition, making the affected system or application unavailable. \n            STATEMENT: This vulnerability is rated Low for Red Hat products. A stack-based buffer overflow in the `libtasn1` library, specifically within the `asn1_expend_octet_string` function, can be triggered by failing to validate input data size. This could allow a remote, unauthenticated attacker to cause a denial of service in applications utilizing `libtasn1`.\n            MITIGATION: Mitigation for this issue is either not available or the currently available options do not meet the Red Hat Product Security criteria comprising ease of use and deployment, applicability to widespread installation base, or stability.",
+    "Description": "A library that provides Abstract Syntax Notation One (ASN.1, as specified by the X.680 ITU-T recommendation) parsing and structures management, and Distinguished Encoding Rules (DER, as per X.690) encoding and decoding functions.\n\nSecurity Fix(es):\n\n* libtasn1: libtasn1: Denial of Service via stack-based buffer overflow in asn1_expend_octet_string (CVE-2025-13151)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Low",
-      "Issued": {},
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-06-23"
+      },
       "Updated": {
-        "Date": "2026-05-20"
+        "Date": "2026-06-23"
       },
       "Cves": [
         {
@@ -27,6 +43,12 @@
           "Impact": "low",
           "Href": "https://access.redhat.com/security/cve/CVE-2025-13151",
           "Public": "20260107:2114"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2427698",
+          "ID": "2427698"
         }
       ],
       "AffectedCpeList": [
@@ -45,9 +67,7 @@
         "cpe:/o:redhat:enterprise_linux:9::baseos"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -76,12 +96,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "libtasn1 is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202513151001"
+                    "Comment": "libtasn1 is earlier than 0:4.16.0-10.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202628253001"
                   },
                   {
                     "Comment": "libtasn1 is signed with Red Hat release4,release2,ima key",
-                    "TestRef": "oval:com.redhat.cve:tst:202513151002"
+                    "TestRef": "oval:com.redhat.rhsa:tst:202628253002"
                   }
                 ]
               },
@@ -89,12 +109,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "libtasn1-devel is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202513151003"
+                    "Comment": "libtasn1-devel is earlier than 0:4.16.0-10.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202628253003"
                   },
                   {
                     "Comment": "libtasn1-devel is signed with Red Hat release4,release2,ima key",
-                    "TestRef": "oval:com.redhat.cve:tst:202513151004"
+                    "TestRef": "oval:com.redhat.rhsa:tst:202628253004"
                   }
                 ]
               },
@@ -102,12 +122,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "libtasn1-tools is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202513151005"
+                    "Comment": "libtasn1-tools is earlier than 0:4.16.0-10.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202628253005"
                   },
                   {
                     "Comment": "libtasn1-tools is signed with Red Hat release4,release2,ima key",
-                    "TestRef": "oval:com.redhat.cve:tst:202513151006"
+                    "TestRef": "oval:com.redhat.rhsa:tst:202628253006"
                   }
                 ]
               }

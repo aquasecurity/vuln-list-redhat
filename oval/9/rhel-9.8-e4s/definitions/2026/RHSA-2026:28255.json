@@ -1,0 +1,141 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202628255",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:28255: libpng security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:28255",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:28255"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-33416",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-33416"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-33636",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-33636"
+      }
+    ],
+    "Description": "The libpng packages contain a library of functions for creating and manipulating Portable Network Graphics (PNG) image format files.\n\nSecurity Fix(es):\n\n* libpng: libpng: Arbitrary code execution due to use-after-free vulnerability (CVE-2026-33416)\n\n* libpng: libpng: Information disclosure and denial of service via out-of-bounds read/write in Neon palette expansion (CVE-2026-33636)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-06-23"
+      },
+      "Updated": {
+        "Date": "2026-06-23"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-33416",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-825",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-33416",
+          "Public": "20260326:1648"
+        },
+        {
+          "CveID": "CVE-2026-33636",
+          "Cvss3": "7.6/CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:H",
+          "Cwe": "CWE-124",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-33636",
+          "Public": "20260326:1651"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2451805",
+          "ID": "2451805"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2451819",
+          "ID": "2451819"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.8",
+        "cpe:/a:redhat:rhel_e4s:9.8::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.8::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.8::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.8::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.8",
+        "cpe:/o:redhat:rhel_e4s:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libpng is earlier than 2:1.6.37-15.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202628255001"
+                  },
+                  {
+                    "Comment": "libpng is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260238002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libpng-devel is earlier than 2:1.6.37-15.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202628255003"
+                  },
+                  {
+                    "Comment": "libpng-devel is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20260238004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
