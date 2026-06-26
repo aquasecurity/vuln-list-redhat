@@ -1,0 +1,101 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202628456",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:28456: libpng15 security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.6 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:28456",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:28456"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-33416",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-33416"
+      }
+    ],
+    "Description": "The libpng15 package provides libpng 1.5, an older version of the libpng. library for manipulating PNG (Portable Network Graphics) image format files. This version should be used only if you are unable to use the current version of libpng.\n\nSecurity Fix(es):\n\n* libpng: libpng: Arbitrary code execution due to use-after-free vulnerability (CVE-2026-33416)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-06-25"
+      },
+      "Updated": {
+        "Date": "2026-06-25"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-33416",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-825",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-33416",
+          "Public": "20260326:1648"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2451805",
+          "ID": "2451805"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.6",
+        "cpe:/a:redhat:rhel_eus:9.6::appstream",
+        "cpe:/a:redhat:rhel_eus:9.6::crb",
+        "cpe:/a:redhat:rhel_eus:9.6::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.6::nfv",
+        "cpe:/a:redhat:rhel_eus:9.6::realtime",
+        "cpe:/a:redhat:rhel_eus:9.6::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.6::sap",
+        "cpe:/a:redhat:rhel_eus:9.6::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.6::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.6",
+        "cpe:/o:redhat:rhel_eus:9.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          },
+          {
+            "Comment": "libpng15 is earlier than 0:1.5.30-14.el9_6.2",
+            "TestRef": "oval:com.redhat.rhsa:tst:202628456001"
+          },
+          {
+            "Comment": "libpng15 is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:202628456002"
+          }
+        ]
+      }
+    ]
+  }
+}
