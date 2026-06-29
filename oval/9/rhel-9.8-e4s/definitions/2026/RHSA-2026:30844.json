@@ -1,0 +1,99 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202630844",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:30844: mod_md security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:30844",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:30844"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-29168",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-29168"
+      }
+    ],
+    "Description": "This module manages common properties of domains for one or more virtual hosts. Specifically it can use the ACME protocol to automate certificate provisioning.  Certificates will be configured for managed domains and their virtual hosts automatically, including at renewal.\n\nSecurity Fix(es):\n\n* httpd: mod_md: unrestricted OCSP response leads to resource exhaustion (CVE-2026-29168)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-06-29"
+      },
+      "Updated": {
+        "Date": "2026-06-29"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-29168",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-770",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-29168",
+          "Public": "20260505:1310"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2466753",
+          "ID": "2466753"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.8",
+        "cpe:/a:redhat:rhel_e4s:9.8::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.8::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.8::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.8::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.8",
+        "cpe:/o:redhat:rhel_e4s:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          },
+          {
+            "Comment": "mod_md is earlier than 1:2.4.26-2.el9_8.1",
+            "TestRef": "oval:com.redhat.rhsa:tst:202630844001"
+          },
+          {
+            "Comment": "mod_md is signed with Red Hat release4,release2,ima key",
+            "TestRef": "oval:com.redhat.rhsa:tst:202523739002"
+          }
+        ]
+      }
+    ]
+  }
+}
