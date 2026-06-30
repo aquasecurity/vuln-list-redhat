@@ -33,7 +33,7 @@
         "Date": "2026-06-24"
       },
       "Updated": {
-        "Date": "2026-06-24"
+        "Date": "2026-06-29"
       },
       "Cves": [
         {
@@ -83,14 +83,39 @@
           {
             "Comment": "Red Hat Enterprise Linux 9 is installed",
             "TestRef": "oval:com.redhat.rhba:tst:20223945011"
-          },
+          }
+        ],
+        "Criterias": [
           {
-            "Comment": "openssl-fips-provider is earlier than 0:3.0.7-11.el9_0",
-            "TestRef": "oval:com.redhat.rhsa:tst:202628832001"
-          },
-          {
-            "Comment": "openssl-fips-provider is signed with Red Hat redhatrelease2 key",
-            "TestRef": "oval:com.redhat.rhsa:tst:202628832002"
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openssl-fips-provider is earlier than 0:3.0.7-11.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202628832001"
+                  },
+                  {
+                    "Comment": "openssl-fips-provider is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202628832002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openssl-fips-provider-so is earlier than 0:3.0.7-11.el9_0",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202628832003"
+                  },
+                  {
+                    "Comment": "openssl-fips-provider-so is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202628832004"
+                  }
+                ]
+              }
+            ]
           }
         ]
       }
