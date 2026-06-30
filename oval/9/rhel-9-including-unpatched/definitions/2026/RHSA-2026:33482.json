@@ -1,0 +1,312 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202633482",
+  "Version": "638",
+  "Metadata": {
+    "Title": "RHSA-2026:33482: mariadb:10.11 security, bug fix, and enhancement update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:33482",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:33482"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-49261",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-49261"
+      }
+    ],
+    "Description": "MariaDB is a multi-user, multi-threaded SQL database server that is binary compatible with MySQL. \n\nSecurity Fix(es):\n\n* mariadb: MariaDB Server: Arbitrary code execution via wsrep_notify_cmd (CVE-2026-49261)\n\nBug Fix(es) and Enhancement(s):\n\n* [RHEL9][tracker] Rebase Galera to 26.4.27 MariaDB:10.11 (JIRA:RHEL-140363)\n\n* Rebase MariaDB 10.11 to 10.11.18 in RHEL9 (JIRA:RHEL-183087)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-06-30"
+      },
+      "Updated": {
+        "Date": "2026-06-30"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-49261",
+          "Cvss3": "9.0/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H",
+          "Cwe": "CWE-78",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-49261",
+          "Public": "20260611:1713"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2487957",
+          "ID": "2487957"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::extensions",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:20052541004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.cve:tst:20052541003"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "Module mariadb:10.11 is enabled",
+                    "TestRef": "oval:com.redhat.cve:tst:202352968029"
+                  }
+                ],
+                "Criterias": [
+                  {
+                    "Operator": "OR",
+                    "Criterias": [
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "galera is earlier than 0:26.4.27-1.module+el9.8.0+24388+85f1c439",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202633482001"
+                          },
+                          {
+                            "Comment": "galera is signed with Red Hat release4,release2,ima key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20260247002"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mariadb is earlier than 3:10.11.18-1.module+el9.8.0+24388+85f1c439",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202633482003"
+                          },
+                          {
+                            "Comment": "mariadb is signed with Red Hat release4,release2,ima key",
+                            "TestRef": "oval:com.redhat.cve:tst:202146662004"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mariadb-backup is earlier than 3:10.11.18-1.module+el9.8.0+24388+85f1c439",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202633482005"
+                          },
+                          {
+                            "Comment": "mariadb-backup is signed with Red Hat release4,release2,ima key",
+                            "TestRef": "oval:com.redhat.cve:tst:202146662018"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mariadb-common is earlier than 3:10.11.18-1.module+el9.8.0+24388+85f1c439",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202633482007"
+                          },
+                          {
+                            "Comment": "mariadb-common is signed with Red Hat release4,release2,ima key",
+                            "TestRef": "oval:com.redhat.cve:tst:202146662016"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mariadb-devel is earlier than 3:10.11.18-1.module+el9.8.0+24388+85f1c439",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202633482009"
+                          },
+                          {
+                            "Comment": "mariadb-devel is signed with Red Hat release4,release2,ima key",
+                            "TestRef": "oval:com.redhat.cve:tst:202146662008"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mariadb-embedded is earlier than 3:10.11.18-1.module+el9.8.0+24388+85f1c439",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202633482011"
+                          },
+                          {
+                            "Comment": "mariadb-embedded is signed with Red Hat release4,release2,ima key",
+                            "TestRef": "oval:com.redhat.cve:tst:202146662014"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mariadb-embedded-devel is earlier than 3:10.11.18-1.module+el9.8.0+24388+85f1c439",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202633482013"
+                          },
+                          {
+                            "Comment": "mariadb-embedded-devel is signed with Red Hat release4,release2,ima key",
+                            "TestRef": "oval:com.redhat.cve:tst:202146662026"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mariadb-errmsg is earlier than 3:10.11.18-1.module+el9.8.0+24388+85f1c439",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202633482015"
+                          },
+                          {
+                            "Comment": "mariadb-errmsg is signed with Red Hat release4,release2,ima key",
+                            "TestRef": "oval:com.redhat.cve:tst:202146662028"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mariadb-gssapi-server is earlier than 3:10.11.18-1.module+el9.8.0+24388+85f1c439",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202633482017"
+                          },
+                          {
+                            "Comment": "mariadb-gssapi-server is signed with Red Hat release4,release2,ima key",
+                            "TestRef": "oval:com.redhat.cve:tst:202146662024"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mariadb-oqgraph-engine is earlier than 3:10.11.18-1.module+el9.8.0+24388+85f1c439",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202633482019"
+                          },
+                          {
+                            "Comment": "mariadb-oqgraph-engine is signed with Red Hat release4,release2,ima key",
+                            "TestRef": "oval:com.redhat.cve:tst:202146662020"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mariadb-pam is earlier than 3:10.11.18-1.module+el9.8.0+24388+85f1c439",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202633482021"
+                          },
+                          {
+                            "Comment": "mariadb-pam is signed with Red Hat release4,release2,ima key",
+                            "TestRef": "oval:com.redhat.cve:tst:202146662010"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mariadb-server is earlier than 3:10.11.18-1.module+el9.8.0+24388+85f1c439",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202633482023"
+                          },
+                          {
+                            "Comment": "mariadb-server is signed with Red Hat release4,release2,ima key",
+                            "TestRef": "oval:com.redhat.cve:tst:202146662012"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mariadb-server-galera is earlier than 3:10.11.18-1.module+el9.8.0+24388+85f1c439",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202633482025"
+                          },
+                          {
+                            "Comment": "mariadb-server-galera is signed with Red Hat release4,release2,ima key",
+                            "TestRef": "oval:com.redhat.cve:tst:202146662022"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mariadb-server-utils is earlier than 3:10.11.18-1.module+el9.8.0+24388+85f1c439",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202633482027"
+                          },
+                          {
+                            "Comment": "mariadb-server-utils is signed with Red Hat release4,release2,ima key",
+                            "TestRef": "oval:com.redhat.cve:tst:202146662002"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mariadb-test is earlier than 3:10.11.18-1.module+el9.8.0+24388+85f1c439",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202633482029"
+                          },
+                          {
+                            "Comment": "mariadb-test is signed with Red Hat release4,release2,ima key",
+                            "TestRef": "oval:com.redhat.cve:tst:202146662006"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

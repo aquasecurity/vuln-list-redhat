@@ -1,0 +1,322 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202633481",
+  "Version": "638",
+  "Metadata": {
+    "Title": "RHSA-2026:33481: mariadb:11.8 security, bug fix, and enhancement update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:33481",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:33481"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-49261",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-49261"
+      }
+    ],
+    "Description": "MariaDB is a multi-user, multi-threaded SQL database server that is binary compatible with MySQL. \n\nSecurity Fix(es):\n\n* mariadb: MariaDB Server: Arbitrary code execution via wsrep_notify_cmd (CVE-2026-49261)\n\nBug Fix(es) and Enhancement(s):\n\n* [RHEL9] [tracker] Rebase Galera to 26.4.27 MariaDB:11.8 (JIRA:RHEL-140364)\n\n* Rebase MariaDB 11.8 to 11.8.8 in RHEL9 (JIRA:RHEL-183085)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-06-30"
+      },
+      "Updated": {
+        "Date": "2026-06-30"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-49261",
+          "Cvss3": "9.0/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H",
+          "Cwe": "CWE-78",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-49261",
+          "Public": "20260611:1713"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2487957",
+          "ID": "2487957"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.8",
+        "cpe:/a:redhat:rhel_e4s:9.8::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.8::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.8::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.8::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.8",
+        "cpe:/o:redhat:rhel_e4s:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "Module mariadb:11.8 is enabled",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619182033"
+                  }
+                ],
+                "Criterias": [
+                  {
+                    "Operator": "OR",
+                    "Criterias": [
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "galera is earlier than 0:26.4.27-1.module+el9.8.0+24389+c97c30be",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202633481001"
+                          },
+                          {
+                            "Comment": "galera is signed with Red Hat release4,release2,ima key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20260247002"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mariadb is earlier than 3:11.8.8-1.module+el9.8.0+24389+c97c30be",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202633481003"
+                          },
+                          {
+                            "Comment": "mariadb is signed with Red Hat release4,release2,ima key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20260137002"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mariadb-backup is earlier than 3:11.8.8-1.module+el9.8.0+24389+c97c30be",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202633481005"
+                          },
+                          {
+                            "Comment": "mariadb-backup is signed with Red Hat release4,release2,ima key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20260137004"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mariadb-client-utils is earlier than 3:11.8.8-1.module+el9.8.0+24389+c97c30be",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202633481007"
+                          },
+                          {
+                            "Comment": "mariadb-client-utils is signed with Red Hat release4,release2,ima key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202619182008"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mariadb-common is earlier than 3:11.8.8-1.module+el9.8.0+24389+c97c30be",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202633481009"
+                          },
+                          {
+                            "Comment": "mariadb-common is signed with Red Hat release4,release2,ima key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20260137006"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mariadb-devel is earlier than 3:11.8.8-1.module+el9.8.0+24389+c97c30be",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202633481011"
+                          },
+                          {
+                            "Comment": "mariadb-devel is signed with Red Hat release4,release2,ima key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20260137008"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mariadb-embedded is earlier than 3:11.8.8-1.module+el9.8.0+24389+c97c30be",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202633481013"
+                          },
+                          {
+                            "Comment": "mariadb-embedded is signed with Red Hat release4,release2,ima key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20260137010"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mariadb-embedded-devel is earlier than 3:11.8.8-1.module+el9.8.0+24389+c97c30be",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202633481015"
+                          },
+                          {
+                            "Comment": "mariadb-embedded-devel is signed with Red Hat release4,release2,ima key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20260137012"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mariadb-errmsg is earlier than 3:11.8.8-1.module+el9.8.0+24389+c97c30be",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202633481017"
+                          },
+                          {
+                            "Comment": "mariadb-errmsg is signed with Red Hat release4,release2,ima key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20260137014"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mariadb-gssapi-server is earlier than 3:11.8.8-1.module+el9.8.0+24389+c97c30be",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202633481019"
+                          },
+                          {
+                            "Comment": "mariadb-gssapi-server is signed with Red Hat release4,release2,ima key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20260137016"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mariadb-oqgraph-engine is earlier than 3:11.8.8-1.module+el9.8.0+24389+c97c30be",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202633481021"
+                          },
+                          {
+                            "Comment": "mariadb-oqgraph-engine is signed with Red Hat release4,release2,ima key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20260137018"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mariadb-pam is earlier than 3:11.8.8-1.module+el9.8.0+24389+c97c30be",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202633481023"
+                          },
+                          {
+                            "Comment": "mariadb-pam is signed with Red Hat release4,release2,ima key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20260137020"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mariadb-server is earlier than 3:11.8.8-1.module+el9.8.0+24389+c97c30be",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202633481025"
+                          },
+                          {
+                            "Comment": "mariadb-server is signed with Red Hat release4,release2,ima key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20260137022"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mariadb-server-galera is earlier than 3:11.8.8-1.module+el9.8.0+24389+c97c30be",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202633481027"
+                          },
+                          {
+                            "Comment": "mariadb-server-galera is signed with Red Hat release4,release2,ima key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20260137024"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mariadb-server-utils is earlier than 3:11.8.8-1.module+el9.8.0+24389+c97c30be",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202633481029"
+                          },
+                          {
+                            "Comment": "mariadb-server-utils is signed with Red Hat release4,release2,ima key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20260137026"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "mariadb-test is earlier than 3:11.8.8-1.module+el9.8.0+24389+c97c30be",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202633481031"
+                          },
+                          {
+                            "Comment": "mariadb-test is signed with Red Hat release4,release2,ima key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20260137028"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
