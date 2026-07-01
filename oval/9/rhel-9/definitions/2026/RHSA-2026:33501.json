@@ -1,23 +1,39 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:202626740",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202633501",
   "Version": "636",
   "Metadata": {
-    "Title": "giflib: giflib: Denial of Service via buffer overflow in EGifGCBToExtension (important)",
+    "Title": "RHSA-2026:33501: giflib security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:33501",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:33501"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2026-26740",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2026-26740"
       }
     ],
-    "Description": "DOCUMENTATION: A flaw was found in giflib. A remote attacker can exploit a buffer overflow vulnerability in the EGifGCBToExtension function by providing a specially crafted Graphics Control Extension (GCE) block. This allows overwriting an existing GCE block without proper size validation, leading to a denial of service (DoS) on the system. \n            STATEMENT: The openjdk-headless packages do not include java.desktop, which is the only code that uses giflib. Therefore, headless-only environments are not affected.\n            MITIGATION: Mitigation for this issue is either not available or the currently available options do not meet the Red Hat Product Security criteria comprising ease of use and deployment, applicability to widespread installation base or stability.",
+    "Description": "giflib is a library for reading and writing gif images.\n\nSecurity Fix(es):\n\n* giflib: giflib: Denial of Service via buffer overflow in EGifGCBToExtension (CVE-2026-26740)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Important",
-      "Issued": {},
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-06-30"
+      },
       "Updated": {
-        "Date": "2026-06-09"
+        "Date": "2026-06-30"
       },
       "Cves": [
         {
@@ -27,6 +43,12 @@
           "Impact": "important",
           "Href": "https://access.redhat.com/security/cve/CVE-2026-26740",
           "Public": "20260318"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2448747",
+          "ID": "2448747"
         }
       ],
       "AffectedCpeList": [
@@ -45,9 +67,7 @@
         "cpe:/o:redhat:enterprise_linux:9::baseos"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -56,7 +76,7 @@
     "Criterions": [
       {
         "Comment": "Red Hat Enterprise Linux must be installed",
-        "TestRef": "oval:com.redhat.cve:tst:20052541004"
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
       }
     ],
     "Criterias": [
@@ -65,7 +85,7 @@
         "Criterions": [
           {
             "Comment": "Red Hat Enterprise Linux 9 is installed",
-            "TestRef": "oval:com.redhat.cve:tst:20052541003"
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
           }
         ],
         "Criterias": [
@@ -76,12 +96,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "giflib is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202023922001"
+                    "Comment": "giflib is earlier than 0:5.2.1-10.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202633501001"
                   },
                   {
                     "Comment": "giflib is signed with Red Hat release4,release2,ima key",
-                    "TestRef": "oval:com.redhat.cve:tst:202023922002"
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619367002"
                   }
                 ]
               },
@@ -89,12 +109,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "giflib-devel is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202023922003"
+                    "Comment": "giflib-devel is earlier than 0:5.2.1-10.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202633501003"
                   },
                   {
                     "Comment": "giflib-devel is signed with Red Hat release4,release2,ima key",
-                    "TestRef": "oval:com.redhat.cve:tst:202023922004"
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619367004"
                   }
                 ]
               }

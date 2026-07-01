@@ -1,0 +1,204 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202634156",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:34156: rrdtool security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:34156",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:34156"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-43958",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-43958"
+      }
+    ],
+    "Description": "The round robin database (RRD) system stores and displays time-series data, such as network bandwidth, machine-room temperature, and server load average. RRDtool is a high performance data logging and graphing utility, which can be easily integrated with shell scripts, or used to create applications using its Perl, Python, Ruby, Lua, Tcl, and PHP bindings. The data is stored in a compact manner that does not expand over time, and RRDtool provides the user with useful graphs by processing the data to enforce a certain data density.\n\nSecurity Fix(es):\n\n* rrdtool: Stack buffer overflow in rrdcached handle_request_create() allows local privilege escalation via unbounded DS/RRA arguments (CVE-2026-43958)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-07-01"
+      },
+      "Updated": {
+        "Date": "2026-07-01"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-43958",
+          "Cvss3": "7.8/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-121",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-43958",
+          "Public": "20260601:1704"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2460932",
+          "ID": "2460932"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.8",
+        "cpe:/a:redhat:rhel_eus:9.8::appstream",
+        "cpe:/a:redhat:rhel_eus:9.8::crb",
+        "cpe:/a:redhat:rhel_eus:9.8::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.8::nfv",
+        "cpe:/a:redhat:rhel_eus:9.8::realtime",
+        "cpe:/a:redhat:rhel_eus:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.8::sap",
+        "cpe:/a:redhat:rhel_eus:9.8::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.8::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.8",
+        "cpe:/o:redhat:rhel_eus:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3-rrdtool is earlier than 0:1.7.2-22.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202634156001"
+                  },
+                  {
+                    "Comment": "python3-rrdtool is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202634156002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "rrdtool is earlier than 0:1.7.2-22.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202634156003"
+                  },
+                  {
+                    "Comment": "rrdtool is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202634156004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "rrdtool-devel is earlier than 0:1.7.2-22.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202634156005"
+                  },
+                  {
+                    "Comment": "rrdtool-devel is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202634156006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "rrdtool-doc is earlier than 0:1.7.2-22.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202634156007"
+                  },
+                  {
+                    "Comment": "rrdtool-doc is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202634156008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "rrdtool-lua is earlier than 0:1.7.2-22.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202634156009"
+                  },
+                  {
+                    "Comment": "rrdtool-lua is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202634156010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "rrdtool-perl is earlier than 0:1.7.2-22.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202634156011"
+                  },
+                  {
+                    "Comment": "rrdtool-perl is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202634156012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "rrdtool-ruby is earlier than 0:1.7.2-22.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202634156013"
+                  },
+                  {
+                    "Comment": "rrdtool-ruby is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202634156014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "rrdtool-tcl is earlier than 0:1.7.2-22.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202634156015"
+                  },
+                  {
+                    "Comment": "rrdtool-tcl is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202634156016"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
