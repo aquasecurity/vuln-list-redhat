@@ -1,0 +1,124 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202635828",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:35828: grafana security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:35828",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:35828"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-39821",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-39821"
+      }
+    ],
+    "Description": "Grafana is an open source, feature rich metrics dashboard and graph editor for Graphite, InfluxDB \u0026 OpenTSDB. \n\nSecurity Fix(es):\n\n* golang.org/x/net/idna: golang: golang.org/x/net/idna: Privilege escalation via incorrect Punycode label processing (CVE-2026-39821)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-07-06"
+      },
+      "Updated": {
+        "Date": "2026-07-06"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-39821",
+          "Cvss3": "8.2/CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:N",
+          "Cwe": "CWE-1289",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-39821",
+          "Public": "20260522:1501"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2480756",
+          "ID": "2480756"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.8",
+        "cpe:/a:redhat:rhel_e4s:9.8::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.8::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.8::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.8::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.8",
+        "cpe:/o:redhat:rhel_e4s:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "grafana is earlier than 0:10.2.6-23.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202635828001"
+                  },
+                  {
+                    "Comment": "grafana is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202523087002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "grafana-selinux is earlier than 0:10.2.6-23.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202635828003"
+                  },
+                  {
+                    "Comment": "grafana-selinux is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202523087004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
