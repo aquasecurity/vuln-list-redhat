@@ -1,23 +1,39 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:20268450",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202636187",
   "Version": "636",
   "Metadata": {
-    "Title": "perl-HTTP-Daemon: HTTP::Daemon: Arbitrary code execution via OS command injection in send_file() (important)",
+    "Title": "RHSA-2026:36187: perl-HTTP-Daemon security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:36187",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:36187"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2026-8450",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2026-8450"
       }
     ],
-    "Description": "DOCUMENTATION: A flaw was found in HTTP::Daemon, a Perl module used for creating HTTP servers. A remote attacker can exploit this vulnerability by providing specially crafted input to the `send_file()` function, leading to OS command injection. This allows the attacker to execute arbitrary commands on the system with the privileges of the daemon process, potentially resulting in full system compromise or data manipulation. \n            STATEMENT: This is rated as an Important security flaw becaye the function utilizes an insecure 2-argument open() call that interprets shell-magic characters (such as pipes or redirects) inside file paths. In a non-default configuration where a custom application passes untrusted user input directly to this function, a remote attacker could exploit this flaw to read or write arbitrary files, or potentially execute commands within the context of the daemon's local system user.",
+    "Description": "The perl-HTTP-Daemon package includes the HTTP::Daemon class, a subclass of IO::Socket::IP. Instances of the HTTP::Daemon class are HTTP/1.1 servers that listen on a socket for incoming requests.\n\nSecurity Fix(es):\n\n* perl-HTTP-Daemon: HTTP::Daemon: Arbitrary code execution via OS command injection in send_file() (CVE-2026-8450)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Important",
-      "Issued": {},
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-07-07"
+      },
       "Updated": {
-        "Date": "2026-06-15"
+        "Date": "2026-07-07"
       },
       "Cves": [
         {
@@ -27,6 +43,12 @@
           "Impact": "important",
           "Href": "https://access.redhat.com/security/cve/CVE-2026-8450",
           "Public": "20260527:0422"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2481773",
+          "ID": "2481773"
         }
       ],
       "AffectedCpeList": [
@@ -45,9 +67,7 @@
         "cpe:/o:redhat:enterprise_linux:9::baseos"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -68,12 +88,12 @@
             "TestRef": "oval:com.redhat.cve:tst:20052541003"
           },
           {
-            "Comment": "perl-HTTP-Daemon is installed",
-            "TestRef": "oval:com.redhat.cve:tst:20268450001"
+            "Comment": "perl-HTTP-Daemon is earlier than 0:6.12-6.el9_8.1",
+            "TestRef": "oval:com.redhat.rhsa:tst:202636187001"
           },
           {
             "Comment": "perl-HTTP-Daemon is signed with Red Hat release4,release2,ima key",
-            "TestRef": "oval:com.redhat.cve:tst:20268450002"
+            "TestRef": "oval:com.redhat.rhsa:tst:202636187002"
           }
         ]
       }
