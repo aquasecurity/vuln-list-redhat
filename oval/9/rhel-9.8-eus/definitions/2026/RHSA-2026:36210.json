@@ -1,0 +1,165 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202636210",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:36210: freeipmi security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:36210",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:36210"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-50031",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-50031"
+      }
+    ],
+    "Description": "The freeipmi packages contain an Intelligent Platform Management Interface (IPMI) remote console and system management software based on the IPMI specification.\n\nSecurity Fix(es):\n\n* freeipmi: FreeIPMI: Denial of service via buffer overflow in ipmi-oem client (CVE-2026-50031)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-07-07"
+      },
+      "Updated": {
+        "Date": "2026-07-07"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-50031",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-120",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-50031",
+          "Public": "20260603:0307"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2484296",
+          "ID": "2484296"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.8",
+        "cpe:/a:redhat:rhel_eus:9.8::appstream",
+        "cpe:/a:redhat:rhel_eus:9.8::crb",
+        "cpe:/a:redhat:rhel_eus:9.8::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.8::nfv",
+        "cpe:/a:redhat:rhel_eus:9.8::realtime",
+        "cpe:/a:redhat:rhel_eus:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.8::sap",
+        "cpe:/a:redhat:rhel_eus:9.8::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.8::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.8",
+        "cpe:/o:redhat:rhel_eus:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "freeipmi is earlier than 0:1.6.18-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202636210001"
+                  },
+                  {
+                    "Comment": "freeipmi is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202614819002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "freeipmi-bmc-watchdog is earlier than 0:1.6.18-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202636210003"
+                  },
+                  {
+                    "Comment": "freeipmi-bmc-watchdog is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202614819004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "freeipmi-devel is earlier than 0:1.6.18-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202636210005"
+                  },
+                  {
+                    "Comment": "freeipmi-devel is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202614819006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "freeipmi-ipmidetectd is earlier than 0:1.6.18-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202636210007"
+                  },
+                  {
+                    "Comment": "freeipmi-ipmidetectd is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202614819008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "freeipmi-ipmiseld is earlier than 0:1.6.18-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202636210009"
+                  },
+                  {
+                    "Comment": "freeipmi-ipmiseld is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202614819010"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
