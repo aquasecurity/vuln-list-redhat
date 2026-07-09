@@ -1,0 +1,127 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202637129",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:37129: gstreamer1-plugins-good security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:37129",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:37129"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-53705",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-53705"
+      }
+    ],
+    "Description": "GStreamer is a streaming media framework based on graphs of filters which operate on media data. The gstreamer1-plugins-good packages contain a collection of well-supported plug-ins of good quality and under the LGPL license.\n\nSecurity Fix(es):\n\n* gstreamer1-plugins-good: GStreamer: Heap buffer overflow in WavPack decoder via integer overflow (CVE-2026-53705)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-07-09"
+      },
+      "Updated": {
+        "Date": "2026-07-09"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-53705",
+          "Cvss3": "7.6/CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:H",
+          "Cwe": "CWE-190",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-53705",
+          "Public": "20260612"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2487615",
+          "ID": "2487615"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::extensions",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:20052541004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.cve:tst:20052541003"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "gstreamer1-plugins-good is earlier than 0:1.22.12-7.el9_8.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202637129001"
+                  },
+                  {
+                    "Comment": "gstreamer1-plugins-good is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.cve:tst:20221920004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "gstreamer1-plugins-good-gtk is earlier than 0:1.22.12-7.el9_8.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202637129003"
+                  },
+                  {
+                    "Comment": "gstreamer1-plugins-good-gtk is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.cve:tst:20221920002"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
