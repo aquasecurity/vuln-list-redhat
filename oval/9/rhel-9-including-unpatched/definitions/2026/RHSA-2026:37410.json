@@ -1,23 +1,44 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:202639832",
-  "Version": "636",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202637410",
+  "Version": "638",
   "Metadata": {
-    "Title": "golang.org/x/crypto/ssh/agent: golang.org/x/crypto/ssh/agent: Security bypass due to improper handling of key restrictions (important)",
+    "Title": "RHSA-2026:37410: buildah security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:37410",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:37410"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2026-39832",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2026-39832"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-39835",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-39835"
       }
     ],
-    "Description": "DOCUMENTATION: A flaw was found in golang.org/x/crypto/ssh/agent. When a key was added to a remote agent, security restrictions, known as constraint extensions, were not properly processed during the request. This allowed these restrictions to be silently removed when keys were forwarded, leading to the unrestricted use of the key on the remote host. This vulnerability could enable an attacker to bypass intended security controls and perform unauthorized actions. \n            STATEMENT: This Important vulnerability in `golang.org/x/crypto/ssh/agent` allows for a security bypass when SSH keys with destination restrictions are forwarded via an SSH agent. This flaw could lead to unintended exposure of SSH keys, enabling an attacker to use the forwarded key without the specified restrictions on remote hosts. Red Hat products utilizing `golang.org/x/crypto/ssh/agent` for key forwarding may be affected if users rely on constraint extensions for limiting key usage.\n            MITIGATION: Mitigation for this issue is either not available or the currently available options do not meet the Red Hat Product Security criteria comprising ease of use and deployment, applicability to widespread installation base, or stability.",
+    "Description": "The buildah package provides a tool for facilitating building OCI container images. Among other things, buildah enables you to: Create a working container, either from scratch or using an image as a starting point; Create an image, either from a working container or using the instructions in a Dockerfile; Build both Docker and OCI images. \n\nSecurity Fix(es):\n\n* golang.org/x/crypto/ssh: golang: golang.org/x/crypto/ssh: Denial of Service via crafted SSH certificate (CVE-2026-39835)\n\n* golang.org/x/crypto/ssh/agent: golang.org/x/crypto/ssh/agent: Security bypass due to improper handling of key restrictions (CVE-2026-39832)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Important",
-      "Issued": {},
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-07-09"
+      },
       "Updated": {
-        "Date": "2026-06-29"
+        "Date": "2026-07-09"
       },
       "Cves": [
         {
@@ -27,6 +48,24 @@
           "Impact": "important",
           "Href": "https://access.redhat.com/security/cve/CVE-2026-39832",
           "Public": "20260522:0231"
+        },
+        {
+          "CveID": "CVE-2026-39835",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-476",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-39835",
+          "Public": "20260522:0231"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2480680",
+          "ID": "2480680"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2480685",
+          "ID": "2480685"
         }
       ],
       "AffectedCpeList": [
@@ -45,9 +84,7 @@
         "cpe:/o:redhat:enterprise_linux:9::baseos"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -76,8 +113,8 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "buildah is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202129923003"
+                    "Comment": "buildah is earlier than 2:1.43.1-3.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202637410001"
                   },
                   {
                     "Comment": "buildah is signed with Red Hat release4,release2,ima key",
@@ -89,8 +126,8 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "buildah-tests is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202129923001"
+                    "Comment": "buildah-tests is earlier than 2:1.43.1-3.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202637410003"
                   },
                   {
                     "Comment": "buildah-tests is signed with Red Hat release4,release2,ima key",
