@@ -1,0 +1,155 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202638901",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:38901: perl-DBI:1.641 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:38901",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:38901"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-9698",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-9698"
+      }
+    ],
+    "Description": "The perl-DBI package provides the standard database interface module for the Perl programming language. It implements a database-independent interface, meaning it defines a consistent set of methods, variables, and conventions for database operations.\n\nSecurity Fix(es):\n\n* DBI: DBI: Buffer overflow in error handling can lead to arbitrary code execution (CVE-2026-9698)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-07-13"
+      },
+      "Updated": {
+        "Date": "2026-07-13"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-9698",
+          "Cvss3": "8.2/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H",
+          "Cwe": "CWE-120",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-9698",
+          "Public": "20260609:0722"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2486734",
+          "ID": "2486734"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:8",
+        "cpe:/a:redhat:enterprise_linux:8::appstream",
+        "cpe:/a:redhat:enterprise_linux:8::crb",
+        "cpe:/a:redhat:enterprise_linux:8::highavailability",
+        "cpe:/a:redhat:enterprise_linux:8::nfv",
+        "cpe:/a:redhat:enterprise_linux:8::realtime",
+        "cpe:/a:redhat:enterprise_linux:8::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:8::sap",
+        "cpe:/a:redhat:enterprise_linux:8::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:8::supplementary",
+        "cpe:/o:redhat:enterprise_linux:8",
+        "cpe:/o:redhat:enterprise_linux:8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "Module perl-DBI:1.641 is enabled",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202638901003"
+                  }
+                ],
+                "Criterias": [
+                  {
+                    "Operator": "AND",
+                    "Criterions": [
+                      {
+                        "Comment": "perl-DBI is earlier than 0:1.641-5.module+el8.10.0+24438+dc2220dd",
+                        "TestRef": "oval:com.redhat.rhsa:tst:202638901001"
+                      },
+                      {
+                        "Comment": "perl-DBI is signed with Red Hat redhatrelease2 key",
+                        "TestRef": "oval:com.redhat.rhsa:tst:202638901002"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "Module perl-DBI:1.641 is enabled",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202638901003"
+                  }
+                ],
+                "Criterias": [
+                  {
+                    "Operator": "AND",
+                    "Criterions": [
+                      {
+                        "Comment": "perl-DBI is earlier than 0:1.641-5.module+el8.10.0+24438+96f61291",
+                        "TestRef": "oval:com.redhat.rhsa:tst:202638901004"
+                      },
+                      {
+                        "Comment": "perl-DBI is signed with Red Hat redhatrelease2 key",
+                        "TestRef": "oval:com.redhat.rhsa:tst:202638901002"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

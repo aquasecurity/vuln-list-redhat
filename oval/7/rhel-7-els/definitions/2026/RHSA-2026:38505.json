@@ -1,0 +1,249 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202638505",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:38505: tomcat security, bug fix, and enhancement update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 7 Extended Lifecycle Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:38505",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:38505"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-29146",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-29146"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-34486",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-34486"
+      }
+    ],
+    "Description": "Apache Tomcat is a servlet container for the Java Servlet and JavaServer Pages (JSP) technologies.\n\nSecurity Fix(es):\n\n* Apache Tomcat: Apache Tomcat: Information disclosure via Padding Oracle vulnerability in EncryptInterceptor (CVE-2026-29146)\n\n* Apache Tomcat: Apache Tomcat: Missing Encryption of Sensitive Data due to EncryptInterceptor bypass (CVE-2026-34486)\n\nBug Fix(es) and Enhancement(s):\n\n* Remove tomcat clustering JAR from RPM builds (JIRA:RHEL-183996)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-07-13"
+      },
+      "Updated": {
+        "Date": "2026-07-13"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-29146",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "Cwe": "CWE-1240",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-29146",
+          "Public": "20260409:1921"
+        },
+        {
+          "CveID": "CVE-2026-34486",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "Cwe": "CWE-807",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-34486",
+          "Public": "20260409:1935"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2457020",
+          "ID": "2457020"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2457027",
+          "ID": "2457027"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_extras:7",
+        "cpe:/a:redhat:rhel_extras_oracle_java:7",
+        "cpe:/a:redhat:rhel_extras_rt:7",
+        "cpe:/a:redhat:rhel_extras_rt_els:7",
+        "cpe:/a:redhat:rhel_extras_sap:7",
+        "cpe:/a:redhat:rhel_extras_sap_els:7",
+        "cpe:/a:redhat:rhel_extras_sap_hana:7",
+        "cpe:/a:redhat:rhel_extras_sap_hana_els:7",
+        "cpe:/o:redhat:enterprise_linux:7",
+        "cpe:/o:redhat:enterprise_linux:7::client",
+        "cpe:/o:redhat:enterprise_linux:7::computenode",
+        "cpe:/o:redhat:enterprise_linux:7::server",
+        "cpe:/o:redhat:enterprise_linux:7::workstation",
+        "cpe:/o:redhat:rhel_els:7"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20150364028"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 7 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20150364027"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tomcat is earlier than 0:7.0.76-18.el7_9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202638505001"
+                  },
+                  {
+                    "Comment": "tomcat is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20140686002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tomcat-admin-webapps is earlier than 0:7.0.76-18.el7_9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202638505003"
+                  },
+                  {
+                    "Comment": "tomcat-admin-webapps is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20140686004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tomcat-docs-webapp is earlier than 0:7.0.76-18.el7_9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202638505005"
+                  },
+                  {
+                    "Comment": "tomcat-docs-webapp is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20140686006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tomcat-el-2.2-api is earlier than 0:7.0.76-18.el7_9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202638505007"
+                  },
+                  {
+                    "Comment": "tomcat-el-2.2-api is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20140686008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tomcat-javadoc is earlier than 0:7.0.76-18.el7_9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202638505009"
+                  },
+                  {
+                    "Comment": "tomcat-javadoc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20140686010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tomcat-jsp-2.2-api is earlier than 0:7.0.76-18.el7_9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202638505011"
+                  },
+                  {
+                    "Comment": "tomcat-jsp-2.2-api is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20140686012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tomcat-jsvc is earlier than 0:7.0.76-18.el7_9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202638505013"
+                  },
+                  {
+                    "Comment": "tomcat-jsvc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20140686014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tomcat-lib is earlier than 0:7.0.76-18.el7_9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202638505015"
+                  },
+                  {
+                    "Comment": "tomcat-lib is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20140686016"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tomcat-servlet-3.0-api is earlier than 0:7.0.76-18.el7_9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202638505017"
+                  },
+                  {
+                    "Comment": "tomcat-servlet-3.0-api is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20140686018"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "tomcat-webapps is earlier than 0:7.0.76-18.el7_9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202638505019"
+                  },
+                  {
+                    "Comment": "tomcat-webapps is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20140686020"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

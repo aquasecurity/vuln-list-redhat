@@ -1,0 +1,102 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202638796",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:38796: plexus-utils security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:38796",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:38796"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-67030",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-67030"
+      }
+    ],
+    "Description": "The Plexus project seeks to create end-to-end developer tools for writing applications. At the core is the container, which can be embedded or for a full scale application server. There are many reusable components for hibernate, form processing, jndi, i18n, velocity, etc. Plexus also includes an application server which is like a J2EE application server, without all the baggage.\n\nSecurity Fix(es):\n\n* org.codehaus.plexus:plexus-utils: Plexus-utils: Directory Traversal in extractFile method (CVE-2025-67030)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-07-13"
+      },
+      "Updated": {
+        "Date": "2026-07-13"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-67030",
+          "Cvss3": "8.3/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L",
+          "Cwe": "CWE-22",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-67030",
+          "Public": "20260325"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2451409",
+          "ID": "2451409"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::extensions",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:20052541004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.cve:tst:20052541003"
+          },
+          {
+            "Comment": "plexus-utils is earlier than 0:3.3.0-14.el9_8",
+            "TestRef": "oval:com.redhat.rhsa:tst:202638796001"
+          },
+          {
+            "Comment": "plexus-utils is signed with Red Hat release4,release2,ima key",
+            "TestRef": "oval:com.redhat.rhsa:tst:202638500060"
+          }
+        ]
+      }
+    ]
+  }
+}
