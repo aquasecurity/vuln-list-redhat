@@ -1,0 +1,102 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202639553",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:39553: perl-XML-LibXML security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:39553",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:39553"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-8177",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-8177"
+      }
+    ],
+    "Description": "This module implements a Perl interface to the GNOME libxml2 library which provides interfaces for parsing and manipulating XML files. This module allows Perl programmers to make use of the highly capable validating XML parser and the high performance DOM implementation.\n\nSecurity Fix(es):\n\n* perl-XML-LibXML: XML::LibXML: Denial of Service via truncated UTF-8 in XML node names (CVE-2026-8177)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-07-15"
+      },
+      "Updated": {
+        "Date": "2026-07-15"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-8177",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-125",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-8177",
+          "Public": "20260510:2048"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2468684",
+          "ID": "2468684"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::extensions",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
+          },
+          {
+            "Comment": "perl-XML-LibXML is earlier than 1:2.0206-5.el9_8.1",
+            "TestRef": "oval:com.redhat.rhsa:tst:202639553001"
+          },
+          {
+            "Comment": "perl-XML-LibXML is signed with Red Hat release4,release2,ima key",
+            "TestRef": "oval:com.redhat.rhsa:tst:202639553002"
+          }
+        ]
+      }
+    ]
+  }
+}
