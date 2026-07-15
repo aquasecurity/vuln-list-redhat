@@ -1,0 +1,150 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202639315",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:39315: libsolv security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:39315",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:39315"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-48864",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-48864"
+      }
+    ],
+    "Description": "The libsolv packages provide a library for resolving package dependencies using a satisfiability algorithm.\n\nSecurity Fix(es):\n\n* libsolv: Heap buffer overflow in libsolv repopagestore via unchecked decompression of malicious .solv page data (CVE-2026-48864)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-07-14"
+      },
+      "Updated": {
+        "Date": "2026-07-14"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-48864",
+          "Cvss3": "7.8/CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-787",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-48864",
+          "Public": "20260526:1607"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2460425",
+          "ID": "2460425"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.8",
+        "cpe:/a:redhat:rhel_e4s:9.8::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.8::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.8::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.8::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.8",
+        "cpe:/o:redhat:rhel_e4s:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libsolv is earlier than 0:0.7.24-6.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202639315001"
+                  },
+                  {
+                    "Comment": "libsolv is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202639315002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libsolv-devel is earlier than 0:0.7.24-6.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202639315003"
+                  },
+                  {
+                    "Comment": "libsolv-devel is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202639315004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libsolv-tools is earlier than 0:0.7.24-6.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202639315005"
+                  },
+                  {
+                    "Comment": "libsolv-tools is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202639315006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3-solv is earlier than 0:0.7.24-6.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202639315007"
+                  },
+                  {
+                    "Comment": "python3-solv is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202639315008"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

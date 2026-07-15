@@ -1,0 +1,360 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202639311",
+  "Version": "636",
+  "Metadata": {
+    "Title": "RHSA-2026:39311: qemu-kvm security update (Low)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:39311",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:39311"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-48914",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-48914"
+      }
+    ],
+    "Description": "Kernel-based Virtual Machine (KVM) is a full virtualization solution for Linux on a variety of architectures. The qemu-kvm packages provide the user-space component for running virtual machines that use KVM.\n\nSecurity Fix(es):\n\n* qemu-kvm: Heap buffer overflow in virtio-blk SCSI request handling (CVE-2026-48914)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Low",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-07-14"
+      },
+      "Updated": {
+        "Date": "2026-07-14"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-48914",
+          "Cvss3": "6.7/CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:C/C:N/I:L/A:H",
+          "Cwe": "CWE-122",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-48914",
+          "Public": "20260526"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2488283",
+          "ID": "2488283"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.8",
+        "cpe:/a:redhat:rhel_eus:9.8::appstream",
+        "cpe:/a:redhat:rhel_eus:9.8::crb",
+        "cpe:/a:redhat:rhel_eus:9.8::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.8::nfv",
+        "cpe:/a:redhat:rhel_eus:9.8::realtime",
+        "cpe:/a:redhat:rhel_eus:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.8::sap",
+        "cpe:/a:redhat:rhel_eus:9.8::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.8::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.8",
+        "cpe:/o:redhat:rhel_eus:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qemu-guest-agent is earlier than 17:10.1.0-17.el9_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202639311001"
+                  },
+                  {
+                    "Comment": "qemu-guest-agent is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618772002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qemu-img is earlier than 17:10.1.0-17.el9_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202639311003"
+                  },
+                  {
+                    "Comment": "qemu-img is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618772004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qemu-kvm is earlier than 17:10.1.0-17.el9_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202639311005"
+                  },
+                  {
+                    "Comment": "qemu-kvm is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618772006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qemu-kvm-audio-pa is earlier than 17:10.1.0-17.el9_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202639311007"
+                  },
+                  {
+                    "Comment": "qemu-kvm-audio-pa is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618772008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qemu-kvm-block-blkio is earlier than 17:10.1.0-17.el9_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202639311009"
+                  },
+                  {
+                    "Comment": "qemu-kvm-block-blkio is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618772010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qemu-kvm-block-curl is earlier than 17:10.1.0-17.el9_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202639311011"
+                  },
+                  {
+                    "Comment": "qemu-kvm-block-curl is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618772012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qemu-kvm-block-rbd is earlier than 17:10.1.0-17.el9_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202639311013"
+                  },
+                  {
+                    "Comment": "qemu-kvm-block-rbd is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618772014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qemu-kvm-common is earlier than 17:10.1.0-17.el9_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202639311015"
+                  },
+                  {
+                    "Comment": "qemu-kvm-common is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618772016"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qemu-kvm-core is earlier than 17:10.1.0-17.el9_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202639311017"
+                  },
+                  {
+                    "Comment": "qemu-kvm-core is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618772018"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qemu-kvm-device-display-virtio-gpu is earlier than 17:10.1.0-17.el9_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202639311019"
+                  },
+                  {
+                    "Comment": "qemu-kvm-device-display-virtio-gpu is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618772020"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qemu-kvm-device-display-virtio-gpu-ccw is earlier than 17:10.1.0-17.el9_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202639311021"
+                  },
+                  {
+                    "Comment": "qemu-kvm-device-display-virtio-gpu-ccw is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618772022"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qemu-kvm-device-display-virtio-gpu-pci is earlier than 17:10.1.0-17.el9_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202639311023"
+                  },
+                  {
+                    "Comment": "qemu-kvm-device-display-virtio-gpu-pci is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618772024"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qemu-kvm-device-display-virtio-vga is earlier than 17:10.1.0-17.el9_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202639311025"
+                  },
+                  {
+                    "Comment": "qemu-kvm-device-display-virtio-vga is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618772026"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qemu-kvm-device-usb-host is earlier than 17:10.1.0-17.el9_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202639311027"
+                  },
+                  {
+                    "Comment": "qemu-kvm-device-usb-host is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618772028"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qemu-kvm-device-usb-redirect is earlier than 17:10.1.0-17.el9_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202639311029"
+                  },
+                  {
+                    "Comment": "qemu-kvm-device-usb-redirect is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618772030"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qemu-kvm-docs is earlier than 17:10.1.0-17.el9_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202639311031"
+                  },
+                  {
+                    "Comment": "qemu-kvm-docs is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618772032"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qemu-kvm-tools is earlier than 17:10.1.0-17.el9_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202639311033"
+                  },
+                  {
+                    "Comment": "qemu-kvm-tools is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618772034"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qemu-kvm-ui-egl-headless is earlier than 17:10.1.0-17.el9_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202639311035"
+                  },
+                  {
+                    "Comment": "qemu-kvm-ui-egl-headless is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618772036"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qemu-kvm-ui-opengl is earlier than 17:10.1.0-17.el9_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202639311037"
+                  },
+                  {
+                    "Comment": "qemu-kvm-ui-opengl is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618772038"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qemu-pr-helper is earlier than 17:10.1.0-17.el9_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202639311039"
+                  },
+                  {
+                    "Comment": "qemu-pr-helper is signed with Red Hat release4,release2,ima key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618772040"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
