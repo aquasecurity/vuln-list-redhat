@@ -1,0 +1,154 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202642692",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:42692: evince security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8.8 Update Services for SAP Solutions"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:42692",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:42692"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-46529",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-46529"
+      }
+    ],
+    "Description": "The evince packages provide a simple multi-page document viewer for Portable Document Format (PDF), PostScript (PS), Encapsulated PostScript (EPS) files, and, with additional back-ends, also the Device Independent File format (DVI) files.\n\nSecurity Fix(es):\n\n* atril: evince: xreader: PDF /GoToR action argv injection enables single-click RCE via --gtk-module dlopen (CVE-2026-46529)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-07-21"
+      },
+      "Updated": {
+        "Date": "2026-07-21"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-46529",
+          "Cvss3": "7.8/CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-77",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-46529",
+          "Public": "20260610:1946"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2487669",
+          "ID": "2487669"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:8.8",
+        "cpe:/a:redhat:rhel_e4s:8.8::appstream",
+        "cpe:/a:redhat:rhel_e4s:8.8::highavailability",
+        "cpe:/a:redhat:rhel_e4s:8.8::sap",
+        "cpe:/a:redhat:rhel_e4s:8.8::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:8.8",
+        "cpe:/o:redhat:rhel_e4s:8.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "evince is earlier than 0:3.28.4-16.el8_8.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202642692001"
+                  },
+                  {
+                    "Comment": "evince is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193553024"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "evince-browser-plugin is earlier than 0:3.28.4-16.el8_8.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202642692003"
+                  },
+                  {
+                    "Comment": "evince-browser-plugin is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193553026"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "evince-libs is earlier than 0:3.28.4-16.el8_8.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202642692005"
+                  },
+                  {
+                    "Comment": "evince-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193553028"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "evince-nautilus is earlier than 0:3.28.4-16.el8_8.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202642692007"
+                  },
+                  {
+                    "Comment": "evince-nautilus is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193553030"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
