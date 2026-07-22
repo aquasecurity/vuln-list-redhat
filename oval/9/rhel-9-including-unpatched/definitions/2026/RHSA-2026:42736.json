@@ -1,0 +1,157 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202642736",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:42736: acl security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:42736",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:42736"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-54369",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-54369"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-54370",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-54370"
+      }
+    ],
+    "Description": "Access Control Lists (ACLs) are used to define fine-grained discretionary access rights for files and directories. The acl packages contain the getfacl and setfacl utilities needed for manipulating access control lists.\n\nSecurity Fix(es):\n\n* acl: Symlink traversal privilege escalation via libacl functions (CVE-2026-54369)\n\n* acl: TOCTOU Symlink Traversal via getfacl/setfacl (CVE-2026-54370)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-07-21"
+      },
+      "Updated": {
+        "Date": "2026-07-21"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-54369",
+          "Cvss3": "7.1/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
+          "Cwe": "CWE-59",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-54369",
+          "Public": "20260629:1300"
+        },
+        {
+          "CveID": "CVE-2026-54370",
+          "Cvss3": "6.3/CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:N",
+          "Cwe": "CWE-367",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-54370",
+          "Public": "20260629:1300"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2490277",
+          "ID": "2490277"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2490279",
+          "ID": "2490279"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::extensions",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:20052541004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.cve:tst:20052541003"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "acl is earlier than 0:2.4.0-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202642736001"
+                  },
+                  {
+                    "Comment": "acl is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202642736002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libacl is earlier than 0:2.4.0-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202642736003"
+                  },
+                  {
+                    "Comment": "libacl is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202642736004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libacl-devel is earlier than 0:2.4.0-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202642736005"
+                  },
+                  {
+                    "Comment": "libacl-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202642736006"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
