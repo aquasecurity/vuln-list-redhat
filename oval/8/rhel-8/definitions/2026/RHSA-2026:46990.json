@@ -1,0 +1,514 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202646990",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:46990: sssd security, bug fix, and enhancement update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:46990",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:46990"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-14474",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-14474"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-14476",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-14476"
+      }
+    ],
+    "Description": "The System Security Services Daemon (SSSD) service provides a set of daemons to manage access to remote directories and authentication mechanisms. It also provides the Name Service Switch (NSS) and the Pluggable Authentication Modules (PAM) interfaces toward the system, and a pluggable back-end system to connect to multiple different account sources.\n\nSecurity Fix(es):\n\n* sssd: sssd: sudo LDAP provider searches entire directory tree for sudoRole objects by default, enabling privilege escalation (CVE-2026-14474)\n\n* sssd: sssd: GPO cache path traversal via unsanitized gPCFileSysPath allows Kerberos authentication bypass (CVE-2026-14476)\n\nBug Fix(es) and Enhancement(s):\n\n* sss_override does not work on AD UPN [rhel-8.10.z] (JIRA:RHEL-168363)\n\n* [Addition] Crash in 'sss_client/autofs/sss_autofs.c' [rhel-8.10.z] (JIRA:RHEL-168415)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-07-28"
+      },
+      "Updated": {
+        "Date": "2026-07-28"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-14474",
+          "Cvss3": "8.8/CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-1188",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-14474",
+          "Public": "20260707:0900"
+        },
+        {
+          "CveID": "CVE-2026-14476",
+          "Cvss3": "8.0/CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:C/C:H/I:H/A:H",
+          "Cwe": "CWE-23",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-14476",
+          "Public": "20260707:0900"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2496556",
+          "ID": "2496556"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2496581",
+          "ID": "2496581"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:8",
+        "cpe:/a:redhat:enterprise_linux:8::appstream",
+        "cpe:/a:redhat:enterprise_linux:8::crb",
+        "cpe:/a:redhat:enterprise_linux:8::highavailability",
+        "cpe:/a:redhat:enterprise_linux:8::nfv",
+        "cpe:/a:redhat:enterprise_linux:8::realtime",
+        "cpe:/a:redhat:enterprise_linux:8::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:8::sap",
+        "cpe:/a:redhat:enterprise_linux:8::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:8::supplementary",
+        "cpe:/o:redhat:enterprise_linux:8",
+        "cpe:/o:redhat:enterprise_linux:8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libipa_hbac is earlier than 0:2.9.4-5.el8_10.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202646990001"
+                  },
+                  {
+                    "Comment": "libipa_hbac is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193651002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libsss_autofs is earlier than 0:2.9.4-5.el8_10.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202646990003"
+                  },
+                  {
+                    "Comment": "libsss_autofs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193651004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libsss_certmap is earlier than 0:2.9.4-5.el8_10.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202646990005"
+                  },
+                  {
+                    "Comment": "libsss_certmap is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193651006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libsss_idmap is earlier than 0:2.9.4-5.el8_10.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202646990007"
+                  },
+                  {
+                    "Comment": "libsss_idmap is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193651008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libsss_nss_idmap is earlier than 0:2.9.4-5.el8_10.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202646990009"
+                  },
+                  {
+                    "Comment": "libsss_nss_idmap is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193651010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libsss_nss_idmap-devel is earlier than 0:2.9.4-5.el8_10.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202646990011"
+                  },
+                  {
+                    "Comment": "libsss_nss_idmap-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193651012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libsss_simpleifp is earlier than 0:2.9.4-5.el8_10.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202646990013"
+                  },
+                  {
+                    "Comment": "libsss_simpleifp is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193651014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libsss_sudo is earlier than 0:2.9.4-5.el8_10.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202646990015"
+                  },
+                  {
+                    "Comment": "libsss_sudo is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193651016"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3-libipa_hbac is earlier than 0:2.9.4-5.el8_10.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202646990017"
+                  },
+                  {
+                    "Comment": "python3-libipa_hbac is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193651018"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3-libsss_nss_idmap is earlier than 0:2.9.4-5.el8_10.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202646990019"
+                  },
+                  {
+                    "Comment": "python3-libsss_nss_idmap is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193651020"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3-sss is earlier than 0:2.9.4-5.el8_10.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202646990021"
+                  },
+                  {
+                    "Comment": "python3-sss is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193651022"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3-sss-murmur is earlier than 0:2.9.4-5.el8_10.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202646990023"
+                  },
+                  {
+                    "Comment": "python3-sss-murmur is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193651024"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3-sssdconfig is earlier than 0:2.9.4-5.el8_10.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202646990025"
+                  },
+                  {
+                    "Comment": "python3-sssdconfig is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193651026"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "sssd is earlier than 0:2.9.4-5.el8_10.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202646990027"
+                  },
+                  {
+                    "Comment": "sssd is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193651028"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "sssd-ad is earlier than 0:2.9.4-5.el8_10.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202646990029"
+                  },
+                  {
+                    "Comment": "sssd-ad is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193651030"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "sssd-client is earlier than 0:2.9.4-5.el8_10.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202646990031"
+                  },
+                  {
+                    "Comment": "sssd-client is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193651032"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "sssd-common is earlier than 0:2.9.4-5.el8_10.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202646990033"
+                  },
+                  {
+                    "Comment": "sssd-common is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193651034"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "sssd-common-pac is earlier than 0:2.9.4-5.el8_10.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202646990035"
+                  },
+                  {
+                    "Comment": "sssd-common-pac is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193651036"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "sssd-dbus is earlier than 0:2.9.4-5.el8_10.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202646990037"
+                  },
+                  {
+                    "Comment": "sssd-dbus is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193651038"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "sssd-idp is earlier than 0:2.9.4-5.el8_10.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202646990039"
+                  },
+                  {
+                    "Comment": "sssd-idp is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20243270040"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "sssd-ipa is earlier than 0:2.9.4-5.el8_10.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202646990041"
+                  },
+                  {
+                    "Comment": "sssd-ipa is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193651040"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "sssd-kcm is earlier than 0:2.9.4-5.el8_10.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202646990043"
+                  },
+                  {
+                    "Comment": "sssd-kcm is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193651042"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "sssd-krb5 is earlier than 0:2.9.4-5.el8_10.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202646990045"
+                  },
+                  {
+                    "Comment": "sssd-krb5 is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193651044"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "sssd-krb5-common is earlier than 0:2.9.4-5.el8_10.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202646990047"
+                  },
+                  {
+                    "Comment": "sssd-krb5-common is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193651046"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "sssd-ldap is earlier than 0:2.9.4-5.el8_10.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202646990049"
+                  },
+                  {
+                    "Comment": "sssd-ldap is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193651048"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "sssd-nfs-idmap is earlier than 0:2.9.4-5.el8_10.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202646990051"
+                  },
+                  {
+                    "Comment": "sssd-nfs-idmap is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193651052"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "sssd-polkit-rules is earlier than 0:2.9.4-5.el8_10.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202646990053"
+                  },
+                  {
+                    "Comment": "sssd-polkit-rules is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193651054"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "sssd-proxy is earlier than 0:2.9.4-5.el8_10.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202646990055"
+                  },
+                  {
+                    "Comment": "sssd-proxy is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193651056"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "sssd-tools is earlier than 0:2.9.4-5.el8_10.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202646990057"
+                  },
+                  {
+                    "Comment": "sssd-tools is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193651058"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "sssd-winbind-idmap is earlier than 0:2.9.4-5.el8_10.5",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202646990059"
+                  },
+                  {
+                    "Comment": "sssd-winbind-idmap is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193651060"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
