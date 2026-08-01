@@ -1,0 +1,87 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202648811",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:48811: libsolv security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.6 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:48811",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:48811"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-48864",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-48864"
+      }
+    ],
+    "Description": "The libsolv packages provide a library for resolving package dependencies using a satisfiability algorithm.\n\nSecurity Fix(es):\n\n* libsolv: Heap buffer overflow in libsolv repopagestore via unchecked decompression of malicious .solv page data (CVE-2026-48864)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-07-31"
+      },
+      "Updated": {
+        "Date": "2026-07-31"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-48864",
+          "Cvss3": "7.8/CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-787",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-48864",
+          "Public": "20260526:1607"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2460425",
+          "ID": "2460425"
+        }
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          },
+          {
+            "Comment": "libsolv is earlier than 0:0.7.24-3.el9_6.1",
+            "TestRef": "oval:com.redhat.rhsa:tst:202648811001"
+          },
+          {
+            "Comment": "libsolv is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:202648811002"
+          }
+        ]
+      }
+    ]
+  }
+}
