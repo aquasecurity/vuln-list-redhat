@@ -1,0 +1,163 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202649667",
+  "Version": "638",
+  "Metadata": {
+    "Title": "RHSA-2026:49667: p11-kit security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:49667",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:49667"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-13757",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-13757"
+      }
+    ],
+    "Description": "The p11-kit packages provide a mechanism to manage PKCS#11 modules. The p11-kit-trust subpackage includes a PKCS#11 trust module that provides certificate anchors and black lists based on configuration files.\n\nSecurity Fix(es):\n\n* p11-kit: Stack exhaustion via unbounded recursion in RPC attribute parsing (CVE-2026-13757)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-08-03"
+      },
+      "Updated": {
+        "Date": "2026-08-03"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-13757",
+          "Cvss3": "6.2/CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-674",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-13757",
+          "Public": "20260623"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2494556",
+          "ID": "2494556"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.8",
+        "cpe:/a:redhat:rhel_e4s:9.8::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.8::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.8::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.8::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.8",
+        "cpe:/o:redhat:rhel_e4s:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "p11-kit is earlier than 0:0.26.4-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202649667001"
+                  },
+                  {
+                    "Comment": "p11-kit is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618599002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "p11-kit-client is earlier than 0:0.26.4-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202649667003"
+                  },
+                  {
+                    "Comment": "p11-kit-client is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618599004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "p11-kit-devel is earlier than 0:0.26.4-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202649667005"
+                  },
+                  {
+                    "Comment": "p11-kit-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618599006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "p11-kit-server is earlier than 0:0.26.4-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202649667007"
+                  },
+                  {
+                    "Comment": "p11-kit-server is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618599008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "p11-kit-trust is earlier than 0:0.26.4-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202649667009"
+                  },
+                  {
+                    "Comment": "p11-kit-trust is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618599010"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

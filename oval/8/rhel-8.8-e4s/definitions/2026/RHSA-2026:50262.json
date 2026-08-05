@@ -1,0 +1,187 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202650262",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:50262: perl:5.32 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8.8 Update Services for SAP Solutions"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:50262",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:50262"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-40909",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-40909"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-48962",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-48962"
+      }
+    ],
+    "Description": "Perl is a high-level programming language that is commonly used for system administration utilities and web programming.\n\nSecurity Fix(es):\n\n* perl: Perl threads have a working directory race condition where file operations may target unintended paths (CVE-2025-40909)\n\n* perl-IO-Compress: perl-IO-Compress: Arbitrary code execution via attacker-controlled output glob (CVE-2026-48962)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-08-04"
+      },
+      "Updated": {
+        "Date": "2026-08-04"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-40909",
+          "Cvss3": "5.9/CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+          "Cwe": "CWE-427",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-40909",
+          "Public": "20250530:1220"
+        },
+        {
+          "CveID": "CVE-2026-48962",
+          "Cvss3": "7.8/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-94",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-48962",
+          "Public": "20260527:0312"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2369407",
+          "ID": "2369407"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2481767",
+          "ID": "2481767"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:8.8",
+        "cpe:/a:redhat:rhel_e4s:8.8::appstream",
+        "cpe:/a:redhat:rhel_e4s:8.8::highavailability",
+        "cpe:/a:redhat:rhel_e4s:8.8::sap",
+        "cpe:/a:redhat:rhel_e4s:8.8::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:8.8",
+        "cpe:/o:redhat:rhel_e4s:8.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "Module perl:5.32 is enabled",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202650262009"
+                  }
+                ],
+                "Criterias": [
+                  {
+                    "Operator": "OR",
+                    "Criterias": [
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl is earlier than 4:5.32.1-472.module+el8.8.0+24404+b3ad2701.1",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202650262001"
+                          },
+                          {
+                            "Comment": "perl is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20210557002"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-IO-Compress is earlier than 0:2.096-1.module+el8.8.0+24435+247ee4c9.1",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202650262003"
+                          },
+                          {
+                            "Comment": "perl-IO-Compress is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202630086002"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-interpreter is earlier than 4:5.32.1-472.module+el8.8.0+24404+b3ad2701.1",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202650262005"
+                          },
+                          {
+                            "Comment": "perl-interpreter is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20210557040"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "perl-libs is earlier than 4:5.32.1-472.module+el8.8.0+24404+b3ad2701.1",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202650262007"
+                          },
+                          {
+                            "Comment": "perl-libs is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20210557044"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

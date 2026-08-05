@@ -1,0 +1,282 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202647057",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:47057: nodejs:24 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:47057",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:47057"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-13149",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-13149"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-59873",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-59873"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-59874",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-59874"
+      }
+    ],
+    "Description": "Node.js is a software development platform for building fast and scalable network applications in the JavaScript programming language. \n\nSecurity Fix(es):\n\n* brace-expansion: Brace-expansion: Denial of Service due to exponential-time complexity (CVE-2026-13149)\n\n* tar: Node-tar: Denial of Service via malformed tar archive header (CVE-2026-59874)\n\n* tar: node-tar: Denial of Service via crafted gzip bomb (CVE-2026-59873)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-08-03"
+      },
+      "Updated": {
+        "Date": "2026-08-03"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-13149",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-1333",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-13149",
+          "Public": "20260630:0830"
+        },
+        {
+          "CveID": "CVE-2026-59873",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-770",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-59873",
+          "Public": "20260708:1522"
+        },
+        {
+          "CveID": "CVE-2026-59874",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-606",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-59874",
+          "Public": "20260708:1523"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2494813",
+          "ID": "2494813"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2498116",
+          "ID": "2498116"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2498120",
+          "ID": "2498120"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::baseos",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::extensions",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "Module nodejs:24 is enabled",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20262781021"
+                  }
+                ],
+                "Criterias": [
+                  {
+                    "Operator": "OR",
+                    "Criterias": [
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "nodejs is earlier than 1:24.18.0-3.module+el9.8.0+24537+83ec84e1",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202647057001"
+                          },
+                          {
+                            "Comment": "nodejs is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhea:tst:20236529002"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "nodejs-devel is earlier than 1:24.18.0-3.module+el9.8.0+24537+83ec84e1",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202647057003"
+                          },
+                          {
+                            "Comment": "nodejs-devel is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhea:tst:20236529004"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "nodejs-docs is earlier than 1:24.18.0-3.module+el9.8.0+24537+83ec84e1",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202647057005"
+                          },
+                          {
+                            "Comment": "nodejs-docs is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhea:tst:20236529006"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "nodejs-full-i18n is earlier than 1:24.18.0-3.module+el9.8.0+24537+83ec84e1",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202647057007"
+                          },
+                          {
+                            "Comment": "nodejs-full-i18n is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhea:tst:20236529008"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "nodejs-libs is earlier than 1:24.18.0-3.module+el9.8.0+24537+83ec84e1",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202647057009"
+                          },
+                          {
+                            "Comment": "nodejs-libs is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20226595008"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "nodejs-nodemon is earlier than 0:3.1.14-2.module+el9.8.0+24539+0ea88729",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202647057011"
+                          },
+                          {
+                            "Comment": "nodejs-nodemon is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhea:tst:20236529010"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "nodejs-packaging is earlier than 0:2021.06-6.module+el9.8.0+24355+35d95b59",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202635891013"
+                          },
+                          {
+                            "Comment": "nodejs-packaging is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhea:tst:20236529012"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "nodejs-packaging-bundler is earlier than 0:2021.06-6.module+el9.8.0+24355+35d95b59",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202635891015"
+                          },
+                          {
+                            "Comment": "nodejs-packaging-bundler is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhea:tst:20236529014"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "npm is earlier than 1:11.16.0-1.24.18.0.3.module+el9.8.0+24537+83ec84e1",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202647057017"
+                          },
+                          {
+                            "Comment": "npm is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhea:tst:20236529016"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "v8-13.6-devel is earlier than 3:13.6.233.17-1.24.18.0.3.module+el9.8.0+24537+83ec84e1",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202647057019"
+                          },
+                          {
+                            "Comment": "v8-13.6-devel is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20262781020"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

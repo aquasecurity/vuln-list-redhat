@@ -1,0 +1,120 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202649612",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:49612: perl-DBI security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:49612",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:49612"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-14380",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-14380"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-14739",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-14739"
+      }
+    ],
+    "Description": "DBI is a database access Application Programming Interface (API) for the Perl Language. The DBI API Specification defines a set of functions, variables and conventions that provide a consistent database interface independent of the actual database being used.\n\nSecurity Fix(es):\n\n* DBI: DBI: Arbitrary code execution via caller-influenced Profile attribute (CVE-2026-14380)\n\n* DBI: DBI: Heap overflow when preparsing SQL statements with excessive placeholders (CVE-2026-14739)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-08-03"
+      },
+      "Updated": {
+        "Date": "2026-08-03"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-14380",
+          "Cvss3": "8.8/CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-94",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-14380",
+          "Public": "20260707:2204"
+        },
+        {
+          "CveID": "CVE-2026-14739",
+          "Cvss3": "8.1/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-131",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-14739",
+          "Public": "20260707:2205"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2497915",
+          "ID": "2497915"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2497916",
+          "ID": "2497916"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::baseos",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::extensions",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
+          },
+          {
+            "Comment": "perl-DBI is earlier than 0:1.643-9.el9_8.3",
+            "TestRef": "oval:com.redhat.rhsa:tst:202649612001"
+          },
+          {
+            "Comment": "perl-DBI is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:202638512002"
+          }
+        ]
+      }
+    ]
+  }
+}

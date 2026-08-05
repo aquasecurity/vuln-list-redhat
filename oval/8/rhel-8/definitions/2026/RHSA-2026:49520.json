@@ -1,0 +1,185 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202649520",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:49520: ldns security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:49520",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:49520"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-10846",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-10846"
+      }
+    ],
+    "Description": "The ldns packages contain a library with the aim to simplify DNS programming in C. All low-level DNS/DNSSEC operations are supported. We also define a higher level API which allows a programmer to (for instance) create or sign packets.\n\nSecurity Fix(es):\n\n* ldns: ldns: Off-path poisoning attacks due to insufficient query-response matching (CVE-2026-10846)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-08-03"
+      },
+      "Updated": {
+        "Date": "2026-08-03"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-10846",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+          "Cwe": "CWE-940",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-10846",
+          "Public": "20260610:0637"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2487437",
+          "ID": "2487437"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:8",
+        "cpe:/a:redhat:enterprise_linux:8::appstream",
+        "cpe:/a:redhat:enterprise_linux:8::crb",
+        "cpe:/a:redhat:enterprise_linux:8::highavailability",
+        "cpe:/a:redhat:enterprise_linux:8::nfv",
+        "cpe:/a:redhat:enterprise_linux:8::realtime",
+        "cpe:/a:redhat:enterprise_linux:8::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:8::sap",
+        "cpe:/a:redhat:enterprise_linux:8::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:8::supplementary",
+        "cpe:/o:redhat:enterprise_linux:8",
+        "cpe:/o:redhat:enterprise_linux:8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "ldns is earlier than 0:1.7.0-23.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202649520001"
+                  },
+                  {
+                    "Comment": "ldns is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202649520002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "ldns-devel is earlier than 0:1.7.0-23.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202649520003"
+                  },
+                  {
+                    "Comment": "ldns-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202649520004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "ldns-doc is earlier than 0:1.7.0-23.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202649520005"
+                  },
+                  {
+                    "Comment": "ldns-doc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202649520006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "ldns-utils is earlier than 0:1.7.0-23.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202649520007"
+                  },
+                  {
+                    "Comment": "ldns-utils is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202649520008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "perl-ldns is earlier than 0:1.7.0-23.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202649520009"
+                  },
+                  {
+                    "Comment": "perl-ldns is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202649520010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3-ldns is earlier than 0:1.7.0-23.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202649520011"
+                  },
+                  {
+                    "Comment": "python3-ldns is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202649520012"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
