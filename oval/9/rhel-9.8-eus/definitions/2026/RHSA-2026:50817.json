@@ -1,0 +1,160 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202650817",
+  "Version": "639",
+  "Metadata": {
+    "Title": "RHSA-2026:50817: gimp security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:50817",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:50817"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-42169",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-42169"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-66758",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-66758"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-66759",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-66759"
+      }
+    ],
+    "Description": "The GIMP (GNU Image Manipulation Program) is an image composition and editing program. GIMP provides a large image manipulation toolbox, including channel operations and layers, effects, sub-pixel imaging and anti-aliasing, and conversions, all with multi-level undo.\n\nSecurity Fix(es):\n\n* gimp: GIMP APNG loader heap-buffer-overflow when fcTL width exceeds IHDR width (file-png.c) (CVE-2026-42169)\n\n* gimp: integer overflow in file-fits plugin causes a heap-based buffer overflow on crafted FITS images (CVE-2026-66758)\n\n* gimp: out-of-bounds read in file-icns plugin causes information disclosure or crash on crafted ICNS images (CVE-2026-66759)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-08-05"
+      },
+      "Updated": {
+        "Date": "2026-08-05"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-42169",
+          "Cvss3": "7.3/CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-131",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-42169",
+          "Public": "20260804:0020"
+        },
+        {
+          "CveID": "CVE-2026-66758",
+          "Cvss3": "7.8/CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-190",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-66758",
+          "Public": "20260707"
+        },
+        {
+          "CveID": "CVE-2026-66759",
+          "Cvss3": "7.1/CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:H",
+          "Cwe": "CWE-125",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-66759",
+          "Public": "20260707"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2461725",
+          "ID": "2461725"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2507475",
+          "ID": "2507475"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2507557",
+          "ID": "2507557"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.8",
+        "cpe:/a:redhat:rhel_eus:9.8::appstream",
+        "cpe:/a:redhat:rhel_eus:9.8::crb",
+        "cpe:/a:redhat:rhel_eus:9.8::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.8::nfv",
+        "cpe:/a:redhat:rhel_eus:9.8::realtime",
+        "cpe:/a:redhat:rhel_eus:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.8::sap",
+        "cpe:/a:redhat:rhel_eus:9.8::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.8::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.8",
+        "cpe:/o:redhat:rhel_eus:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "gimp is earlier than 2:3.0.4-4.el9_8.9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202650817001"
+                  },
+                  {
+                    "Comment": "gimp is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20227978002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "gimp-libs is earlier than 2:3.0.4-4.el9_8.9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202650817003"
+                  },
+                  {
+                    "Comment": "gimp-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20227978004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

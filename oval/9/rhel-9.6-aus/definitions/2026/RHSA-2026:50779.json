@@ -1,0 +1,112 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202650779",
+  "Version": "638",
+  "Metadata": {
+    "Title": "RHSA-2026:50779: libpq security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.6 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:50779",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:50779"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-6477",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-6477"
+      }
+    ],
+    "Description": "The libpq package provides the PostgreSQL client library, which allows client programs to connect to PostgreSQL servers. \n\nSecurity Fix(es):\n\n* postgresql: PostgreSQL libpq: Buffer overflow allows server superuser to overwrite client stack memory (CVE-2026-6477)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-08-05"
+      },
+      "Updated": {
+        "Date": "2026-08-05"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-6477",
+          "Cvss3": "8.4/CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:C/C:H/I:H/A:H",
+          "Cwe": "CWE-120",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-6477",
+          "Public": "20260514:1300"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2477442",
+          "ID": "2477442"
+        }
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libpq is earlier than 0:13.23-1.el9_6.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202650779001"
+                  },
+                  {
+                    "Comment": "libpq is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20236429002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libpq-devel is earlier than 0:13.23-1.el9_6.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202650779003"
+                  },
+                  {
+                    "Comment": "libpq-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20236429004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
