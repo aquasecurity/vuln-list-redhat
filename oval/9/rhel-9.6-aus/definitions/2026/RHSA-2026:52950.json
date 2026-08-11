@@ -1,0 +1,87 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202652950",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:52950: libgcrypt security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.6 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:52950",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:52950"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-41989",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-41989"
+      }
+    ],
+    "Description": "The libgcrypt library provides general-purpose implementations of various cryptographic algorithms.\n\nSecurity Fix(es):\n\n* Libgcrypt: Libgcrypt: Denial of Service and buffer overflow via crafted ECDH ciphertext (CVE-2026-41989)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-08-10"
+      },
+      "Updated": {
+        "Date": "2026-08-10"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-41989",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-131",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-41989",
+          "Public": "20260423:0430"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2461063",
+          "ID": "2461063"
+        }
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          },
+          {
+            "Comment": "libgcrypt is earlier than 0:1.10.0-11.el9_6.1",
+            "TestRef": "oval:com.redhat.rhsa:tst:202652950001"
+          },
+          {
+            "Comment": "libgcrypt is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20249404002"
+          }
+        ]
+      }
+    ]
+  }
+}
