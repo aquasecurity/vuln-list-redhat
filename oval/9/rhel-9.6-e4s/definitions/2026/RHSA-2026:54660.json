@@ -1,0 +1,154 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202654660",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:54660: gstreamer1-plugins-bad-free security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.6 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:54660",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:54660"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-59691",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-59691"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-59692",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-59692"
+      }
+    ],
+    "Description": "GStreamer is a streaming media framework based on graphs of filters which operate on media data. The gstreamer1-plugins-bad-free package contains a collection of plug-ins for GStreamer.\n\nSecurity Fix(es):\n\n* gstreamer: gstreamer: rfbsrc/librfb Hextile heap out-of-bounds write with 16bpp framebuffer (CVE-2026-59691)\n\n* gstreamer: gstreamer: DTLS certificate Subject DN stack buffer overflow in openssl_verify_callback (CVE-2026-59692)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-08-13"
+      },
+      "Updated": {
+        "Date": "2026-08-13"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-59691",
+          "Cvss3": "7.1/CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:H",
+          "Cwe": "CWE-787",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-59691",
+          "Public": "20260708"
+        },
+        {
+          "CveID": "CVE-2026-59692",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-121",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-59692",
+          "Public": "20260708"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2497343",
+          "ID": "2497343"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2497344",
+          "ID": "2497344"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.6",
+        "cpe:/a:redhat:rhel_e4s:9.6::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.6::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.6::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.6::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.6::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.6::sap",
+        "cpe:/a:redhat:rhel_e4s:9.6::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.6",
+        "cpe:/o:redhat:rhel_e4s:9.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "gstreamer1-plugins-bad-free is earlier than 0:1.22.12-5.el9_6.6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202654660001"
+                  },
+                  {
+                    "Comment": "gstreamer1-plugins-bad-free is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237791002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "gstreamer1-plugins-bad-free-devel is earlier than 0:1.22.12-5.el9_6.6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202654660003"
+                  },
+                  {
+                    "Comment": "gstreamer1-plugins-bad-free-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237791004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "gstreamer1-plugins-bad-free-libs is earlier than 0:1.22.12-5.el9_6.6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202654660005"
+                  },
+                  {
+                    "Comment": "gstreamer1-plugins-bad-free-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20258183006"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
