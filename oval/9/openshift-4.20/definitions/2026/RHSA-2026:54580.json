@@ -1,0 +1,116 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202654580",
+  "Version": "638",
+  "Metadata": {
+    "Title": "RHSA-2026:54580: OpenShift Container Platform 4.20.34 packages and security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat OpenShift Container Platform 4.20"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:54580",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:54580"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-39821",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-39821"
+      }
+    ],
+    "Description": "Red Hat OpenShift Container Platform is Red Hat's cloud computing\nKubernetes application platform solution designed for on-premise or private\ncloud deployments.\n\nThis advisory contains the RPM packages for Red Hat OpenShift Container\nPlatform 4.20.34. See the following advisory for the container images for\nthis release:\n\nhttps://access.redhat.com/errata/RHSA-2026:54583\n\nSecurity Fix(es):\n\n* golang.org/x/net/idna: golang: net/http: golang.org/x/net/idna: Privilege\nescalation via incorrect Punycode label processing (CVE-2026-39821)\n\nFor more details about the security issue(s), including the impact, a CVSS\nscore, acknowledgments, and other related information, refer to the CVE\npage(s) listed in the References section.\n\nAll OpenShift Container Platform 4.20 users are advised to upgrade to these\nupdated packages and images when they are available in the appropriate\nrelease channel. To check for available updates, use the OpenShift CLI (oc)\nor web console. Instructions for upgrading a cluster are available at\nhttps://docs.redhat.com/en/documentation/openshift_container_platform/4.20/html-single/updating_clusters/index#updating-cluster-cli.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-08-18"
+      },
+      "Updated": {
+        "Date": "2026-08-18"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-39821",
+          "Cvss3": "8.2/CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:N",
+          "Cwe": "CWE-1289",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-39821",
+          "Public": "20260522:1501"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2480756",
+          "ID": "2480756"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:openshift:4.20",
+        "cpe:/a:redhat:openshift:4.20::el9"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhea:tst:20254782012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhea:tst:20254782011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openshift-clients is earlier than 0:4.20.0-202608101541.p2.g1367d50.assembly.stream.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202654580001"
+                  },
+                  {
+                    "Comment": "openshift-clients is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202621701222"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openshift-clients-redistributable is earlier than 0:4.20.0-202608101541.p2.g1367d50.assembly.stream.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202654580003"
+                  },
+                  {
+                    "Comment": "openshift-clients-redistributable is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202621701224"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

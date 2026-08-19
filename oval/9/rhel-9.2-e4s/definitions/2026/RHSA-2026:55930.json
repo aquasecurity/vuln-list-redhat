@@ -1,0 +1,133 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202655930",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:55930: mod_http2 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.2 Update Services for SAP Solutions"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:55930",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:55930"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2025-53020",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2025-53020"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-43951",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-43951"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-49975",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-49975"
+      }
+    ],
+    "Description": "The mod_h2 Apache httpd module implements the HTTP2 protocol (h2+h2c) on top of libnghttp2 for httpd 2.4 servers.\n\nSecurity Fix(es):\n\n* mod_http2: Apache HTTP Server: HTTP/2 DoS by Memory Increase (CVE-2025-53020)\n\n* httpd: httpd: HTTP/2 Remote Denial of Service via compression bomb and Slowloris-style attack (CVE-2026-49975)\n\n* httpd: Apache HTTP Server: Out-of-bounds Read in mod_headers and mod_mime (CVE-2026-43951)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-08-18"
+      },
+      "Updated": {
+        "Date": "2026-08-18"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2025-53020",
+          "Cvss3": "5.3/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+          "Cwe": "CWE-401",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2025-53020",
+          "Public": "20250710:1659"
+        },
+        {
+          "CveID": "CVE-2026-43951",
+          "Cvss3": "6.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
+          "Cwe": "CWE-125",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-43951",
+          "Public": "20260608:1516"
+        },
+        {
+          "CveID": "CVE-2026-49975",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-409",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-49975",
+          "Public": "20260603"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2379343",
+          "ID": "2379343"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2485371",
+          "ID": "2485371"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2486415",
+          "ID": "2486415"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.2",
+        "cpe:/a:redhat:rhel_e4s:9.2::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.2::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.2::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.2::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.2::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.2::sap",
+        "cpe:/a:redhat:rhel_e4s:9.2::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.2",
+        "cpe:/o:redhat:rhel_e4s:9.2::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
+          },
+          {
+            "Comment": "mod_http2 is earlier than 0:1.15.19-4.el9_2.8",
+            "TestRef": "oval:com.redhat.rhsa:tst:202655930001"
+          },
+          {
+            "Comment": "mod_http2 is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20231670024"
+          }
+        ]
+      }
+    ]
+  }
+}

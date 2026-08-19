@@ -1,0 +1,169 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202655865",
+  "Version": "640",
+  "Metadata": {
+    "Title": "RHSA-2026:55865: gstreamer1-plugins-bad-free and gstreamer1-plugins-ugly-free security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:55865",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:55865"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-19387",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-19387"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-19389",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-19389"
+      }
+    ],
+    "Description": "GStreamer is a streaming media framework based on graphs of filters which operate on media data. The gstreamer1-plugins-bad-free package contains a collection of plug-ins for GStreamer.\n\nSecurity Fix(es):\n\n* gstreamer: gstreamer1-plugins-bad-free: gstreamer: heap out-of-bounds write in adpcmdec IMA/DVI ADPCM decoder (CVE-2026-19387)\n\n* gstreamer: gstreamer1-plugins-ugly-free: gstreamer: integer overflow/underflow in asfdemux bounds checks leading to out-of-bounds read (CVE-2026-19389)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-08-17"
+      },
+      "Updated": {
+        "Date": "2026-08-17"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-19387",
+          "Cvss3": "7.6/CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:H",
+          "Cwe": "CWE-787",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-19387",
+          "Public": "20260805"
+        },
+        {
+          "CveID": "CVE-2026-19389",
+          "Cvss3": "7.1/CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:H",
+          "Cwe": "CWE-190",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-19389",
+          "Public": "20260805"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2513015",
+          "ID": "2513015"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2513016",
+          "ID": "2513016"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.8",
+        "cpe:/a:redhat:rhel_eus:9.8::appstream",
+        "cpe:/a:redhat:rhel_eus:9.8::crb",
+        "cpe:/a:redhat:rhel_eus:9.8::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.8::nfv",
+        "cpe:/a:redhat:rhel_eus:9.8::realtime",
+        "cpe:/a:redhat:rhel_eus:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.8::sap",
+        "cpe:/a:redhat:rhel_eus:9.8::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.8::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.8",
+        "cpe:/o:redhat:rhel_eus:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "gstreamer1-plugins-bad-free is earlier than 0:1.22.12-7.el9_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202655865001"
+                  },
+                  {
+                    "Comment": "gstreamer1-plugins-bad-free is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237791002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "gstreamer1-plugins-bad-free-devel is earlier than 0:1.22.12-7.el9_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202655865003"
+                  },
+                  {
+                    "Comment": "gstreamer1-plugins-bad-free-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20237791004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "gstreamer1-plugins-bad-free-libs is earlier than 0:1.22.12-7.el9_8.4",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202655865005"
+                  },
+                  {
+                    "Comment": "gstreamer1-plugins-bad-free-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20258183006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "gstreamer1-plugins-ugly-free is earlier than 0:1.22.12-6.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202655865007"
+                  },
+                  {
+                    "Comment": "gstreamer1-plugins-ugly-free is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619180012"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

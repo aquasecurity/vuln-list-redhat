@@ -1,0 +1,141 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202655447",
+  "Version": "638",
+  "Metadata": {
+    "Title": "RHSA-2026:55447: libXfont2 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:55447",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:55447"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-44950",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-44950"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-59679",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-59679"
+      }
+    ],
+    "Description": "X.Org X11 libXfont2 runtime library\n\nSecurity Fix(es):\n\n* libxfont2: Font Server Client encoding[] Out-Of-Bounds Read/Write (CVE-2026-59679)\n\n* libxfonts2: libXfont2: Privilege Escalation via Heap Buffer Overflow in Font Server Client (CVE-2026-44950)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-08-17"
+      },
+      "Updated": {
+        "Date": "2026-08-17"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-44950",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-120",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-44950",
+          "Public": "20260805:1000"
+        },
+        {
+          "CveID": "CVE-2026-59679",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-125",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-59679",
+          "Public": "20260805:1000"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2509620",
+          "ID": "2509620"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2509622",
+          "ID": "2509622"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.8",
+        "cpe:/a:redhat:rhel_e4s:9.8::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.8::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.8::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.8::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.8",
+        "cpe:/o:redhat:rhel_e4s:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libXfont2 is earlier than 0:2.0.3-12.el9_8.3",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202655447001"
+                  },
+                  {
+                    "Comment": "libXfont2 is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202647084002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libXfont2-devel is earlier than 0:2.0.3-12.el9_8.3",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202655447003"
+                  },
+                  {
+                    "Comment": "libXfont2-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202647084004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

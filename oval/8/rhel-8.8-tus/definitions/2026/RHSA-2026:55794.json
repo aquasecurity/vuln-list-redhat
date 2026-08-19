@@ -1,0 +1,230 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202655794",
+  "Version": "640",
+  "Metadata": {
+    "Title": "RHSA-2026:55794: 389-ds:1.4 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8.8 Telecommunications Update Service"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:55794",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:55794"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-11770",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-11770"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-11788",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-11788"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-15722",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-15722"
+      }
+    ],
+    "Description": "389 Directory Server is an LDAP version 3 (LDAPv3) compliant server. The base packages include the Lightweight Directory Access Protocol (LDAP) server and command-line utilities for server administration. \n\nSecurity Fix(es):\n\n* 389-ds-base: 389-ds-base: pre-auth LDAP filter injection in CleanAllRUV status check (CVE-2026-11770)\n\n* 389-ds-base: 389-ds-base: NULL pointer dereference in deref control plugin BER parser (CVE-2026-11788)\n\n* 389-ds-base: 389-ds-base: pre-authentication stack buffer overflow in get_ruvelement_from_berval() via unbounded replica ID parsing (CVE-2026-15722)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-08-17"
+      },
+      "Updated": {
+        "Date": "2026-08-17"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-11770",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "Cwe": "CWE-90",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-11770",
+          "Public": "20260731:0900"
+        },
+        {
+          "CveID": "CVE-2026-11788",
+          "Cvss3": "5.9/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-476",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-11788",
+          "Public": "20260416"
+        },
+        {
+          "CveID": "CVE-2026-15722",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-121",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-15722",
+          "Public": "20260731:0900"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2484802",
+          "ID": "2484802"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2485423",
+          "ID": "2485423"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2499961",
+          "ID": "2499961"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_tus:8.8",
+        "cpe:/a:redhat:rhel_tus:8.8::appstream",
+        "cpe:/a:redhat:rhel_tus:8.8::highavailability",
+        "cpe:/a:redhat:rhel_tus:8.8::nfv",
+        "cpe:/a:redhat:rhel_tus:8.8::realtime",
+        "cpe:/o:redhat:rhel_tus:8.8",
+        "cpe:/o:redhat:rhel_tus:8.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "Module 389-ds:1.4 is enabled",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193401013"
+                  }
+                ],
+                "Criterias": [
+                  {
+                    "Operator": "OR",
+                    "Criterias": [
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "389-ds-base is earlier than 0:1.4.3.35-20.module+el8.8.0+24646+9b151ec7",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202655794001"
+                          },
+                          {
+                            "Comment": "389-ds-base is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20193401002"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "389-ds-base-devel is earlier than 0:1.4.3.35-20.module+el8.8.0+24646+9b151ec7",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202655794003"
+                          },
+                          {
+                            "Comment": "389-ds-base-devel is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20193401004"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "389-ds-base-legacy-tools is earlier than 0:1.4.3.35-20.module+el8.8.0+24646+9b151ec7",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202655794005"
+                          },
+                          {
+                            "Comment": "389-ds-base-legacy-tools is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20193401006"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "389-ds-base-libs is earlier than 0:1.4.3.35-20.module+el8.8.0+24646+9b151ec7",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202655794007"
+                          },
+                          {
+                            "Comment": "389-ds-base-libs is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20193401008"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "389-ds-base-snmp is earlier than 0:1.4.3.35-20.module+el8.8.0+24646+9b151ec7",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202655794009"
+                          },
+                          {
+                            "Comment": "389-ds-base-snmp is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20193401010"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "python3-lib389 is earlier than 0:1.4.3.35-20.module+el8.8.0+24646+9b151ec7",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202655794011"
+                          },
+                          {
+                            "Comment": "python3-lib389 is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20193401012"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
