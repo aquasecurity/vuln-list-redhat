@@ -1,0 +1,138 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202656963",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:56963: gegl04 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.6 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:56963",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:56963"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-2050",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-2050"
+      }
+    ],
+    "Description": "GEGL (Generic Graphics Library) is a graph-based image processing framework.\n\nSecurity Fix(es):\n\n* gimp: GIMP: Arbitrary code execution via heap-based buffer overflow in HDR file parsing (CVE-2026-2050)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-08-19"
+      },
+      "Updated": {
+        "Date": "2026-08-19"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-2050",
+          "Cvss3": "7.8/CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-131",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-2050",
+          "Public": "20260624:2143"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2492593",
+          "ID": "2492593"
+        }
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "gegl04 is earlier than 0:0.4.34-3.el9_6.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202656963001"
+                  },
+                  {
+                    "Comment": "gegl04 is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202656963002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "gegl04-devel is earlier than 0:0.4.34-3.el9_6.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202656963003"
+                  },
+                  {
+                    "Comment": "gegl04-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202656963004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "gegl04-devel-docs is earlier than 0:0.4.34-3.el9_6.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202656963005"
+                  },
+                  {
+                    "Comment": "gegl04-devel-docs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202656963006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "gegl04-tools is earlier than 0:0.4.34-3.el9_6.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202656963007"
+                  },
+                  {
+                    "Comment": "gegl04-tools is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202656963008"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
