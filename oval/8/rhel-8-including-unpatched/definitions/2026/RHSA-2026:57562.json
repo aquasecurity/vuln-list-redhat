@@ -1,0 +1,112 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202657562",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:57562: perl-Date-Manip security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:57562",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:57562"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-60075",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-60075"
+      }
+    ],
+    "Description": "Date::Manip is a series of modules designed to make any common date/time operation easy to do. Operations such as comparing two times, determining a data a given amount of time from another, or parsing international times are all easily done. It deals with time as it is used in the Gregorian calendar (the one currently in use) with full support for time changes due to daylight saving time.\n\nSecurity Fix(es):\n\n* perl-Date-Manip: Date::Manip for Perl: Denial of Service via CPU exhaustion in date parsing (CVE-2026-60075)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-08-20"
+      },
+      "Updated": {
+        "Date": "2026-08-20"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-60075",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-1333",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-60075",
+          "Public": "20260730:1342"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2509486",
+          "ID": "2509486"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:8",
+        "cpe:/a:redhat:enterprise_linux:8::appstream",
+        "cpe:/a:redhat:enterprise_linux:8::crb",
+        "cpe:/a:redhat:enterprise_linux:8::highavailability",
+        "cpe:/a:redhat:enterprise_linux:8::nfv",
+        "cpe:/a:redhat:enterprise_linux:8::realtime",
+        "cpe:/a:redhat:enterprise_linux:8::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:8::sap",
+        "cpe:/a:redhat:enterprise_linux:8::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:8::supplementary",
+        "cpe:/o:redhat:enterprise_linux:8",
+        "cpe:/o:redhat:enterprise_linux:8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:20052541004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "perl-Date-Manip is earlier than 0:6.60-3.el8_10.1",
+            "TestRef": "oval:com.redhat.rhsa:tst:202657562001"
+          },
+          {
+            "Comment": "perl-Date-Manip is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.cve:tst:202660074002"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.cve:tst:20052541003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
