@@ -1,0 +1,125 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202658558",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:58558: libarchive security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.6 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:58558",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:58558"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-14164",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-14164"
+      }
+    ],
+    "Description": "The libarchive programming library can create and read several different streaming archive formats, including GNU tar, cpio, and ISO 9660 CD-ROM images. Libarchive is used notably in the bsdtar utility, scripting language bindings such as python-libarchive, and several popular desktop file managers.\n\nSecurity Fix(es):\n\n* libarchive: Double-Free Vulnerability in RAR5 Decompression Logic via dangling filtered_buf pointer in init_unpack() (CVE-2026-14164)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-08-24"
+      },
+      "Updated": {
+        "Date": "2026-08-24"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-14164",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-415",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-14164",
+          "Public": "20260524"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2493411",
+          "ID": "2493411"
+        }
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223897008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223897007"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "bsdtar is earlier than 0:3.5.3-7.el9_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202658558001"
+                  },
+                  {
+                    "Comment": "bsdtar is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20223897002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libarchive is earlier than 0:3.5.3-7.el9_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202658558003"
+                  },
+                  {
+                    "Comment": "libarchive is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20223897004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libarchive-devel is earlier than 0:3.5.3-7.el9_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202658558005"
+                  },
+                  {
+                    "Comment": "libarchive-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20223897006"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

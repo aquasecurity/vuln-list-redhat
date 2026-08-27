@@ -1,0 +1,99 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202658556",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:58556: libtiff security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.4 Update Services for SAP Solutions"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:58556",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:58556"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-12912",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-12912"
+      }
+    ],
+    "Description": "The libtiff packages contain a library of functions for manipulating Tagged Image File Format (TIFF) files.\n\nSecurity Fix(es):\n\n* libtiff: libtiff: Heap-based buffer overflow via crafted PixarLog-compressed TIFF image (CVE-2026-12912)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-08-24"
+      },
+      "Updated": {
+        "Date": "2026-08-24"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-12912",
+          "Cvss3": "7.3/CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-122",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-12912",
+          "Public": "20260416"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2492871",
+          "ID": "2492871"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.4",
+        "cpe:/a:redhat:rhel_e4s:9.4::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.4::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.4::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.4::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.4::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.4::sap",
+        "cpe:/a:redhat:rhel_e4s:9.4::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.4",
+        "cpe:/o:redhat:rhel_e4s:9.4::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223897008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223897007"
+          },
+          {
+            "Comment": "libtiff is earlier than 0:4.4.0-12.el9_4.6",
+            "TestRef": "oval:com.redhat.rhsa:tst:202658556001"
+          },
+          {
+            "Comment": "libtiff is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20228194002"
+          }
+        ]
+      }
+    ]
+  }
+}

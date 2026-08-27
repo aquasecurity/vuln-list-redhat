@@ -1,0 +1,263 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202657914",
+  "Version": "638",
+  "Metadata": {
+    "Title": "RHSA-2026:57914: Red Hat build of MicroShift 4.18.54 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat OpenShift Container Platform 4.18"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:57914",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:57914"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-39820",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-39820"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-42499",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-42499"
+      }
+    ],
+    "Description": "Red Hat build of MicroShift is Red Hat's light-weight Kubernetes\norchestration solution designed for edge device deployments and is built\nfrom the edge capabilities of Red Hat OpenShift Container Platform.\nMicroShift is an application that is deployed on top of Red Hat Enterprise\nLinux devices at the edge, providing an efficient way to operate\nsingle-node clusters in these low-resource environments.\n\nThis advisory contains the RPM packages for Red Hat build of MicroShift\n4.18.54. Read the following advisory for the container images for this\nrelease:\n\nhttps://access.redhat.com/errata/RHSA-2026:57487\n\nSecurity Fix(es):\n\n* net/mail: golang: Go net/mail: Denial of Service via crafted email inputs\n(CVE-2026-39820)\n* net/mail: golang: net/mail: Denial of Service via pathological email\naddress parsing (CVE-2026-42499)\n\nAll Red Hat build of MicroShift 4.18 users are advised to use these updated\npackages and images when they are available in the RPM repository.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-08-26"
+      },
+      "Updated": {
+        "Date": "2026-08-26"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-39820",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-606",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-39820",
+          "Public": "20260507:1941"
+        },
+        {
+          "CveID": "CVE-2026-42499",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-1046",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-42499",
+          "Public": "20260507:1941"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2467809",
+          "ID": "2467809"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2467820",
+          "ID": "2467820"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:openshift:4.18",
+        "cpe:/a:redhat:openshift:4.18::el9"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:202515712190"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:202515712189"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "microshift is earlier than 0:4.18.54-202608211117.p0.g8eb6c29.assembly.4.18.54.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202657914001"
+                  },
+                  {
+                    "Comment": "microshift is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618068002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "microshift-gateway-api is earlier than 0:4.18.54-202608211117.p0.g8eb6c29.assembly.4.18.54.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202657914003"
+                  },
+                  {
+                    "Comment": "microshift-gateway-api is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618068004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "microshift-gateway-api-release-info is earlier than 0:4.18.54-202608211117.p0.g8eb6c29.assembly.4.18.54.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202657914005"
+                  },
+                  {
+                    "Comment": "microshift-gateway-api-release-info is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618068006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "microshift-greenboot is earlier than 0:4.18.54-202608211117.p0.g8eb6c29.assembly.4.18.54.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202657914007"
+                  },
+                  {
+                    "Comment": "microshift-greenboot is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618068008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "microshift-low-latency is earlier than 0:4.18.54-202608211117.p0.g8eb6c29.assembly.4.18.54.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202657914009"
+                  },
+                  {
+                    "Comment": "microshift-low-latency is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618068010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "microshift-multus is earlier than 0:4.18.54-202608211117.p0.g8eb6c29.assembly.4.18.54.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202657914011"
+                  },
+                  {
+                    "Comment": "microshift-multus is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618068012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "microshift-multus-release-info is earlier than 0:4.18.54-202608211117.p0.g8eb6c29.assembly.4.18.54.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202657914013"
+                  },
+                  {
+                    "Comment": "microshift-multus-release-info is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618068014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "microshift-networking is earlier than 0:4.18.54-202608211117.p0.g8eb6c29.assembly.4.18.54.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202657914015"
+                  },
+                  {
+                    "Comment": "microshift-networking is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618068016"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "microshift-olm is earlier than 0:4.18.54-202608211117.p0.g8eb6c29.assembly.4.18.54.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202657914017"
+                  },
+                  {
+                    "Comment": "microshift-olm is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618068018"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "microshift-olm-release-info is earlier than 0:4.18.54-202608211117.p0.g8eb6c29.assembly.4.18.54.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202657914019"
+                  },
+                  {
+                    "Comment": "microshift-olm-release-info is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618068020"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "microshift-release-info is earlier than 0:4.18.54-202608211117.p0.g8eb6c29.assembly.4.18.54.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202657914021"
+                  },
+                  {
+                    "Comment": "microshift-release-info is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618068022"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "microshift-selinux is earlier than 0:4.18.54-202608211117.p0.g8eb6c29.assembly.4.18.54.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202657914023"
+                  },
+                  {
+                    "Comment": "microshift-selinux is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202618068024"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

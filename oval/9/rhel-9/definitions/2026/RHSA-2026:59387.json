@@ -1,0 +1,120 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202659387",
+  "Version": "644",
+  "Metadata": {
+    "Title": "RHSA-2026:59387: mod_http2 security, bug fix, and enhancement update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:59387",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:59387"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-43951",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-43951"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-48913",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-48913"
+      }
+    ],
+    "Description": "The mod_h2 Apache httpd module implements the HTTP2 protocol (h2+h2c) on top of libnghttp2 for httpd 2.4 servers.\n\nSecurity Fix(es):\n\n* httpd: mod_http2: Apache HTTP Server mod_http2: Use After Free vulnerability allows arbitrary code execution or denial of service. (CVE-2026-48913)\n\n* httpd: Apache HTTP Server: Out-of-bounds Read in mod_headers and mod_mime (CVE-2026-43951)\n\nBug Fix(es) and Enhancement(s):\n\n* address CVE-2026-43951 and CVE-2026-48913 in mod_http2 [rhel-9] (JIRA:RHEL-190583)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-08-25"
+      },
+      "Updated": {
+        "Date": "2026-08-25"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-43951",
+          "Cvss3": "6.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
+          "Cwe": "CWE-125",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-43951",
+          "Public": "20260608:1516"
+        },
+        {
+          "CveID": "CVE-2026-48913",
+          "Cvss3": "7.3/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+          "Cwe": "CWE-825",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-48913",
+          "Public": "20260608:1524"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2486405",
+          "ID": "2486405"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2486415",
+          "ID": "2486415"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::baseos",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::extensions",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
+          },
+          {
+            "Comment": "mod_http2 is earlier than 0:2.0.26-6.el9_8.2",
+            "TestRef": "oval:com.redhat.rhsa:tst:202659387001"
+          },
+          {
+            "Comment": "mod_http2 is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20231670024"
+          }
+        ]
+      }
+    ]
+  }
+}

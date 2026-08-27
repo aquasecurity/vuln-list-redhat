@@ -1,0 +1,141 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202660333",
+  "Version": "638",
+  "Metadata": {
+    "Title": "RHSA-2026:60333: isns-utils security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8.8 Telecommunications Update Service"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:60333",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:60333"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-55995",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-55995"
+      }
+    ],
+    "Description": "The iSNS package contains the daemon and tools to setup a iSNS server, and iSNS client tools. The Internet Storage Name Service (iSNS) protocol allows automated discovery, management and configuration of iSCSI and Fibre Channel devices (using iFCP gateways) on a TCP/IP network.\n\nSecurity Fix(es):\n\n* open-isns: open-iscsi: Denial of Service via double-free in iSNS attribute decoder (CVE-2026-55995)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-08-26"
+      },
+      "Updated": {
+        "Date": "2026-08-26"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-55995",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-763",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-55995",
+          "Public": "20260729:1343"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2508414",
+          "ID": "2508414"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_tus:8.8",
+        "cpe:/a:redhat:rhel_tus:8.8::appstream",
+        "cpe:/a:redhat:rhel_tus:8.8::highavailability",
+        "cpe:/a:redhat:rhel_tus:8.8::nfv",
+        "cpe:/a:redhat:rhel_tus:8.8::realtime",
+        "cpe:/o:redhat:rhel_tus:8.8",
+        "cpe:/o:redhat:rhel_tus:8.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "isns-utils is earlier than 0:0.99-1.el8_8.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202660333001"
+                  },
+                  {
+                    "Comment": "isns-utils is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202660333002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "isns-utils-devel is earlier than 0:0.99-1.el8_8.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202660333003"
+                  },
+                  {
+                    "Comment": "isns-utils-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202660333004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "isns-utils-libs is earlier than 0:0.99-1.el8_8.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202660333005"
+                  },
+                  {
+                    "Comment": "isns-utils-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202660333006"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
