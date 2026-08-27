@@ -1,0 +1,154 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202660428",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:60428: iscsi-initiator-utils security, bug fix, and enhancement update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.6 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:60428",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:60428"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-44943",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-44943"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-44944",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-44944"
+      }
+    ],
+    "Description": "The iscsi-initiator-utils packages provide the server daemon for the Internet Small Computer System Interface (iSCSI) protocol, as well as the utility programs used to manage it. The iSCSI protocol is a protocol for distributed disk access using SCSI commands sent over Internet Protocol (IP) networks.\n\nSecurity Fix(es):\n\n* open-iscsi: open-iscsi: Authentication bypass in iscsiuio control socket (CVE-2026-44944)\n\n* open-iscsi: open-iscsi: Privilege Escalation via Path Traversal (CVE-2026-44943)\n\nBug Fix(es) and Enhancement(s):\n\n* [FJ9.7 Bug][REG]: iscsiadm reports node.discovery_type as \"fw\", although it should be \"static\". [rhel-9.6.z] (JIRA:RHEL-191896)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-08-27"
+      },
+      "Updated": {
+        "Date": "2026-08-27"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-44943",
+          "Cvss3": "8.6/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:N",
+          "Cwe": "CWE-22",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-44943",
+          "Public": "20260729:1258"
+        },
+        {
+          "CveID": "CVE-2026-44944",
+          "Cvss3": "7.8/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-1220",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-44944",
+          "Public": "20260729:1304"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2508412",
+          "ID": "2508412"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2508419",
+          "ID": "2508419"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.6",
+        "cpe:/a:redhat:rhel_e4s:9.6::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.6::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.6::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.6::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.6::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.6::sap",
+        "cpe:/a:redhat:rhel_e4s:9.6::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.6",
+        "cpe:/o:redhat:rhel_e4s:9.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223897008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223897007"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "iscsi-initiator-utils is earlier than 0:6.2.1.9-1.gita65a472.el9_6.3",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202660428001"
+                  },
+                  {
+                    "Comment": "iscsi-initiator-utils is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202660428002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "iscsi-initiator-utils-iscsiuio is earlier than 0:6.2.1.9-1.gita65a472.el9_6.3",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202660428003"
+                  },
+                  {
+                    "Comment": "iscsi-initiator-utils-iscsiuio is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202660428004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3-iscsi-initiator-utils is earlier than 0:6.2.1.9-1.gita65a472.el9_6.3",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202660428005"
+                  },
+                  {
+                    "Comment": "python3-iscsi-initiator-utils is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202660428006"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
