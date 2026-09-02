@@ -1,0 +1,260 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202661240",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:61240: pipewire security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:61240",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:61240"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-14324",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-14324"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-14330",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-14330"
+      }
+    ],
+    "Description": "PipeWire is a multimedia server for Linux and other Unix like operating systems.\n\nSecurity Fix(es):\n\n* pipewire: RAOP RTSP NULL Deref (CVE-2026-14324)\n\n* pipewire: Pulse Server alloca Stack Overflow (CVE-2026-14330)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-08-31"
+      },
+      "Updated": {
+        "Date": "2026-08-31"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-14324",
+          "Cvss3": "6.5/CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-476",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-14324",
+          "Public": "20260701"
+        },
+        {
+          "CveID": "CVE-2026-14330",
+          "Cvss3": "5.5/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-770",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-14330",
+          "Public": "20260701"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2495903",
+          "ID": "2495903"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2495907",
+          "ID": "2495907"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.8",
+        "cpe:/a:redhat:rhel_eus:9.8::appstream",
+        "cpe:/a:redhat:rhel_eus:9.8::crb",
+        "cpe:/a:redhat:rhel_eus:9.8::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.8::nfv",
+        "cpe:/a:redhat:rhel_eus:9.8::realtime",
+        "cpe:/a:redhat:rhel_eus:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.8::sap",
+        "cpe:/a:redhat:rhel_eus:9.8::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.8::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.8",
+        "cpe:/o:redhat:rhel_eus:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223897008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223897007"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pipewire is earlier than 0:1.4.11-1.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202661240001"
+                  },
+                  {
+                    "Comment": "pipewire is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202647082002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pipewire-alsa is earlier than 0:1.4.11-1.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202661240003"
+                  },
+                  {
+                    "Comment": "pipewire-alsa is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202647082004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pipewire-devel is earlier than 0:1.4.11-1.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202661240005"
+                  },
+                  {
+                    "Comment": "pipewire-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202647082006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pipewire-gstreamer is earlier than 0:1.4.11-1.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202661240007"
+                  },
+                  {
+                    "Comment": "pipewire-gstreamer is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202647082008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pipewire-jack-audio-connection-kit is earlier than 0:1.4.11-1.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202661240009"
+                  },
+                  {
+                    "Comment": "pipewire-jack-audio-connection-kit is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202647082010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pipewire-jack-audio-connection-kit-devel is earlier than 0:1.4.11-1.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202661240011"
+                  },
+                  {
+                    "Comment": "pipewire-jack-audio-connection-kit-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202647082012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pipewire-jack-audio-connection-kit-libs is earlier than 0:1.4.11-1.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202661240013"
+                  },
+                  {
+                    "Comment": "pipewire-jack-audio-connection-kit-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202647082014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pipewire-libs is earlier than 0:1.4.11-1.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202661240015"
+                  },
+                  {
+                    "Comment": "pipewire-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202647082016"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pipewire-module-x11 is earlier than 0:1.4.11-1.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202661240017"
+                  },
+                  {
+                    "Comment": "pipewire-module-x11 is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202647082018"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pipewire-pulseaudio is earlier than 0:1.4.11-1.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202661240019"
+                  },
+                  {
+                    "Comment": "pipewire-pulseaudio is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202647082020"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pipewire-utils is earlier than 0:1.4.11-1.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202661240021"
+                  },
+                  {
+                    "Comment": "pipewire-utils is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202647082022"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

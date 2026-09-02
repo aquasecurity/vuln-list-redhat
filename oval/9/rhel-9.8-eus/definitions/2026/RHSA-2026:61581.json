@@ -1,0 +1,135 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202661581",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:61581: tar security, bug fix, and enhancement update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:61581",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:61581"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-18477",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-18477"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-18508",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-18508"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-5704",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-5704"
+      }
+    ],
+    "Description": "The GNU tar program can save multiple files in an archive and restore files from an archive.\n\nSecurity Fix(es):\n\n* tar: tar: Hidden file injection via crafted archives (CVE-2026-5704)\n\n* tar: tar: TOCTOU in incremental dumpdir 'X' rename handling allows restore path escape (CVE-2026-18477)\n\n* tar: tar: --one-top-level hardlink targets not confined to top-level directory enabling arbitrary file overwrite (CVE-2026-18508)\n\nBug Fix(es) and Enhancement(s):\n\n* tar: --one-top-level with absolute path fails [rhel-9] (JIRA:RHEL-144021)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-08-31"
+      },
+      "Updated": {
+        "Date": "2026-08-31"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-18477",
+          "Cvss3": "4.4/CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:U/C:N/I:H/A:N",
+          "Cwe": "CWE-367",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-18477",
+          "Public": "20260731"
+        },
+        {
+          "CveID": "CVE-2026-18508",
+          "Cvss3": "4.4/CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N",
+          "Cwe": "CWE-59",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-18508",
+          "Public": "20260731"
+        },
+        {
+          "CveID": "CVE-2026-5704",
+          "Cvss3": "5.0/CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:N/I:H/A:N",
+          "Cwe": "CWE-434",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-5704",
+          "Public": "20260406:1336"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2455360",
+          "ID": "2455360"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2509735",
+          "ID": "2509735"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2509843",
+          "ID": "2509843"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.8",
+        "cpe:/a:redhat:rhel_eus:9.8::appstream",
+        "cpe:/a:redhat:rhel_eus:9.8::crb",
+        "cpe:/a:redhat:rhel_eus:9.8::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.8::nfv",
+        "cpe:/a:redhat:rhel_eus:9.8::realtime",
+        "cpe:/a:redhat:rhel_eus:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.8::sap",
+        "cpe:/a:redhat:rhel_eus:9.8::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.8::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.8",
+        "cpe:/o:redhat:rhel_eus:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223897008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223897007"
+          },
+          {
+            "Comment": "tar is earlier than 2:1.34-13.el9_8",
+            "TestRef": "oval:com.redhat.rhsa:tst:202661581001"
+          },
+          {
+            "Comment": "tar is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20230959002"
+          }
+        ]
+      }
+    ]
+  }
+}
