@@ -1,0 +1,162 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202664807",
+  "Version": "640",
+  "Metadata": {
+    "Title": "RHSA-2026:64807: valkey security, bug fix, and enhancement update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:64807",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:64807"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-56684",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-56684"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-63639",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-63639"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-66373",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-66373"
+      }
+    ],
+    "Description": "Valkey is an advanced key-value store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets and sorted sets.  You can run atomic operations on these types, like appending to a string; incrementing the value in a hash; pushing to a list; computing set intersection, union and difference; or getting the member with highest ranking in a sorted set.  In order to achieve its outstanding performance, Valkey works with an in-memory dataset. Depending on your use case, you can persist it either by dumping the dataset to disk every once in a while, or by appending each command to a log.  Valkey also supports trivial-to-setup master-slave replication, with very fast non-blocking first synchronization, auto-reconnection on net split and so forth.  Other features include Transactions, Pub/Sub, Lua scripting, Keys with a limited time-to-live, and configuration settings to make Valkey behave like a cache.  You can use Valkey from most programming languages also.\n\nSecurity Fix(es):\n\n* redis: Redis: Remote Code Execution via specially crafted RESTORE payload (CVE-2026-66373)\n\n* valkey: Valkey: Remote code execution via use-after-free in stream deserialization (CVE-2026-63639)\n\n* valkey: Valkey: Remote code execution via TLS pending-data processing use-after-free (CVE-2026-56684)\n\nBug Fix(es) and Enhancement(s):\n\n* [Tracker] Rebase valkey to 8.0.10 (JIRA:RHEL-216778)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-09-08"
+      },
+      "Updated": {
+        "Date": "2026-09-08"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-56684",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-825",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-56684",
+          "Public": "20260818:1419"
+        },
+        {
+          "CveID": "CVE-2026-63639",
+          "Cvss3": "8.8/CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-825",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-63639",
+          "Public": "20260818:1423"
+        },
+        {
+          "CveID": "CVE-2026-66373",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-1341",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-66373",
+          "Public": "20260725:0008"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2506985",
+          "ID": "2506985"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2517906",
+          "ID": "2517906"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2517907",
+          "ID": "2517907"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::baseos",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::extensions",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223893008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223893007"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "valkey is earlier than 0:8.0.10-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202664807001"
+                  },
+                  {
+                    "Comment": "valkey is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202521916002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "valkey-devel is earlier than 0:8.0.10-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202664807003"
+                  },
+                  {
+                    "Comment": "valkey-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202521916004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

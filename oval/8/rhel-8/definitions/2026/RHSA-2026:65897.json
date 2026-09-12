@@ -1,0 +1,237 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202665897",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:65897: qt5-qtbase security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:65897",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:65897"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-9499",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-9499"
+      }
+    ],
+    "Description": "Qt is a software toolkit for developing applications. The qt5-base packages contain base tools for string, xml, and network handling in Qt. \n\nSecurity Fix(es):\n\n* qt: Qt: Denial of Service via out-of-bounds read in text codec handling (CVE-2026-9499)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-09-09"
+      },
+      "Updated": {
+        "Date": "2026-09-09"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-9499",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-125",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-9499",
+          "Public": "20260721:1325"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2503641",
+          "ID": "2503641"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:8",
+        "cpe:/a:redhat:enterprise_linux:8::appstream",
+        "cpe:/a:redhat:enterprise_linux:8::crb",
+        "cpe:/a:redhat:enterprise_linux:8::highavailability",
+        "cpe:/a:redhat:enterprise_linux:8::nfv",
+        "cpe:/a:redhat:enterprise_linux:8::realtime",
+        "cpe:/a:redhat:enterprise_linux:8::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:8::sap",
+        "cpe:/a:redhat:enterprise_linux:8::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:8::supplementary",
+        "cpe:/o:redhat:enterprise_linux:8",
+        "cpe:/o:redhat:enterprise_linux:8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qt5-qtbase is earlier than 0:5.15.3-9.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202665897001"
+                  },
+                  {
+                    "Comment": "qt5-qtbase is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193390002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qt5-qtbase-common is earlier than 0:5.15.3-9.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202665897003"
+                  },
+                  {
+                    "Comment": "qt5-qtbase-common is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193390004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qt5-qtbase-devel is earlier than 0:5.15.3-9.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202665897005"
+                  },
+                  {
+                    "Comment": "qt5-qtbase-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193390006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qt5-qtbase-examples is earlier than 0:5.15.3-9.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202665897007"
+                  },
+                  {
+                    "Comment": "qt5-qtbase-examples is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193390008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qt5-qtbase-gui is earlier than 0:5.15.3-9.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202665897009"
+                  },
+                  {
+                    "Comment": "qt5-qtbase-gui is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193390010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qt5-qtbase-mysql is earlier than 0:5.15.3-9.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202665897011"
+                  },
+                  {
+                    "Comment": "qt5-qtbase-mysql is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193390012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qt5-qtbase-odbc is earlier than 0:5.15.3-9.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202665897013"
+                  },
+                  {
+                    "Comment": "qt5-qtbase-odbc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193390014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qt5-qtbase-postgresql is earlier than 0:5.15.3-9.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202665897015"
+                  },
+                  {
+                    "Comment": "qt5-qtbase-postgresql is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193390016"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qt5-qtbase-private-devel is earlier than 0:5.15.3-9.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202665897017"
+                  },
+                  {
+                    "Comment": "qt5-qtbase-private-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20201665176"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "qt5-qtbase-static is earlier than 0:5.15.3-9.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202665897019"
+                  },
+                  {
+                    "Comment": "qt5-qtbase-static is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20193390018"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

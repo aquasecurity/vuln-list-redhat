@@ -1,0 +1,198 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhba:def:20237393",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHBA-2023:7393: e2fsprogs bug fix update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8.6 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHBA-2023:7393",
+        "RefURL": "https://access.redhat.com/errata/RHBA-2023:7393"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2022-1304",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2022-1304"
+      }
+    ],
+    "Description": "The e2fsprogs packages provide a number of utilities for creating, checking, modifying, and correcting the ext2, ext3, and ext4 file systems.\n\nBug Fix(es):\n\n* e2fsprogs: out-of-bounds read/write via crafted filesystem (JIRA:RHEL-7870)",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2023 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2023-11-21"
+      },
+      "Updated": {
+        "Date": "2023-11-21"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2022-1304",
+          "Cvss3": "5.8/CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:H",
+          "Cwe": "CWE-787",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2022-1304",
+          "Public": "20220324"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2069726",
+          "ID": "2069726"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:8.6",
+        "cpe:/a:redhat:rhel_eus:8.6::appstream",
+        "cpe:/a:redhat:rhel_eus:8.6::crb",
+        "cpe:/a:redhat:rhel_eus:8.6::highavailability",
+        "cpe:/a:redhat:rhel_eus:8.6::nfv",
+        "cpe:/a:redhat:rhel_eus:8.6::realtime",
+        "cpe:/a:redhat:rhel_eus:8.6::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:8.6::sap",
+        "cpe:/a:redhat:rhel_eus:8.6::sap_hana",
+        "cpe:/a:redhat:rhel_eus:8.6::supplementary",
+        "cpe:/o:redhat:rhel_eus:8.6",
+        "cpe:/o:redhat:rhel_eus:8.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "e2fsprogs is earlier than 0:1.45.6-6.el8_6",
+                    "TestRef": "oval:com.redhat.rhba:tst:20237393001"
+                  },
+                  {
+                    "Comment": "e2fsprogs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20237393002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "e2fsprogs-devel is earlier than 0:1.45.6-6.el8_6",
+                    "TestRef": "oval:com.redhat.rhba:tst:20237393003"
+                  },
+                  {
+                    "Comment": "e2fsprogs-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20237393004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "e2fsprogs-libs is earlier than 0:1.45.6-6.el8_6",
+                    "TestRef": "oval:com.redhat.rhba:tst:20237393005"
+                  },
+                  {
+                    "Comment": "e2fsprogs-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20237393006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libcom_err is earlier than 0:1.45.6-6.el8_6",
+                    "TestRef": "oval:com.redhat.rhba:tst:20237393007"
+                  },
+                  {
+                    "Comment": "libcom_err is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20237393008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libcom_err-devel is earlier than 0:1.45.6-6.el8_6",
+                    "TestRef": "oval:com.redhat.rhba:tst:20237393009"
+                  },
+                  {
+                    "Comment": "libcom_err-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20237393010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libss is earlier than 0:1.45.6-6.el8_6",
+                    "TestRef": "oval:com.redhat.rhba:tst:20237393011"
+                  },
+                  {
+                    "Comment": "libss is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20237393012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libss-devel is earlier than 0:1.45.6-6.el8_6",
+                    "TestRef": "oval:com.redhat.rhba:tst:20237393013"
+                  },
+                  {
+                    "Comment": "libss-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20237393014"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
