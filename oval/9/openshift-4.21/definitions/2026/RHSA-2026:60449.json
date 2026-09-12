@@ -1,0 +1,108 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202660449",
+  "Version": "638",
+  "Metadata": {
+    "Title": "RHSA-2026:60449: OpenShift Container Platform 4.21.31 packages and security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat OpenShift Container Platform 4.21"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:60449",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:60449"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-15809",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-15809"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-34986",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-34986"
+      }
+    ],
+    "Description": "Red Hat OpenShift Container Platform is Red Hat's cloud computing\nKubernetes application platform solution designed for on-premise or private\ncloud deployments.\n\nThis advisory contains the RPM packages for Red Hat OpenShift Container\nPlatform 4.21.31. See the following advisory for the container images for\nthis release:\n\nhttps://access.redhat.com/errata/RHSA-2026:60477\n\nSecurity Fix(es):\n\n* github.com/cri-o/cri-o: Fix Bypass for CVE-2022-4318 — /etc/passwd\nInjection via HOME env (CVE-2026-15809)\n* github.com/go-jose/go-jose/v3: github.com/go-jose/go-jose/v4: Go JOSE:\nDenial of Service via crafted JSON Web Encryption (JWE) object\n(CVE-2026-34986)\n\nFor more details about the security issue(s), including the impact, a CVSS\nscore, acknowledgments, and other related information, refer to the CVE\npage(s) listed in the References section.\n\nAll OpenShift Container Platform 4.21 users are advised to upgrade to these\nupdated packages and images when they are available in the appropriate\nrelease channel. To check for available updates, use the OpenShift CLI (oc)\nor web console. Instructions for upgrading a cluster are available at\nhttps://docs.redhat.com/en/documentation/openshift_container_platform/4.21/html-single/updating_clusters/index#updating-cluster-cli.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-09-01"
+      },
+      "Updated": {
+        "Date": "2026-09-01"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-15809",
+          "Cvss3": "7.8/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-134",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-15809",
+          "Public": "20260715:1018"
+        },
+        {
+          "CveID": "CVE-2026-34986",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-131",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-34986",
+          "Public": "20260406:1622"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2455470",
+          "ID": "2455470"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2500846",
+          "ID": "2500846"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:openshift:4.21",
+        "cpe:/a:redhat:openshift:4.21::el9"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:202620032220"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:202620032219"
+          },
+          {
+            "Comment": "cri-o is earlier than 0:1.34.11-4.rhaos4.21.git358c4b4.el9",
+            "TestRef": "oval:com.redhat.rhsa:tst:202660449001"
+          },
+          {
+            "Comment": "cri-o is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20262082002"
+          }
+        ]
+      }
+    ]
+  }
+}
