@@ -1,0 +1,163 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202667585",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:67585: firewalld security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:67585",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:67585"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-4948",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-4948"
+      }
+    ],
+    "Description": "firewalld is a firewall service daemon that provides a dynamic customizable firewall with a D-Bus interface.\n\nSecurity Fix(es):\n\n* firewalld: firewalld: Local unprivileged user can modify firewall state due to D-Bus setter mis-authorization (CVE-2026-4948)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-09-15"
+      },
+      "Updated": {
+        "Date": "2026-09-15"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-4948",
+          "Cvss3": "5.5/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N",
+          "Cwe": "CWE-279",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-4948",
+          "Public": "20260327"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2452086",
+          "ID": "2452086"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.8",
+        "cpe:/a:redhat:rhel_e4s:9.8::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.8::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.8::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.8::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.8",
+        "cpe:/o:redhat:rhel_e4s:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223897008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223897007"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "firewall-applet is earlier than 0:1.3.4-20.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202667585001"
+                  },
+                  {
+                    "Comment": "firewall-applet is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202667585002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "firewall-config is earlier than 0:1.3.4-20.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202667585003"
+                  },
+                  {
+                    "Comment": "firewall-config is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202667585004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "firewalld is earlier than 0:1.3.4-20.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202667585005"
+                  },
+                  {
+                    "Comment": "firewalld is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202667585006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "firewalld-filesystem is earlier than 0:1.3.4-20.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202667585007"
+                  },
+                  {
+                    "Comment": "firewalld-filesystem is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202667585008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3-firewall is earlier than 0:1.3.4-20.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202667585009"
+                  },
+                  {
+                    "Comment": "python3-firewall is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202667585010"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
