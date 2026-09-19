@@ -1,0 +1,112 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202668787",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:68787: perl-Net-DNS security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:68787",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:68787"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-81928",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-81928"
+      }
+    ],
+    "Description": "The perl-Net-DNS package contains a collection of Perl modules that act as a Domain Name System (DNS) resolver. It allows the programmer to perform DNS queries that are beyond the capabilities of the gethostbyname and gethostbyaddr routines.\n\nSecurity Fix(es):\n\n* perl-Net-DNS: Net::DNS: Denial of Service via unbounded recursion with misplaced TSIG records (CVE-2026-81928)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-09-18"
+      },
+      "Updated": {
+        "Date": "2026-09-18"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-81928",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-835",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-81928",
+          "Public": "20260901:2314"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2527155",
+          "ID": "2527155"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:8",
+        "cpe:/a:redhat:enterprise_linux:8::appstream",
+        "cpe:/a:redhat:enterprise_linux:8::crb",
+        "cpe:/a:redhat:enterprise_linux:8::highavailability",
+        "cpe:/a:redhat:enterprise_linux:8::nfv",
+        "cpe:/a:redhat:enterprise_linux:8::realtime",
+        "cpe:/a:redhat:enterprise_linux:8::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:8::sap",
+        "cpe:/a:redhat:enterprise_linux:8::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:8::supplementary",
+        "cpe:/o:redhat:enterprise_linux:8",
+        "cpe:/o:redhat:enterprise_linux:8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "perl-Net-DNS is earlier than 0:1.15-2.el8_10",
+            "TestRef": "oval:com.redhat.rhsa:tst:202668787001"
+          },
+          {
+            "Comment": "perl-Net-DNS is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:202668787002"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
