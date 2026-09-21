@@ -1,0 +1,162 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202667265",
+  "Version": "640",
+  "Metadata": {
+    "Title": "RHSA-2026:67265: libkcapi security, bug fix, and enhancement update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:67265",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:67265"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-71225",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-71225"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-71226",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-71226"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-71227",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-71227"
+      }
+    ],
+    "Description": "libkcapi allows user-space to access the Linux kernel crypto API.  This library uses the netlink interface and exports easy to use APIs so that a developer does not need to consider the low-level netlink interface handling.  The library does not implement any cipher algorithms.  All consumer requests are sent to the kernel for processing.  Results from the kernel crypto API are returned to the consumer via the library API.  The kernel interface and therefore this library can be used by unprivileged processes.\n\nSecurity Fix(es):\n\n* libkcapi: IV reuse in libkcapi one-shot symmetric cipher chunking causes cipher state reset across chunk boundaries (CVE-2026-71225)\n\n* libkcapi: Memory corruption via uncanceled AIO requests on error in libkcapi's one-shot AIO path (CVE-2026-71226)\n\n* libkcapi: Infinite loop denial of service in libkcapi _kcapi_aio_read_all() due to unhandled io_getevents() timeout return (CVE-2026-71227)\n\nBug Fix(es) and Enhancement(s):\n\n* libkcapi: AEAD Decrypt Auth Check Skipped for Zero-Length Input in `kcapi-enc` [rhel-9.8.z] (JIRA:RHEL-242667)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-09-14"
+      },
+      "Updated": {
+        "Date": "2026-09-14"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-71225",
+          "Cvss3": "6.5/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:N",
+          "Cwe": "CWE-330",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-71225",
+          "Public": "20260805:1155"
+        },
+        {
+          "CveID": "CVE-2026-71226",
+          "Cvss3": "7.3/CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:H",
+          "Cwe": "CWE-416",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-71226",
+          "Public": "20260805:1222"
+        },
+        {
+          "CveID": "CVE-2026-71227",
+          "Cvss3": "5.1/CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-835",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-71227",
+          "Public": "20260805:1229"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2462011",
+          "ID": "2462011"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2462114",
+          "ID": "2462114"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2462867",
+          "ID": "2462867"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::baseos",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::extensions",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:20052541004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.cve:tst:20052541003"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libkcapi is earlier than 0:1.4.0-3.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202667265001"
+                  },
+                  {
+                    "Comment": "libkcapi is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202667265002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libkcapi-hmaccalc is earlier than 0:1.4.0-3.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202667265003"
+                  },
+                  {
+                    "Comment": "libkcapi-hmaccalc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202667265004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

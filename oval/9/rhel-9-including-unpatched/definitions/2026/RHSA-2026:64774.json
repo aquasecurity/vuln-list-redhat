@@ -1,0 +1,120 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202664774",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:64774: python3.14-cryptography security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:64774",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:64774"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-69248",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-69248"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-69249",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-69249"
+      }
+    ],
+    "Description": "Python is an interpreted, interactive, object-oriented programming language, which includes modules, classes, exceptions, very high level dynamic data types and dynamic typing. Python supports interfaces to many system calls and libraries, as well as to various windowing systems.\n\nSecurity Fix(es):\n\n* python-cryptography: python-cryptography: Duplicate self-signed intermediates can cause exponential path-building (CVE-2026-69249)\n\n* python-cryptography: python-cryptography: python-cryptography verifier accepts wildcard DNS names allowing escape from permittedSubtrees (CVE-2026-69248)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-09-08"
+      },
+      "Updated": {
+        "Date": "2026-09-08"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-69248",
+          "Cvss3": "7.4/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+          "Cwe": "CWE-295",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-69248",
+          "Public": "20260803:2121"
+        },
+        {
+          "CveID": "CVE-2026-69249",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-770",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-69249",
+          "Public": "20260803:2126"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2510815",
+          "ID": "2510815"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2510830",
+          "ID": "2510830"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::baseos",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::extensions",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:20052541004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.cve:tst:20052541003"
+          },
+          {
+            "Comment": "python3.14-cryptography is earlier than 0:45.0.4-4.el9_8.6",
+            "TestRef": "oval:com.redhat.rhsa:tst:202664774001"
+          },
+          {
+            "Comment": "python3.14-cryptography is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.cve:tst:202669247002"
+          }
+        ]
+      }
+    ]
+  }
+}
