@@ -1,0 +1,91 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202668538",
+  "Version": "639",
+  "Metadata": {
+    "Title": "RHSA-2026:68538: OpenShift Container Platform 4.21.34 packages and security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat OpenShift Container Platform 4.21"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:68538",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:68538"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-56862",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-56862"
+      }
+    ],
+    "Description": "Red Hat OpenShift Container Platform is Red Hat's cloud computing Kubernetes application platform solution designed for on-premise or private cloud deployments.\n\nThis advisory contains the RPM packages for Red Hat OpenShift Container Platform 4.21.34. See the following advisory for the container images for this release:\n\nhttps://access.redhat.com/errata/RHSA-2026:68546\n\nSecurity Fix(es):\n\n* crypto/tls: golang: Golang crypto/tls: Denial of Service via indefinite KeyUpdate messages (CVE-2026-56862)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n\nAll OpenShift Container Platform 4.21 users are advised to upgrade to these updated packages and images when they are available in the appropriate release channel. To check for available updates, use the OpenShift CLI (oc) or web console. Instructions for upgrading a cluster are available at https://docs.redhat.com/en/documentation/openshift_container_platform/4.21/html-single/updating_clusters/index#updating-cluster-cli.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-09-22"
+      },
+      "Updated": {
+        "Date": "2026-09-22"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-56862",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-1050",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-56862",
+          "Public": "20260813:2158"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2515839",
+          "ID": "2515839"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:openshift:4.21",
+        "cpe:/a:redhat:openshift:4.21::el9"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:202620032220"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:202620032219"
+          },
+          {
+            "Comment": "ose-gcp-gcr-image-credential-provider is earlier than 0:4.21.0-202609141848.p2.g0b668ce.assembly.stream.el9",
+            "TestRef": "oval:com.redhat.rhsa:tst:202668538001"
+          },
+          {
+            "Comment": "ose-gcp-gcr-image-credential-provider is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:202668538002"
+          }
+        ]
+      }
+    ]
+  }
+}
