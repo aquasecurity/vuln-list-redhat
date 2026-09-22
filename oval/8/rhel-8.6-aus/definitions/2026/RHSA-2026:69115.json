@@ -1,0 +1,402 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202669115",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:69115: abrt security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8.6 Advanced Mission Critical Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:69115",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:69115"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-54230",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-54230"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-54231",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-54231"
+      }
+    ],
+    "Description": "The Automatic Bug Reporting Tool (ABRT) recognizes defects in applications and creates bug reports that help maintainers fix the defects. ABRT uses a plug-in system to extend its functionality. \n\nSecurity Fix(es):\n\n* abrt: event handler scripts follow symlinks when writing output files, allowing arbitrary file overwrites (CVE-2026-54230)\n\n* abrt: unsanitized systemd journal content written to dump directory files enables content injection (CVE-2026-54231)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-09-21"
+      },
+      "Updated": {
+        "Date": "2026-09-21"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-54230",
+          "Cvss3": "7.0/CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-59",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-54230",
+          "Public": "20260504"
+        },
+        {
+          "CveID": "CVE-2026-54231",
+          "Cvss3": "5.5/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N",
+          "Cwe": "CWE-74",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-54231",
+          "Public": "20260504"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2488568",
+          "ID": "2488568"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2488571",
+          "ID": "2488571"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_aus:8.6",
+        "cpe:/a:redhat:rhel_aus:8.6::appstream",
+        "cpe:/o:redhat:rhel_aus:8.6",
+        "cpe:/o:redhat:rhel_aus:8.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "abrt is earlier than 0:2.10.9-25.el8_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669115001"
+                  },
+                  {
+                    "Comment": "abrt is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202523032002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "abrt-addon-ccpp is earlier than 0:2.10.9-25.el8_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669115003"
+                  },
+                  {
+                    "Comment": "abrt-addon-ccpp is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202523032004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "abrt-addon-coredump-helper is earlier than 0:2.10.9-25.el8_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669115005"
+                  },
+                  {
+                    "Comment": "abrt-addon-coredump-helper is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202523032006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "abrt-addon-kerneloops is earlier than 0:2.10.9-25.el8_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669115007"
+                  },
+                  {
+                    "Comment": "abrt-addon-kerneloops is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202523032008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "abrt-addon-pstoreoops is earlier than 0:2.10.9-25.el8_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669115009"
+                  },
+                  {
+                    "Comment": "abrt-addon-pstoreoops is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202523032010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "abrt-addon-vmcore is earlier than 0:2.10.9-25.el8_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669115011"
+                  },
+                  {
+                    "Comment": "abrt-addon-vmcore is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202523032012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "abrt-addon-xorg is earlier than 0:2.10.9-25.el8_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669115013"
+                  },
+                  {
+                    "Comment": "abrt-addon-xorg is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202523032014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "abrt-cli is earlier than 0:2.10.9-25.el8_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669115015"
+                  },
+                  {
+                    "Comment": "abrt-cli is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202523032016"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "abrt-cli-ng is earlier than 0:2.10.9-25.el8_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669115017"
+                  },
+                  {
+                    "Comment": "abrt-cli-ng is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202523032018"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "abrt-console-notification is earlier than 0:2.10.9-25.el8_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669115019"
+                  },
+                  {
+                    "Comment": "abrt-console-notification is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202523032020"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "abrt-dbus is earlier than 0:2.10.9-25.el8_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669115021"
+                  },
+                  {
+                    "Comment": "abrt-dbus is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202523032022"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "abrt-desktop is earlier than 0:2.10.9-25.el8_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669115023"
+                  },
+                  {
+                    "Comment": "abrt-desktop is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202523032024"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "abrt-gui is earlier than 0:2.10.9-25.el8_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669115025"
+                  },
+                  {
+                    "Comment": "abrt-gui is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202523032026"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "abrt-gui-libs is earlier than 0:2.10.9-25.el8_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669115027"
+                  },
+                  {
+                    "Comment": "abrt-gui-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202523032028"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "abrt-libs is earlier than 0:2.10.9-25.el8_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669115029"
+                  },
+                  {
+                    "Comment": "abrt-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202523032030"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "abrt-plugin-machine-id is earlier than 0:2.10.9-25.el8_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669115031"
+                  },
+                  {
+                    "Comment": "abrt-plugin-machine-id is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202523032032"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "abrt-plugin-sosreport is earlier than 0:2.10.9-25.el8_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669115033"
+                  },
+                  {
+                    "Comment": "abrt-plugin-sosreport is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202523032034"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "abrt-tui is earlier than 0:2.10.9-25.el8_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669115035"
+                  },
+                  {
+                    "Comment": "abrt-tui is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202523032036"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3-abrt is earlier than 0:2.10.9-25.el8_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669115037"
+                  },
+                  {
+                    "Comment": "python3-abrt is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202523032038"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3-abrt-addon is earlier than 0:2.10.9-25.el8_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669115039"
+                  },
+                  {
+                    "Comment": "python3-abrt-addon is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202523032040"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3-abrt-container-addon is earlier than 0:2.10.9-25.el8_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669115041"
+                  },
+                  {
+                    "Comment": "python3-abrt-container-addon is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202523032042"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3-abrt-doc is earlier than 0:2.10.9-25.el8_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669115043"
+                  },
+                  {
+                    "Comment": "python3-abrt-doc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202523032044"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

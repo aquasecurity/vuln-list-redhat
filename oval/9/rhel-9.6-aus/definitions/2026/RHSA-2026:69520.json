@@ -1,0 +1,190 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202669520",
+  "Version": "638",
+  "Metadata": {
+    "Title": "RHSA-2026:69520: redis:7 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.6 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:69520",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:69520"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-66373",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-66373"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-72568",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-72568"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-81934",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-81934"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-92925",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-92925"
+      }
+    ],
+    "Description": "Redis is an advanced key-value store. It is often referred to as a data-structure server since keys can contain strings, hashes, lists, sets, and sorted sets. For performance, Redis works with an in-memory data set. You can persist it either by dumping the data set to disk every once in a while, or by appending each command to a log.\n\nSecurity Fix(es):\n\n* redis: Redis: Remote Code Execution via specially crafted RESTORE payload (CVE-2026-66373)\n\n* redis: Redis: Denial of Service via Out-of-Bounds Read in Cluster Bus (CVE-2026-72568)\n\n* redis: Redis: Arbitrary code execution via TLS pending-data list use-after-free (CVE-2026-81934)\n\n* redis: Redis: Out-of-bounds read via crafted cluster bus packets (CVE-2026-92925)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-09-21"
+      },
+      "Updated": {
+        "Date": "2026-09-21"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-66373",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-1341",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-66373",
+          "Public": "20260725:0008"
+        },
+        {
+          "CveID": "CVE-2026-72568",
+          "Cwe": "CWE-125",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-72568",
+          "Public": "20260810:1040"
+        },
+        {
+          "CveID": "CVE-2026-81934",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-416",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-81934",
+          "Public": "20260827:1940"
+        },
+        {
+          "CveID": "CVE-2026-92925",
+          "Cvss3": "7.1/CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H",
+          "Cwe": "CWE-125",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-92925",
+          "Public": "20260917:1148"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2506985",
+          "ID": "2506985"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2513105",
+          "ID": "2513105"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2525226",
+          "ID": "2525226"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2535971",
+          "ID": "2535971"
+        }
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223897008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223897007"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "Module redis:7 is enabled",
+                    "TestRef": "oval:com.redhat.rhea:tst:20241143007"
+                  }
+                ],
+                "Criterias": [
+                  {
+                    "Operator": "OR",
+                    "Criterias": [
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "redis is earlier than 0:7.2.16-1.module+el9.6.0+24910+8b24772d",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202669520001"
+                          },
+                          {
+                            "Comment": "redis is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhea:tst:20241143002"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "redis-devel is earlier than 0:7.2.16-1.module+el9.6.0+24910+8b24772d",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202669520003"
+                          },
+                          {
+                            "Comment": "redis-devel is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhea:tst:20241143004"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "redis-doc is earlier than 0:7.2.16-1.module+el9.6.0+24910+8b24772d",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202669520005"
+                          },
+                          {
+                            "Comment": "redis-doc is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhea:tst:20241143006"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

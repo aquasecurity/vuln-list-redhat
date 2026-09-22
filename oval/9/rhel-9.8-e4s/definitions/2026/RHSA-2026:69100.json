@@ -1,0 +1,154 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202669100",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:69100: gstreamer1-plugins-base security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:69100",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:69100"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-18297",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-18297"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-85150",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-85150"
+      }
+    ],
+    "Description": "GStreamer is a streaming media framework based on graphs of filters which operate on media data. The gstreamer1-plugins-base packages contain a collection of well-maintained base plug-ins.\n\nSecurity Fix(es):\n\n* gstreamer: GStreamer: Arbitrary code execution via OGG file parsing buffer overflow (CVE-2026-18297)\n\n* gstreamer1-plugins-base: gstreamer: NULL/invalid-pointer dereference in gst_rtsp_message_parse_auth_credentials() when parsing a crafted Digest Authorization/WWW-Authenticate header (CVE-2026-85150)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-09-21"
+      },
+      "Updated": {
+        "Date": "2026-09-21"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-18297",
+          "Cvss3": "7.8/CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-120",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-18297",
+          "Public": "20260820:1622"
+        },
+        {
+          "CveID": "CVE-2026-85150",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-476",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-85150",
+          "Public": "20260903:1025"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2520572",
+          "ID": "2520572"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2527936",
+          "ID": "2527936"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.8",
+        "cpe:/a:redhat:rhel_e4s:9.8::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.8::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.8::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.8::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.8",
+        "cpe:/o:redhat:rhel_e4s:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223897008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223897007"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "gstreamer1-plugins-base is earlier than 0:1.22.12-8.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669100001"
+                  },
+                  {
+                    "Comment": "gstreamer1-plugins-base is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202411123002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "gstreamer1-plugins-base-devel is earlier than 0:1.22.12-8.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669100003"
+                  },
+                  {
+                    "Comment": "gstreamer1-plugins-base-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202411123004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "gstreamer1-plugins-base-tools is earlier than 0:1.22.12-8.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669100005"
+                  },
+                  {
+                    "Comment": "gstreamer1-plugins-base-tools is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202411123006"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

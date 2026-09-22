@@ -1,0 +1,154 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202669278",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:69278: corosync security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8.8 Telecommunications Update Service"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:69278",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:69278"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-81665",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-81665"
+      }
+    ],
+    "Description": "The corosync packages provide the Corosync Cluster Engine and C APIs for Red Hat Enterprise Linux cluster software.\n\nSecurity Fix(es):\n\n* corosync: corosync: heap-based buffer overflow in totempg assembly buffer during fragmented message reassembly (CVE-2026-81665)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-09-21"
+      },
+      "Updated": {
+        "Date": "2026-09-21"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-81665",
+          "Cvss3": "7.5/CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-122",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-81665",
+          "Public": "20260904:0830"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2524910",
+          "ID": "2524910"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_tus:8.8",
+        "cpe:/a:redhat:rhel_tus:8.8::appstream",
+        "cpe:/a:redhat:rhel_tus:8.8::highavailability",
+        "cpe:/a:redhat:rhel_tus:8.8::nfv",
+        "cpe:/a:redhat:rhel_tus:8.8::realtime",
+        "cpe:/o:redhat:rhel_tus:8.8",
+        "cpe:/o:redhat:rhel_tus:8.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "corosync is earlier than 0:3.1.7-1.el8_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669278001"
+                  },
+                  {
+                    "Comment": "corosync is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202614216002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "corosynclib is earlier than 0:3.1.7-1.el8_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669278003"
+                  },
+                  {
+                    "Comment": "corosynclib is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202614216004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "corosynclib-devel is earlier than 0:3.1.7-1.el8_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669278005"
+                  },
+                  {
+                    "Comment": "corosynclib-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202614216006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "spausedd is earlier than 0:3.1.7-1.el8_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669278007"
+                  },
+                  {
+                    "Comment": "spausedd is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202614216008"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
