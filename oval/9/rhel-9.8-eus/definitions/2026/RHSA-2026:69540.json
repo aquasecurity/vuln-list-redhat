@@ -1,0 +1,373 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202669540",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:69540: rsyslog security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:69540",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:69540"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-78002",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-78002"
+      }
+    ],
+    "Description": "The rsyslog packages provide an enhanced, multi-threaded syslog daemon. It supports MySQL, syslog/TCP, RFC 3195, permitted sender lists, filtering on any message part, and fine-grained control over output format.\n\nSecurity Fix(es):\n\n* rsyslog: rsyslog: Denial of service via heap buffer overflow in RainerScript replace() function (CVE-2026-78002)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-09-22"
+      },
+      "Updated": {
+        "Date": "2026-09-22"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-78002",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-131",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-78002",
+          "Public": "20260826"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2521135",
+          "ID": "2521135"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.8",
+        "cpe:/a:redhat:rhel_eus:9.8::appstream",
+        "cpe:/a:redhat:rhel_eus:9.8::crb",
+        "cpe:/a:redhat:rhel_eus:9.8::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.8::nfv",
+        "cpe:/a:redhat:rhel_eus:9.8::realtime",
+        "cpe:/a:redhat:rhel_eus:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.8::sap",
+        "cpe:/a:redhat:rhel_eus:9.8::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.8::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.8",
+        "cpe:/o:redhat:rhel_eus:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223897008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223897007"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "rsyslog is earlier than 0:8.2510.0-2.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669540001"
+                  },
+                  {
+                    "Comment": "rsyslog is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20224795002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "rsyslog-crypto is earlier than 0:8.2510.0-2.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669540003"
+                  },
+                  {
+                    "Comment": "rsyslog-crypto is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20224795004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "rsyslog-doc is earlier than 0:8.2510.0-2.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669540005"
+                  },
+                  {
+                    "Comment": "rsyslog-doc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20224795006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "rsyslog-elasticsearch is earlier than 0:8.2510.0-2.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669540007"
+                  },
+                  {
+                    "Comment": "rsyslog-elasticsearch is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20224795008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "rsyslog-gnutls is earlier than 0:8.2510.0-2.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669540009"
+                  },
+                  {
+                    "Comment": "rsyslog-gnutls is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20224795010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "rsyslog-gssapi is earlier than 0:8.2510.0-2.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669540011"
+                  },
+                  {
+                    "Comment": "rsyslog-gssapi is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20224795012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "rsyslog-kafka is earlier than 0:8.2510.0-2.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669540013"
+                  },
+                  {
+                    "Comment": "rsyslog-kafka is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20224795014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "rsyslog-logrotate is earlier than 0:8.2510.0-2.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669540015"
+                  },
+                  {
+                    "Comment": "rsyslog-logrotate is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20224795016"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "rsyslog-mmaudit is earlier than 0:8.2510.0-2.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669540017"
+                  },
+                  {
+                    "Comment": "rsyslog-mmaudit is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20224795018"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "rsyslog-mmfields is earlier than 0:8.2510.0-2.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669540019"
+                  },
+                  {
+                    "Comment": "rsyslog-mmfields is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20224795020"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "rsyslog-mmjsonparse is earlier than 0:8.2510.0-2.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669540021"
+                  },
+                  {
+                    "Comment": "rsyslog-mmjsonparse is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20224795022"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "rsyslog-mmkubernetes is earlier than 0:8.2510.0-2.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669540023"
+                  },
+                  {
+                    "Comment": "rsyslog-mmkubernetes is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20224795024"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "rsyslog-mmnormalize is earlier than 0:8.2510.0-2.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669540025"
+                  },
+                  {
+                    "Comment": "rsyslog-mmnormalize is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20224795026"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "rsyslog-mmsnmptrapd is earlier than 0:8.2510.0-2.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669540027"
+                  },
+                  {
+                    "Comment": "rsyslog-mmsnmptrapd is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20224795028"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "rsyslog-mysql is earlier than 0:8.2510.0-2.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669540029"
+                  },
+                  {
+                    "Comment": "rsyslog-mysql is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20224795030"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "rsyslog-omamqp1 is earlier than 0:8.2510.0-2.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669540031"
+                  },
+                  {
+                    "Comment": "rsyslog-omamqp1 is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20224795032"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "rsyslog-openssl is earlier than 0:8.2510.0-2.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669540033"
+                  },
+                  {
+                    "Comment": "rsyslog-openssl is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20224795034"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "rsyslog-pgsql is earlier than 0:8.2510.0-2.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669540035"
+                  },
+                  {
+                    "Comment": "rsyslog-pgsql is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20224795036"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "rsyslog-relp is earlier than 0:8.2510.0-2.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669540037"
+                  },
+                  {
+                    "Comment": "rsyslog-relp is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20224795038"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "rsyslog-snmp is earlier than 0:8.2510.0-2.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669540039"
+                  },
+                  {
+                    "Comment": "rsyslog-snmp is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20224795040"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "rsyslog-udpspoof is earlier than 0:8.2510.0-2.el9_8.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202669540041"
+                  },
+                  {
+                    "Comment": "rsyslog-udpspoof is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20224795042"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
