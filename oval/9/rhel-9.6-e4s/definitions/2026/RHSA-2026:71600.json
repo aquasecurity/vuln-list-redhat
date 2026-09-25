@@ -1,0 +1,99 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202671600",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:71600: rrdtool security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.6 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:71600",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:71600"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-43958",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-43958"
+      }
+    ],
+    "Description": "The round robin database (RRD) system stores and displays time-series data, such as network bandwidth, machine-room temperature, and server load average. RRDtool is a high performance data logging and graphing utility, which can be easily integrated with shell scripts, or used to create applications using its Perl, Python, Ruby, Lua, Tcl, and PHP bindings. The data is stored in a compact manner that does not expand over time, and RRDtool provides the user with useful graphs by processing the data to enforce a certain data density.\n\nSecurity Fix(es):\n\n* rrdtool: rrdtool: Stack buffer overflow allows local code execution or denial of service (CVE-2026-43958)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-09-24"
+      },
+      "Updated": {
+        "Date": "2026-09-24"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-43958",
+          "Cvss3": "7.8/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-121",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-43958",
+          "Public": "20260601:1704"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2460932",
+          "ID": "2460932"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.6",
+        "cpe:/a:redhat:rhel_e4s:9.6::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.6::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.6::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.6::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.6::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.6::sap",
+        "cpe:/a:redhat:rhel_e4s:9.6::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.6",
+        "cpe:/o:redhat:rhel_e4s:9.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223897008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223897007"
+          },
+          {
+            "Comment": "rrdtool is earlier than 0:1.7.2-21.el9_6.1",
+            "TestRef": "oval:com.redhat.rhsa:tst:202671600001"
+          },
+          {
+            "Comment": "rrdtool is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:202671600002"
+          }
+        ]
+      }
+    ]
+  }
+}
