@@ -1,0 +1,203 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202671487",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:71487: unbound security update (Critical)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:71487",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:71487"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-81634",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-81634"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-81642",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-81642"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-82717",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-82717"
+      }
+    ],
+    "Description": "The unbound packages provide a validating, recursive, and caching DNS or DNSSEC resolver. \n\nSecurity Fix(es):\n\n* unbound: Unbound: Remote Code Execution Vulnerability in CNAME Synthesis (CVE-2026-82717)\n\n* unbound: Unbound: Heap buffer overflow via malicious DNSSEC response (CVE-2026-81634)\n\n* unbound: Unbound: Heap buffer overflow and possible Remote Code Execution when digesting DNSKEY (CVE-2026-81642)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Critical",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-09-24"
+      },
+      "Updated": {
+        "Date": "2026-09-24"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-81634",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-122",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-81634",
+          "Public": "20260916:0830"
+        },
+        {
+          "CveID": "CVE-2026-81642",
+          "Cvss3": "9.8/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-122",
+          "Impact": "critical",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-81642",
+          "Public": "20260916:0830"
+        },
+        {
+          "CveID": "CVE-2026-82717",
+          "Cvss3": "8.1/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-787",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-82717",
+          "Public": "20260916:0831"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2535051",
+          "ID": "2535051"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2535054",
+          "ID": "2535054"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2535059",
+          "ID": "2535059"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::baseos",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::extensions",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/a:redhat:rhel_eus:9.10",
+        "cpe:/a:redhat:rhel_eus:9.10::appstream",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:20052541004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.cve:tst:20052541003"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3-unbound is earlier than 0:1.24.2-3.el9_8.8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202671487001"
+                  },
+                  {
+                    "Comment": "python3-unbound is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:20241931006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "unbound is earlier than 0:1.24.2-3.el9_8.8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202671487003"
+                  },
+                  {
+                    "Comment": "unbound is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:20241931004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "unbound-devel is earlier than 0:1.24.2-3.el9_8.8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202671487005"
+                  },
+                  {
+                    "Comment": "unbound-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:20241931002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "unbound-dracut is earlier than 0:1.24.2-3.el9_8.8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202671487007"
+                  },
+                  {
+                    "Comment": "unbound-dracut is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:20241931008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "unbound-libs is earlier than 0:1.24.2-3.el9_8.8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202671487009"
+                  },
+                  {
+                    "Comment": "unbound-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:20241931010"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
