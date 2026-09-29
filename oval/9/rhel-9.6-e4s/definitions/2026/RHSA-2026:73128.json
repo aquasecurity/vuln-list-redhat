@@ -1,0 +1,124 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202673128",
+  "Version": "640",
+  "Metadata": {
+    "Title": "RHSA-2026:73128: cjose security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.6 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:73128",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:73128"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-53938",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-53938"
+      }
+    ],
+    "Description": "CJose is C library implementing the Javascript Object Signing and Encryption (JOSE).\n\nSecurity Fix(es):\n\n* cjose: cjose: Heap buffer overflow in AES Key Wrap decryption leads to denial of service (CVE-2026-53938)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-09-29"
+      },
+      "Updated": {
+        "Date": "2026-09-29"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-53938",
+          "Cvss3": "8.2/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H",
+          "Cwe": "CWE-787",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-53938",
+          "Public": "20260908:2325"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2530240",
+          "ID": "2530240"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.6",
+        "cpe:/a:redhat:rhel_e4s:9.6::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.6::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.6::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.6::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.6::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.6::sap",
+        "cpe:/a:redhat:rhel_e4s:9.6::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.6",
+        "cpe:/o:redhat:rhel_e4s:9.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223897008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223897007"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "cjose is earlier than 0:0.6.1-17.el9_6.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202673128001"
+                  },
+                  {
+                    "Comment": "cjose is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20234411002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "cjose-devel is earlier than 0:0.6.1-17.el9_6.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202673128003"
+                  },
+                  {
+                    "Comment": "cjose-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202673128004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
