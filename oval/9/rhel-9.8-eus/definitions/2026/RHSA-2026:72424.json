@@ -1,0 +1,152 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202672424",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:72424: resteasy security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:72424",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:72424"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-17615",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-17615"
+      }
+    ],
+    "Description": "RESTEasy contains a JBoss project that provides frameworks to help build RESTful Web Services and RESTful Java applications. It is a fully certified and portable implementation of the JAX-RS specification.\n\nSecurity Fix(es):\n\n* resteasy-core: RESTeasy SourceProvider remote unauthenticated file read (CVE-2026-17615)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-09-28"
+      },
+      "Updated": {
+        "Date": "2026-09-28"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-17615",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "Cwe": "CWE-611",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-17615",
+          "Public": "20260831"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2507635",
+          "ID": "2507635"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.8",
+        "cpe:/a:redhat:rhel_eus:9.8::appstream",
+        "cpe:/a:redhat:rhel_eus:9.8::crb",
+        "cpe:/a:redhat:rhel_eus:9.8::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.8::nfv",
+        "cpe:/a:redhat:rhel_eus:9.8::realtime",
+        "cpe:/a:redhat:rhel_eus:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.8::sap",
+        "cpe:/a:redhat:rhel_eus:9.8::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.8::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.8",
+        "cpe:/o:redhat:rhel_eus:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223897008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223897007"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pki-resteasy-client is earlier than 0:3.0.26-20.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202672424001"
+                  },
+                  {
+                    "Comment": "pki-resteasy-client is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202672424002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pki-resteasy-core is earlier than 0:3.0.26-20.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202672424003"
+                  },
+                  {
+                    "Comment": "pki-resteasy-core is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202672424004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pki-resteasy-jackson2-provider is earlier than 0:3.0.26-20.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202672424005"
+                  },
+                  {
+                    "Comment": "pki-resteasy-jackson2-provider is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202672424006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pki-resteasy-servlet-initializer is earlier than 0:3.0.26-20.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202672424007"
+                  },
+                  {
+                    "Comment": "pki-resteasy-servlet-initializer is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202672424008"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
