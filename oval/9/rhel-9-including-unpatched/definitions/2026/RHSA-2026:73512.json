@@ -1,0 +1,164 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202673512",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:73512: gawk security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:73512",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:73512"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-40467",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-40467"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-40468",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-40468"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-40553",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-40553"
+      }
+    ],
+    "Description": "The gawk packages contain the GNU version of awk, a text processing utility. Awk interprets a special-purpose programming language to do quick and easy text pattern matching and reformatting jobs.\n\nSecurity Fix(es):\n\n* gawk: gawk: Memory corruption via integer overflow (CVE-2026-40468)\n\n* gawk: Gawk: Buffer overflow in ftype() routine may lead to code execution or denial of service (CVE-2026-40553)\n\n* gawk: gawk: Denial of Service due to Use After Free vulnerability in io.c (CVE-2026-40467)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-09-29"
+      },
+      "Updated": {
+        "Date": "2026-09-29"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-40467",
+          "Cvss3": "4.0/CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+          "Cwe": "CWE-825",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-40467",
+          "Public": "20260713:1207"
+        },
+        {
+          "CveID": "CVE-2026-40468",
+          "Cvss3": "4.4/CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:L",
+          "Cwe": "CWE-190",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-40468",
+          "Public": "20260713:1207"
+        },
+        {
+          "CveID": "CVE-2026-40553",
+          "Cvss3": "6.2/CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-121",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-40553",
+          "Public": "20260713:1207"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2499655",
+          "ID": "2499655"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2499657",
+          "ID": "2499657"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2499658",
+          "ID": "2499658"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::baseos",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::extensions",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/a:redhat:rhel_eus:9.10",
+        "cpe:/a:redhat:rhel_eus:9.10::appstream",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:20052541004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.cve:tst:20052541003"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "gawk is earlier than 0:5.1.0-6.el9_8.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202673512001"
+                  },
+                  {
+                    "Comment": "gawk is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:20234156002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "gawk-all-langpacks is earlier than 0:5.1.0-6.el9_8.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202673512003"
+                  },
+                  {
+                    "Comment": "gawk-all-langpacks is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:20234156004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
