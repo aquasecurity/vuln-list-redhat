@@ -1,23 +1,39 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:202644236",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202675582",
   "Version": "637",
   "Metadata": {
-    "Title": "rabbitmq-c: rabbitmq-c: Heap buffer overflow leading to denial of service (important)",
+    "Title": "RHSA-2026:75582: librabbitmq security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:75582",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:75582"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2026-44236",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2026-44236"
       }
     ],
-    "Description": "DOCUMENTATION: A flaw was found in rabbitmq-c. A malicious AMQP (Advanced Message Queuing Protocol) server or an on-path attacker can send an undersized frame size during the login handshake. This can lead to a heap buffer overflow, causing memory corruption and potentially a denial of service. Code execution is theoretically possible but has not been demonstrated. \n            STATEMENT: This is a flaw in the `rabbitmq-c` client library, which can lead to a denial of service. The vulnerability arises from a heap buffer overflow when a client connects to a malicious AMQP server that sends a specially crafted `frame_max` value during login. Additionally, an on-path attacker can exploit this flaw against plaintext AMQP traffic, making encrypted communication crucial for mitigating this risk.\n            MITIGATION: To mitigate this issue, ensure that `rabbitmq-c` clients only connect to trusted AMQP servers. Additionally, enforce the use of TLS/SSL for all AMQP communication to prevent on-path attackers from exploiting this vulnerability against plaintext traffic. Consult your AMQP server and client documentation for specific configuration steps to enable and enforce TLS/SSL.",
+    "Description": "The librabbitmq packages provide an Advanced Message Queuing Protocol (AMQP) client library that allows you to communicate with AMQP servers using protocol version 0-9-1.\n\nSecurity Fix(es):\n\n* rabbitmq-c: rabbitmq-c: Heap buffer overflow leading to denial of service (CVE-2026-44236)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Important",
-      "Issued": {},
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-10-05"
+      },
       "Updated": {
-        "Date": "2026-09-24"
+        "Date": "2026-10-05"
       },
       "Cves": [
         {
@@ -27,6 +43,12 @@
           "Impact": "important",
           "Href": "https://access.redhat.com/security/cve/CVE-2026-44236",
           "Public": "20260917:1704"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2536500",
+          "ID": "2536500"
         }
       ],
       "AffectedCpeList": [
@@ -44,9 +66,7 @@
         "cpe:/o:redhat:enterprise_linux:8::baseos"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        }
+        "Resolution": {}
       }
     }
   },
@@ -61,13 +81,20 @@
     "Criterias": [
       {
         "Operator": "AND",
-        "Criterions": [
-          {
-            "Comment": "Red Hat Enterprise Linux 8 is installed",
-            "TestRef": "oval:com.redhat.cve:tst:20052541003"
-          }
-        ],
         "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.cve:tst:20052541003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
           {
             "Operator": "OR",
             "Criterias": [
@@ -75,8 +102,8 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "librabbitmq is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202644235001"
+                    "Comment": "librabbitmq is earlier than 0:0.9.0-6.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202675582001"
                   },
                   {
                     "Comment": "librabbitmq is signed with Red Hat redhatrelease2 key",
@@ -88,12 +115,25 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "librabbitmq-devel is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:202644235003"
+                    "Comment": "librabbitmq-devel is earlier than 0:0.9.0-6.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202675582003"
                   },
                   {
                     "Comment": "librabbitmq-devel is signed with Red Hat redhatrelease2 key",
                     "TestRef": "oval:com.redhat.cve:tst:202644235004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "librabbitmq-tools is earlier than 0:0.9.0-6.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202675582005"
+                  },
+                  {
+                    "Comment": "librabbitmq-tools is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202675582006"
                   }
                 ]
               }
