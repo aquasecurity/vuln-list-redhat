@@ -1,0 +1,299 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202677021",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:77021: python3.14 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:77021",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:77021"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-19445",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-19445"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-19553",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-19553"
+      }
+    ],
+    "Description": "Python is an interpreted, interactive, object-oriented programming language, which includes modules, classes, exceptions, very high level dynamic data types and dynamic typing. Python supports interfaces to many system calls and libraries, as well as to various windowing systems.\n\nSecurity Fix(es):\n\n* python: python: Certificate verification bypass via missing server_hostname validation in SSLContext.wrap_bio() (CVE-2026-19553)\n\n* python: Use-after-free of a server-side SSLContext when sni_callback switches contexts (CVE-2026-19445)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-10-08"
+      },
+      "Updated": {
+        "Date": "2026-10-08"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-19445",
+          "Cvss3": "8.1/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-416",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-19445",
+          "Public": "20260930:1616"
+        },
+        {
+          "CveID": "CVE-2026-19553",
+          "Cvss3": "7.4/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+          "Cwe": "CWE-297",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-19553",
+          "Public": "20260930:1617"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2544127",
+          "ID": "2544127"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2544138",
+          "ID": "2544138"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.8",
+        "cpe:/a:redhat:rhel_eus:9.8::appstream",
+        "cpe:/a:redhat:rhel_eus:9.8::crb",
+        "cpe:/a:redhat:rhel_eus:9.8::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.8::nfv",
+        "cpe:/a:redhat:rhel_eus:9.8::realtime",
+        "cpe:/a:redhat:rhel_eus:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.8::sap",
+        "cpe:/a:redhat:rhel_eus:9.8::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.8::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.8",
+        "cpe:/o:redhat:rhel_eus:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223897008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223897007"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3.14 is earlier than 0:3.14.8-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202677021001"
+                  },
+                  {
+                    "Comment": "python3.14 is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619176002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3.14-debug is earlier than 0:3.14.8-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202677021003"
+                  },
+                  {
+                    "Comment": "python3.14-debug is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619176004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3.14-devel is earlier than 0:3.14.8-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202677021005"
+                  },
+                  {
+                    "Comment": "python3.14-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619176006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3.14-freethreading is earlier than 0:3.14.8-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202677021007"
+                  },
+                  {
+                    "Comment": "python3.14-freethreading is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619176008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3.14-freethreading-debug is earlier than 0:3.14.8-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202677021009"
+                  },
+                  {
+                    "Comment": "python3.14-freethreading-debug is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619176010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3.14-freethreading-devel is earlier than 0:3.14.8-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202677021011"
+                  },
+                  {
+                    "Comment": "python3.14-freethreading-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619176012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3.14-freethreading-idle is earlier than 0:3.14.8-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202677021013"
+                  },
+                  {
+                    "Comment": "python3.14-freethreading-idle is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619176014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3.14-freethreading-libs is earlier than 0:3.14.8-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202677021015"
+                  },
+                  {
+                    "Comment": "python3.14-freethreading-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619176016"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3.14-freethreading-test is earlier than 0:3.14.8-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202677021017"
+                  },
+                  {
+                    "Comment": "python3.14-freethreading-test is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619176018"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3.14-freethreading-tkinter is earlier than 0:3.14.8-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202677021019"
+                  },
+                  {
+                    "Comment": "python3.14-freethreading-tkinter is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619176020"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3.14-idle is earlier than 0:3.14.8-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202677021021"
+                  },
+                  {
+                    "Comment": "python3.14-idle is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619176022"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3.14-libs is earlier than 0:3.14.8-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202677021023"
+                  },
+                  {
+                    "Comment": "python3.14-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619176024"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3.14-test is earlier than 0:3.14.8-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202677021025"
+                  },
+                  {
+                    "Comment": "python3.14-test is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619176026"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "python3.14-tkinter is earlier than 0:3.14.8-1.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202677021027"
+                  },
+                  {
+                    "Comment": "python3.14-tkinter is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202619176028"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
