@@ -1,0 +1,101 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202682342",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:82342: opentelemetry-collector security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.6 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:82342",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:82342"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-84445",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-84445"
+      }
+    ],
+    "Description": "Collector with the supported components for a Red Hat build of OpenTelemetry\n\nSecurity Fix(es):\n\n* google.golang.org/grpc: gRPC-Go: Denial of Service via malformed RPC requests (CVE-2026-84445)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-10-13"
+      },
+      "Updated": {
+        "Date": "2026-10-13"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-84445",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-125",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-84445",
+          "Public": "20260914:1611"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2533175",
+          "ID": "2533175"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.6",
+        "cpe:/a:redhat:rhel_eus:9.6::appstream",
+        "cpe:/a:redhat:rhel_eus:9.6::crb",
+        "cpe:/a:redhat:rhel_eus:9.6::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.6::nfv",
+        "cpe:/a:redhat:rhel_eus:9.6::realtime",
+        "cpe:/a:redhat:rhel_eus:9.6::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.6::sap",
+        "cpe:/a:redhat:rhel_eus:9.6::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.6::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.6",
+        "cpe:/o:redhat:rhel_eus:9.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223897008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223897007"
+          },
+          {
+            "Comment": "opentelemetry-collector is earlier than 0:0.158.0-1.el9_6",
+            "TestRef": "oval:com.redhat.rhsa:tst:202682342001"
+          },
+          {
+            "Comment": "opentelemetry-collector is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:202512831002"
+          }
+        ]
+      }
+    ]
+  }
+}
