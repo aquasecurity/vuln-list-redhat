@@ -1,0 +1,141 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202683080",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:83080: mariadb-connector-c security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8.8 Telecommunications Update Service"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:83080",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:83080"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-44172",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-44172"
+      }
+    ],
+    "Description": "The MariaDB Native Client library (C driver) is used to connect applications developed in C/C++ to MariaDB and MySQL databases. \n\nSecurity Fix(es):\n\n* mariadb: MariaDB server: SQL injection vulnerability via improper handling of big5 character set with mysql_real_escape_string() (CVE-2026-44172)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-10-14"
+      },
+      "Updated": {
+        "Date": "2026-10-14"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-44172",
+          "Cvss3": "9.1/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+          "Cwe": "CWE-89",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-44172",
+          "Public": "20260612:1734"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2488459",
+          "ID": "2488459"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_tus:8.8",
+        "cpe:/a:redhat:rhel_tus:8.8::appstream",
+        "cpe:/a:redhat:rhel_tus:8.8::highavailability",
+        "cpe:/a:redhat:rhel_tus:8.8::nfv",
+        "cpe:/a:redhat:rhel_tus:8.8::realtime",
+        "cpe:/o:redhat:rhel_tus:8.8",
+        "cpe:/o:redhat:rhel_tus:8.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "mariadb-connector-c is earlier than 0:3.1.11-2.el8_8.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202683080001"
+                  },
+                  {
+                    "Comment": "mariadb-connector-c is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20205503002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "mariadb-connector-c-config is earlier than 0:3.1.11-2.el8_8.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202683080003"
+                  },
+                  {
+                    "Comment": "mariadb-connector-c-config is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20205503004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "mariadb-connector-c-devel is earlier than 0:3.1.11-2.el8_8.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202683080005"
+                  },
+                  {
+                    "Comment": "mariadb-connector-c-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20205503006"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
