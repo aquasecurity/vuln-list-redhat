@@ -1,0 +1,101 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202688563",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:88563: ca-certificates security update (Critical)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.6 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:88563",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:88563"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-114406",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-114406"
+      }
+    ],
+    "Description": "The ca-certificates package contains a set of Certificate Authority (CA) certificates chosen by the Mozilla Foundation for use with the Internet Public Key Infrastructure (PKI).\n\nSecurity Fix(es):\n\n* ca-certificates: Distrust eMudhra intermediate CA certificates due to security concerns (CVE-2026-114406)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Critical",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-10-23"
+      },
+      "Updated": {
+        "Date": "2026-10-23"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-114406",
+          "Cvss3": "6.8/CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:N",
+          "Cwe": "CWE-295",
+          "Impact": "critical",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-114406",
+          "Public": "20261020:1300"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2556046",
+          "ID": "2556046"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.6",
+        "cpe:/a:redhat:rhel_eus:9.6::appstream",
+        "cpe:/a:redhat:rhel_eus:9.6::crb",
+        "cpe:/a:redhat:rhel_eus:9.6::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.6::nfv",
+        "cpe:/a:redhat:rhel_eus:9.6::realtime",
+        "cpe:/a:redhat:rhel_eus:9.6::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.6::sap",
+        "cpe:/a:redhat:rhel_eus:9.6::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.6::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.6",
+        "cpe:/o:redhat:rhel_eus:9.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223897008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223897007"
+          },
+          {
+            "Comment": "ca-certificates is earlier than 0:2026.2.92_v9.0.319-90.3.el9_6",
+            "TestRef": "oval:com.redhat.rhsa:tst:202688563001"
+          },
+          {
+            "Comment": "ca-certificates is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhba:tst:20245691002"
+          }
+        ]
+      }
+    ]
+  }
+}
