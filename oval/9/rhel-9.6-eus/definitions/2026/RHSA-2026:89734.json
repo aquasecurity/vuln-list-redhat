@@ -1,0 +1,182 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202689734",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:89734: jackson-core, jackson-databind, jackson-jaxrs-providers, and jackson-modules-base security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.6 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:89734",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:89734"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-68497",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-68497"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-91777",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-91777"
+      }
+    ],
+    "Description": "Core part of Jackson that defines Streaming API as well as basic shared abstractions.\n\nSecurity Fix(es):\n\n* com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing (CVE-2026-68497)\n\n* com.fasterxml.jackson.core/jackson-databind: tools.jackson.core:jackson-databind: Jackson-databind: Denial of Service via quadratic forward-reference completion (CVE-2026-91777)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-10-26"
+      },
+      "Updated": {
+        "Date": "2026-10-26"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-68497",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-400",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-68497",
+          "Public": "20260911:1549"
+        },
+        {
+          "CveID": "CVE-2026-91777",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-606",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-91777",
+          "Public": "20260923:0221"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2531964",
+          "ID": "2531964"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2539085",
+          "ID": "2539085"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.6",
+        "cpe:/a:redhat:rhel_eus:9.6::appstream",
+        "cpe:/a:redhat:rhel_eus:9.6::crb",
+        "cpe:/a:redhat:rhel_eus:9.6::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.6::nfv",
+        "cpe:/a:redhat:rhel_eus:9.6::realtime",
+        "cpe:/a:redhat:rhel_eus:9.6::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.6::sap",
+        "cpe:/a:redhat:rhel_eus:9.6::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.6::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.6",
+        "cpe:/o:redhat:rhel_eus:9.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223897008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223897007"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pki-jackson-core is earlier than 0:2.21.6-1.el9_6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689734001"
+                  },
+                  {
+                    "Comment": "pki-jackson-core is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202512280002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pki-jackson-databind is earlier than 0:2.21.6-1.el9_6.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689734003"
+                  },
+                  {
+                    "Comment": "pki-jackson-databind is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20232312002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pki-jackson-jaxrs-json-provider is earlier than 0:2.21.6-1.el9_6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689734005"
+                  },
+                  {
+                    "Comment": "pki-jackson-jaxrs-json-provider is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202512280010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pki-jackson-jaxrs-providers is earlier than 0:2.21.6-1.el9_6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689734007"
+                  },
+                  {
+                    "Comment": "pki-jackson-jaxrs-providers is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202512280012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pki-jackson-module-jaxb-annotations is earlier than 0:2.21.6-1.el9_6",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689734009"
+                  },
+                  {
+                    "Comment": "pki-jackson-module-jaxb-annotations is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202512280008"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

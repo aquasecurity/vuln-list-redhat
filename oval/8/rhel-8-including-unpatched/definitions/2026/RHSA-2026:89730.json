@@ -1,23 +1,39 @@
 {
-  "Class": "vulnerability",
-  "ID": "oval:com.redhat.cve:def:202688806",
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202689730",
   "Version": "637",
   "Metadata": {
-    "Title": "libX11: libX11: Heap-based buffer overflow via malicious X server (important)",
+    "Title": "RHSA-2026:89730: libX11 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
     "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:89730",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:89730"
+      },
       {
         "Source": "CVE",
         "RefID": "CVE-2026-88806",
         "RefURL": "https://access.redhat.com/security/cve/CVE-2026-88806"
       }
     ],
-    "Description": "DOCUMENTATION: A flaw was found in libX11. A heap-based buffer overflow vulnerability exists during the handling of XkbGetMap replies. A remote attacker, by operating a malicious X server, could exploit this flaw to potentially execute arbitrary code or cause a denial of service on the client system. User interaction is required for exploitation. \n            \n            MITIGATION: To mitigate this issue, users should avoid connecting to untrusted X servers. When using SSH, ensure that X11 forwarding (`ssh -X` or `ssh -Y`) is only enabled for trusted remote hosts. To prevent X11 forwarding for specific hosts, add `ForwardX11 no` to the relevant host entry in `~/.ssh/config` or `/etc/ssh/ssh_config`. Alternatively, disable X11 forwarding globally by setting `ForwardX11 no` in `/etc/ssh/ssh_config`.",
+    "Description": "The libX11 packages contain the core X11 protocol client library.\n\nSecurity Fix(es):\n\n* libX11: libX11: Heap-based buffer overflow via malicious X server (CVE-2026-88806)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
     "Advisory": {
       "From": "secalert@redhat.com",
       "Severity": "Important",
-      "Issued": {},
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-10-26"
+      },
       "Updated": {
-        "Date": "2026-10-16"
+        "Date": "2026-10-26"
       },
       "Cves": [
         {
@@ -27,6 +43,12 @@
           "Impact": "important",
           "Href": "https://access.redhat.com/security/cve/CVE-2026-88806",
           "Public": "20260921:1342"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2538514",
+          "ID": "2538514"
         }
       ],
       "AffectedCpeList": [
@@ -44,20 +66,7 @@
         "cpe:/o:redhat:enterprise_linux:8::baseos"
       ],
       "Affected": {
-        "Resolution": {
-          "State": "Affected"
-        },
-        "Resolutions": [
-          {
-            "State": "Affected",
-            "Components": [
-              "libX11",
-              "libX11-common",
-              "libX11-devel",
-              "libX11-xcb"
-            ]
-          }
-        ]
+        "Resolution": {}
       }
     }
   },
@@ -72,13 +81,20 @@
     "Criterias": [
       {
         "Operator": "AND",
-        "Criterions": [
-          {
-            "Comment": "Red Hat Enterprise Linux 8 is installed",
-            "TestRef": "oval:com.redhat.cve:tst:20052541003"
-          }
-        ],
         "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.cve:tst:20052541003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
           {
             "Operator": "OR",
             "Criterias": [
@@ -86,8 +102,8 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "libX11 is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:20223554007"
+                    "Comment": "libX11 is earlier than 0:1.6.8-10.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689730001"
                   },
                   {
                     "Comment": "libX11 is signed with Red Hat redhatrelease2 key",
@@ -99,8 +115,21 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "libX11-devel is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:20223554005"
+                    "Comment": "libX11-common is earlier than 0:1.6.8-10.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689730003"
+                  },
+                  {
+                    "Comment": "libX11-common is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:20223554002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libX11-devel is earlier than 0:1.6.8-10.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689730005"
                   },
                   {
                     "Comment": "libX11-devel is signed with Red Hat redhatrelease2 key",
@@ -112,25 +141,12 @@
                 "Operator": "AND",
                 "Criterions": [
                   {
-                    "Comment": "libX11-xcb is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:20223554003"
+                    "Comment": "libX11-xcb is earlier than 0:1.6.8-10.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689730007"
                   },
                   {
                     "Comment": "libX11-xcb is signed with Red Hat redhatrelease2 key",
                     "TestRef": "oval:com.redhat.cve:tst:20223554004"
-                  }
-                ]
-              },
-              {
-                "Operator": "AND",
-                "Criterions": [
-                  {
-                    "Comment": "libX11-common is installed",
-                    "TestRef": "oval:com.redhat.cve:tst:20223554001"
-                  },
-                  {
-                    "Comment": "libX11-common is signed with Red Hat redhatrelease2 key",
-                    "TestRef": "oval:com.redhat.cve:tst:20223554002"
                   }
                 ]
               }
