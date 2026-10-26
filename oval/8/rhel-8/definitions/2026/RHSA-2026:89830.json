@@ -1,0 +1,488 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202689830",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:89830: gcc security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:89830",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:89830"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-102010",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-102010"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-95619",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-95619"
+      }
+    ],
+    "Description": "The gcc packages provide compilers for C, C++, Java, Fortran, Objective C, and Ada 95 GNU, as well as related support libraries.\n\nSecurity Fix(es):\n\n* gcc-toolset-15-gcc: gcc: gcc-toolset-16: gcc: Denial of Service via use-after-free in binary heap erase_if (CVE-2026-102010)\n\n* gcc: libstdc++ integer overflow in `new` operator (CVE-2026-95619)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-10-26"
+      },
+      "Updated": {
+        "Date": "2026-10-26"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-102010",
+          "Cvss3": "7.0/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:H",
+          "Cwe": "CWE-825",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-102010",
+          "Public": "20260928:1744"
+        },
+        {
+          "CveID": "CVE-2026-95619",
+          "Cvss3": "7.7/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:H/A:H",
+          "Cwe": "CWE-190",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-95619",
+          "Public": "20260922:1000"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2478395",
+          "ID": "2478395"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2537811",
+          "ID": "2537811"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:8",
+        "cpe:/a:redhat:enterprise_linux:8::appstream",
+        "cpe:/a:redhat:enterprise_linux:8::crb",
+        "cpe:/a:redhat:enterprise_linux:8::highavailability",
+        "cpe:/a:redhat:enterprise_linux:8::nfv",
+        "cpe:/a:redhat:enterprise_linux:8::realtime",
+        "cpe:/a:redhat:enterprise_linux:8::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:8::sap",
+        "cpe:/a:redhat:enterprise_linux:8::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:8::supplementary",
+        "cpe:/o:redhat:enterprise_linux:8",
+        "cpe:/o:redhat:enterprise_linux:8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "cpp is earlier than 0:8.5.0-30.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689830001"
+                  },
+                  {
+                    "Comment": "cpp is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20201864002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "gcc is earlier than 0:8.5.0-30.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689830003"
+                  },
+                  {
+                    "Comment": "gcc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20201864004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "gcc-c++ is earlier than 0:8.5.0-30.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689830005"
+                  },
+                  {
+                    "Comment": "gcc-c++ is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20201864006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "gcc-gdb-plugin is earlier than 0:8.5.0-30.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689830007"
+                  },
+                  {
+                    "Comment": "gcc-gdb-plugin is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20201864008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "gcc-gfortran is earlier than 0:8.5.0-30.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689830009"
+                  },
+                  {
+                    "Comment": "gcc-gfortran is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20201864010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "gcc-offload-nvptx is earlier than 0:8.5.0-30.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689830011"
+                  },
+                  {
+                    "Comment": "gcc-offload-nvptx is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20201864012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "gcc-plugin-annobin is earlier than 0:8.5.0-30.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689830013"
+                  },
+                  {
+                    "Comment": "gcc-plugin-annobin is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251301014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "gcc-plugin-devel is earlier than 0:8.5.0-30.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689830015"
+                  },
+                  {
+                    "Comment": "gcc-plugin-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20201864014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libasan is earlier than 0:8.5.0-30.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689830017"
+                  },
+                  {
+                    "Comment": "libasan is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20201864016"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libatomic is earlier than 0:8.5.0-30.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689830019"
+                  },
+                  {
+                    "Comment": "libatomic is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20201864018"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libatomic-static is earlier than 0:8.5.0-30.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689830021"
+                  },
+                  {
+                    "Comment": "libatomic-static is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20201864020"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libgcc is earlier than 0:8.5.0-30.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689830023"
+                  },
+                  {
+                    "Comment": "libgcc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20201864022"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libgfortran is earlier than 0:8.5.0-30.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689830025"
+                  },
+                  {
+                    "Comment": "libgfortran is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20201864024"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libgfortran-static is earlier than 0:8.5.0-30.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689830027"
+                  },
+                  {
+                    "Comment": "libgfortran-static is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251301028"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libgomp is earlier than 0:8.5.0-30.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689830029"
+                  },
+                  {
+                    "Comment": "libgomp is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20201864026"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libgomp-offload-nvptx is earlier than 0:8.5.0-30.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689830031"
+                  },
+                  {
+                    "Comment": "libgomp-offload-nvptx is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20201864028"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libitm is earlier than 0:8.5.0-30.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689830033"
+                  },
+                  {
+                    "Comment": "libitm is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20201864030"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libitm-devel is earlier than 0:8.5.0-30.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689830035"
+                  },
+                  {
+                    "Comment": "libitm-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20201864032"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "liblsan is earlier than 0:8.5.0-30.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689830037"
+                  },
+                  {
+                    "Comment": "liblsan is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20201864034"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libquadmath is earlier than 0:8.5.0-30.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689830039"
+                  },
+                  {
+                    "Comment": "libquadmath is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20201864036"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libquadmath-devel is earlier than 0:8.5.0-30.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689830041"
+                  },
+                  {
+                    "Comment": "libquadmath-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20201864038"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libquadmath-static is earlier than 0:8.5.0-30.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689830043"
+                  },
+                  {
+                    "Comment": "libquadmath-static is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20251301044"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libstdc++ is earlier than 0:8.5.0-30.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689830045"
+                  },
+                  {
+                    "Comment": "libstdc++ is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20201864040"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libstdc++-devel is earlier than 0:8.5.0-30.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689830047"
+                  },
+                  {
+                    "Comment": "libstdc++-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20201864042"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libstdc++-docs is earlier than 0:8.5.0-30.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689830049"
+                  },
+                  {
+                    "Comment": "libstdc++-docs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20201864044"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libstdc++-static is earlier than 0:8.5.0-30.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689830051"
+                  },
+                  {
+                    "Comment": "libstdc++-static is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20201864046"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libtsan is earlier than 0:8.5.0-30.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689830053"
+                  },
+                  {
+                    "Comment": "libtsan is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20201864048"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libubsan is earlier than 0:8.5.0-30.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202689830055"
+                  },
+                  {
+                    "Comment": "libubsan is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20201864050"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
