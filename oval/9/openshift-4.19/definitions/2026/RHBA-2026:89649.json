@@ -1,0 +1,246 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhba:def:202689649",
+  "Version": "638",
+  "Metadata": {
+    "Title": "RHBA-2026:89649: OpenShift Container Platform 4.19.53 packages update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat OpenShift Container Platform 4.19"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHBA-2026:89649",
+        "RefURL": "https://access.redhat.com/errata/RHBA-2026:89649"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-111943",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-111943"
+      }
+    ],
+    "Description": "Red Hat OpenShift Container Platform is Red Hat's cloud computing Kubernetes application platform solution designed for on-premise or private cloud deployments.\n\nThis advisory contains the RPM packages for Red Hat OpenShift Container Platform 4.19.53. See the following advisory for the container images for this release:\n\nhttps://access.redhat.com/errata/RHSA-2026:89655\n\nAll OpenShift Container Platform 4.19 users are advised to upgrade to these updated packages and images when they are available in the appropriate release channel. To check for available updates, use the OpenShift Console or the CLI oc command. Instructions for upgrading a cluster are available\nat\n\nhttps://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html-single/updating_clusters/index#updating-cluster-cli.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-10-27"
+      },
+      "Updated": {
+        "Date": "2026-10-27"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-111943",
+          "Cvss3": "6.8/CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:N",
+          "Cwe": "CWE-295",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-111943",
+          "Public": "20261020:0200"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2556068",
+          "ID": "2556068"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:openshift:4.19",
+        "cpe:/a:redhat:openshift:4.19::el9"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:202514817008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:202514817007"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "cri-o is earlier than 0:1.32.13-16.rhaos4.19.git3c1400a.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:202689649001"
+                  },
+                  {
+                    "Comment": "cri-o is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:202515692004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "cri-tools is earlier than 0:1.32.0-9.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:202689649003"
+                  },
+                  {
+                    "Comment": "cri-tools is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:202689649004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openshift-hyperkube is earlier than 0:4.19.0-202610221807.p2.g63adf01.assembly.stream.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:202689649005"
+                  },
+                  {
+                    "Comment": "openshift-hyperkube is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:202515692006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openshift-kube-apiserver is earlier than 0:4.19.0-202610221807.p2.g63adf01.assembly.stream.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:202689649007"
+                  },
+                  {
+                    "Comment": "openshift-kube-apiserver is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:202515692008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openshift-kube-controller-manager is earlier than 0:4.19.0-202610221807.p2.g63adf01.assembly.stream.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:202689649009"
+                  },
+                  {
+                    "Comment": "openshift-kube-controller-manager is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:202515692010"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openshift-kube-scheduler is earlier than 0:4.19.0-202610221807.p2.g63adf01.assembly.stream.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:202689649011"
+                  },
+                  {
+                    "Comment": "openshift-kube-scheduler is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:202515692012"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openshift-kubelet is earlier than 0:4.19.0-202610221807.p2.g63adf01.assembly.stream.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:202689649013"
+                  },
+                  {
+                    "Comment": "openshift-kubelet is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:202515692014"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openshift-clients is earlier than 0:4.19.0-202610221807.p2.g2709219.assembly.stream.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:202689649015"
+                  },
+                  {
+                    "Comment": "openshift-clients is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:202689649016"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "openshift-clients-redistributable is earlier than 0:4.19.0-202610221807.p2.g2709219.assembly.stream.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:202689649017"
+                  },
+                  {
+                    "Comment": "openshift-clients-redistributable is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:202689649018"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "ose-aws-ecr-image-credential-provider is earlier than 0:4.19.0-202610221807.p2.g425c1c5.assembly.stream.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:202689649019"
+                  },
+                  {
+                    "Comment": "ose-aws-ecr-image-credential-provider is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:202514817002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "ose-azure-acr-image-credential-provider is earlier than 0:4.19.0-202610221807.p2.gb249afb.assembly.stream.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:202689649021"
+                  },
+                  {
+                    "Comment": "ose-azure-acr-image-credential-provider is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:202514817004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "ose-gcp-gcr-image-credential-provider is earlier than 0:4.19.0-202610221807.p2.gd8d3aeb.assembly.stream.el9",
+                    "TestRef": "oval:com.redhat.rhba:tst:202689649023"
+                  },
+                  {
+                    "Comment": "ose-gcp-gcr-image-credential-provider is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:202514817006"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202690514",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:90514: ignition security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.6 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:90514",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:90514"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-111943",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-111943"
+      }
+    ],
+    "Description": "Ignition is a utility used to manipulate systems during the initramfs. This includes partitioning disks, formatting partitions, writing files (regular files, systemd units, etc.), and configuring users. On first boot, Ignition reads its configuration from a source of truth (remote URL, network metadata service, hypervisor bridge, etc.) and applies the configuration.\n\nSecurity Fix(es):\n\n* crypto/x509: golang: crypto/x509: Man-in-the-middle attacks via untrusted intermediate certificates (CVE-2026-111943)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-10-26"
+      },
+      "Updated": {
+        "Date": "2026-10-26"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-111943",
+          "Cvss3": "6.8/CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:N",
+          "Cwe": "CWE-295",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-111943",
+          "Public": "20261020:0200"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2556068",
+          "ID": "2556068"
+        }
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223897008"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223897007"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "ignition is earlier than 0:2.21.0-7.el9_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202690514001"
+                  },
+                  {
+                    "Comment": "ignition is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20228126002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "ignition-edge is earlier than 0:2.21.0-7.el9_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202690514003"
+                  },
+                  {
+                    "Comment": "ignition-edge is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202652826004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "ignition-grub is earlier than 0:2.21.0-7.el9_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202690514005"
+                  },
+                  {
+                    "Comment": "ignition-grub is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202652826006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "ignition-validate is earlier than 0:2.21.0-7.el9_6.2",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202690514007"
+                  },
+                  {
+                    "Comment": "ignition-validate is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202652826008"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

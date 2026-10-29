@@ -1,0 +1,146 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202690492",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:90492: libreswan security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:90492",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:90492"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-77206",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-77206"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-77207",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-77207"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-94453",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-94453"
+      }
+    ],
+    "Description": "Libreswan is an implementation of IPsec and IKE for Linux. IPsec is the Internet Protocol Security and uses strong cryptography to provide both authentication and encryption services. These services allow you to build secure tunnels through untrusted networks such as virtual private network (VPN).\n\nSecurity Fix(es):\n\n* libreswan: IKEv2 Use-After-Free bug when using IKE-over-TCP (CVE-2026-94453)\n\n* libreswan: IKEv2 pre-authentication Null Pointer deref in EAP code (CVE-2026-77206)\n\n* libreswan: Null Pointer Dereference in PKCS#7 bundle with no CERTS (CVE-2026-77207)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-10-26"
+      },
+      "Updated": {
+        "Date": "2026-10-26"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-77206",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-476",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-77206",
+          "Public": "20261005"
+        },
+        {
+          "CveID": "CVE-2026-77207",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-476",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-77207",
+          "Public": "20261005"
+        },
+        {
+          "CveID": "CVE-2026-94453",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-416",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-94453",
+          "Public": "20261005"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2550254",
+          "ID": "2550254"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2550256",
+          "ID": "2550256"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2550258",
+          "ID": "2550258"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:8",
+        "cpe:/a:redhat:enterprise_linux:8::appstream",
+        "cpe:/a:redhat:enterprise_linux:8::crb",
+        "cpe:/a:redhat:enterprise_linux:8::highavailability",
+        "cpe:/a:redhat:enterprise_linux:8::nfv",
+        "cpe:/a:redhat:enterprise_linux:8::realtime",
+        "cpe:/a:redhat:enterprise_linux:8::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:8::sap",
+        "cpe:/a:redhat:enterprise_linux:8::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:8::supplementary",
+        "cpe:/o:redhat:enterprise_linux:8",
+        "cpe:/o:redhat:enterprise_linux:8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "libreswan is earlier than 0:4.12-2.el8_10.7",
+            "TestRef": "oval:com.redhat.rhsa:tst:202690492001"
+          },
+          {
+            "Comment": "libreswan is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20193391002"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
