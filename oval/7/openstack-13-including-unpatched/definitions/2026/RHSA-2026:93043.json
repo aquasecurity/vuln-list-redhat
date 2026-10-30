@@ -1,0 +1,93 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202693043",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:93043: Red Hat OpenStack Platform 13.0 (python-botocore) security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat OpenStack Platform 13.0 - ELS"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:93043",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:93043"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-114406",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-114406"
+      }
+    ],
+    "Description": "A low-level interface to a growing number of Amazon Web Services. The\nbotocore package is the foundation for the AWS CLI as well as boto3.\n\nSecurity Fix(es):\n\n* python-botocore: Distrust eMudhra intermediate CA certificates due to\nsecurity concerns (CVE-2026-114406)\n\nFor more details about the security issue(s), including the impact, a CVSS\nscore, acknowledgments, and other related information, refer to the CVE\npage listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-10-30"
+      },
+      "Updated": {
+        "Date": "2026-10-30"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-114406",
+          "Cvss3": "6.8/CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:N",
+          "Cwe": "CWE-295",
+          "Impact": "critical",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-114406",
+          "Public": "20261020:1300"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2556046",
+          "ID": "2556046"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:openstack-optools:13",
+        "cpe:/a:redhat:openstack-optools:13::el7",
+        "cpe:/a:redhat:openstack:13",
+        "cpe:/a:redhat:openstack:13::el7"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:20115034004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 7 is installed",
+            "TestRef": "oval:com.redhat.cve:tst:20115034003"
+          },
+          {
+            "Comment": "python2-botocore is earlier than 0:1.8.33-2.el7ost",
+            "TestRef": "oval:com.redhat.rhsa:tst:202693043001"
+          },
+          {
+            "Comment": "python2-botocore is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:202693043002"
+          }
+        ]
+      }
+    ]
+  }
+}
