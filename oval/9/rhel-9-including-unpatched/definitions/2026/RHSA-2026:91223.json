@@ -1,0 +1,140 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202691223",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:91223: libXtst security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:91223",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:91223"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-94286",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-94286"
+      }
+    ],
+    "Description": "X.Org X11 libXtst runtime library\n\nSecurity Fix(es):\n\n* libXtst: libXtst: Denial of Service via out-of-bounds read in RECORD reply parser (CVE-2026-94286)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-10-29"
+      },
+      "Updated": {
+        "Date": "2026-10-29"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-94286",
+          "Cvss3": "7.1/CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:H",
+          "Cwe": "CWE-125",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-94286",
+          "Public": "20260928:0850"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2542377",
+          "ID": "2542377"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::baseos",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::extensions",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/a:redhat:rhel_eus:9.10",
+        "cpe:/a:redhat:rhel_eus:9.10::appstream",
+        "cpe:/a:redhat:rhel_eus:9.10::baseos",
+        "cpe:/a:redhat:rhel_eus:9.10::crb",
+        "cpe:/a:redhat:rhel_eus:9.10::extensions",
+        "cpe:/a:redhat:rhel_eus:9.10::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.10::nfv",
+        "cpe:/a:redhat:rhel_eus:9.10::realtime",
+        "cpe:/a:redhat:rhel_eus:9.10::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.10::sap",
+        "cpe:/a:redhat:rhel_eus:9.10::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.10::supplementary",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:20052541004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.cve:tst:20052541003"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libXtst is earlier than 0:1.2.3-16.el9_8.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202691223001"
+                  },
+                  {
+                    "Comment": "libXtst is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:202694286002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "libXtst-devel is earlier than 0:1.2.3-16.el9_8.1",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202691223003"
+                  },
+                  {
+                    "Comment": "libXtst-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:202694286004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
