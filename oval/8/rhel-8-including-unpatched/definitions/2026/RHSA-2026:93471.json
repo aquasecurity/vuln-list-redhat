@@ -1,0 +1,172 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202693471",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:93471: perl-YAML:1.24 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:93471",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:93471"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2017-20285",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2017-20285"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2019-25777",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2019-25777"
+      }
+    ],
+    "Description": "he perl-YAML package provides the pure-Perl implementation of the YAML (YAML Ain't Markup Language) data serialization standard. It allows developers to serialize Perl data structures into formatted YAML text and deserialize YAML data back into native Perl structures, making it widely used for configuration files, data exchange, and human-readable data storage in Perl applications.\n\nSecurity Fix(es):\n\n* perl-yaml: perl-yaml: Arbitrary code execution via unrestricted package variable assignment (CVE-2019-25777)\n\n* perl-yaml: perl-yaml: Arbitrary destructor method execution via crafted YAML document (CVE-2017-20285)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-11-02"
+      },
+      "Updated": {
+        "Date": "2026-11-02"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2017-20285",
+          "Cvss3": "7.4/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H",
+          "Cwe": "CWE-502",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2017-20285",
+          "Public": "20261005:0649"
+        },
+        {
+          "CveID": "CVE-2019-25777",
+          "Cvss3": "8.1/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-502",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2019-25777",
+          "Public": "20261005:0650"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2545818",
+          "ID": "2545818"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2545820",
+          "ID": "2545820"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:8",
+        "cpe:/a:redhat:enterprise_linux:8::appstream",
+        "cpe:/a:redhat:enterprise_linux:8::crb",
+        "cpe:/a:redhat:enterprise_linux:8::highavailability",
+        "cpe:/a:redhat:enterprise_linux:8::nfv",
+        "cpe:/a:redhat:enterprise_linux:8::realtime",
+        "cpe:/a:redhat:enterprise_linux:8::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:8::sap",
+        "cpe:/a:redhat:enterprise_linux:8::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:8::supplementary",
+        "cpe:/o:redhat:enterprise_linux:8",
+        "cpe:/o:redhat:enterprise_linux:8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:20052541004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.cve:tst:20052541003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "Module perl-YAML:1.24 is enabled",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202693471003"
+                  }
+                ],
+                "Criterias": [
+                  {
+                    "Operator": "AND",
+                    "Criterions": [
+                      {
+                        "Comment": "perl-YAML is earlier than 0:1.24-4.module+el8.10.0+25073+42d87e53",
+                        "TestRef": "oval:com.redhat.rhsa:tst:202693471001"
+                      },
+                      {
+                        "Comment": "perl-YAML is signed with Red Hat redhatrelease2 key",
+                        "TestRef": "oval:com.redhat.rhsa:tst:202693471002"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "Module perl-YAML:1.24 is enabled",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202693471003"
+                  }
+                ],
+                "Criterias": [
+                  {
+                    "Operator": "AND",
+                    "Criterions": [
+                      {
+                        "Comment": "perl-YAML is earlier than 0:1.24-4.module+el8.10.0+25073+d1062575",
+                        "TestRef": "oval:com.redhat.rhsa:tst:202693471004"
+                      },
+                      {
+                        "Comment": "perl-YAML is signed with Red Hat redhatrelease2 key",
+                        "TestRef": "oval:com.redhat.rhsa:tst:202693471002"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
