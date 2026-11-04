@@ -1,0 +1,101 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhba:def:202665128",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHBA-2026:65128: virtio-win bug fix and enhancement update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.6 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHBA-2026:65128",
+        "RefURL": "https://access.redhat.com/errata/RHBA-2026:65128"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-46655",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-46655"
+      }
+    ],
+    "Description": "The virtio-win package provides paravirtualized network drivers for most Microsoft Windows operating systems. Paravirtualized drivers are virtualization-aware drivers used by fully virtualized guests running on Red Hat Enterprise Linux. Fully virtualized guests using the paravirtualized drivers gain significantly better I/O performance than fully virtualized guests running without the drivers. \n\nBug Fix(es) and Enhancement(s):\n\n* [virtio-win][viogpu] Reject resolutions exceeding framebuffer segment capacity [rhel-9.6.z] (JIRA:RHEL-212015)\n\n* Someone driver works with debug level \u003e= 6 (debug message flood) [rhel-9.6.z] (JIRA:RHEL-212407)\n\n* Virtio-win may not configure guest cache mode when using virtio-blk [rhel-9.6.z] (JIRA:RHEL-212414)\n\n* [virtio-win] NetKVM (virtio-win 0.1.285) does not transmit USO packets correctly [rhel-9.6.z] (JIRA:RHEL-212419)\n\n* viosock: Validate fd_count in VIOSockSelect against overflow and empt? [rhel-9.6.z] (JIRA:RHEL-212423)\n\n* [Windows]Can not connect to VM via vsock after migration [rhel-9.6.z] (JIRA:RHEL-212535)\n\n* [virtio-win][viogpu] Provide a way to set a custom screen resolution [rhel-9.6.z] (JIRA:RHEL-212539)\n\n* [viogpudo] VM crashes with BSOD/black screen when setting invalid resolution values [rhel-9.6.z] (JIRA:RHEL-212543)\n\n* netkvm: treat temporary TX queue full as retry, not drop [rhel-9.6.z] (JIRA:RHEL-212566)\n\n* viosock: Fix spec compliance issues in WSP library and socket driver [rhel-9.6.z] (JIRA:RHEL-212596)",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-09-08"
+      },
+      "Updated": {
+        "Date": "2026-09-08"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-46655",
+          "Cvss3": "7.8/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-190",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-46655",
+          "Public": "20260616"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2489170",
+          "ID": "2489170"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.6",
+        "cpe:/a:redhat:rhel_eus:9.6::appstream",
+        "cpe:/a:redhat:rhel_eus:9.6::crb",
+        "cpe:/a:redhat:rhel_eus:9.6::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.6::nfv",
+        "cpe:/a:redhat:rhel_eus:9.6::realtime",
+        "cpe:/a:redhat:rhel_eus:9.6::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.6::sap",
+        "cpe:/a:redhat:rhel_eus:9.6::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.6::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.6",
+        "cpe:/o:redhat:rhel_eus:9.6::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          },
+          {
+            "Comment": "virtio-win is earlier than 0:1.9.58-0.el9_6",
+            "TestRef": "oval:com.redhat.rhba:tst:202665128001"
+          },
+          {
+            "Comment": "virtio-win is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhba:tst:20232451002"
+          }
+        ]
+      }
+    ]
+  }
+}
