@@ -1,0 +1,189 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202694485",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:94485: cockpit security, bug fix, and enhancement update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:94485",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:94485"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-76235",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-76235"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-91147",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-91147"
+      }
+    ],
+    "Description": "Cockpit enables users to administer GNU/Linux servers using a web browser. It offers network configuration, log inspection, diagnostic reports, SELinux troubleshooting, interactive command-line sessions, and more.\n\nSecurity Fix(es):\n\n* cockpit: Cockpit: Denial of Service in `cockpit-ws` due to URL-root handling without a trailing slash (CVE-2026-91147)\n\n* cockpit-ws: cockpit: cockpit-ws: unauthenticated remote memory leak via CockpitLang cookie in send_login_html (CVE-2026-76235)\n\nBug Fix(es) and Enhancement(s):\n\n* [cockpit] Overview page should not try to read insights-client.json anymore (JIRA:RHEL-246964)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-11-03"
+      },
+      "Updated": {
+        "Date": "2026-11-03"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-76235",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-401",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-76235",
+          "Public": "20260819"
+        },
+        {
+          "CveID": "CVE-2026-91147",
+          "Cvss3": "5.9/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-617",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-91147",
+          "Public": "20260918:1629"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2479230",
+          "ID": "2479230"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2519497",
+          "ID": "2519497"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:8",
+        "cpe:/a:redhat:enterprise_linux:8::appstream",
+        "cpe:/a:redhat:enterprise_linux:8::crb",
+        "cpe:/a:redhat:enterprise_linux:8::highavailability",
+        "cpe:/a:redhat:enterprise_linux:8::nfv",
+        "cpe:/a:redhat:enterprise_linux:8::realtime",
+        "cpe:/a:redhat:enterprise_linux:8::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:8::sap",
+        "cpe:/a:redhat:enterprise_linux:8::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:8::supplementary",
+        "cpe:/o:redhat:enterprise_linux:8",
+        "cpe:/o:redhat:enterprise_linux:8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "cockpit is earlier than 0:310.10-1.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202694485001"
+                  },
+                  {
+                    "Comment": "cockpit is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20222008002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "cockpit-bridge is earlier than 0:310.10-1.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202694485003"
+                  },
+                  {
+                    "Comment": "cockpit-bridge is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20222008004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "cockpit-doc is earlier than 0:310.10-1.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202694485005"
+                  },
+                  {
+                    "Comment": "cockpit-doc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20222008006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "cockpit-system is earlier than 0:310.10-1.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202694485007"
+                  },
+                  {
+                    "Comment": "cockpit-system is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20222008008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "cockpit-ws is earlier than 0:310.10-1.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202694485009"
+                  },
+                  {
+                    "Comment": "cockpit-ws is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20222008010"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
