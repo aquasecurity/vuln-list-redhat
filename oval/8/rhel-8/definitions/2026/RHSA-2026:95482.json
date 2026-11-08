@@ -1,0 +1,305 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202695482",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:95482: gimp:2.8 security, bug fix, and enhancement update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:95482",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:95482"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-112257",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-112257"
+      }
+    ],
+    "Description": "The GIMP (GNU Image Manipulation Program) is an image composition and editing program. GIMP provides a large image manipulation toolbox, including channel operations and layers, effects, sub-pixel imaging and anti-aliasing, and conversions, all with multi-level undo.\n\nSecurity Fix(es):\n\n* gimp: gimp: heap out-of-bounds read/write in PSD thumbnail loader (load_resource_1033) (CVE-2026-112257)\n\nBug Fix(es) and Enhancement(s):\n\n* gimp: xpm poc file for CVE-2026-4154 should error differently (JIRA:RHEL-178367)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-11-05"
+      },
+      "Updated": {
+        "Date": "2026-11-05"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-112257",
+          "Cvss3": "7.8/CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-121",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-112257",
+          "Public": "20261012"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2555574",
+          "ID": "2555574"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:8",
+        "cpe:/a:redhat:enterprise_linux:8::appstream",
+        "cpe:/a:redhat:enterprise_linux:8::crb",
+        "cpe:/a:redhat:enterprise_linux:8::highavailability",
+        "cpe:/a:redhat:enterprise_linux:8::nfv",
+        "cpe:/a:redhat:enterprise_linux:8::realtime",
+        "cpe:/a:redhat:enterprise_linux:8::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:8::sap",
+        "cpe:/a:redhat:enterprise_linux:8::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:8::supplementary",
+        "cpe:/o:redhat:enterprise_linux:8",
+        "cpe:/o:redhat:enterprise_linux:8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "Module gimp:2.8 is enabled",
+                    "TestRef": "oval:com.redhat.rhsa:tst:20240861029"
+                  }
+                ],
+                "Criterias": [
+                  {
+                    "Operator": "OR",
+                    "Criterias": [
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "gimp is earlier than 2:2.8.22-26.module+el8.10.0+25170+1f1aa845.10",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202695482001"
+                          },
+                          {
+                            "Comment": "gimp is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20240861002"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "gimp-devel is earlier than 2:2.8.22-26.module+el8.10.0+25170+1f1aa845.10",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202695482003"
+                          },
+                          {
+                            "Comment": "gimp-devel is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20240861004"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "gimp-devel-tools is earlier than 2:2.8.22-26.module+el8.10.0+25170+1f1aa845.10",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202695482005"
+                          },
+                          {
+                            "Comment": "gimp-devel-tools is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20240861006"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "gimp-libs is earlier than 2:2.8.22-26.module+el8.10.0+25170+1f1aa845.10",
+                            "TestRef": "oval:com.redhat.rhsa:tst:202695482007"
+                          },
+                          {
+                            "Comment": "gimp-libs is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20240861008"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "pygobject2 is earlier than 0:2.28.7-5.module+el8.10.0+22676+becd68d6",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20250746009"
+                          },
+                          {
+                            "Comment": "pygobject2 is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20240861010"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "pygobject2-codegen is earlier than 0:2.28.7-5.module+el8.10.0+22676+becd68d6",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20250746011"
+                          },
+                          {
+                            "Comment": "pygobject2-codegen is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20240861012"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "pygobject2-devel is earlier than 0:2.28.7-5.module+el8.10.0+22676+becd68d6",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20250746013"
+                          },
+                          {
+                            "Comment": "pygobject2-devel is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20240861014"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "pygobject2-doc is earlier than 0:2.28.7-5.module+el8.10.0+22676+becd68d6",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20250746015"
+                          },
+                          {
+                            "Comment": "pygobject2-doc is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20240861016"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "pygtk2 is earlier than 0:2.24.0-25.module+el8.9.0+21228+8e80d31d",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20240861017"
+                          },
+                          {
+                            "Comment": "pygtk2 is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20240861018"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "pygtk2-codegen is earlier than 0:2.24.0-25.module+el8.9.0+21228+8e80d31d",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20240861019"
+                          },
+                          {
+                            "Comment": "pygtk2-codegen is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20240861020"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "pygtk2-devel is earlier than 0:2.24.0-25.module+el8.9.0+21228+8e80d31d",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20240861021"
+                          },
+                          {
+                            "Comment": "pygtk2-devel is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20240861022"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "pygtk2-doc is earlier than 0:2.24.0-25.module+el8.9.0+21228+8e80d31d",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20240861023"
+                          },
+                          {
+                            "Comment": "pygtk2-doc is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20240861024"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "python2-cairo is earlier than 0:1.16.3-7.module+el8.10.0+22676+becd68d6",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20250746025"
+                          },
+                          {
+                            "Comment": "python2-cairo is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20240861026"
+                          }
+                        ]
+                      },
+                      {
+                        "Operator": "AND",
+                        "Criterions": [
+                          {
+                            "Comment": "python2-cairo-devel is earlier than 0:1.16.3-7.module+el8.10.0+22676+becd68d6",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20250746027"
+                          },
+                          {
+                            "Comment": "python2-cairo-devel is signed with Red Hat redhatrelease2 key",
+                            "TestRef": "oval:com.redhat.rhsa:tst:20240861028"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
