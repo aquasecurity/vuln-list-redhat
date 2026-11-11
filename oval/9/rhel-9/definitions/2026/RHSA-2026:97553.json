@@ -1,0 +1,132 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202697553",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:97553: grafana-pcp security, bug fix, and enhancement update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:97553",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:97553"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-32280",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-32280"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-33810",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-33810"
+      }
+    ],
+    "Description": "The Grafana plugin for Performance Co-Pilot includes datasources for scalable time series from pmseries and Redis, live PCP metrics and bpftrace scripts from pmdabpftrace, as well as several dashboards.\n\nSecurity Fix(es):\n\n* crypto/x509: golang: Go crypto/x509: Certificate validation bypass due to incorrect DNS constraint application (CVE-2026-33810)\n\n* crypto/x509: crypto/tls: golang: Go: Denial of Service vulnerability in certificate chain building (CVE-2026-32280)\n\nBug Fix(es) and Enhancement(s):\n\n* [grafana-pcp / rhel-9.9] Remove Lua ExclusiveArch macro for Konflux build (JIRA:RHEL-188286)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n\nAdditional Changes:\n\nFor detailed information on changes in this release, see the Red Hat Enterprise Linux 9 Release Notes linked from the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-11-10"
+      },
+      "Updated": {
+        "Date": "2026-11-10"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-32280",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-770",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-32280",
+          "Public": "20260408:0106"
+        },
+        {
+          "CveID": "CVE-2026-33810",
+          "Cvss3": "8.8/CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:L/A:L",
+          "Cwe": "CWE-1289",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-33810",
+          "Public": "20260408:0106"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2456335",
+          "ID": "2456335"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2456339",
+          "ID": "2456339"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::baseos",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::extensions",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/a:redhat:rhel_eus:9.10",
+        "cpe:/a:redhat:rhel_eus:9.10::appstream",
+        "cpe:/a:redhat:rhel_eus:9.10::baseos",
+        "cpe:/a:redhat:rhel_eus:9.10::crb",
+        "cpe:/a:redhat:rhel_eus:9.10::extensions",
+        "cpe:/a:redhat:rhel_eus:9.10::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.10::nfv",
+        "cpe:/a:redhat:rhel_eus:9.10::realtime",
+        "cpe:/a:redhat:rhel_eus:9.10::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.10::sap",
+        "cpe:/a:redhat:rhel_eus:9.10::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.10::supplementary",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          },
+          {
+            "Comment": "grafana-pcp is earlier than 0:5.1.1-17.el9",
+            "TestRef": "oval:com.redhat.rhsa:tst:202697553001"
+          },
+          {
+            "Comment": "grafana-pcp is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20228250002"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202697463",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:97463: polkit security update (Moderate)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:97463",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:97463"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-4897",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-4897"
+      }
+    ],
+    "Description": "The polkit packages provide a component for controlling system-wide privileges. This component provides a uniform and organized way for non-privileged processes to communicate with privileged ones.\n\nSecurity Fix(es):\n\n* polkit: Polkit: Denial of Service via unbounded input processing through standard input (CVE-2026-4897)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n\nAdditional Changes:\n\nFor detailed information on changes in this release, see the Red Hat Enterprise Linux 9 Release Notes linked from the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Moderate",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-11-10"
+      },
+      "Updated": {
+        "Date": "2026-11-10"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-4897",
+          "Cvss3": "5.5/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-770",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-4897",
+          "Public": "20260326:1234"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2451739",
+          "ID": "2451739"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::baseos",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::extensions",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/a:redhat:rhel_eus:9.10",
+        "cpe:/a:redhat:rhel_eus:9.10::appstream",
+        "cpe:/a:redhat:rhel_eus:9.10::baseos",
+        "cpe:/a:redhat:rhel_eus:9.10::crb",
+        "cpe:/a:redhat:rhel_eus:9.10::extensions",
+        "cpe:/a:redhat:rhel_eus:9.10::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.10::nfv",
+        "cpe:/a:redhat:rhel_eus:9.10::realtime",
+        "cpe:/a:redhat:rhel_eus:9.10::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.10::sap",
+        "cpe:/a:redhat:rhel_eus:9.10::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.10::supplementary",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "polkit is earlier than 0:0.117-16.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202697463001"
+                  },
+                  {
+                    "Comment": "polkit is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202697463002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "polkit-devel is earlier than 0:0.117-16.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202697463003"
+                  },
+                  {
+                    "Comment": "polkit-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202697463004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "polkit-docs is earlier than 0:0.117-16.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202697463005"
+                  },
+                  {
+                    "Comment": "polkit-docs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202697463006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "polkit-libs is earlier than 0:0.117-16.el9",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202697463007"
+                  },
+                  {
+                    "Comment": "polkit-libs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202697463008"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

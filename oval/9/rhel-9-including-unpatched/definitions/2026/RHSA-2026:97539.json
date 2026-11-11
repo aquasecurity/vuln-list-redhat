@@ -1,0 +1,132 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202697539",
+  "Version": "638",
+  "Metadata": {
+    "Title": "RHSA-2026:97539: cockpit-machines security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:97539",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:97539"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-2950",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-2950"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-4800",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-4800"
+      }
+    ],
+    "Description": "Cockpit component for managing libvirt virtual machines.\n\nSecurity Fix(es):\n\n* lodash: lodash: Arbitrary code execution via untrusted input in template imports (CVE-2026-4800)\n\n* lodash: Lodash: Prototype pollution allows deletion of built-in prototype properties via array path bypass (CVE-2026-2950)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n\nAdditional Changes:\n\nFor detailed information on changes in this release, see the Red Hat Enterprise Linux 9 Release Notes linked from the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-11-10"
+      },
+      "Updated": {
+        "Date": "2026-11-10"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-2950",
+          "Cvss3": "6.5/CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-915",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-2950",
+          "Public": "20260331:1918"
+        },
+        {
+          "CveID": "CVE-2026-4800",
+          "Cvss3": "8.1/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-94",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-4800",
+          "Public": "20260331:1925"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2453496",
+          "ID": "2453496"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2453499",
+          "ID": "2453499"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:9",
+        "cpe:/a:redhat:enterprise_linux:9::appstream",
+        "cpe:/a:redhat:enterprise_linux:9::baseos",
+        "cpe:/a:redhat:enterprise_linux:9::crb",
+        "cpe:/a:redhat:enterprise_linux:9::extensions",
+        "cpe:/a:redhat:enterprise_linux:9::highavailability",
+        "cpe:/a:redhat:enterprise_linux:9::nfv",
+        "cpe:/a:redhat:enterprise_linux:9::realtime",
+        "cpe:/a:redhat:enterprise_linux:9::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:9::sap",
+        "cpe:/a:redhat:enterprise_linux:9::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:9::supplementary",
+        "cpe:/a:redhat:rhel_eus:9.10",
+        "cpe:/a:redhat:rhel_eus:9.10::appstream",
+        "cpe:/a:redhat:rhel_eus:9.10::baseos",
+        "cpe:/a:redhat:rhel_eus:9.10::crb",
+        "cpe:/a:redhat:rhel_eus:9.10::extensions",
+        "cpe:/a:redhat:rhel_eus:9.10::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.10::nfv",
+        "cpe:/a:redhat:rhel_eus:9.10::realtime",
+        "cpe:/a:redhat:rhel_eus:9.10::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.10::sap",
+        "cpe:/a:redhat:rhel_eus:9.10::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.10::supplementary",
+        "cpe:/o:redhat:enterprise_linux:9",
+        "cpe:/o:redhat:enterprise_linux:9::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:20052541004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.cve:tst:20052541003"
+          },
+          {
+            "Comment": "cockpit-machines is earlier than 0:355-1.el9",
+            "TestRef": "oval:com.redhat.rhsa:tst:202697539001"
+          },
+          {
+            "Comment": "cockpit-machines is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.cve:tst:202513465046"
+          }
+        ]
+      }
+    ]
+  }
+}
