@@ -1,0 +1,116 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202699049",
+  "Version": "639",
+  "Metadata": {
+    "Title": "RHSA-2026:99049: oci-seccomp-bpf-hook security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.8 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:99049",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:99049"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-111943",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-111943"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-78667",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-78667"
+      }
+    ],
+    "Description": "OCI Hook to generate seccomp json files based on EBF syscalls used by container oci-seccomp-bpf-hook provides a library for applications looking to use the Container Pod concept popularized by Kubernetes.\n\nSecurity Fix(es):\n\n* net/http: golang: golang: Denial of Service via crafted HTTP Range headers (CVE-2026-78667)\n\n* crypto/x509: golang: crypto/x509: Man-in-the-middle attacks via untrusted intermediate certificates (CVE-2026-111943)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-11-11"
+      },
+      "Updated": {
+        "Date": "2026-11-11"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-111943",
+          "Cvss3": "6.8/CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:N",
+          "Cwe": "CWE-295",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-111943",
+          "Public": "20261020:0200"
+        },
+        {
+          "CveID": "CVE-2026-78667",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-770",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-78667",
+          "Public": "20261008:2253"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2548334",
+          "ID": "2548334"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2556068",
+          "ID": "2556068"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.8",
+        "cpe:/a:redhat:rhel_e4s:9.8::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.8::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.8::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.8::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.8",
+        "cpe:/o:redhat:rhel_e4s:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          },
+          {
+            "Comment": "oci-seccomp-bpf-hook is earlier than 0:1.2.11-3.el9_8",
+            "TestRef": "oval:com.redhat.rhsa:tst:202699049001"
+          },
+          {
+            "Comment": "oci-seccomp-bpf-hook is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20249277002"
+          }
+        ]
+      }
+    ]
+  }
+}

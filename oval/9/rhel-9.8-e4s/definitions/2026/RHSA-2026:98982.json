@@ -1,0 +1,116 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202698982",
+  "Version": "638",
+  "Metadata": {
+    "Title": "RHSA-2026:98982: mod_http2 security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.8 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:98982",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:98982"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-119618",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-119618"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-57941",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-57941"
+      }
+    ],
+    "Description": "The mod_h2 Apache httpd module implements the HTTP2 protocol (h2+h2c) on top of libnghttp2 for httpd 2.4 servers.\n\nSecurity Fix(es):\n\n* httpd: Apache HTTP Server: mod_http2 use-after-free / wild write via shared session-\u003ebbtmp re-entrancy (CVE-2026-57941)\n\n* httpd:2.4/mod_http2: mod_http2: httpd: Remote code execution in mod_http2 (CVE-2026-119618)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-11-11"
+      },
+      "Updated": {
+        "Date": "2026-11-11"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-119618",
+          "Cvss3": "9.8/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-20",
+          "Impact": "critical",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-119618",
+          "Public": "20261111:1252"
+        },
+        {
+          "CveID": "CVE-2026-57941",
+          "Cvss3": "7.0/CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:H",
+          "Cwe": "CWE-416",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-57941",
+          "Public": "20261001:1606"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2544864",
+          "ID": "2544864"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2567318",
+          "ID": "2567318"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_e4s:9.8",
+        "cpe:/a:redhat:rhel_e4s:9.8::appstream",
+        "cpe:/a:redhat:rhel_e4s:9.8::highavailability",
+        "cpe:/a:redhat:rhel_e4s:9.8::nfv",
+        "cpe:/a:redhat:rhel_e4s:9.8::realtime",
+        "cpe:/a:redhat:rhel_e4s:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap",
+        "cpe:/a:redhat:rhel_e4s:9.8::sap_hana",
+        "cpe:/o:redhat:rhel_e4s:9.8",
+        "cpe:/o:redhat:rhel_e4s:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          },
+          {
+            "Comment": "mod_http2 is earlier than 0:2.0.26-6.el9_8.3",
+            "TestRef": "oval:com.redhat.rhsa:tst:202698982001"
+          },
+          {
+            "Comment": "mod_http2 is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20231670024"
+          }
+        ]
+      }
+    ]
+  }
+}
