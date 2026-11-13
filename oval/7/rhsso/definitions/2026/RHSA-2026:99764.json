@@ -1,0 +1,122 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202699764",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:99764: Red Hat Single Sign-On 7.6.14 security update on RHEL 7 (Critical)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Single Sign-On 7.6 for RHEL 7"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:99764",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:99764"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-18963",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-18963"
+      }
+    ],
+    "Description": "Red Hat Single Sign-On 7.6 is a standalone server, based on the Keycloak\nproject, that provides authentication and standards-based single sign-on\ncapabilities for web and mobile applications.\n\nThis release of Red Hat Single Sign-On 7.6.14 on RHEL 7 serves as a replacement\nfor Red Hat Single Sign-On 7.6.13, and includes bug fixes and enhancements,\nwhich are documented in the Release Notes document linked to in the References.\n\nSecurity Fix(es):\n* Unauthenticated account takeover via reset-credentials flow bypass (CVE-2026-18963)",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Critical",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-11-12"
+      },
+      "Updated": {
+        "Date": "2026-11-12"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-18963",
+          "Cvss3": "9.1/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+          "Cwe": "CWE-640",
+          "Impact": "critical",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-18963",
+          "Public": "20260817"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2511595",
+          "ID": "2511595"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:red_hat_single_sign_on:7",
+        "cpe:/a:redhat:red_hat_single_sign_on:7.5",
+        "cpe:/a:redhat:red_hat_single_sign_on:7.5::el7",
+        "cpe:/a:redhat:red_hat_single_sign_on:7.6",
+        "cpe:/a:redhat:red_hat_single_sign_on:7.6::el7",
+        "cpe:/a:redhat:red_hat_single_sign_on:7::el7",
+        "cpe:/a:redhat:red_hat_single_sign_on_els:7.6",
+        "cpe:/a:redhat:red_hat_single_sign_on_els:7.6::el7"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20225452014"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 7 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20225452013"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "rh-sso7-keycloak is earlier than 0:18.0.21-1.redhat_00001.1.el7sso",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202699764001"
+                  },
+                  {
+                    "Comment": "rh-sso7-keycloak is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20225452002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "rh-sso7-keycloak-server is earlier than 0:18.0.21-1.redhat_00001.1.el7sso",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202699764003"
+                  },
+                  {
+                    "Comment": "rh-sso7-keycloak-server is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhba:tst:20225452004"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

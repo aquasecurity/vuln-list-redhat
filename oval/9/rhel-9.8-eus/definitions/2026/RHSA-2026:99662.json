@@ -1,0 +1,139 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:202699662",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:99662: xfsprogs security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 9.8 Extended Update Support"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:99662",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:99662"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-108472",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-108472"
+      }
+    ],
+    "Description": "The xfsprogs packages contain a set of utilities to administer the XFS file system, including the mkfs.xfs utility to construct an XFS file system.\n\nSecurity Fix(es):\n\n* xfsprogs: xfsprogs: Local privilege escalation via command injection in xfs_admin (CVE-2026-108472)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-11-12"
+      },
+      "Updated": {
+        "Date": "2026-11-12"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-108472",
+          "Cvss3": "7.8/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-78",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-108472",
+          "Public": "20261111"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2548925",
+          "ID": "2548925"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:rhel_eus:9.8",
+        "cpe:/a:redhat:rhel_eus:9.8::appstream",
+        "cpe:/a:redhat:rhel_eus:9.8::crb",
+        "cpe:/a:redhat:rhel_eus:9.8::highavailability",
+        "cpe:/a:redhat:rhel_eus:9.8::nfv",
+        "cpe:/a:redhat:rhel_eus:9.8::realtime",
+        "cpe:/a:redhat:rhel_eus:9.8::resilientstorage",
+        "cpe:/a:redhat:rhel_eus:9.8::sap",
+        "cpe:/a:redhat:rhel_eus:9.8::sap_hana",
+        "cpe:/a:redhat:rhel_eus:9.8::supplementary",
+        "cpe:/o:redhat:rhel_eus:9.8",
+        "cpe:/o:redhat:rhel_eus:9.8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20223945012"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "Red Hat Enterprise Linux 9 is installed",
+            "TestRef": "oval:com.redhat.rhba:tst:20223945011"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "xfsprogs is earlier than 0:6.4.0-8.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202699662001"
+                  },
+                  {
+                    "Comment": "xfsprogs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202699662002"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "xfsprogs-devel is earlier than 0:6.4.0-8.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202699662003"
+                  },
+                  {
+                    "Comment": "xfsprogs-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202699662004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "xfsprogs-xfs_scrub is earlier than 0:6.4.0-8.el9_8",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202699662005"
+                  },
+                  {
+                    "Comment": "xfsprogs-xfs_scrub is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.rhsa:tst:202699662006"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
