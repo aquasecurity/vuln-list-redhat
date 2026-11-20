@@ -1,0 +1,129 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:2026100498",
+  "Version": "638",
+  "Metadata": {
+    "Title": "RHSA-2026:100498: gnome-remote-desktop security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:100498",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:100498"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-109832",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-109832"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-96541",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-96541"
+      }
+    ],
+    "Description": "GNOME Remote Desktop is a remote desktop and screen sharing service for the GNOME desktop environment.\n\nSecurity Fix(es):\n\n* gnome-remote-desktop: gnome-remote-desktop: unauthenticated RDP sockets lack a handshake deadline (CVE-2026-96541)\n\n* gnome-remote-desktop: Busy-Wait DoS in VNC TLS I/O Handlers (GNUTLS_E_AGAIN / GNUTLS_E_INTERRUPTED) (CVE-2026-109832)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-11-20"
+      },
+      "Updated": {
+        "Date": "2026-11-20"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-109832",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-835",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-109832",
+          "Public": "20261008"
+        },
+        {
+          "CveID": "CVE-2026-96541",
+          "Cvss3": "7.5/CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "Cwe": "CWE-400",
+          "Impact": "moderate",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-96541",
+          "Public": "20260823:1501"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2539385",
+          "ID": "2539385"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2550352",
+          "ID": "2550352"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:8",
+        "cpe:/a:redhat:enterprise_linux:8::appstream",
+        "cpe:/a:redhat:enterprise_linux:8::crb",
+        "cpe:/a:redhat:enterprise_linux:8::highavailability",
+        "cpe:/a:redhat:enterprise_linux:8::nfv",
+        "cpe:/a:redhat:enterprise_linux:8::realtime",
+        "cpe:/a:redhat:enterprise_linux:8::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:8::sap",
+        "cpe:/a:redhat:enterprise_linux:8::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:8::supplementary",
+        "cpe:/o:redhat:enterprise_linux:8",
+        "cpe:/o:redhat:enterprise_linux:8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.rhba:tst:20191992005"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterions": [
+          {
+            "Comment": "gnome-remote-desktop is earlier than 0:0.1.8-7.el8_10",
+            "TestRef": "oval:com.redhat.rhsa:tst:2026100498001"
+          },
+          {
+            "Comment": "gnome-remote-desktop is signed with Red Hat redhatrelease2 key",
+            "TestRef": "oval:com.redhat.rhsa:tst:20193553008"
+          }
+        ],
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
