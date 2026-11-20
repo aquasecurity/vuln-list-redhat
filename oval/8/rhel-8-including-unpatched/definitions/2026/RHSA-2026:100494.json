@@ -1,0 +1,146 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:2026100494",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:100494: cifs-utils security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:100494",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:100494"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-104715",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-104715"
+      }
+    ],
+    "Description": "The SMB/CIFS protocol is a standard file sharing protocol widely deployed on Microsoft Windows machines. The cifs-utils packages contain tools for mounting shares on Linux using the SMB/CIFS protocol. The tools in this package work in conjunction with support in the kernel to allow one to mount a SMB/CIFS share onto a client and use it as if it were a standard Linux file system.\n\nSecurity Fix(es):\n\n* cifs-utils: mount.cifs credential-file option injection allows local privilege boundary bypass (CVE-2026-104715)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-11-19"
+      },
+      "Updated": {
+        "Date": "2026-11-19"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-104715",
+          "Cvss3": "7.8/CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-88",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-104715",
+          "Public": "20261015:1000"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2545023",
+          "ID": "2545023"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:8",
+        "cpe:/a:redhat:enterprise_linux:8::appstream",
+        "cpe:/a:redhat:enterprise_linux:8::crb",
+        "cpe:/a:redhat:enterprise_linux:8::highavailability",
+        "cpe:/a:redhat:enterprise_linux:8::nfv",
+        "cpe:/a:redhat:enterprise_linux:8::realtime",
+        "cpe:/a:redhat:enterprise_linux:8::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:8::sap",
+        "cpe:/a:redhat:enterprise_linux:8::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:8::supplementary",
+        "cpe:/o:redhat:enterprise_linux:8",
+        "cpe:/o:redhat:enterprise_linux:8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:20052541004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.cve:tst:20052541003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "cifs-utils is earlier than 0:7.0-7.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:2026100494001"
+                  },
+                  {
+                    "Comment": "cifs-utils is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:202014342006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "cifs-utils-devel is earlier than 0:7.0-7.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:2026100494003"
+                  },
+                  {
+                    "Comment": "cifs-utils-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:202014342004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "pam_cifscreds is earlier than 0:7.0-7.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:2026100494005"
+                  },
+                  {
+                    "Comment": "pam_cifscreds is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:202014342002"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
