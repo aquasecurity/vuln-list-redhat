@@ -1,0 +1,193 @@
+{
+  "Class": "patch",
+  "ID": "oval:com.redhat.rhsa:def:2026102494",
+  "Version": "637",
+  "Metadata": {
+    "Title": "RHSA-2026:102494: netpbm security update (Important)",
+    "AffectedList": [
+      {
+        "Family": "unix",
+        "Platforms": [
+          "Red Hat Enterprise Linux 8"
+        ]
+      }
+    ],
+    "References": [
+      {
+        "Source": "RHSA",
+        "RefID": "RHSA-2026:102494",
+        "RefURL": "https://access.redhat.com/errata/RHSA-2026:102494"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-120432",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-120432"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-120433",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-120433"
+      },
+      {
+        "Source": "CVE",
+        "RefID": "CVE-2026-120436",
+        "RefURL": "https://access.redhat.com/security/cve/CVE-2026-120436"
+      }
+    ],
+    "Description": "The netpbm packages contain tools and a library to manipulate the Netpbm graphics file formats, and tools for conversion of other graphics formats to and from Netpbm.\n\nSecurity Fix(es):\n\n* netpbm: netpbm: Arbitrary code execution via crafted PICT file in picttoppm (CVE-2026-120433)\n\n* netpbm: netpbm: Arbitrary code execution via integer overflow in winicontopam (CVE-2026-120432)\n\n* netpbm: netpbm: Arbitrary code execution via integer overflow in jbigtopnm (CVE-2026-120436)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "Advisory": {
+      "From": "secalert@redhat.com",
+      "Severity": "Important",
+      "Rights": "Copyright 2026 Red Hat, Inc.",
+      "Issued": {
+        "Date": "2026-11-23"
+      },
+      "Updated": {
+        "Date": "2026-11-23"
+      },
+      "Cves": [
+        {
+          "CveID": "CVE-2026-120432",
+          "Cvss3": "7.8/CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-124",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-120432",
+          "Public": "20261102:1428"
+        },
+        {
+          "CveID": "CVE-2026-120433",
+          "Cvss3": "7.8/CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-787",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-120433",
+          "Public": "20261102:1428"
+        },
+        {
+          "CveID": "CVE-2026-120436",
+          "Cvss3": "7.8/CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+          "Cwe": "CWE-787",
+          "Impact": "important",
+          "Href": "https://access.redhat.com/security/cve/CVE-2026-120436",
+          "Public": "20261102:1428"
+        }
+      ],
+      "Bugzilla": [
+        {
+          "Href": "https://bugzilla.redhat.com/2565263",
+          "ID": "2565263"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2565314",
+          "ID": "2565314"
+        },
+        {
+          "Href": "https://bugzilla.redhat.com/2565322",
+          "ID": "2565322"
+        }
+      ],
+      "AffectedCpeList": [
+        "cpe:/a:redhat:enterprise_linux:8",
+        "cpe:/a:redhat:enterprise_linux:8::appstream",
+        "cpe:/a:redhat:enterprise_linux:8::crb",
+        "cpe:/a:redhat:enterprise_linux:8::highavailability",
+        "cpe:/a:redhat:enterprise_linux:8::nfv",
+        "cpe:/a:redhat:enterprise_linux:8::realtime",
+        "cpe:/a:redhat:enterprise_linux:8::resilientstorage",
+        "cpe:/a:redhat:enterprise_linux:8::sap",
+        "cpe:/a:redhat:enterprise_linux:8::sap_hana",
+        "cpe:/a:redhat:enterprise_linux:8::supplementary",
+        "cpe:/o:redhat:enterprise_linux:8",
+        "cpe:/o:redhat:enterprise_linux:8::baseos"
+      ],
+      "Affected": {
+        "Resolution": {}
+      }
+    }
+  },
+  "Criteria": {
+    "Operator": "OR",
+    "Criterions": [
+      {
+        "Comment": "Red Hat Enterprise Linux must be installed",
+        "TestRef": "oval:com.redhat.cve:tst:20052541004"
+      }
+    ],
+    "Criterias": [
+      {
+        "Operator": "AND",
+        "Criterias": [
+          {
+            "Operator": "OR",
+            "Criterions": [
+              {
+                "Comment": "Red Hat Enterprise Linux 8 is installed",
+                "TestRef": "oval:com.redhat.cve:tst:20052541003"
+              },
+              {
+                "Comment": "Red Hat CoreOS 4 is installed",
+                "TestRef": "oval:com.redhat.rhba:tst:20191992004"
+              }
+            ]
+          },
+          {
+            "Operator": "OR",
+            "Criterias": [
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "netpbm is earlier than 0:10.82.00-10.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:2026102494001"
+                  },
+                  {
+                    "Comment": "netpbm is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:20188975006"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "netpbm-devel is earlier than 0:10.82.00-10.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:2026102494003"
+                  },
+                  {
+                    "Comment": "netpbm-devel is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:20188975008"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "netpbm-doc is earlier than 0:10.82.00-10.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:2026102494005"
+                  },
+                  {
+                    "Comment": "netpbm-doc is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:20188975004"
+                  }
+                ]
+              },
+              {
+                "Operator": "AND",
+                "Criterions": [
+                  {
+                    "Comment": "netpbm-progs is earlier than 0:10.82.00-10.el8_10",
+                    "TestRef": "oval:com.redhat.rhsa:tst:2026102494007"
+                  },
+                  {
+                    "Comment": "netpbm-progs is signed with Red Hat redhatrelease2 key",
+                    "TestRef": "oval:com.redhat.cve:tst:20188975002"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
